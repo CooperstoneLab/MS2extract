@@ -1,0 +1,28 @@
+Package: MS2extract
+Type: Package
+Title: Targeted MS2 spectra extraction
+Version: 0.1.0
+Authors@R: c(
+    person("Cristian", "Quiroz-Moreno",
+           email = "cristianquirozd1997@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-9069-9147")) )
+Maintainer: Cristian Quiroz-Moreno <cristianquirozd1997@gmail.com>
+Description: This package has the objective to import mass spectrometry
+   data and extract the desired MS2 spectrum data and perform 
+   basics filters such as remove low intensity counts.
+License:  MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RdMacros: Rdpack
+biocViews: ChemPhys
+Depends:
+     R (>= 4.2.0)
+LazyData: true
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+Suggests:
+    knitr,
+    rmarkdown,
+    prettydoc,
+VignetteBuilder: knitr
