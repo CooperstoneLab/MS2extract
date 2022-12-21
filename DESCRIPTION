@@ -11,18 +11,18 @@ Maintainer: Cristian Quiroz-Moreno <cristianquirozd1997@gmail.com>
 Description: This package has the objective to import mass spectrometry
    data and extract the desired MS2 spectrum data and perform 
    basics filters such as remove low intensity counts.
-License:  MIT + file LICENSE
-Encoding: UTF-8
+License: MIT + file LICENSE
 LazyData: true
 RdMacros: Rdpack
 biocViews: ChemPhys
 Depends:
      R (>= 4.2.0)
-LazyData: true
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests:
     knitr,
     rmarkdown,
     prettydoc,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3

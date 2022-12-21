@@ -21,7 +21,8 @@
 #' get_ppm(mz = chlorogenic_acid_pos, ppm = ppm_error)
 
 get_ppm <- function(mz, ppm = 10) {
-  mz_difference <- ( ppm * mz / 1E6) + mz
+  mz_observed <- ( ppm * mz / 1E6) + mz
+  mz_difference <- abs(mz_observed - mz)
   mz_difference
 }
 
@@ -41,7 +42,7 @@ get_ppm <- function(mz, ppm = 10) {
 #' @export
 #'
 #' @examples
-#' # Chlorogenic acid [M+H]+ = 355.1023 m/z
+#'
 #' chlorogenic_acid_pos <- 355.1023
 #' ppm_error = 10
 #' ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
