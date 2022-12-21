@@ -20,7 +20,6 @@ Depends:
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Imports: Rdpack
-RdMacros: Rdpack
 Suggests:
     knitr,
     rmarkdown,

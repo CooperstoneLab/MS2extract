@@ -39,7 +39,6 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example, eval=TRUE, include=TRUE}
 library(MS2extract)
 ## calculating ppm range
-
 chlorogenic_acid_pos <- 355.1023
 ppm_error = 10
 # Calculate ranges

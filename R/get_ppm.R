@@ -49,4 +49,5 @@ get_ppm <- function(mz, ppm = 10) {
 ppm_range <- function(mz, ppm) {
   ppm_error <- get_ppm(mz = mz, ppm = ppm)
   ppm_range_value <- c(mz - ppm_error, mz + ppm_error)
+  ppm_range_value
 }

@@ -20,7 +20,7 @@ Given a theoretical m/z value and a ppm error tolerance,
 this function calculates the lower and upper m/z values.
 }
 \examples{
-# Chlorogenic acid [M+H]+ = 355.1023 m/z
+
 chlorogenic_acid_pos <- 355.1023
 ppm_error = 10
 ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
