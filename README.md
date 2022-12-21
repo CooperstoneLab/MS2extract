@@ -4,6 +4,8 @@
 # MS2extract
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of MS2extract is to create a tool to import MS2 data of known
@@ -31,5 +33,5 @@ library(MS2extract)
 chlorogenic_acid_pos <- 355.1023
 ppm_error = 10
 # Calculate ranges
-ppm_baund <- ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
+ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 ```

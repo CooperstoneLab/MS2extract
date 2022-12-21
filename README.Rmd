@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # MS2extract
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of MS2extract is to create a tool to import MS2 data of known standards
@@ -35,13 +36,13 @@ devtools::install_github("CooperstoneLab/MS2extract")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, eval=TRUE, include=TRUE}
 library(MS2extract)
 ## calculating ppm range
 
 chlorogenic_acid_pos <- 355.1023
 ppm_error = 10
 # Calculate ranges
-ppm_baund <- ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
+ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 ```
 
