@@ -1,3 +1,6 @@
 # MS2extract 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+Package creation, available functions:
+
+* get_ppm()
+* ppm_range()

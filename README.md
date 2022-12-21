@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 The goal of MS2extract is to create a tool to import MS2 data of known
