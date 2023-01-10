@@ -6,7 +6,7 @@ test_that("Importing mzxml works", {
                          package = "MS2extract")
 
   # Testing masstools read_mzxml file ----
-  mzxml_raw <- masstools::read_mzxml(ProcA2_file)
+  mzxml_raw <- read_mzxml(ProcA2_file)
   expect_true(is.list(mzxml_raw))
   expect_true(length(mzxml_raw) == 9)
 
