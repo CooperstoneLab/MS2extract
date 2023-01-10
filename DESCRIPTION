@@ -22,7 +22,8 @@ Encoding: UTF-8
 Imports: 
     crayon,
     dplyr,
-    masstools,
+    MSnbase,
+    ProtGenerics,
     Rdpack
 Suggests:
     knitr,

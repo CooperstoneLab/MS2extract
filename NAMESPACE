@@ -3,5 +3,8 @@
 export(get_ppm)
 export(import_mzxml)
 export(ppm_range)
+export(read_mzxml)
+importFrom(MSnbase,readMSData)
+importFrom(ProtGenerics,spectra)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,mutate)
