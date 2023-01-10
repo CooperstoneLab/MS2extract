@@ -16,7 +16,19 @@
     <loc>https://cooperstonelab.github.io/MS2extract/news/index.html</loc>
   </url>
   <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/MS2extract-package.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/assign_scan_id.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/extract_scan_info.html</loc>
+  </url>
+  <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/get_ppm.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/import_mzxml.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/index.html</loc>
