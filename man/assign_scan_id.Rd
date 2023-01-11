@@ -7,7 +7,7 @@
 assign_scan_id(scan_list)
 }
 \arguments{
-\item{mzxml}{a list created by masstools::read_mzxml()}
+\item{scan_list}{a list created by masstools::read_mzxml()}
 }
 \value{
 a data.frame containing

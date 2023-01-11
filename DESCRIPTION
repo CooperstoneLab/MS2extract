@@ -22,10 +22,10 @@ Encoding: UTF-8
 Imports: 
     crayon,
     dplyr,
+    magrittr,
     MSnbase,
     ProtGenerics,
-    purrr,
-    Rdpack
+    purrr
 Suggests:
     knitr,
     rmarkdown,
