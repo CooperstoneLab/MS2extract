@@ -24,6 +24,7 @@ Imports:
     dplyr,
     MSnbase,
     ProtGenerics,
+    purrr,
     Rdpack
 Suggests:
     knitr,
