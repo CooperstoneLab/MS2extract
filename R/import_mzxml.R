@@ -83,7 +83,7 @@ assign_scan_id <- function(scan_list) {
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
 #' }
 import_mzxml <- function(file, ...) {
-  mzxml_raw <- masstools::read_mzxml(file, file, ...)
+  mzxml_raw <- read_mzxml(file, file, ...)
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
 
   # Getting scan index number by ROI
