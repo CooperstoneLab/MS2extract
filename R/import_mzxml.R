@@ -49,7 +49,7 @@ assign_scan_id <- function(scan_list) {
 
 #' Imports mzxml files with MS2 scans
 #'
-#' This function imports MS2 data using the \code{\link[masstools]{read_mzxml}}
+#' This function imports MS2 data using the masstools::read_mzxml()
 #' function to import the data as a list. Each element in a list *list* represents
 #' one scan. Subsequently, each element in this list (scans) contains two
 #' sublists that gathers the scan information and the spectra per scan.
@@ -59,7 +59,7 @@ assign_scan_id <- function(scan_list) {
 #' desired information.
 #'
 #' @param file file name of the mzxml file
-#' @param ... extra arguments passed to \code{\link[masstools]{read_mzxml}}
+#' @param ... extra arguments passed to  masstools::read_mzxml()
 #'
 #' @return data.frame in a tidy format for MS2 spectra in a tidy format.
 #'  \describe{
