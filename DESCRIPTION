@@ -25,7 +25,8 @@ Imports:
     magrittr,
     MSnbase,
     ProtGenerics,
-    purrr
+    purrr,
+    Rdpack
 Suggests:
     knitr,
     rmarkdown,
