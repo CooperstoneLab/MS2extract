@@ -54,14 +54,9 @@
 
 
 <dt>min_int</dt>
-<dd><p>a integer the minimum normalized ion intensity between
-1 and 100<!-- %.} --></p></dd>
+<dd><p>a integer the minimum normalized ion intensity between 1 and 100<!-- %.} --></p></dd>
 
-</dl><p>a data frame with the normalized ion intensities and signal greater
-than the provided minimum intensity.</p>
-
-
-<p>This function takes a raw spectra (ion abundance in total counts) and
+</dl><p>This function takes a raw spectra (ion abundance in total counts) and
 normalized by the base peak. Additionally, this function filters the
 signal by a minimum intensity to remove background noise. By default,
 the minimum intensity is 1<!-- %. --></p>
@@ -72,7 +67,8 @@ the minimum intensity is 1<!-- %. --></p>
 ProcA2_file &lt;- system.file("extdata",
                        "ProcyanidinA2_neg_20eV.mzXML",
                         package = "MS2extract")ProcA2_raw &lt;- import_mzxml(ProcA2_file)# Check raw intensities
-range(ProcA2_raw$intensity) # [1]  1.125 851439.500normalize_spec</p>
+range(ProcA2_raw$intensity) # Ranges:  1.125 851439.500ProcA2_norm &lt;- normalize_spec(ProcA2_raw)
+range(ProcA2_norm$intensity) # Ranges: 2 100</p>
 
 
     </div>
