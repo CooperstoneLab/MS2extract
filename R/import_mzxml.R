@@ -66,7 +66,7 @@ assign_scan_id <- function(scan_list) {
 #'   \item{mz}{ion m/z value}
 #'   \item{intensity}{ion intensity count}
 #'   \item{precursor_mz}{precursor ion}
-#'   \item{rt}{retention time}
+#'   \item{rt}{retention time (in seconds)}
 #' }
 #'
 #' @export
@@ -93,5 +93,8 @@ import_mzxml <- function(file, ...) {
   mzxml_tidy <- lapply(mzxml_raw, assign_scan_id ) |>
     dplyr::bind_rows()
 
-  mzxml_tidy
+  # Keep ions with abundance greater than 0
+  mzxml_tidy <- mzxml_tidy |> dplyr::filter(intensity > 0)
+
+  return(mzxml_tidy)
 }

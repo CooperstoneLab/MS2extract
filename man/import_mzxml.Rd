@@ -17,7 +17,7 @@ data.frame in a tidy format for MS2 spectra in a tidy format.
   \item{mz}{ion m/z value}
   \item{intensity}{ion intensity count}
   \item{precursor_mz}{precursor ion}
-  \item{rt}{retention time}
+  \item{rt}{retention time (in seconds)}
 }
 }
 \description{

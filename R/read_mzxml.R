@@ -8,7 +8,7 @@
 #' @param threads Thread number
 #' @param mode inMemory or onDisk
 #' @return Return ms2 data. This is a list.
-#'
+#' @export
 #' @examples
 #' ProcA2_file <- system.file("extdata",
 #'                        "ProcyanidinA2_neg_20eV.mzXML",
