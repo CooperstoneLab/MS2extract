@@ -9,9 +9,6 @@
 #' @param min_int a integer the minimum normalized ion intensity between
 #' 1 and 100%.
 #'
-#' @return a data frame with the normalized ion intensities and signal greater
-#' than the provided minimum intensity.
-#'
 #' @export
 #'
 #' @examples
