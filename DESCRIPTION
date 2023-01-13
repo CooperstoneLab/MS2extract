@@ -24,6 +24,7 @@ Imports:
     dplyr,
     magrittr,
     MSnbase,
+    OrgMassSpecR,
     ProtGenerics,
     purrr,
     Rdpack

@@ -7,6 +7,7 @@
 #' @importFrom dplyr select
 #' @importFrom magrittr %>%
 #' @importFrom MSnbase readMSData
+#' @importFrom OrgMassSpecR SpectrumSimilarity
 #' @importFrom ProtGenerics spectra
 #' @importFrom purrr map
 ## usethis namespace: end
