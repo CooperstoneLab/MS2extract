@@ -9,12 +9,7 @@ normalize_spec(spec, min_int = 1)
 \arguments{
 \item{spec}{a data frame produced by import_mzxml() or with the same columns}
 
-\item{min_int}{a integer the minimum normalized ion intensity between
-1 and 100%.}
-}
-\value{
-a data frame with the normalized ion intensities and signal greater
-than the provided minimum intensity.
+\item{min_int}{a integer the minimum normalized ion intensity between 1 and 100%.}
 }
 \description{
 This function takes a raw spectra (ion abundance in total counts) and
@@ -33,7 +28,8 @@ ProcA2_file <- system.file("extdata",
 ProcA2_raw <- import_mzxml(ProcA2_file)
 
 # Check raw intensities
-range(ProcA2_raw$intensity) # [1]  1.125 851439.500
+range(ProcA2_raw$intensity) # Ranges:  1.125 851439.500
 
-normalize_spec
+ProcA2_norm <- normalize_spec(ProcA2_raw)
+range(ProcA2_norm$intensity) # Ranges: 2 100
 }

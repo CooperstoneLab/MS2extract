@@ -4,19 +4,21 @@
 \alias{compare_spectra}
 \title{Compare two spectra based on cosine score}
 \usage{
-compare_spectra(spec1, spec2, ...)
+compare_spectra(spec1, spec2, output.list = T, ...)
 }
 \arguments{
 \item{spec1}{a data frame containing the spectra info.}
 
 \item{spec2}{a data fram contaning the spectra info.}
 
-\item{...}{arguments parsed to \link[OrgMassSpecR]{SpectrumSimilarity}.}
+\item{output.list}{a boolean if the the output is returned as a list}
+
+\item{...}{arguments parsed to OrgMassSpecR::SpectrumSimilarity().}
 }
 \description{
 Wrap function to calculate the cosine score  between two spectra.
 This function select the *mz* and *intensity* columns before parsing
-the data frames to \link[OrgMassSpecR]{SpectrumSimilarity}.
+the data frames to OrgMassSpecR::SpectrumSimilarity().
 }
 \examples{
 # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
@@ -33,7 +35,7 @@ ProcA2_pcdl_fl <- system.file("extdata",
 # Reading the Procyanidin A2 spectra
 ProcA2_raw <- import_mzxml(ProcA2_file)
 # Normalizing total ion counts (Already normalized)
-ProcA2_norm <- normalized_spec(ProcA2_norm)
+ProcA2_norm <- normalize_spec(ProcA2_norm)
 
 # Reading the MS2 spectra of Procynidin A2 by PCDL
 ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
