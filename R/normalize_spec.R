@@ -12,8 +12,8 @@
 #' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'                            "ProcyanidinA2_neg_20eV.mzXML",
+#'                             package = "MS2extract")
 #'
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
 #'

@@ -18,7 +18,7 @@
 #'
 #' # Importing the MS2 of Procyanidin A2 deconvoluted by PCDL (Agilent)
 #' ProcA2_pcdl_fl <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV_PCDL.csv",
+#'                        "ProcA2_neg_20eV_PCDL.csv",
 #'                         package = "MS2extract")
 #'
 #' # Reading the Procyanidin A2 spectra
