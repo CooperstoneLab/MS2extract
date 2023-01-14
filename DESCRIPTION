@@ -22,6 +22,7 @@ Encoding: UTF-8
 Imports: 
     crayon,
     dplyr,
+    ggplot2,
     magrittr,
     MSnbase,
     OrgMassSpecR,
