@@ -24,7 +24,7 @@
 #' # Reading the Procyanidin A2 spectra
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
 #' # Normalizing total ion counts (Already normalized)
-#' ProcA2_norm <- normalize_spec(ProcA2_norm)
+#' ProcA2_norm <- normalize_spec(ProcA2_raw)
 #'
 #' # Reading the MS2 spectra of Procynidin A2 by PCDL
 #' ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
