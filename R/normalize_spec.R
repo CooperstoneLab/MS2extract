@@ -27,7 +27,9 @@ normalize_spec <- function(spec, min_int = 1) {
 
   spec_normalized <- spec |> dplyr::group_by(rt) |> # Normalized by the base peak
     dplyr::mutate(intensity = round(intensity / max(intensity), 2 ) * 100 ) |>
-    dplyr::filter(intensity > min_int) # Filter intensities > than 1% by default
+    # Filter intensities > than 1% by default
+    dplyr::filter(intensity > min_int) |>
+    dplyr::ungroup()
 
   return(spec_normalized)
 }

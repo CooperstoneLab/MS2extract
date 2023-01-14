@@ -5,6 +5,7 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom dplyr ungroup
 #' @importFrom ggplot2 +
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 geom_line

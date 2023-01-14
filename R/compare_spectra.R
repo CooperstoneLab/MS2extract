@@ -23,8 +23,8 @@
 #'
 #' # Reading the Procyanidin A2 spectra
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
-#' # Normalizing total ion counts (Already normalized)
-#' ProcA2_norm <- normalize_spec(ProcA2_raw)
+#' ProcA2_extracted <- extract_MS2(ProcA2_raw, out_list = FALSE)
+#' ProcA2_norm <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 10)
 #'
 #' # Reading the MS2 spectra of Procynidin A2 by PCDL
 #' ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
@@ -33,10 +33,10 @@
 
 compare_spectra <- function(spec1, spec2, output.list = T, ...) {
   # select mz and intensity columns from spec1
-  spec1 <- dplyr::select(.data = spec1, mz, intensity)
+  spec1 <- dplyr::select(.data = spec1, "mz", "intensity")
 
   # select mz and intensity columns from spec2
-  spec2 <- dplyr::select(.data = spec2, mz, intensity)
+  spec2 <- dplyr::select(.data = spec2, "mz", "intensity")
 
 
   OrgMassSpecR::SpectrumSimilarity(spec1, spec2, output.list = output.list, ...)
