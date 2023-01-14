@@ -1,11 +1,11 @@
 #' Normalization and low intensity signal filtering
 #'
-#' This function takes a raw spectra (ion abundance in total counts) and
+#' This function takes a raw spectra, ion abundance in total counts, and
 #' normalized by the base peak. Additionally, this function filters the
 #' signal by a minimum intensity to remove background noise. By default,
 #' the minimum intensity is 1%.
 #'
-#' @param spec a data frame produced by import_mzxml() or with the same columns
+#' @param spec a data frame produced by import_mzxml function or with the same columns
 #' @param min_int a integer the minimum normalized ion intensity between 1 and 100%.
 #' @export
 #' @examples

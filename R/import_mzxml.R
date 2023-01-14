@@ -37,8 +37,8 @@ extract_scan_info <- function(mzxml) {
 
 assign_scan_id <- function(scan_list) {
   scan_id <- scan_list[[1]] # Extracs scan info
-  scan_id <- scan_id |>
-    dplyr::rename(mz_precursor = mz) # rename mz for precursor mz
+  # rename mz for precursor mz
+  scan_id <- dplyr::rename(.data = scan_id, mz_precursor = mz)
   scan_data <- scan_list[[2]] # Extract scan data
   scan_data <- scan_data |> # Add rt data to the scan
     dplyr::mutate(mz_precursor = scan_id$mz_precursor,

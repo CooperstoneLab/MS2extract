@@ -33,10 +33,10 @@
 
 compare_spectra <- function(spec1, spec2, output.list = T, ...) {
   # select mz and intensity columns from spec1
-  spec1 <- spec1 |> dplyr::select(mz, intensity)
+  spec1 <- dplyr::select(.data = spec1, mz, intensity)
 
   # select mz and intensity columns from spec2
-  spec2 <- spec2 |> dplyr::select(mz, intensity)
+  spec2 <- dplyr::select(.data = spec2, mz, intensity)
 
 
   OrgMassSpecR::SpectrumSimilarity(spec1, spec2, output.list = output.list, ...)
