@@ -9,7 +9,6 @@
 #' @param min_int a integer the minimum normalized ion intensity between 1 and 100%.
 #' @export
 #' @examples
-#'
 #' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
@@ -27,7 +26,7 @@
 normalize_spec <- function(spec, min_int = 1) {
 
   spec_normalized <- spec |> # Normalized by the base peak
-    mutate(intensity = round(intensity / max(intensity), 2 ) * 100 ) |>
+    dplyr::mutate(intensity = round(intensity / max(intensity), 2 ) * 100 ) |>
     dplyr::filter(intensity > min_int) # Filter intensities > than 1% by default
 
   return(spec_normalized)
