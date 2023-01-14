@@ -25,7 +25,13 @@
     <loc>https://cooperstonelab.github.io/MS2extract/reference/compare_spectra.html</loc>
   </url>
   <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/extract_MS2.html</loc>
+  </url>
+  <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/extract_scan_info.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/get_TIC.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/get_ppm.html</loc>
@@ -38,6 +44,9 @@
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/normalize_spec.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/plot_tic.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/ppm_range.html</loc>
