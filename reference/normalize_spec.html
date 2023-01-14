@@ -65,8 +65,8 @@ the minimum intensity is 1<!-- %. --></p>
 <p># Importing the Spectrum of Procyanidin A2 in negative ionzation mode
 # and 20 eV as the collision energy
 ProcA2_file &lt;- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")ProcA2_raw &lt;- import_mzxml(ProcA2_file)# Check raw intensities
+                           "ProcyanidinA2_neg_20eV.mzXML",
+                            package = "MS2extract")ProcA2_raw &lt;- import_mzxml(ProcA2_file)# Check raw intensities
 range(ProcA2_raw$intensity) # Ranges:  1.125 851439.500ProcA2_norm &lt;- normalize_spec(ProcA2_raw)
 range(ProcA2_norm$intensity) # Ranges: 2 100</p>
 
