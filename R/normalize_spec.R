@@ -32,7 +32,7 @@ normalize_spec <- function(spec, min_int = 1) {
     dplyr::mutate(intensity = round(.data$intensity /
                                       max(.data$intensity), 2 ) * 100 ) |>
     # Filter intensities > than 1% by default
-    dplyr::filter(.data$intensity > .data$min_int) |>
+    dplyr::filter(.data$intensity > min_int) |>
     dplyr::ungroup()
 
   return(spec_normalized)
