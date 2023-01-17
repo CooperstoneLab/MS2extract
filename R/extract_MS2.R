@@ -4,8 +4,8 @@
 #'
 #' @param spec a data fram with two columns, mz and intensity
 get_TIC <- function(spec) {
-  spec_tic <- dplyr::group_by(spec, rt) |>
-    dplyr::summarise(TIC = sum(intensity) )
+  spec_tic <- dplyr::group_by(spec, .data$rt) |>
+    dplyr::summarise(TIC = sum(.data$intensity) )
   spec_tic
 }
 
@@ -73,7 +73,7 @@ extract_MS2 <- function(spec, verbose = TRUE, out_list = TRUE) {
 
   most_intense <- TIC_results$most_intense
 
-  MS2_spec <- dplyr::filter(spec, rt == most_intense$rt)
+  MS2_spec <- dplyr::filter(spec, .data$rt == most_intense$rt)
 
   if(out_list){
     return( list(MS2_spec = MS2_spec, TIC_plot = TIC_results$TIC_plot) )

@@ -15,7 +15,7 @@ normalize_spec(spec, min_int = 1)
 This function takes a raw spectra, ion abundance in total counts, and
 normalized by the base peak. Additionally, this function filters the
 signal by a minimum intensity to remove background noise. By default,
-the minimum intensity is 1%.
+the minimum intensity is 1 percent.
 }
 \examples{
 # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
@@ -27,8 +27,10 @@ ProcA2_file <- system.file("extdata",
 ProcA2_raw <- import_mzxml(ProcA2_file)
 
 # Check raw intensities
-range(ProcA2_raw$intensity) # Ranges:  1.125 851439.500
+# Ranges:  1.125 851439.500
+range(ProcA2_raw$intensity)
 
 ProcA2_norm <- normalize_spec(ProcA2_raw)
-range(ProcA2_norm$intensity) # Ranges: 2 100
+# Ranges: 2 100
+range(ProcA2_norm$intensity)
 }

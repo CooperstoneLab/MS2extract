@@ -94,7 +94,7 @@ import_mzxml <- function(file, ...) {
     dplyr::bind_rows()
 
   # Keep ions with abundance greater than 0
-  mzxml_tidy <- mzxml_tidy |> dplyr::filter(intensity > 0)
+  mzxml_tidy <- mzxml_tidy |> dplyr::filter(.data$intensity > 0)
 
   return(mzxml_tidy)
 }
