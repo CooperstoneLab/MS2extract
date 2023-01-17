@@ -6,7 +6,7 @@
 #' the minimum intensity is 1 percent.
 #'
 #' @param spec a data frame produced by import_mzxml function or with the same columns
-#' @param min_int a integer the minimum normalized ion intensity between 1 and 100%.
+#' @param min_int a integer the minimum normalized ion intensity between 1 and 100 percent.
 #' @export
 #' @examples
 #' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode

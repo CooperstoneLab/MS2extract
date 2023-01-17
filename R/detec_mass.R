@@ -34,9 +34,9 @@ detect_mass <- function(spec, normalize = TRUE, min_int = 1){
     spec_result <- spec |> # Normalized by the base peak
       dplyr::mutate(intensity = round(.data$intensity /
                                         max(.data$intensity), 2 ) * 100 ) |>
-      dplyr::filter(intensity > min_int) # Filter intensities > than 1% by default
+      dplyr::filter(.data$intensity > min_int) # Filter intensities > than 1% by default
   } else {
-    spec_result <- dplyr::filter(spec, "intensity" > min_int)
+    spec_result <- dplyr::filter(spec, .data$intensity > min_int)
   }
 
   return(spec_result)

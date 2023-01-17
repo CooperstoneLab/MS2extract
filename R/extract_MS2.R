@@ -19,10 +19,10 @@ get_TIC <- function(spec) {
 
 plot_tic <- function(TIC) {
   most_intense <- TIC |>
-    dplyr::filter(TIC == max(TIC))
+    dplyr::filter(TIC == max(.data$TIC))
 
   TIC_plot <- ggplot2::ggplot(data = TIC,
-                              aes(x = rt, y = TIC)) +
+                              aes(x = .data$rt, y = .data$TIC)) +
     ggplot2::geom_line() + ggplot2::geom_point(size = 2) +
     ggplot2::geom_point(data = most_intense, color = "red", size = 3) +
     ggplot2::labs(title = "TIC plot",

@@ -9,7 +9,7 @@ normalize_spec(spec, min_int = 1)
 \arguments{
 \item{spec}{a data frame produced by import_mzxml function or with the same columns}
 
-\item{min_int}{a integer the minimum normalized ion intensity between 1 and 100%.}
+\item{min_int}{a integer the minimum normalized ion intensity between 1 and 100 percent.}
 }
 \description{
 This function takes a raw spectra, ion abundance in total counts, and
