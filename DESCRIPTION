@@ -28,7 +28,8 @@ Imports:
     OrgMassSpecR,
     ProtGenerics,
     purrr,
-    Rdpack
+    Rdpack,
+    rlang
 Suggests:
     knitr,
     rmarkdown,

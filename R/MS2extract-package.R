@@ -17,5 +17,6 @@
 #' @importFrom OrgMassSpecR SpectrumSimilarity
 #' @importFrom ProtGenerics spectra
 #' @importFrom purrr map
+#' @importFrom rlang .data
 ## usethis namespace: end
 NULL
