@@ -51,7 +51,7 @@ chromatogram and color with red the most intense scan.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_MS2</span><span class="op">(</span><span class="va">spec</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_MS2</span><span class="op">(</span><span class="va">spec</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -68,6 +68,10 @@ chromatogram and color with red the most intense scan.</p>
 <dd><p>a boolean expresing if the output is a list containing
 the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 the data frame with the MS2 spectra (verbose = FALSE).</p></dd>
+
+
+<dt>...</dt>
+<dd><p>any other arguments passed to detect_mass() function</p></dd>
 
 </dl></div>
 
