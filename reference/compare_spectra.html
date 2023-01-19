@@ -90,22 +90,35 @@ the data frames to OrgMassSpecR::SpectrumSimilarity().</p>
 <span class="r-in"><span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="import_mzxml.html">import_mzxml</a></span><span class="op">(</span><span class="va">ProcA2_file</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
+<span class="r-in"><span><span class="co"># Extracting the most instense MS2 spectra</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
 <span class="r-plt img"><img src="compare_spectra-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="va">ProcA2_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, min_int <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Detecting masses</span></span></span>
+<span class="r-in"><span><span class="va">ProcA2_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Plot of the resulting reference MS2 spectra using MS2extract</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_norm</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"MS2extract resulting"</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
+<span class="r-plt img"><img src="compare_spectra-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Reading the MS2 spectra of Procynidin A2 by PCDL</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_PCDL</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">ProcA2_pcdl_fl</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Plot of the reference MS2 spectra using PCDL (Agilent software)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_PCDL</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
+<span class="r-plt img"><img src="compare_spectra-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Cosine comparison between MS2extract and PCDL MS2 spectra</span></span></span>
 <span class="r-in"><span><span class="fu">compare_spectra</span><span class="op">(</span><span class="va">ProcA2_norm</span>, <span class="va">ProcA2_PCDL</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="compare_spectra-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="compare_spectra-4.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $similarity.score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9930783</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9953542</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $alignment</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          mz intensity.top intensity.bottom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  125.0242             0               10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  125.0242            10               10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  285.0405            62               59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3  289.0716            48               45</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4  407.0767            16               17</span>
@@ -117,7 +130,7 @@ the data frames to OrgMassSpecR::SpectrumSimilarity().</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 576.1221            13                0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $plot</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gTree[GRID.gTree.121] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gTree[GRID.gTree.204] </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

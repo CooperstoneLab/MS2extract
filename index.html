@@ -108,14 +108,17 @@
 <code class="sourceCode R"><span><span class="va">ProcA2_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 <p>This function returns a list, which contains the MS2 spectra, and the TIC plot. Since the extracted MS2 spectra contains low intensity signals (backgroun) noise, you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
-<p>The raw MS2 spectra contains.</p>
+<p>The raw MS2 spectra contains 6226 signals which the majority of them are low intensity signals (background noise).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="detecting-masses">Detecting masses<a class="anchor" aria-label="anchor" href="#detecting-masses"></a>
 </h3>
 <p>The objective is to remove low intensity signals, you can detec masses by allowing normalization by the base peak and then filtering the signals by a minimum treshold, or detecting mass with the abolute signal intensity.</p>
 <p>Here, we will detect masses by normalization and with a minimum intensity of 1%</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_detected</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">$</span><span class="va">MS2_spec</span>,</span>
 <span>                               normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Allow normalization</span></span>
 <span>                               min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># 1% as minimum intensity</span></span>
@@ -123,11 +126,11 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 38  4</span></span></code></pre></div>
 <p>Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z since the low intensity signals were removed.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
-<p>Although the resulting MS2 spectra contains 38 signals, for displaying purposes we are going to include signlas greater than 10% intensity</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
+<p>Although the resulting MS2 spectra contains 38 signals, for displaying purposes we are going to include signlas greater than 10% intensity</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ProcA2_detected</span>, <span class="va">intensity</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         mz intensity mz_precursor      rt</span></span>
 <span><span class="co">#&gt; 1 285.0406        62     575.1196 170.667</span></span>
@@ -144,8 +147,8 @@
 <h3 id="comparing-two-ms2-spectra-with-cosine-score">Comparing two MS2 spectra with cosine score<a class="anchor" aria-label="anchor" href="#comparing-two-ms2-spectra-with-cosine-score"></a>
 </h3>
 <p>The purpose of this section is to compare two MS2 spectra that were extracted using this package and using PCDL, a compound library developed by Agilent.</p>
-<p>In this case, we include the MS2 spectra extracted with PCDL and use coside similarity score to compare them by the <code><a href="reference/compare_spectra.html">compare_spectra()</a></code> function.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>In this case, we include the MS2 spectra extracted with PCDL and use cosine similarity score to compare them by the <code><a href="reference/compare_spectra.html">compare_spectra()</a></code> function.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># MS2 PCDL spectra</span></span>
 <span><span class="va">ProcA2_pcdl_fl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
 <span>                              <span class="st">"ProcA2_neg_20eV_PCDL.csv"</span>,</span>
@@ -155,25 +158,25 @@
 <span></span>
 <span><span class="co"># Comparing both spectra</span></span>
 <span><span class="fu"><a href="reference/compare_spectra.html">compare_spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span>, <span class="va">ProcA2_PCDL</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $similarity.score</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9953542</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $alignment</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          mz intensity.top intensity.bottom</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  125.0242            10               10</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  285.0405            62               59</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  289.0716            48               45</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  407.0767            16               17</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  423.0720            53               53</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  449.0876            51               50</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  452.0742            15               20</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  539.0978            22               22</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  575.1195           100              100</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 576.1221            13                0</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $plot</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gTree[GRID.gTree.162]</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $similarity.score</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9953542</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $alignment</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          mz intensity.top intensity.bottom</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  125.0242            10               10</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  285.0405            62               59</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  289.0716            48               45</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  407.0767            16               17</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  423.0720            53               53</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  449.0876            51               50</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  452.0742            15               20</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  539.0978            22               22</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  575.1195           100              100</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 576.1221            13                0</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $plot</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gTree[GRID.gTree.162]</span></span></code></pre></div>
 </div>
 </div>
 </div>
