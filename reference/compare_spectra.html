@@ -91,6 +91,7 @@ the data frames to OrgMassSpecR::SpectrumSimilarity().</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
 <span class="r-in"><span><span class="va">ProcA2_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
 <span class="r-plt img"><img src="compare_spectra-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">ProcA2_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, min_int <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -116,7 +117,7 @@ the data frames to OrgMassSpecR::SpectrumSimilarity().</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 576.1221            13                0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $plot</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gTree[GRID.gTree.69] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gTree[GRID.gTree.121] </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
