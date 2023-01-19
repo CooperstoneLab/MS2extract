@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom dplyr arrange
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
@@ -12,9 +13,13 @@
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme_bw
+#' @importFrom ggplot2 theme_classic
+#' @importFrom ggpubr ggarrange
+#' @importFrom ggrepel geom_label_repel
 #' @importFrom magrittr %>%
 #' @importFrom MSnbase readMSData
 #' @importFrom OrgMassSpecR SpectrumSimilarity
+#' @importFrom patchwork /
 #' @importFrom ProtGenerics spectra
 #' @importFrom purrr map
 #' @importFrom rlang .data

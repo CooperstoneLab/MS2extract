@@ -23,6 +23,8 @@ Imports:
     crayon,
     dplyr,
     ggplot2,
+    ggpubr,
+    ggrepel,
     magrittr,
     MSnbase,
     OrgMassSpecR,
