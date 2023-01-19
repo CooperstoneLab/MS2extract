@@ -77,7 +77,13 @@ This function returns a list, which contains the MS2 spectra, and the TIC plot.
 Since the extracted MS2 spectra contains low intensity signals (backgroun)
 noise, you can remove them by using the `detect_mass()` function.
 
-The raw MS2 spectra contains.
+The raw MS2 spectra contains 6226 signals which the majority of them are low
+intensity signals (background noise).
+
+```{r}
+dim(ProcA2_ext)
+```
+
 
 
 ### Detecting masses
@@ -117,7 +123,7 @@ dplyr::filter(ProcA2_detected, intensity > 10)
 The purpose of this section is to compare two MS2 spectra that were extracted
 using this package and using PCDL, a compound library developed by Agilent.
 
-In this case, we include the MS2 spectra extracted with PCDL and use coside
+In this case, we include the MS2 spectra extracted with PCDL and use cosine
 similarity score to compare them by the `compare_spectra()` function.
 
 ```{r}

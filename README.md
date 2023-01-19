@@ -75,7 +75,13 @@ TIC plot. Since the extracted MS2 spectra contains low intensity signals
 (backgroun) noise, you can remove them by using the `detect_mass()`
 function.
 
-The raw MS2 spectra contains.
+The raw MS2 spectra contains 6226 signals which the majority of them are
+low intensity signals (background noise).
+
+``` r
+dim(ProcA2_ext)
+#> NULL
+```
 
 ### Detecting masses
 
@@ -103,7 +109,7 @@ since the low intensity signals were removed.
 plot_MS2spectra(ProcA2_detected)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 Although the resulting MS2 spectra contains 38 signals, for displaying
 purposes we are going to include signlas greater than 10% intensity
@@ -129,7 +135,7 @@ extracted using this package and using PCDL, a compound library
 developed by Agilent.
 
 In this case, we include the MS2 spectra extracted with PCDL and use
-coside similarity score to compare them by the `compare_spectra()`
+cosine similarity score to compare them by the `compare_spectra()`
 function.
 
 ``` r
@@ -144,7 +150,7 @@ ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
 compare_spectra(ProcA2_detected, ProcA2_PCDL)
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
     #> $similarity.score
     #> [1] 0.9953542
