@@ -23,12 +23,21 @@
 #'
 #' # Reading the Procyanidin A2 spectra
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
+#' # Extracting the most instense MS2 spectra
 #' ProcA2_extracted <- extract_MS2(ProcA2_raw, out_list = FALSE)
-#' ProcA2_norm <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 10)
+#' # Detecting masses
+#' ProcA2_norm <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 1)
+#'
+#' # Plot of the resulting reference MS2 spectra using MS2extract
+#' plot_MS2spectra(ProcA2_norm) +
+#'    ggplot2::labs(title = "MS2extract resulting")
 #'
 #' # Reading the MS2 spectra of Procynidin A2 by PCDL
 #' ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
+#' # Plot of the reference MS2 spectra using PCDL (Agilent software)
+#' plot_MS2spectra(ProcA2_PCDL)
 #'
+#' # Cosine comparison between MS2extract and PCDL MS2 spectra
 #' compare_spectra(ProcA2_norm, ProcA2_PCDL)
 
 compare_spectra <- function(spec1, spec2, output.list = T, ...) {

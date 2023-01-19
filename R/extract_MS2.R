@@ -45,6 +45,7 @@ plot_tic <- function(TIC) {
 #' @param max_labels an integer indicating the maximum number of labels of
 #' the most intense ions
 #' @return a ggplot plot
+#' @export
 
 plot_MS2spectra <- function(spec, max_labels = 5) {
 

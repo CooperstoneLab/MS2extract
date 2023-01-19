@@ -96,6 +96,15 @@ dim(ProcA2_detected)
 #> [1] 38  4
 ```
 
+Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z
+since the low intensity signals were removed.
+
+``` r
+plot_MS2spectra(ProcA2_detected)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
 Although the resulting MS2 spectra contains 38 signals, for displaying
 purposes we are going to include signlas greater than 10% intensity
 
@@ -112,3 +121,46 @@ dplyr::filter(ProcA2_detected, intensity > 10)
 #> 8 575.1197       100     575.1196 170.667
 #> 9 576.1221        13     575.1196 170.667
 ```
+
+### Comparing two MS2 spectra with cosine score
+
+The purpose of this section is to compare two MS2 spectra that were
+extracted using this package and using PCDL, a compound library
+developed by Agilent.
+
+In this case, we include the MS2 spectra extracted with PCDL and use
+coside similarity score to compare them by the `compare_spectra()`
+function.
+
+``` r
+# MS2 PCDL spectra
+ProcA2_pcdl_fl <- system.file("extdata",
+                              "ProcA2_neg_20eV_PCDL.csv",
+                              package = "MS2extract")
+# Reading the spectra
+ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
+
+# Comparing both spectra
+compare_spectra(ProcA2_detected, ProcA2_PCDL)
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+    #> $similarity.score
+    #> [1] 0.9953542
+    #> 
+    #> $alignment
+    #>          mz intensity.top intensity.bottom
+    #> 1  125.0242            10               10
+    #> 2  285.0405            62               59
+    #> 3  289.0716            48               45
+    #> 4  407.0767            16               17
+    #> 5  423.0720            53               53
+    #> 6  449.0876            51               50
+    #> 7  452.0742            15               20
+    #> 8  539.0978            22               22
+    #> 9  575.1195           100              100
+    #> 10 576.1221            13                0
+    #> 
+    #> $plot
+    #> gTree[GRID.gTree.162]

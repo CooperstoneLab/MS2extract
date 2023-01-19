@@ -97,11 +97,40 @@ ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
 dim(ProcA2_detected)
 ```
 
+Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z since
+the low intensity signals were removed.
+
+```{r message=FALSE, warning=FALSE}
+plot_MS2spectra(ProcA2_detected)
+```
+
+
 Although the resulting MS2 spectra contains 38 signals, for displaying
 purposes we are going to include signlas greater than 10% intensity
 
 ```{r}
 dplyr::filter(ProcA2_detected, intensity > 10)
+```
+
+### Comparing two MS2 spectra with cosine score
+
+The purpose of this section is to compare two MS2 spectra that were extracted
+using this package and using PCDL, a compound library developed by Agilent.
+
+In this case, we include the MS2 spectra extracted with PCDL and use coside
+similarity score to compare them by the `compare_spectra()` function.
+
+```{r}
+# MS2 PCDL spectra
+ProcA2_pcdl_fl <- system.file("extdata",
+                              "ProcA2_neg_20eV_PCDL.csv",
+                              package = "MS2extract")
+# Reading the spectra
+ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
+
+# Comparing both spectra
+compare_spectra(ProcA2_detected, ProcA2_PCDL)
+
 ```
 
 

@@ -4,7 +4,7 @@
 \alias{extract_MS2}
 \title{Extrac the most MS2 intense scan}
 \usage{
-extract_MS2(spec, verbose = TRUE, out_list = TRUE)
+extract_MS2(spec, verbose = TRUE, out_list = TRUE, ...)
 }
 \arguments{
 \item{spec}{a data frame with the MS2 spectra}
@@ -14,6 +14,8 @@ extract_MS2(spec, verbose = TRUE, out_list = TRUE)
 \item{out_list}{a boolean expresing if the output is a list containing
 the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 the data frame with the MS2 spectra (verbose = FALSE).}
+
+\item{...}{any other arguments passed to detect_mass() function}
 }
 \description{
 This function takes raw MS2 signal and looks for the most intense scan

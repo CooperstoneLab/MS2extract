@@ -4,11 +4,14 @@
 \alias{plot_MS2spectra}
 \title{Plot MS2 spectra}
 \usage{
-plot_MS2spectra(spec)
+plot_MS2spectra(spec, max_labels = 5)
 }
 \arguments{
 \item{spec}{a data frame containing the MS2 spectra of the most intense
 scan}
+
+\item{max_labels}{an integer indicating the maximum number of labels of
+the most intense ions}
 }
 \value{
 a ggplot plot
