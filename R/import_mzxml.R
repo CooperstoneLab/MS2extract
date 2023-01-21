@@ -60,6 +60,8 @@ assign_scan_id <- function(scan_list) {
 #'
 #' @param file file name of the mzxml file
 #' @param ... extra arguments passed to  masstools::read_mzxml()
+#' @param roi_table a data frame with two columns min_rt and max_rt specifying
+#' the minimum and maximum retention time range (in seconds).
 #'
 #' @return data.frame in a tidy format for MS2 spectra in a tidy format.
 #'  \describe{
@@ -81,8 +83,19 @@ assign_scan_id <- function(scan_list) {
 #'                         package = "MS2extract")
 #'
 #' ProcA2_raw <- import_mzxml(ProcA2_file)
+#'
+#' # 26731 ions detected in total
+#' dim(ProcA2_raw)
+#'
+#' # Region of interest table (rt in seconds)
+#' ROI_dt <- data.frame(min_rt = 163, max_rt = 180)
+#' ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
+#'
+#' # 24249 ions detected in ROI
+#' dim(ProcA2_roi)
+#'
 #' }
-import_mzxml <- function(file, ...) {
+import_mzxml <- function(file, roi_table = NULL, ...) {
   mzxml_raw <- read_mzxml(file, file, ...)
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
 
@@ -95,6 +108,8 @@ import_mzxml <- function(file, ...) {
 
   # Keep ions with abundance greater than 0
   mzxml_tidy <- mzxml_tidy |> dplyr::filter(.data$intensity > 0)
+  # Eval if roi_table is null
+  if(!is.null(roi_table)) mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
 
   return(mzxml_tidy)
 }

@@ -4,10 +4,13 @@
 \alias{import_mzxml}
 \title{Imports mzxml files with MS2 scans}
 \usage{
-import_mzxml(file, ...)
+import_mzxml(file, roi_table = NULL, ...)
 }
 \arguments{
 \item{file}{file name of the mzxml file}
+
+\item{roi_table}{a data frame with two columns min_rt and max_rt specifying
+the minimum and maximum retention time range (in seconds).}
 
 \item{...}{extra arguments passed to  masstools::read_mzxml()}
 }
@@ -41,5 +44,16 @@ ProcA2_file <- system.file("extdata",
                         package = "MS2extract")
 
 ProcA2_raw <- import_mzxml(ProcA2_file)
+
+# 26731 ions detected in total
+dim(ProcA2_raw)
+
+# Region of interest table (rt in seconds)
+ROI_dt <- data.frame(min_rt = 163, max_rt = 180)
+ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
+
+# 24249 ions detected in ROI
+dim(ProcA2_roi)
+
 }
 }
