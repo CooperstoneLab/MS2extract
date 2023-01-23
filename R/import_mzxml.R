@@ -100,7 +100,7 @@ import_mzxml <- function(file, roi_table = NULL, ...) {
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
 
   # Getting scan index number by ROI
- # mzxml_roi <- mzxml_raw[scan_info$Index]
+  # mzxml_roi <- mzxml_raw[scan_info$Index]
 
   # Creating a tidy data out of MS2 spectra
   mzxml_tidy <- lapply(mzxml_raw, assign_scan_id ) |>
@@ -108,6 +108,7 @@ import_mzxml <- function(file, roi_table = NULL, ...) {
 
   # Keep ions with abundance greater than 0
   mzxml_tidy <- mzxml_tidy |> dplyr::filter(.data$intensity > 0)
+
   # Eval if roi_table is null
   if(!is.null(roi_table)) mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
 
