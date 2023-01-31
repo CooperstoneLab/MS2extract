@@ -4,8 +4,9 @@ test_that("Espectra normalization works", {
   ProcA2_file <- system.file("extdata",
                              "ProcyanidinA2_neg_20eV.mzXML",
                              package = "MS2extract")
-
-  ProcA2_raw <- import_mzxml(ProcA2_file)
+  ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                            min_rt = 163, max_rt = 180)
+  ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
   # Check raw intensities
   no_norm_spec <- range(ProcA2_raw$intensity) # Ranges:  1.125 851439.500

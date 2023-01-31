@@ -8,8 +8,9 @@ test_that("roi_filter works", {
    # Region of interest table (rt in seconds)
    min_rt_test <- 163
    max_rt_test <- 180
-   ROI_dt <- data.frame(min_rt = min_rt_test, max_rt = max_rt_test)
-   ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
+   ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                             min_rt = 163, max_rt = 180)
+   ProcA2_roi <- import_mzxml(ProcA2_file, ProcA2_data)
 
    # Eval lower rt ROI
    expect_true(min(ProcA2_roi$rt) > min_rt_test)

@@ -22,7 +22,9 @@ test_that("Importing mzxml works", {
   expect_named(mzxml_tidy, c("mz", "intensity", "mz_precursor", "rt"))
 
   # Testing import_mzxmlx ----
-  ProcA2_raw <- import_mzxml(ProcA2_file)
+  ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                            min_rt = 163, max_rt = 180)
+  ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
   expect_true(is.data.frame(ProcA2_raw))
   expect_named(ProcA2_raw, c("mz", "intensity", "mz_precursor", "rt"))
   })

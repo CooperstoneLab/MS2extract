@@ -47,6 +47,44 @@ assign_scan_id <- function(scan_list) {
 }
 
 
+#' Check compound metadata
+#'
+#' This function evaluates the information provided by the user whether the
+#' right column were provided as well the right ionization modes. Then
+#' it calculates the neutral exact mass of the compound by the given
+#' formula and depending of the ionization mode, it adds or substract the mass
+#' of a proton to obtain the ionized mass of the compounds.
+#'
+#' @param met_metadata a data frame with at least the Formula and the
+#' Ionization_mode
+#' @return a double with the ionized mass of the compound.
+
+check_metadata <- function(met_metadata) {
+  compund_info <- c("Formula", "Ionization_mode")
+  ionization_modes <- c("Positive", "Negative")
+
+  # Check for Fomrula and Ionization mode in data frame
+  if( all(compund_info %in% names(met_metadata)) ) {
+    # Calculating the exact mass and the ionazed mass
+    exact_mass <- Rdisop::getMolecule(met_metadata$Formula)$exactmass
+
+    # Checking for ionization mode
+    if( any(met_metadata$Ionization_mode %in% ionization_modes) ){
+      # Check for positive ionization mode
+      if(met_metadata$Ionization_mode == "Positive") {
+        exact_mass <- exact_mass + 1.00727
+        # If possitive mode is false, then assume it is negative
+      } else exact_mass <- exact_mass - 1.00727
+
+    } else stop("Only Negative and Positive ionizization modes are accepted")
+
+  } else stop("Fomrula and Ionization_mode colums are required")
+
+  return(exact_mass)
+
+}
+
+
 #' Imports mzxml files with MS2 scans
 #'
 #' This function imports MS2 data using the masstools::read_mzxml()
@@ -59,9 +97,30 @@ assign_scan_id <- function(scan_list) {
 #' desired information.
 #'
 #' @param file file name of the mzxml file
+#' @param met_metadata a data frame with the following columns.
+#' Required:
+#' \describe{
+#'  \item{Formula}{A character specifying the metabolite formula}
+#'  \item{Ionization_mode}{The ionization mode employed in data colection. It
+#'  can be only Positive or Negative}
+#' }
+#'
+#' This two columns are mandatory since the formula is employed with Rdisop
+#' package to calculate the exact mass and the ionization mode will dictate
+#' if the mas of the a proton is added or sustracted.
+#' Additionally, you can provide the minimum and maximum retention times
+#' to look for the peak by including the following columns:
+#' \describe{
+#'  \item{min_rt}{a double with the minumim retention time to keep}
+#'  \item{max_rt}{a double with the minimum retention time to keep}
+#' }
+#'
+#' This two columns are highly suggested to be included to norrow the search
+#' window.
+#'
+#' @param ppm the value of the ppm error. 10 ppm error is the default value.
+#'
 #' @param ... extra arguments passed to  masstools::read_mzxml()
-#' @param roi_table a data frame with two columns min_rt and max_rt specifying
-#' the minimum and maximum retention time range (in seconds).
 #'
 #' @return data.frame in a tidy format for MS2 spectra in a tidy format.
 #'  \describe{
@@ -81,22 +140,30 @@ assign_scan_id <- function(scan_list) {
 #' ProcA2_file <- system.file("extdata",
 #'                        "ProcyanidinA2_neg_20eV.mzXML",
 #'                         package = "MS2extract")
-#'
-#' ProcA2_raw <- import_mzxml(ProcA2_file)
+#' # Compound metadata without ROI information
+#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+#' ProcA2_raw <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 #'
 #' # 26731 ions detected in total
 #' dim(ProcA2_raw)
 #'
 #' # Region of interest table (rt in seconds)
-#' ROI_dt <- data.frame(min_rt = 163, max_rt = 180)
-#' ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
+#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+#'                      min_rt = 163, max_rt = 180)
+#' ProcA2_roi <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 #'
 #' # 24249 ions detected in ROI
 #' dim(ProcA2_roi)
 #'
 #' }
-import_mzxml <- function(file, roi_table = NULL, ...) {
-  mzxml_raw <- read_mzxml(file, file, ...)
+import_mzxml <- function(file, met_metadata = NULL, ppm = 10, ...) {
+
+  # Check info in met_metadta ---
+  ionized_mass <- check_metadata(met_metadata)
+
+  ppm_error <-  ppm_range(mz = ionized_mass, ppm = ppm)
+
+  mzxml_raw <- read_mzxml(file, ...)
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
 
   # Getting scan index number by ROI
@@ -109,8 +176,24 @@ import_mzxml <- function(file, roi_table = NULL, ...) {
   # Keep ions with abundance greater than 0
   mzxml_tidy <- mzxml_tidy |> dplyr::filter(.data$intensity > 0)
 
-  # Eval if roi_table is null
-  if(!is.null(roi_table)) mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
+  # Check for precursor m/z to be in the ppm range ---
+  mzxml_tidy <- dplyr::filter(mzxml_tidy,
+                              .data$mz_precursor < ppm_error[2] &
+                                .data$mz_precursor > ppm_error[1])
+
+  if ( nrow(mzxml_tidy) == 0 ) stop(paste0("Precursor ion not found with the",
+                                           "given formula and ppm"))
+
+  # Eval if roi_table is null ----
+  # Check if the columns are present
+  is_roi_present <- all(c("min_rt", "max_rt") %in% names(met_metadata))
+
+  if(is_roi_present){
+    # Creating roi table out of met_metadata
+    roi_table  <- dplyr::select(met_metadata, min_rt, max_rt)
+    # Filtering using roi table
+    mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
+  }
 
   return(mzxml_tidy)
 }

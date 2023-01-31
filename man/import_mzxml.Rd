@@ -4,13 +4,33 @@
 \alias{import_mzxml}
 \title{Imports mzxml files with MS2 scans}
 \usage{
-import_mzxml(file, roi_table = NULL, ...)
+import_mzxml(file, met_metadata = NULL, ppm = 10, ...)
 }
 \arguments{
 \item{file}{file name of the mzxml file}
 
-\item{roi_table}{a data frame with two columns min_rt and max_rt specifying
-the minimum and maximum retention time range (in seconds).}
+\item{met_metadata}{a data frame with the following columns.
+Required:
+\describe{
+ \item{Formula}{A character specifying the metabolite formula}
+ \item{Ionization_mode}{The ionization mode employed in data colection. It
+ can be only Positive or Negative}
+}
+
+This two columns are mandatory since the formula is employed with Rdisop
+package to calculate the exact mass and the ionization mode will dictate
+if the mas of the a proton is added or sustracted.
+Additionally, you can provide the minimum and maximum retention times
+to look for the peak by including the following columns:
+\describe{
+ \item{min_rt}{a double with the minumim retention time to keep}
+ \item{max_rt}{a double with the minimum retention time to keep}
+}
+
+This two columns are highly suggested to be included to norrow the search
+window.}
+
+\item{ppm}{the value of the ppm error. 10 ppm error is the default value.}
 
 \item{...}{extra arguments passed to  masstools::read_mzxml()}
 }
@@ -42,15 +62,17 @@ desired information.
 ProcA2_file <- system.file("extdata",
                        "ProcyanidinA2_neg_20eV.mzXML",
                         package = "MS2extract")
-
-ProcA2_raw <- import_mzxml(ProcA2_file)
+# Compound metadata without ROI information
+ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+ProcA2_raw <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 
 # 26731 ions detected in total
 dim(ProcA2_raw)
 
 # Region of interest table (rt in seconds)
-ROI_dt <- data.frame(min_rt = 163, max_rt = 180)
-ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
+ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                     min_rt = 163, max_rt = 180)
+ProcA2_roi <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 
 # 24249 ions detected in ROI
 dim(ProcA2_roi)

@@ -1,0 +1,3 @@
+﻿Name,Formula,Ionization_mode,min_rt,max_rt,File
+Procyanidin A2,C30H24O12,Negative,163,180,/Users/quirozmoreno.1/Documents/GitHub/MS2extract/inst/extdata/ProcyanidinA2_neg_20eV.mzXML
+Rutin,C27H30O16,Negative,162,171,/Users/quirozmoreno.1/Documents/GitHub/MS2extract/inst/extdata/Rutin_neg_20eV.mzXML

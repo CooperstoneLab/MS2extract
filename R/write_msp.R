@@ -96,7 +96,11 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'                        "ProcyanidinA2_neg_20eV.mzXML",
 #'                         package = "MS2extract")
 #'
-#' ProcA2_raw <- import_mzxml(ProcA2_file)
+#'  # Region of interest table (rt in seconds)
+#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+#'                      min_rt = 163, max_rt = 180)
+#'
+#' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
 #' # Detecting masses with the normalized spectra and ions with
 #' # intensities greater than 5%
@@ -106,7 +110,7 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #' metadata_file <- system.file("extdata",
 #'                              "msp_metadata.csv",
 #'                               package = "MS2extract")
-#' metadata <- reac.csv(metadata_file)
+#' metadata <- read.csv(metadata_file)
 #'
 #' # Exporting msp file
 #' write_msp(spec = ProcA2_detected,

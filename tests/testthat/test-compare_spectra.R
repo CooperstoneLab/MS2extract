@@ -9,9 +9,10 @@ test_that("Compare spectra works", {
   ProcA2_pcdl_fl <- system.file("extdata",
                                 "ProcA2_neg_20eV_PCDL.csv",
                                 package = "MS2extract")
-
+  ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                            min_rt = 163, max_rt = 180)
   # Reading the Procyanidin A2 spectra
-  ProcA2_raw <- import_mzxml(ProcA2_file)
+  ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
   # Normalizing total ion counts (Already normalized)
   ProcA2_norm <- normalize_spec(ProcA2_raw)
 

@@ -30,6 +30,7 @@ Imports:
     OrgMassSpecR,
     ProtGenerics,
     purrr,
+    Rdisop,
     Rdpack,
     rlang
 Suggests:
