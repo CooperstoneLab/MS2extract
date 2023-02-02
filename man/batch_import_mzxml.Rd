@@ -41,6 +41,20 @@ batch_file <- system.file("extdata", "batch_read.csv",
 # Read the data frame
 batch_data <- read.csv(batch_file)
 
+# File paths for Procyanidin A2 and Rutin
+ProcA2_file <- system.file("extdata",
+                       "ProcyanidinA2_neg_20eV.mzXML",
+                        package = "MS2extract")
+Rutin_file <- system.file("extdata",
+                       "Rutin_neg_20eV.mzXML",
+                        package = "MS2extract")
+
+# Add file path - User should specified the file path -
+batch_data$File <- c(ProcA2_file, Rutin_file)
+
+# Checking batch_data data frame
+batch_data
+
 # Using batch import to import multiple compounds
 batch_compounds <- batch_import_mzxml(batch_data)
 

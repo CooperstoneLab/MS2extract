@@ -32,13 +32,5 @@ ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
 # 26731 ions detected in total
 dim(ProcA2_raw)
-
-# Region of interest table (rt in seconds)
-ROI_dt <- data.frame(min_rt = 163, max_rt = 180)
-ProcA2_roi <- import_mzxml(ProcA2_file, roi_table = ROI_dt)
-
-# 24249 ions detected in ROI
-dim(ProcA2_roi)
-
 }
 }
