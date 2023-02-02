@@ -3,6 +3,9 @@
 Package creation, available functions:
 
 * assign_scan_id()
+* batch_detect_mass()
+* batch_extract_MS2()
+* batch_import_mzxml()
 * compare_spectra()
 * detect_mass()
 * extract_MS2()

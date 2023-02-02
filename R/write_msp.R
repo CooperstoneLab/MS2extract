@@ -103,7 +103,7 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
 #' # Detecting masses with the normalized spectra and ions with
-#' # intensities greater than 5%
+#' # intensities greater than 1%
 #' ProcA2_detected <- detect_mass(ProcA2_raw, normalize = TRUE, min_int = 1)
 #'
 #' # Reading the metadata

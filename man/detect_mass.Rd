@@ -17,10 +17,10 @@ minimum ion count.}
 \item{min_int}{a integer with the minimum ion intensity}
 }
 \description{
-Similarlly to MZmine, detect mass filters out low intensity signal that can
+Similarly to MZmine, detect mass filters out low intensity signal that can
 be attributed to background noise. Here, you can opt to detect masses
 by the raw ion intensity or normalize and detect masses by intensity
-percentabe from 1% (by default) to 100%.
+percentage from 1% (by default) to 100%.
 }
 \examples{
 

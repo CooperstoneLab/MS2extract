@@ -58,4 +58,8 @@ batch_data
 # Using batch import to import multiple compounds
 batch_compounds <- batch_import_mzxml(batch_data)
 
+# Checking dimension by compound
+# Procyanidin A2: 24249 ions
+# Rutin: 22096 ions
+purrr::map(batch_compounds, dim)
 }

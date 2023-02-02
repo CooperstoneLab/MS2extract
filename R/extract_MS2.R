@@ -75,7 +75,7 @@ plot_MS2spectra <- function(spec, max_labels = 5) {
   return(ms2_spec)
 }
 
-#' Extrac the most MS2 intense scan
+#' Extract the most MS2 intense scan
 #'
 #' This function takes raw MS2 signal and looks for the most intense scan
 #' and extracts the MS2 spectra. Additionally, it plots the MS2 TIC
@@ -83,7 +83,7 @@ plot_MS2spectra <- function(spec, max_labels = 5) {
 #'
 #' @param spec a data frame with the MS2 spectra
 #' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed
-#' @param out_list a boolean expresing if the output is a list containing
+#' @param out_list a boolean expressing if the output is a list containing
 #' the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 #' the data frame with the MS2 spectra (verbose = FALSE).
 #' @param  ... any other arguments passed to detect_mass() function

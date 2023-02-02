@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_MS2.R
 \name{extract_MS2}
 \alias{extract_MS2}
-\title{Extrac the most MS2 intense scan}
+\title{Extract the most MS2 intense scan}
 \usage{
 extract_MS2(spec, verbose = TRUE, out_list = TRUE, ...)
 }
@@ -11,7 +11,7 @@ extract_MS2(spec, verbose = TRUE, out_list = TRUE, ...)
 
 \item{verbose}{a boolean indicating if the MS2 TIC chromatogram is displayed}
 
-\item{out_list}{a boolean expresing if the output is a list containing
+\item{out_list}{a boolean expressing if the output is a list containing
 the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 the data frame with the MS2 spectra (verbose = FALSE).}
 
