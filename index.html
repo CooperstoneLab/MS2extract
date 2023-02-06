@@ -92,11 +92,14 @@
 </h3>
 <p>You can import mzxml files by <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import your data into a data frame. In this case we are going to work with the Procyanidin A2 spectra in neg mode with a collision energy of 20eV.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
+<code class="sourceCode R"><span><span class="co"># File path</span></span>
+<span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
 <span>                           <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
 <span>                           package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span><span class="co"># Compound data</span></span>
+<span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>,Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_mzxml.html">import_mzxml</a></span><span class="op">(</span><span class="va">ProcA2_file</span><span class="op">)</span></span>
+<span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_mzxml.html">import_mzxml</a></span><span class="op">(</span><span class="va">ProcA2_file</span>, <span class="va">ProcA2_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span><span class="co">#&gt; Processing...</span></span></code></pre></div>
 </div>
@@ -110,8 +113,8 @@
 <p>This function returns a list, which contains the MS2 spectra, and the TIC plot. Since the extracted MS2 spectra contains low intensity signals (backgroun) noise, you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
 <p>The raw MS2 spectra contains 6226 signals which the majority of them are low intensity signals (background noise).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">$</span><span class="va">MS2_spec</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 6226    4</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="detecting-masses">Detecting masses<a class="anchor" aria-label="anchor" href="#detecting-masses"></a>
@@ -176,7 +179,7 @@
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 576.1221            13                0</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $plot</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gTree[GRID.gTree.162]</span></span></code></pre></div>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gTree[GRID.gTree.168]</span></span></code></pre></div>
 </div>
 </div>
 </div>

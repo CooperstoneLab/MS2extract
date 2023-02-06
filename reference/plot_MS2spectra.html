@@ -45,7 +45,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_MS2spectra</span><span class="op">(</span><span class="va">spec</span>, max_labels <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_MS2spectra</span><span class="op">(</span><span class="va">spec</span>, compound <span class="op">=</span> <span class="cn">NULL</span>, ppm <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -55,16 +55,24 @@
 scan</p></dd>
 
 
-<dt>max_labels</dt>
-<dd><p>an integer indicating the maximum number of labels of
-the most intense ions</p></dd>
+<dt>compound</dt>
+<dd><p>a character, if user is using batch_* functions, user need
+to provide a character with the given name of the compound stated in the
+batch_import table.</p></dd>
+
+
+<dt>ppm</dt>
+<dd><p>ppm error tolerance to check if the mm/z precursor is being
+detected or not in the MS2 spectra.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>a ggplot plot</p>
+<p>a ggplot plot. Filled blue diamond means that the precursor ion
+was detected in the MS2 spectra. If the precursor ion was not detected in
+the MS2 spectra, the diamond is not filled.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
