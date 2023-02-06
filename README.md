@@ -48,11 +48,14 @@ with the Procyanidin A2 spectra in neg mode with a collision energy of
 20eV.
 
 ``` r
+# File path
 ProcA2_file <- system.file("extdata",
                            "ProcyanidinA2_neg_20eV.mzXML",
                            package = "MS2extract")
+# Compound data
+ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
 
-ProcA2_raw <- import_mzxml(ProcA2_file)
+ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #> Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML
 #> Processing...
 ```
@@ -79,8 +82,8 @@ The raw MS2 spectra contains 6226 signals which the majority of them are
 low intensity signals (background noise).
 
 ``` r
-dim(ProcA2_ext)
-#> NULL
+dim(ProcA2_ext$MS2_spec)
+#> [1] 6226    4
 ```
 
 ### Detecting masses
@@ -169,4 +172,4 @@ compare_spectra(ProcA2_detected, ProcA2_PCDL)
     #> 10 576.1221            13                0
     #> 
     #> $plot
-    #> gTree[GRID.gTree.162]
+    #> gTree[GRID.gTree.168]

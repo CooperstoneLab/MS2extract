@@ -190,7 +190,7 @@ import_mzxml <- function(file, met_metadata = NULL, ppm = 10, ...) {
 
   if(is_roi_present){
     # Creating roi table out of met_metadata
-    roi_table  <- dplyr::select(met_metadata, min_rt, max_rt)
+    roi_table  <- dplyr::select(met_metadata, .data$min_rt, .data$max_rt)
     # Filtering using roi table
     mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
   }

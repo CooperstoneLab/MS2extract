@@ -36,44 +36,6 @@ plot_tic <- function(TIC) {
   return(return_list)
 }
 
-#' Plot MS2 spectra
-#'
-#' This functions plot the resulting MS2 spectra of the most intense scan
-#'
-#' @param spec a data frame containing the MS2 spectra of the most intense
-#' scan
-#' @param max_labels an integer indicating the maximum number of labels of
-#' the most intense ions
-#' @return a ggplot plot
-#' @export
-
-plot_MS2spectra <- function(spec, max_labels = 5) {
-
-  if(nrow(spec) > 4){
-    spec_nrow <- nrow(spec)
-    most_inte_label <- dplyr::arrange(spec, - .data$intensity) |>
-      dplyr::mutate(intense = seq(dplyr::n()) ) |>
-      dplyr::filter(.data$intense < max_labels )
-  } else {
-    most_inte_label <- spec
-  }
-
-  most_inte_label <- most_inte_label |>
-    dplyr::mutate(mz = round(.data$mz, 4))
-
-  ms2_spec <- ggplot2::ggplot(spec,
-                              aes(.data$mz, .data$intensity)) +
-    ggplot2::geom_col(width = 1) +
-    ggplot2::geom_point(data = most_inte_label, color = "red") +
-    ggplot2::theme_classic() +
-    ggrepel::geom_label_repel(data = most_inte_label,
-                              aes(label = .data$mz),
-                              box.padding = 0.5,
-                              max.overlaps = Inf)
-
-
-  return(ms2_spec)
-}
 
 #' Extract the most MS2 intense scan
 #'

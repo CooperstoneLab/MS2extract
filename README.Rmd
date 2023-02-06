@@ -56,11 +56,14 @@ your data into a data frame. In this case we are going to work with the
 Procyanidin A2 spectra in neg mode with a collision energy of 20eV.
 
 ```{r}
+# File path
 ProcA2_file <- system.file("extdata",
                            "ProcyanidinA2_neg_20eV.mzXML",
                            package = "MS2extract")
+# Compound data
+ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
 
-ProcA2_raw <- import_mzxml(ProcA2_file)
+ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 ```
 
 ### Extracting Procyanidin A2 spectra
@@ -81,7 +84,7 @@ The raw MS2 spectra contains 6226 signals which the majority of them are low
 intensity signals (background noise).
 
 ```{r}
-dim(ProcA2_ext)
+dim(ProcA2_ext$MS2_spec)
 ```
 
 

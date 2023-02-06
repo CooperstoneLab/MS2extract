@@ -47,8 +47,11 @@ plot_MS2spectra(ProcA2_norm) +
 
 # Reading the MS2 spectra of Procynidin A2 by PCDL
 ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
+
 # Plot of the reference MS2 spectra using PCDL (Agilent software)
-plot_MS2spectra(ProcA2_PCDL)
+ggplot2::ggplot(ProcA2_PCDL, ggplot2::aes(mz, intensity)) +
+  ggplot2::geom_col(width = 1) +
+  ggplot2::theme_bw()
 
 # Cosine comparison between MS2extract and PCDL MS2 spectra
 compare_spectra(ProcA2_norm, ProcA2_PCDL)
