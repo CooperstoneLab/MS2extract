@@ -102,9 +102,14 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'
 #' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
+#' # Extracting the most intense MS2 scan
+#' ProcA2_ext <- extract_MS2(ProcA2_raw)
+#'
 #' # Detecting masses with the normalized spectra and ions with
 #' # intensities greater than 1%
-#' ProcA2_detected <- detect_mass(ProcA2_raw, normalize = TRUE, min_int = 1)
+#' ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
+#'                                normalize = TRUE, # Allow normalization
+#'                                min_int = 1) # 1% as minimum intensity
 #'
 #' # Reading the metadata
 #' metadata_file <- system.file("extdata",
@@ -136,8 +141,7 @@ write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
     "FORMULA: ", spec_metadata$FORMULA,"\n",
     "RETENTIONTIME: ", unique(spec$rt),"\n",
     "IONMODE: ", spec_metadata$IONMODE,"\n",
-    "COMMENT: ", "Spectra extracted by MS2extract R package", "\n",
-    "Num Peaks: ", n_peaks,"\n"
+    "COMMENT: ", "Spectra extracted by MS2extract R package", "\n"
   )
 
   # Eval if INCHIKEY is available
@@ -164,6 +168,12 @@ write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
   msp_entry <- add_attributes(msp_attribute = "INSTRUMENTTYPE",
                               spec_metadata = spec_metadata,
                               msp_backbone = msp_entry)
+
+  # Adding the number of peaks
+  msp_entry <- paste0(
+    msp_entry,
+    "Num Peaks: ", n_peaks,"\n"
+  )
 
   #Writing the MS2 spectra on the msp entry
   for (i  in seq(1, n_peaks)) {

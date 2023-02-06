@@ -63,9 +63,14 @@ ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
+# Extracting the most intense MS2 scan
+ProcA2_ext <- extract_MS2(ProcA2_raw)
+
 # Detecting masses with the normalized spectra and ions with
 # intensities greater than 1\%
-ProcA2_detected <- detect_mass(ProcA2_raw, normalize = TRUE, min_int = 1)
+ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
+                               normalize = TRUE, # Allow normalization
+                               min_int = 1) # 1\% as minimum intensity
 
 # Reading the metadata
 metadata_file <- system.file("extdata",
