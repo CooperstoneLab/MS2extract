@@ -131,17 +131,16 @@ minimum ion count.</p></dd>
 <span class="r-in"><span><span class="va">batch_mass_detected</span> <span class="op">&lt;-</span> <span class="fu">batch_detect_mass</span><span class="op">(</span><span class="va">batch_compounds</span>, <span class="co"># Compound list</span></span></span>
 <span class="r-in"><span>                                         normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize</span></span></span>
 <span class="r-in"><span>                                         min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Minimum intensity</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in purrr::map(batch_spect, .f = detect_mass, normalize = normalize,     min_int = min_int):</span> <span style="color: #00BBBB;">ℹ</span> In index: 1.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> With name: Procyanidin A2.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `UseMethod()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> no applicable method for 'mutate' applied to an object of class "NULL"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Checking dimension by compound</span></span></span>
 <span class="r-in"><span><span class="co"># Procyanidin A2: 107 ions</span></span></span>
 <span class="r-in"><span><span class="co"># Rutin: 12 ions</span></span></span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="va">dim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Procyanidin A2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 107   4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Rutin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12  4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in vctrs_vec_compat(.x, .purrr_user_env):</span> object 'batch_mass_detected' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
