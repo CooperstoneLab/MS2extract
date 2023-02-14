@@ -32,13 +32,13 @@ Imports:
     purrr,
     Rdisop,
     Rdpack,
-    rlang,
-    Rcpp (>= 1.0.9)
+    rlang
 Suggests:
     knitr,
     rmarkdown,
     prettydoc,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    Rcpp (>= 1.0.9)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://cooperstonelab.github.io/MS2extract/

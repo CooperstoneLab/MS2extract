@@ -53,13 +53,18 @@ batch_compounds <- batch_import_mzxml(batch_data)
 # Rutin: 22096 ions
 purrr::map(batch_compounds, dim)
 
+# Extracting MS2 spec
+batch_extracted <- batch_extract_MS2(batch_compounds,
+                                     verbose = TRUE,
+                                     out_list = FALSE)
+
 #Batch detect mass
-batch_mass_detected <- batch_detect_mass(batch_compounds, # Compound list
+batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
                                          normalize = TRUE, # Normalize
                                          min_int = 1) # Minimum intensity
 
 # Checking dimension by compound
-# Procyanidin A2: 107 ions
-# Rutin: 12 ions
+# Procyanidin A2: 38 ions
+# Rutin: 4 ions
 purrr::map(batch_mass_detected, dim)
 }
