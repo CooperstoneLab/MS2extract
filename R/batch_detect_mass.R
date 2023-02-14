@@ -54,7 +54,12 @@
 #' purrr::map(batch_mass_detected, dim)
 
 batch_detect_mass <- function(batch_spect, normalize = TRUE, min_int = 1) {
-  batch_result <- purrr::map(batch_spect, .f = detect_mass,
+ # Extracting only the MS2_spec data frame
+  batch_spect <- purrr::map(batch_spect, \(x) x[["MS2_spec"]])
+
+
+  batch_result <- purrr::map(batch_spect,
+                             .f = detect_mass,
                              normalize = normalize,
                              min_int = min_int )
   return(batch_result)

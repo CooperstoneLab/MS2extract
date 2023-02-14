@@ -32,7 +32,8 @@ Imports:
     purrr,
     Rdisop,
     Rdpack,
-    rlang
+    rlang,
+    Rcpp (>= 1.0.9)
 Suggests:
     knitr,
     rmarkdown,

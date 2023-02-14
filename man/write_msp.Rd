@@ -44,13 +44,17 @@ exist in the column or the value is missing, it will export a blank field.
 }
 \description{
 Thins functions takes an extracted MS2 spectra and writes in a msp file
-format. This fuctions takes the extracted MS2 spectra and the metadata
+format. This functions takes the extracted MS2 spectra and the metadata
 for the compound. It will draw information such as the precursor m/z
 as well as the retention time of the scan from the spec data frame and
 the rest of information from the provided metadata.
 }
 \examples{
+
 \dontrun{
+
+# Example with single MS2 spectra -----
+
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
@@ -82,5 +86,61 @@ metadata <- read.csv(metadata_file)
 write_msp(spec = ProcA2_detected,
           spec_metadata = metadata,
           msp_name = "Procyanidin_A2")
+
+
+
+# Example with batch spectra ----
+
+
+# Select the csv file name and path
+batch_file <- system.file("extdata", "batch_read.csv",
+                          package = "MS2extract")
+# Read the data frame
+batch_data <- read.csv(batch_file)
+
+# File paths for Procyanidin A2 and Rutin
+ProcA2_file <- system.file("extdata",
+                       "ProcyanidinA2_neg_20eV.mzXML",
+                        package = "MS2extract")
+Rutin_file <- system.file("extdata",
+                       "Rutin_neg_20eV.mzXML",
+                        package = "MS2extract")
+
+# Add file path - User should specified the file path -
+batch_data$File <- c(ProcA2_file, Rutin_file)
+
+# Checking batch_data data frame
+batch_data
+
+# Reading batch metadata
+metadata_msp_file <- system.file("extdata",
+                                "batch_msp_metadata.csv",
+                                 package = "MS2extract")
+
+metadata_msp <- read.csv(metadata_msp_file)
+
+# Using batch import to import multiple compounds
+batch_compounds <- batch_import_mzxml(batch_data)
+# Checking dimension by compound
+# Procyanidin A2: 24249 ions
+# Rutin: 22096 ions
+purrr::map(batch_compounds, dim)
+
+batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
+
+#Batch detect mass
+batch_mass_detected <- batch_detect_mass(batch_extracted_compounds, # Compound list
+                                         normalize = TRUE, # Normalize
+                                         min_int = 1) # Minimum intensity
+
+# Checking dimension by compound
+# Procyanidin A2: 107 ions
+# Rutin: 12 ions
+purrr::map(batch_mass_detected, dim)
+
+# Writing msp file
+ write_msp(spec = batch_mass_detected,
+           spec_metadata = metadata_msp,
+           msp_name = "ProcA2_Rutin_batch.msp")
 }
 }
