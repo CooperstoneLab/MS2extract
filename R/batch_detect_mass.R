@@ -61,8 +61,18 @@
 #' purrr::map(batch_mass_detected, dim)
 
 batch_detect_mass <- function(batch_spect, normalize = TRUE, min_int = 1) {
- # Extracting only the MS2_spec data frame
-  batch_spect <- purrr::map(batch_spect, \(x) x[["MS2_spec"]])
+
+  # Checking if batch spec is an embedded list with MS2 TIC plot inside
+  is_dataframe_valid <- batch_spect |>
+    purrr::map_lgl(is.data.frame) |>
+    all()
+
+  if( !is_dataframe_valid ) {
+
+    # Extracting only the MS2_spec data frame
+    batch_spect <- purrr::map(batch_spect, \(x) x[["MS2_spec"]])
+
+  }
 
   # Parsing arguments to detect_mass()
   batch_result <- purrr::map(batch_spect,

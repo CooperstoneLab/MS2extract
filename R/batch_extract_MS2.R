@@ -53,6 +53,6 @@
 batch_extract_MS2 <- function(batch_spect, verbose = TRUE, out_list = TRUE) {
    batch_result <- purrr::map(batch_spect, .f = extract_MS2,
                               verbose = verbose,
-                              oiut_list = out_list)
+                              out_list = out_list)
    return(batch_result)
 }
