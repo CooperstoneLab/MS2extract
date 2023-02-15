@@ -11,10 +11,10 @@ write_msp(spec = NULL, spec_metadata = NULL, msp_name = NULL)
 colums are required:
 
 \describe{
- \item{mz_precursor}{}
- \item{rt}{}
- \item{mz}{}
- \item{intensity}{}
+\item{mz_precursor}{}
+\item{rt}{}
+\item{mz}{}
+\item{intensity}{}
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
@@ -22,22 +22,22 @@ in the resulting msp file. The following column are required as vital
 information for the msp output.
 
 \describe{
- \item{NAME}{}
- \item{PRECURSORTYPE}{}
- \item{FORMULA}{}
- \item{RETENTIONTIME}{}
- \item{IONMODE}{}
+\item{NAME}{}
+\item{PRECURSORTYPE}{}
+\item{FORMULA}{}
+\item{RETENTIONTIME}{}
+\item{IONMODE}{}
 }
 
 The follosing fields are also included in the resulting msp files, but are
 not requiered to be present in the metadata table. If the column does not
 exist in the column or the value is missing, it will export a blank field.
- \describe{
-  \item{INCHIKEY}{}
-  \item{SMILES}{}
-  \item{CCS}{}
-  \item{COLLISIONENERGY}{}
-  \item{INSTRUMENTTYPE}{}
+\describe{
+\item{INCHIKEY}{}
+\item{SMILES}{}
+\item{CCS}{}
+\item{COLLISIONENERGY}{}
+\item{INSTRUMENTTYPE}{}
 }}
 
 \item{msp_name}{a string with the name of the msp file not containing (.msp)}

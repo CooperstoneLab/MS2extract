@@ -9,7 +9,7 @@
 #' @param min_int a integer the minimum normalized ion intensity between 1 and 100 percent.
 #' @export
 #' @examples
-#' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
+#' # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
 #'                            "ProcyanidinA2_neg_20eV.mzXML",

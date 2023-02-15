@@ -18,7 +18,7 @@ signal by a minimum intensity to remove background noise. By default,
 the minimum intensity is 1 percent.
 }
 \examples{
-# Importing the Spectrum of Procyanidin A2 in negative ionzation mode
+# Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
                            "ProcyanidinA2_neg_20eV.mzXML",

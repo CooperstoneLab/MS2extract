@@ -1,15 +1,17 @@
-#' Detect mass for multiple spectra
+#' Detect masses for multiple spectra
 #'
 #' This function takes multiple spectra imported with batch_import_mzxml()
-#' function. Then, it passes the argument the argument to detect_mass function.
-#' Briefly, similarly to MZmine, detect mass filters out low intensity signal that can
-#' be attributed to background noise. Here, you can opt to detect masses
-#' by the raw ion intensity or normalize and detect masses by intensity
-#' percentage from 1% (by default) to 100%.
+#' function. Then, it parses the argument to detect_mass() function.
 #'
-#' @param batch_spect a list of MS2 scans
+#' Briefly, similarly to MZmine, detect mass filters out low intensity signals
+#' that can be attributed to background noise. Here, you can opt to detect masses
+#' by the raw ion intensity or normalize the spectra by the peak base ion
+#' and detect masses by intensity percentage from 1% (by default) to 100%.
+#'
+#' @param batch_spect a list of MS2 scans imported with batch_import_mzxml()
+#'  function.
 #' @param normalize a boolean indicating if the MS2 spectra is normalized by
-#' the base peak before proceeding to filter out low intensity signal
+#' the base peak before proceeding to filter out low intensity signals
 #' (normalize  = TRUE), if normalize = FALSE the user has to provide the
 #' minimum ion count.
 #' @param min_int a integer with the minimum ion intensity
@@ -62,7 +64,7 @@ batch_detect_mass <- function(batch_spect, normalize = TRUE, min_int = 1) {
  # Extracting only the MS2_spec data frame
   batch_spect <- purrr::map(batch_spect, \(x) x[["MS2_spec"]])
 
-
+  # Parsing arguments to detect_mass()
   batch_result <- purrr::map(batch_spect,
                              .f = detect_mass,
                              normalize = normalize,

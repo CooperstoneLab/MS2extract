@@ -2,15 +2,16 @@
 % Please edit documentation in R/batch_detect_mass.R
 \name{batch_detect_mass}
 \alias{batch_detect_mass}
-\title{Detect mass for multiple spectra}
+\title{Detect masses for multiple spectra}
 \usage{
 batch_detect_mass(batch_spect, normalize = TRUE, min_int = 1)
 }
 \arguments{
-\item{batch_spect}{a list of MS2 scans}
+\item{batch_spect}{a list of MS2 scans imported with batch_import_mzxml()
+function.}
 
 \item{normalize}{a boolean indicating if the MS2 spectra is normalized by
-the base peak before proceeding to filter out low intensity signal
+the base peak before proceeding to filter out low intensity signals
 (normalize  = TRUE), if normalize = FALSE the user has to provide the
 minimum ion count.}
 
@@ -18,11 +19,13 @@ minimum ion count.}
 }
 \description{
 This function takes multiple spectra imported with batch_import_mzxml()
-function. Then, it passes the argument the argument to detect_mass function.
-Briefly, similarly to MZmine, detect mass filters out low intensity signal that can
-be attributed to background noise. Here, you can opt to detect masses
-by the raw ion intensity or normalize and detect masses by intensity
-percentage from 1% (by default) to 100%.
+function. Then, it parses the argument to detect_mass() function.
+}
+\details{
+Briefly, similarly to MZmine, detect mass filters out low intensity signals
+that can be attributed to background noise. Here, you can opt to detect masses
+by the raw ion intensity or normalize the spectra by the peak base ion
+and detect masses by intensity percentage from 1\% (by default) to 100\%.
 }
 \examples{
 

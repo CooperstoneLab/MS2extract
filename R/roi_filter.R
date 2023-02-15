@@ -3,7 +3,7 @@
 #' This functions takes a table with the minimum and maximum retention time,
 #' in seconds, to keep the scans encapsulated in the specified time range
 #'
-#' @param spec a data frame containig
+#' @param spec a data frame containing
 #' @param roi_table a data frame with two columns min_rt and max_rt specifying
 #' the minimum and maximum retention time range
 #' @export

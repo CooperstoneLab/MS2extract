@@ -17,7 +17,7 @@ m/z values with the specific ppm error tolerance.
 }
 \description{
 Given a theoretical m/z value and a ppm error tolerance,
-this function calculates the lower and upper m/z values.
+this function calculates the lower and upper ppm m/z values.
 }
 \examples{
 

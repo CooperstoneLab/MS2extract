@@ -11,11 +11,11 @@ assign_scan_id(scan_list)
 }
 \value{
 a data.frame containing
- \describe{
-  \item{mz}{ion m/z value}
-  \item{intensity}{ion intensity count}
-  \item{precursor_mz}{precursor ion}
-  \item{rt}{retention time}
+\describe{
+\item{mz}{ion m/z value}
+\item{intensity}{ion intensity count}
+\item{precursor_mz}{precursor ion}
+\item{rt}{retention time}
 }
 }
 \description{

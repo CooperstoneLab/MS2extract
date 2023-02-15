@@ -18,8 +18,8 @@ Return ms2 data. This is a list.
 }
 \description{
 This function takes a mzxml file and imports the MS2 data only
- to further create a list contaning to sublists with the scan information
- (fisrt sublits) and the MS2 spectra (second sublist)
+to further create a list contaning to sublists with the scan information
+(fisrt sublits) and the MS2 spectra (second sublist)
 }
 \examples{
 ProcA2_file <- system.file("extdata",

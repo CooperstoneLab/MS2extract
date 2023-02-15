@@ -46,7 +46,6 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 }
 
 
-
 #' Export MS2 spectra to a msp file
 #'
 #' Thins functions takes an extracted MS2 spectra and writes in a msp file

@@ -1,4 +1,4 @@
-#' Calculate the m/z difference for a given m/z and ppm tolerance
+#' Calculate the m/z difference for a given mass and ppm tolerance
 #'
 #' Given a theretical m/z value and ppm tolerance, computes the m/z
 #' deviation, or the observed m/z value
@@ -26,12 +26,10 @@ get_ppm <- function(mz, ppm = 10) {
   mz_difference
 }
 
-
-
 #' Calculate the m/z upper and lower values limits given a ppm tolerance
 #'
 #' Given a theoretical m/z value and a ppm error tolerance,
-#' this function calculates the lower and upper m/z values.
+#' this function calculates the lower and upper ppm m/z values.
 #'
 #' @param mz a double, the theoretical m/z value.
 #' @param ppm a double, the ppm error tolerance

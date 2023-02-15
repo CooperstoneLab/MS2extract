@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_MS2.R
 \name{get_TIC}
 \alias{get_TIC}
-\title{Calculate the TIC}
+\title{Calculate the Total Ion Chromatogram (TIC)}
 \usage{
 get_TIC(spec)
 }

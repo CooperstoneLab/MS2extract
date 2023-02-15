@@ -7,7 +7,7 @@
 roi_filter(spec, roi_table)
 }
 \arguments{
-\item{spec}{a data frame containig}
+\item{spec}{a data frame containing}
 
 \item{roi_table}{a data frame with two columns min_rt and max_rt specifying
 the minimum and maximum retention time range}

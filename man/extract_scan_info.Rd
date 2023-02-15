@@ -11,11 +11,11 @@ extract_scan_info(mzxml)
 }
 \value{
 a data.frame containing
- \describe{
-  \item{name}{the scan name (m/z and rt)}
-  \item{mz}{the precursor m/z ion}
-  \item{rt}{retention time}
-  \item{file name}{file name}
+\describe{
+\item{name}{the scan name (m/z and rt)}
+\item{mz}{the precursor m/z ion}
+\item{rt}{retention time}
+\item{file name}{file name}
 }
 }
 \description{

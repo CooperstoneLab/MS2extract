@@ -52,7 +52,7 @@ assign_scan_id <- function(scan_list) {
 #' This function evaluates the information provided by the user whether the
 #' right column were provided as well the right ionization modes. Then
 #' it calculates the neutral exact mass of the compound by the given
-#' formula and depending of the ionization mode, it adds or substract the mass
+#' formula and depending of the ionization mode, it adds or subtracts the mass
 #' of a proton to obtain the ionized mass of the compounds.
 #'
 #' @param met_metadata a data frame with at least the Formula and the
@@ -65,11 +65,13 @@ check_metadata <- function(met_metadata) {
 
   # Check for Fomrula and Ionization mode in data frame
   if( all(compund_info %in% names(met_metadata)) ) {
-    # Calculating the exact mass and the ionazed mass
+
+    # Calculating the exact mass and the ionized mass
     exact_mass <- Rdisop::getMolecule(met_metadata$Formula)$exactmass
 
     # Checking for ionization mode
     if( any(met_metadata$Ionization_mode %in% ionization_modes) ){
+
       # Check for positive ionization mode
       if(met_metadata$Ionization_mode == "Positive") {
         exact_mass <- exact_mass + 1.00727
@@ -85,7 +87,7 @@ check_metadata <- function(met_metadata) {
 }
 
 
-#' Imports mzxml files with MS2 scans
+#' Imports mzXML files with MS2 scans
 #'
 #' This function imports MS2 data using the masstools::read_mzxml()
 #' function to import the data as a list. Each element in a list *list* represents
@@ -96,29 +98,31 @@ check_metadata <- function(met_metadata) {
 #' file, and users can use filters on the resulting data to extract the
 #' desired information.
 #'
-#' @param file file name of the mzxml file
+#' @param file file name of the mzXML file
 #' @param met_metadata a data frame with the following columns.
 #' Required:
 #' \describe{
 #'  \item{Formula}{A character specifying the metabolite formula}
-#'  \item{Ionization_mode}{The ionization mode employed in data colection. It
+#'  \item{Ionization_mode}{The ionization mode employed in data collection. It
 #'  can be only Positive or Negative}
 #' }
 #'
 #' This two columns are mandatory since the formula is employed with Rdisop
 #' package to calculate the exact mass and the ionization mode will dictate
-#' if the mas of the a proton is added or sustracted.
+#' if the mass of the a proton is added or subtracted.
+#'
 #' Additionally, you can provide the minimum and maximum retention times
 #' to look for the peak by including the following columns:
+#'
 #' \describe{
 #'  \item{min_rt}{a double with the minumim retention time to keep}
 #'  \item{max_rt}{a double with the minimum retention time to keep}
 #' }
 #'
-#' This two columns are highly suggested to be included to norrow the search
+#' This two columns are highly suggested to be included to narrow down the search
 #' window.
 #'
-#' @param ppm the value of the ppm error. 10 ppm error is the default value.
+#' @param ppm the value of the ppm error. 10 ppm is the default value.
 #'
 #' @param ... extra arguments passed to  masstools::read_mzxml()
 #'

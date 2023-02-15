@@ -1,16 +1,16 @@
 #' Compare two spectra based on cosine score
 #'
-#' Wrap function to calculate the cosine score  between two spectra.
+#' Wrap function to calculate cosine score between two spectra.
 #' This function select the *mz* and *intensity* columns before parsing
-#' the data frames to OrgMassSpecR::SpectrumSimilarity().
+#' the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 #'
 #' @param spec1 a data frame containing the spectra info.
-#' @param spec2 a data fram contaning the spectra info.
+#' @param spec2 a data frame containing the spectra info.
 #' @param output.list a boolean if the the output is returned as a list
-#' @param ... arguments parsed to OrgMassSpecR::SpectrumSimilarity().
+#' @param ... arguments parsed to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 #' @export
 #' @examples
-#' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
+#' # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
 #'                        "ProcyanidinA2_neg_20eV.mzXML",

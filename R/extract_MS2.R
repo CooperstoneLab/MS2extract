@@ -1,4 +1,4 @@
-#' Calculate the TIC
+#' Calculate the Total Ion Chromatogram (TIC)
 #'
 #' This function compute the MS2 TIC of a spectra grouping by retention time.
 #'
@@ -13,7 +13,9 @@ get_TIC <- function(spec) {
 #'
 #' This function plots the MS2 TIC and will mark the most intense scan
 #' that will be used to extract the MS2 spectra
+#'
 #' @param TIC a data frame with the TIC
+#'
 #' @return a list. The first element is a data frame with the retention time
 #' with the highest intensity and the TIC plot as the second list element.
 
@@ -40,15 +42,15 @@ plot_tic <- function(TIC) {
 #' Extract the most MS2 intense scan
 #'
 #' This function takes raw MS2 signal and looks for the most intense scan
-#' and extracts the MS2 spectra. Additionally, it plots the MS2 TIC
-#' chromatogram and color with red the most intense scan.
+#' and proceed to extracts the MS2 spectra. Additionally, it plots the MS2 TIC
+#' chromatogram and color in red the most intense scan.
 #'
 #' @param spec a data frame with the MS2 spectra
 #' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed
 #' @param out_list a boolean expressing if the output is a list containing
 #' the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 #' the data frame with the MS2 spectra (verbose = FALSE).
-#' @param  ... any other arguments passed to detect_mass() function
+
 #' @export
 #' @examples
 #' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
@@ -70,7 +72,7 @@ plot_tic <- function(TIC) {
 #' # Returning MS2 spectra only
 #' extract_MS2(ProcA2_raw, out_list = FALSE)
 
-extract_MS2 <- function(spec, verbose = TRUE, out_list = TRUE, ...) {
+extract_MS2 <- function(spec, verbose = TRUE, out_list = TRUE) {
 
   # Get MS2 TIC
   TIC <- get_TIC(spec)

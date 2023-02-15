@@ -9,18 +9,19 @@ batch_import_mzxml(compounds_dt)
 \arguments{
 \item{compounds_dt}{a data frame containing the following columns.
 \describe{
- \item{Name}{The name of the compound}
- \item{Formula}{The compound's chemical formula}
- \item{Ionization_mode}{The ionization mode set in data collection
- (only Positive and negative mode allowed).}
- \item{File}{The filename of the mzXML file inluding the path}
+\item{Name}{The name of the compound}
+\item{Formula}{The compound's chemical formula}
+\item{Ionization_mode}{The ionization mode set in data collection
+(only Positive and Negative mode allowed).}
+\item{File}{The filename of the mzXML file inluding the path}
 }
 
-Additionally, you can provide the region of interest by adding two columns
-in the previoius data frame.
+Additionally, you can provide the ROI by adding two columns
+in the previous data frame.
+
 \describe{
- \item{min_rt}{a double with the minumim retention time to keep}
- \item{max_rt}{a double with the minimum retention time to keep}
+\item{min_rt}{a double with the minumim retention time to keep}
+\item{max_rt}{a double with the minimum retention time to keep}
 }}
 }
 \value{
@@ -29,8 +30,8 @@ provided in the data.frame
 }
 \description{
 This function takes a data frame containing the basic information of
-metabolites such as file name (including the file path), Formula,
-Ionization mode, as required fields. Additionally, the region of interest
+metabolites such as file name (including the file path), Chemical formula,
+Ionization mode, as required fields. Additionally, Region Of Interest (ROI)
 can be provided to narrow down the elution window.
 }
 \examples{

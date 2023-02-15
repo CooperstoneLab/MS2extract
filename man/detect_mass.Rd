@@ -2,12 +2,12 @@
 % Please edit documentation in R/detec_mass.R
 \name{detect_mass}
 \alias{detect_mass}
-\title{Detect masses in a spectra}
+\title{Detect masses in a MS2 spectra}
 \usage{
 detect_mass(spec, normalize = TRUE, min_int = 1)
 }
 \arguments{
-\item{spec}{a data frame containing the MS2 spectra}
+\item{spec}{a data frame containing the MS2 spectra.}
 
 \item{normalize}{a boolean indicating if the MS2 spectra is normalized by
 the base peak before proceeding to filter out low intensity signal
@@ -20,7 +20,7 @@ minimum ion count.}
 Similarly to MZmine, detect mass filters out low intensity signal that can
 be attributed to background noise. Here, you can opt to detect masses
 by the raw ion intensity or normalize and detect masses by intensity
-percentage from 1% (by default) to 100%.
+percentage from 1\% (by default) to 100\%.
 }
 \examples{
 

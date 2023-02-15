@@ -22,11 +22,11 @@ column is missing.
 \details{
 The evaluated additional msp fields are:
 
- \describe{
-  \item{INCHIKEY}{}
-  \item{SMILES}{}
-  \item{CCS}{}
-  \item{COLLISIONENERGY}{}
-  \item{INSTRUMENTTYPE}{}
+\describe{
+\item{INCHIKEY}{}
+\item{SMILES}{}
+\item{CCS}{}
+\item{COLLISIONENERGY}{}
+\item{INSTRUMENTTYPE}{}
 }
 }

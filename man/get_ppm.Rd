@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_ppm.R
 \name{get_ppm}
 \alias{get_ppm}
-\title{Calculate the m/z difference for a given m/z and ppm tolerance}
+\title{Calculate the m/z difference for a given mass and ppm tolerance}
 \usage{
 get_ppm(mz, ppm = 10)
 }

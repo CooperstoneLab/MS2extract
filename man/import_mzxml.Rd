@@ -2,50 +2,52 @@
 % Please edit documentation in R/import_mzxml.R
 \name{import_mzxml}
 \alias{import_mzxml}
-\title{Imports mzxml files with MS2 scans}
+\title{Imports mzXML files with MS2 scans}
 \usage{
 import_mzxml(file, met_metadata = NULL, ppm = 10, ...)
 }
 \arguments{
-\item{file}{file name of the mzxml file}
+\item{file}{file name of the mzXML file}
 
 \item{met_metadata}{a data frame with the following columns.
 Required:
 \describe{
- \item{Formula}{A character specifying the metabolite formula}
- \item{Ionization_mode}{The ionization mode employed in data colection. It
- can be only Positive or Negative}
+\item{Formula}{A character specifying the metabolite formula}
+\item{Ionization_mode}{The ionization mode employed in data collection. It
+can be only Positive or Negative}
 }
 
 This two columns are mandatory since the formula is employed with Rdisop
 package to calculate the exact mass and the ionization mode will dictate
-if the mas of the a proton is added or sustracted.
+if the mass of the a proton is added or subtracted.
+
 Additionally, you can provide the minimum and maximum retention times
 to look for the peak by including the following columns:
+
 \describe{
- \item{min_rt}{a double with the minumim retention time to keep}
- \item{max_rt}{a double with the minimum retention time to keep}
+\item{min_rt}{a double with the minumim retention time to keep}
+\item{max_rt}{a double with the minimum retention time to keep}
 }
 
-This two columns are highly suggested to be included to norrow the search
+This two columns are highly suggested to be included to narrow down the search
 window.}
 
-\item{ppm}{the value of the ppm error. 10 ppm error is the default value.}
+\item{ppm}{the value of the ppm error. 10 ppm is the default value.}
 
 \item{...}{extra arguments passed to  masstools::read_mzxml()}
 }
 \value{
 data.frame in a tidy format for MS2 spectra in a tidy format.
- \describe{
-  \item{mz}{ion m/z value}
-  \item{intensity}{ion intensity count}
-  \item{precursor_mz}{precursor ion}
-  \item{rt}{retention time (in seconds)}
+\describe{
+\item{mz}{ion m/z value}
+\item{intensity}{ion intensity count}
+\item{precursor_mz}{precursor ion}
+\item{rt}{retention time (in seconds)}
 }
 }
 \description{
 This function imports MS2 data using the masstools::read_mzxml()
-function to import the data as a list. Each element in a list *list* represents
+function to import the data as a list. Each element in a list \emph{list} represents
 one scan. Subsequently, each element in this list (scans) contains two
 sublists that gathers the scan information and the spectra per scan.
 }
