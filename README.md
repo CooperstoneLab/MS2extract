@@ -9,7 +9,7 @@
 [![test-coverage](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
-The goal of MS2extract is to create a tool to import MS2 data of known
+The goal of MS2extract is to provide a tool to import MS2 data of known
 standards or material and targeted extract the MS2 expectra in order to
 create an in-house MS2 library.
 
@@ -32,6 +32,12 @@ ppm tolerance.
 
 ``` r
 library(MS2extract)
+#> Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.9)
+#> than is installed on your system (1.0.10). This might lead to errors
+#> when loading mzR. If you encounter such issues, please send a report,
+#> including the output of sessionInfo() to the Bioc support forum at 
+#> https://support.bioconductor.org/. For details see also
+#> https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
 ## calculating ppm range
 chlorogenic_acid_pos <- 355.1023
 ppm_error = 10
@@ -43,9 +49,9 @@ ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 ### Importing mzxml files
 
 You can import mzxml files by `import_mzxml()` function. This will
-import your data into a data frame. In this case we are going to work
-with the Procyanidin A2 spectra in neg mode with a collision energy of
-20eV.
+import your MS2 scans into a data frame. In this case we are going to
+work with the Procyanidin A2 spectra in negative mode with a collision
+energy of 20 eV.
 
 ``` r
 # File path
@@ -62,10 +68,10 @@ ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
 ### Extracting Procyanidin A2 spectra
 
-In this case, the mzxml file contains only the scans of this metabolite
-and the `extract_MS2()` functions exports the most intense MS2 scans,
-and displays the TIC indicating which scan is using to export the MS2
-data.
+In this case, the mzxml file contains only the scans in the retention
+time window of Procyanidin A2 and `extract_MS2()` functions exports the
+most intense MS2 scans, and displays the TIC indicating which scan is
+using to extract the MS2 spectra.
 
 ``` r
 ProcA2_ext <- extract_MS2(ProcA2_raw)
@@ -74,9 +80,9 @@ ProcA2_ext <- extract_MS2(ProcA2_raw)
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 This function returns a list, which contains the MS2 spectra, and the
-TIC plot. Since the extracted MS2 spectra contains low intensity signals
-(backgroun) noise, you can remove them by using the `detect_mass()`
-function.
+MS2 TIC plot. Since the extracted MS2 spectra contains low intensity
+signals (i.e. background noise), you can remove them by using the
+`detect_mass()` function.
 
 The raw MS2 spectra contains 6226 signals which the majority of them are
 low intensity signals (background noise).
