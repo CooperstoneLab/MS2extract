@@ -62,7 +62,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of MS2extract is to create a tool to import MS2 data of known standards or material and targeted extract the MS2 expectra in order to create an in-house MS2 library.</p>
+<p>The goal of MS2extract is to provide a tool to import MS2 data of known standards or material and targeted extract the MS2 expectra in order to create an in-house MS2 library.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -80,6 +80,12 @@
 <p>with ppm_range you can compute a the ppm error given a m/z value and a ppm tolerance.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cooperstonelab.github.io/MS2extract/">MS2extract</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.9)</span></span>
+<span><span class="co">#&gt; than is installed on your system (1.0.10). This might lead to errors</span></span>
+<span><span class="co">#&gt; when loading mzR. If you encounter such issues, please send a report,</span></span>
+<span><span class="co">#&gt; including the output of sessionInfo() to the Bioc support forum at </span></span>
+<span><span class="co">#&gt; https://support.bioconductor.org/. For details see also</span></span>
+<span><span class="co">#&gt; https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.</span></span>
 <span><span class="co">## calculating ppm range</span></span>
 <span><span class="va">chlorogenic_acid_pos</span> <span class="op">&lt;-</span> <span class="fl">355.1023</span></span>
 <span><span class="va">ppm_error</span> <span class="op">=</span> <span class="fl">10</span></span>
@@ -90,7 +96,7 @@
 <div class="section level3">
 <h3 id="importing-mzxml-files">Importing mzxml files<a class="anchor" aria-label="anchor" href="#importing-mzxml-files"></a>
 </h3>
-<p>You can import mzxml files by <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import your data into a data frame. In this case we are going to work with the Procyanidin A2 spectra in neg mode with a collision energy of 20eV.</p>
+<p>You can import mzxml files by <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import your MS2 scans into a data frame. In this case we are going to work with the Procyanidin A2 spectra in negative mode with a collision energy of 20 eV.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># File path</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
@@ -106,11 +112,11 @@
 <div class="section level3">
 <h3 id="extracting-procyanidin-a2-spectra">Extracting Procyanidin A2 spectra<a class="anchor" aria-label="anchor" href="#extracting-procyanidin-a2-spectra"></a>
 </h3>
-<p>In this case, the mzxml file contains only the scans of this metabolite and the <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> functions exports the most intense MS2 scans, and displays the TIC indicating which scan is using to export the MS2 data.</p>
+<p>In this case, the mzxml file contains only the scans in the retention time window of Procyanidin A2 and <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> functions exports the most intense MS2 scans, and displays the TIC indicating which scan is using to extract the MS2 spectra.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
-<p>This function returns a list, which contains the MS2 spectra, and the TIC plot. Since the extracted MS2 spectra contains low intensity signals (backgroun) noise, you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
+<p>This function returns a list, which contains the MS2 spectra, and the MS2 TIC plot. Since the extracted MS2 spectra contains low intensity signals (i.e. background noise), you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
 <p>The raw MS2 spectra contains 6226 signals which the majority of them are low intensity signals (background noise).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">$</span><span class="va">MS2_spec</span><span class="op">)</span></span>
