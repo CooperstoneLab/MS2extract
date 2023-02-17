@@ -1,0 +1,303 @@
+---
+title: "Introduction to MS2extract package"
+author: "Cristian Quiroz-Moreno"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_caption: true      
+vignette: >
+  %\VignetteIndexEntry{Introduction to MS2extract package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+This vignette has the objective to introduce the **MS2extract** package. The
+main goal of this package is to provide a tool to create in-house MS2 compound
+libraries. Users can access a specific function help through the command
+help(*['function name']*). It is worth to note that this package is aimed in 
+the targeted extraction of MS/MS scans and it is not able to perform compound
+matching/annotation.
+
+A simplified workflow is presented in Figure 1. Briefly, mzXML files are imported
+in memory, then based on metadata provided by the user such as compound chemical
+formula, the m/z is calculated extract the MS/MS scans matching with the 
+theoretical m/z. Then, low intensity signals, or background noise, is removed
+out of the spectra. Finally, user can export the extracted MS/MS spectra to
+a msp file format to be used as reference library for further compound
+identification and annotation.
+
+
+```{r Fig 1, echo=FALSE, fig.cap= "Figure 1. Overview of general data processing pipeline to extract MS/MS exptra using the MS2extract package", out.width= "80%", out.height="80%", message=FALSE, warning=FALSE, paged.print=FALSE, fig.align='center'}
+knitr::include_graphics("img/pipeline.png")
+```
+
+# Basic workflow
+
+As previously mentioned, the workflow consist in four main steps:
+
+* data import, 
+* extract MS/MS scans,
+* detect mass, and 
+* exporting MS/MS libraries
+
+In this section, we will explain in a more detail the main steps 
+as well as provide information about the required and optional arguments
+that user may need to provide in order to properly use this package.
+
+
+Additionally, this package also includes a set of `batch_*()` functions that
+allows to process multiple mzxml files at once. However, more metadata is
+required to run this automated pipeline and the use of this `batch_*()` functions
+will be described later in this document.
+
+## Data import
+
+This section is focused on describing how MS2extract package imports MS/MS data.
+
+The main import fuction relies on the newly implemented 
+[metID](https://metid.tidymass.org) R package. We adapted the import function in
+order to read mass spectrometry data from mzXML files. The new adaptation 
+consists in importing scans data in a list (S3 object) rather than into a S4
+object, facilitating the downstream tidy analysis of this objects.
+
+> This function execute a back-end calculation of theoretical ionized mass
+of the compound in order to extract the precursor ions that match that mass
+with a given ppm.
+
+The arguments of the `import_mzxml()` functions are four:
+
+* file
+* met_metadata
+* ppm
+* ...
+
+```{r}
+# Loading the package
+library(MS2extract)
+
+
+# Print function arg
+formals(import_mzxml)
+```
+
+### File
+
+File consist in the file name of your mzXML file that contains MS/MS data
+of your authentic standards or reference material. Here, we provide an example
+file of Procyanidin A2 collected in Negative ionization mode with a collision
+energy of 20 eV.
+
+
+```{r}
+# Importing the Spectrum of Procyanidin A2 in negative ionization mode
+# and 20 eV as the collision energy
+ProcA2_file <- system.file("extdata",
+                        "ProcyanidinA2_neg_20eV.mzXML",
+                         package = "MS2extract")
+# File name
+ProcA2_file
+```
+
+
+### met_metadata
+
+This argument refers to the metadata that user need to provide in order to 
+properly import scans that are related to the compound of interest.
+
+The `met_metadata` is a data frame that has required and optional columns. The
+required columns are employed to calculate the theoretical ionized m/z of a 
+given formula and ionization mode. In the optional columns, we have the option
+to provide the Region Of Interest where the compound elutes in order to only
+keep this retention time window.
+
+The required columns are:
+
+* **Formula:** A character specifying the metabolite formula
+* **Ionization_mode:** The ionization mode employed in data collection. It can be either *Positive* or *Negative*
+
+The optional columns are: 
+
+* **min_rt:** a double with the minimum retention time to keep
+* **max_rt:** a double with the minimum retention time to keep
+
+
+```{r}
+# Procyanidin A2 metadata
+ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
+                      min_rt = 163, max_rt = 180)
+ProcA2_data
+```
+
+### ppm
+
+ppm refers to the maximum m/z deviation from the theoretical mass. By
+default, 10 ppm are used.
+
+
+### import_mzxml()
+
+
+With all arguments explained, we can use the `import_mzxml()` function.
+
+
+```{r}
+# Import Procyanidin A2 data
+ProcA2_raw <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data, ppm = 5)
+
+# 24249 rows = ions detected
+dim(ProcA2_raw)
+```
+
+
+## Extracting MS2 spectra
+
+Now that we have the data imported, we con proceed to extract the 
+**most intense MS/MS scan** between all scans.
+
+This function computes the MS/MS TIC by summing up all intensities of the MS/MS
+scans and select the scans with the highest intensities.
+
+This function takes three arguments
+
+* **spec:** the imported MS/MS spectra
+* **verbose:** a boolean, if verbose = TRUE, the MS/MS TIC and spectra is printed, if verbose = FALSE, plots are not displayed
+* **out_list:** a boolean, if out_list = TRUE, the extracted MS/MS spectra table and plots are returned as list, otherwise only the MS/MS spectra is returned as data frame.
+
+```{r out.width="100%", out.height="100%"}
+ProcA2_extracted <- extract_MS2(ProcA2_raw, verbose = TRUE, out_list = FALSE)
+```
+
+
+Here, we can see in the top plot MS/MS tic that the scan colored in red is
+the most intense and the MS/MS spectra of that scan will be exported. At
+the bottom plot, we can see the Procyanidin A2 MS/MS spectra at rt: 170.667.
+The maximum m/z axis value is > 1500 m/z but not significant ions are displayed.
+This can be explained due to low intensities are kept in the MS/MS spectra.
+
+```{r}
+range(ProcA2_extracted$mz)
+```
+
+
+The range of the MS/MZ m/z value is from 100 m/z to 1699 m/z, but 
+intensities are too slow to be seen in the plot.
+
+## Detecting mass
+
+Similarly to the MZmine pipeline, detecting masses refers to set a minimum
+signal intensity threshold that ions has to meet in order to be kept. Thus, ion
+with lower intensities are removed from the data frame. This function can also
+normalize the spectra ion intensity to percentage based on the base peak.
+
+The three required arguments are:
+
+* **spec:** a data frame containing the MS2 spectra.
+* **normalize:** a boolean indicating if the MS2 spectra is normalized by he base peak before proceeding to filter out low intensity signal (normalize  = TRUE), if normalize = FALSE the user has to provide the minimum ion count.
+* **min_int** an integer refereing to the minimum ion intensity
+
+By default, the normalization is set to `TRUE` and the minimum intensity is 
+set to 1% to remove background noise.
+
+```{r}
+ProcA2_detected <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 1)
+```
+
+We can see now the range of m/z values and the maximium value is 576.1221 m/z.
+
+```{r}
+range(ProcA2_detected$mz)
+```
+
+## MS/MS spectra plot 
+
+We can proceed to plot the clean MS/MS spectra with `plot_MS2spectra()` function.
+This is a ggplot2 based function; the blue diamond refers to the precursor ion.
+
+If we take a look to the previous MS/MS plot, there is less background noise
+in this MS/MS spectra.
+
+```{r out.width="100%"}
+plot_MS2spectra(ProcA2_detected)
+```
+
+
+## Exporting MS/MS spectra
+
+Finally after extracting the MS/MS spectra and removing background noise, we 
+can proceed to export the MS2 in a msp format.
+
+For this task, we need extra information about the compound, such as 
+SMILES, COLLISIONENERGY, etc.
+
+An example of this table can be found at:
+
+```{r warning=FALSE}
+# Reading the metadata
+metadata_file <- system.file("extdata",
+                             "msp_metadata.csv",
+                             package = "MS2extract")
+
+metadata <- read.csv(metadata_file)
+dplyr::glimpse(metadata)
+```
+
+The precursor ion is not necessary to provide since this information is included
+in the extracted MS/MS spectra.
+
+
+The three arguments for this function are:
+
+* **spec:** a data frame containing the extracted MS2 spectra
+* **spec_metadata:** a data frame containing the values to be including in the resulting msp file
+* **msp_name:** a string with the name of the msp file not containing (.msp) extension
+
+```{r eval=FALSE, include=TRUE}
+write_msp(spec = ProcA2_detected,
+          spec_metadata = metadata,
+          msp_name = "Procyanidin_A2")
+```
+
+
+After writing the msp file, you will see the following file content:
+
+```{r echo=FALSE}
+cat(write_msp_base(ProcA2_detected, metadata) )
+```
+
+
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

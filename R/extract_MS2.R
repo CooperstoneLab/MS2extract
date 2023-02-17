@@ -72,7 +72,7 @@ plot_tic <- function(TIC) {
 #' # Returning MS2 spectra only
 #' extract_MS2(ProcA2_raw, out_list = FALSE)
 
-extract_MS2 <- function(spec, verbose = TRUE, out_list = TRUE) {
+extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
 
   # Get MS2 TIC
   TIC <- get_TIC(spec)

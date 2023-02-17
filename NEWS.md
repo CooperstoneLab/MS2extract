@@ -23,4 +23,4 @@ Package creation, available functions:
 * read_mzxml()
 * roi_filter()
 * write_msp()
-write_msp_base()
+* write_msp_base()

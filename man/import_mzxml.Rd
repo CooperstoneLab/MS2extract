@@ -4,7 +4,7 @@
 \alias{import_mzxml}
 \title{Imports mzXML files with MS2 scans}
 \usage{
-import_mzxml(file, met_metadata = NULL, ppm = 10, ...)
+import_mzxml(file = NULL, met_metadata = NULL, ppm = 10, ...)
 }
 \arguments{
 \item{file}{file name of the mzXML file}
@@ -25,7 +25,7 @@ Additionally, you can provide the minimum and maximum retention times
 to look for the peak by including the following columns:
 
 \describe{
-\item{min_rt}{a double with the minumim retention time to keep}
+\item{min_rt}{a double with the minimum retention time to keep}
 \item{max_rt}{a double with the minimum retention time to keep}
 }
 

@@ -7,3 +7,9 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^doc$
+^Meta$
+^zzz$
+^zzz/pipeline_plots\.R$
+^zzz/MS2_spectra\.jpeg$
+^zzz/TIC_plot\.jpeg$

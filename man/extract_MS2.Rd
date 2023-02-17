@@ -4,7 +4,7 @@
 \alias{extract_MS2}
 \title{Extract the most MS2 intense scan}
 \usage{
-extract_MS2(spec, verbose = TRUE, out_list = TRUE)
+extract_MS2(spec, verbose = TRUE, out_list = FALSE)
 }
 \arguments{
 \item{spec}{a data frame with the MS2 spectra}

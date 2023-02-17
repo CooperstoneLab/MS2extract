@@ -115,7 +115,7 @@ check_metadata <- function(met_metadata) {
 #' to look for the peak by including the following columns:
 #'
 #' \describe{
-#'  \item{min_rt}{a double with the minumim retention time to keep}
+#'  \item{min_rt}{a double with the minimum retention time to keep}
 #'  \item{max_rt}{a double with the minimum retention time to keep}
 #' }
 #'
@@ -160,7 +160,7 @@ check_metadata <- function(met_metadata) {
 #' dim(ProcA2_roi)
 #'
 #' }
-import_mzxml <- function(file, met_metadata = NULL, ppm = 10, ...) {
+import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
 
   # Check info in met_metadta ---
   ionized_mass <- check_metadata(met_metadata)
