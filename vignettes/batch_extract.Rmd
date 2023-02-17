@@ -1,0 +1,186 @@
+---
+title: "Using MS2extract Batch Pipeline"
+author: "Cristian Quiroz-Moreno"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_caption: true    
+vignette: >
+  %\VignetteIndexEntry{Using MS2extract Batch Pipeline}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Introduction
+
+In the previous tutorial *Introduction to MS2extract package*, we described
+in a detailed manner the core functions of the package. If you are starting
+to use the MS2extract package with this tutorial, we encourage you to take 
+a look at the aforementioned tutorial.
+
+Now that you are familiar with the core workflow and core functions of this
+package, now we can dive into an automated pipeline with the proposed
+`batch_*()` functions.
+
+We can remember the workflow summary where we specify the alternative of core
+functions for `batch_*()` alternatives (Figure 1). Three main steps has its own
+batch alternatives functions, importing mzXML files, extracting MS/MS spectra,
+and detecting mass. However, exporting the database in a msp file is able to
+detect if the provided spectra comes from a single mzXML file or it is a batch
+spectra.
+
+
+
+```{r Fig 1, echo=FALSE, fig.cap= "Figure 1. Overview of general data processing pipeline to extract MS/MS exptra using the MS2extract package", out.width= "80%", out.height="80%", message=FALSE, warning=FALSE, paged.print=FALSE, fig.align='center'}
+knitr::include_graphics("img/pipeline.png")
+```
+
+## Batch functions
+
+We are familiar with the arguments that the core functions accepts, in this
+section we describe extra arguments that specific `batch_*()` functions requeire
+in order to work.
+
+### batch_import_mzxml
+
+
+```{r setup}
+knitr::opts_chunk$set(warning = FALSE)
+library(MS2extract)
+```
+
+Similarly to `import_mzxml()` function, we need a compound metadata, with at 
+lest the Compound name, Formula, Ionization mode, and optionally but 
+suggested, the region of interest (min_rt and max_rt).
+
+
+
+
+```{r}
+
+# Select the csv file name and path
+batch_file <- system.file("extdata", "batch_read.csv",
+                          package = "MS2extract")
+# Read the data frame
+batch_data <- read.csv(batch_file)
+
+# File paths for Procyanidin A2 and Rutin
+ProcA2_file <- system.file("extdata",
+                       "ProcyanidinA2_neg_20eV.mzXML",
+                        package = "MS2extract")
+Rutin_file <- system.file("extdata",
+                       "Rutin_neg_20eV.mzXML",
+                        package = "MS2extract")
+
+# Add file path - User should specified the file path -
+batch_data$File <- c(ProcA2_file, Rutin_file)
+
+# Checking batch_data data frame
+dplyr::glimpse(batch_data)
+```
+
+The only difference with the core `import_mzxml()` met_metadata is that you can
+provide more compounds by adding rows. You can see we are working with two 
+compounds, Procyanidin A2 and Rutin.
+
+> **Tip:** you can specify point multiple compounds to the same mzXML.
+
+
+```{r}
+batch_compounds <- batch_import_mzxml(batch_data)
+```
+
+The raw mzXML data contains:
+
+* Procyanidin A2: 24249 ions
+* Rutin: 22096 ions
+
+```{r}
+# Checking dimension by compound
+purrr::map(batch_compounds, dim)
+```
+
+## batch_extract_MS2
+
+Now that we have our data in memory, we can proceed to extract the most
+intense MS/MS scan. In this case, the `batch_extract_MS2()` functions
+do not have extra arguments, although most of the arguments remains fairly
+similar.
+
+
+```{r}
+# Use extract batch extract_MS2
+batch_extracted <- batch_extract_MS2(batch_compounds,
+                                     verbose = TRUE,
+                                     out_list = FALSE)
+```
+
+By using `verbose = TRUE`, we can display the MS/MS TIC plot as well the raw
+MS/MS spectra.
+
+## batch_detect_mass
+
+Now that we have the raw MS/MS spectra, we are going to remove background noise
+based on intensity. Again, `batch_detect_mass()` has the same arguments
+than its core analogue.
+
+
+```{r}
+batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
+                                         normalize = TRUE, # Normalize
+                                         min_int = 1) # Minimum intensity
+
+purrr::map(batch_mass_detected, dim)
+```
+
+
+We see a decrease of number of ions, 38 and 4 ions for Procyanidin A2 and Rutin,
+respectively.
+
+## write_msp
+
+In contrast with the previous batch functions, `write_msp()` is able to detect
+if the user is providing a single spectra, or multiple spectra. However, the
+user needs to provide information about each compound.
+
+```{r}
+# Reading batch metadata
+metadata_msp_file <- system.file("extdata",
+                                 "batch_msp_metadata.csv",
+                                 package = "MS2extract")
+
+metadata_msp <- read.csv(metadata_msp_file)
+
+dplyr::glimpse(metadata_msp)
+```
+
+After having the clean MS/MS spectra and the compound metadata, we can proceed
+to export them into msp files.
+
+```{r eval=FALSE, include=TRUE}
+write_msp(spec = batch_mass_detected,
+            spec_metadata = metadata_msp,
+            msp_name = "ProcA2_Rutin_batch.msp")
+```
+
+
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
+
+
