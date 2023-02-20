@@ -24,25 +24,26 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-In the previous tutorial *Introduction to MS2extract package*, we described
-in a detailed manner the core functions of the package. If you are starting
+In the previous tutorial 
+[Introduction to MS2extract package](https://cooperstonelab.github.io/MS2extract/articles/introduction.html),
+we described in a detailed manner the core functions of the package. If you are starting
 to use the MS2extract package with this tutorial, we encourage you to take 
 a look at the aforementioned tutorial.
 
-Now that you are familiar with the core workflow and core functions of this
-package, now we can dive into an automated pipeline with the proposed
+Now that you are familiar with the core workflow and functions of this
+package, we can dive into an automated pipeline with the proposed
 `batch_*()` functions.
 
 We can remember the workflow summary where we specify the alternative of core
 functions for `batch_*()` alternatives (Figure 1). Three main steps has its own
 batch alternatives functions, importing mzXML files, extracting MS/MS spectra,
-and detecting mass. However, exporting the database in a msp file is able to
+and detecting masses. However, exporting the database in a msp file is able to
 detect if the provided spectra comes from a single mzXML file or it is a batch
-spectra.
+set of spectra.
 
 
 
-```{r Fig 1, echo=FALSE, fig.cap= "Figure 1. Overview of general data processing pipeline to extract MS/MS exptra using the MS2extract package", out.width= "80%", out.height="80%", message=FALSE, warning=FALSE, paged.print=FALSE, fig.align='center'}
+```{r Fig 1, echo=FALSE, fig.cap= "Figure 1. Overview of general data processing pipeline to extract MS/MS spectra using the MS2extract package", out.width= "80%", out.height="80%", message=FALSE, warning=FALSE, paged.print=FALSE, fig.align='center'}
 knitr::include_graphics("img/pipeline.png")
 ```
 
@@ -62,7 +63,7 @@ library(MS2extract)
 
 Similarly to `import_mzxml()` function, we need a compound metadata, with at 
 lest the Compound name, Formula, Ionization mode, and optionally but 
-suggested, the region of interest (min_rt and max_rt).
+suggested, the region of interest (*min_rt* and *max_rt*).
 
 
 
@@ -94,7 +95,7 @@ The only difference with the core `import_mzxml()` met_metadata is that you can
 provide more compounds by adding rows. You can see we are working with two 
 compounds, Procyanidin A2 and Rutin.
 
-> **Tip:** you can specify point multiple compounds to the same mzXML.
+> **Tip:** you can specify multiple compounds to the same mzXML if they have different precursor ion m/z.
 
 
 ```{r}
@@ -166,7 +167,7 @@ dplyr::glimpse(metadata_msp)
 ```
 
 After having the clean MS/MS spectra and the compound metadata, we can proceed
-to export them into msp files.
+to export them into a msp files.
 
 ```{r eval=FALSE, include=TRUE}
 write_msp(spec = batch_mass_detected,

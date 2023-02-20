@@ -48,9 +48,9 @@ ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 
 ### Importing mzxml files
 
-You can import mzxml files by `import_mzxml()` function. This will
-import your MS2 scans into a data frame. In this case we are going to
-work with the Procyanidin A2 spectra in negative mode with a collision
+You can import mzxml files with the `import_mzxml()` function. This will
+import MS2 scans into a data frame. In this case, we are going to work
+with the Procyanidin A2 spectra in negative mode, with a collision
 energy of 20 eV.
 
 ``` r
@@ -68,13 +68,13 @@ ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
 ### Extracting Procyanidin A2 spectra
 
-In this case, the mzxml file contains only the scans in the retention
-time window of Procyanidin A2 and `extract_MS2()` functions exports the
-most intense MS2 scans, and displays the TIC indicating which scan is
-using to extract the MS2 spectra.
+Here, the mzxml file contains only the scans in the retention time
+window of Procyanidin A2. With the `extract_MS2()` functions users can
+detect and extract the most intense MS2 scans, and displays the TIC
+indicating which scan is the most intense
 
 ``` r
-ProcA2_ext <- extract_MS2(ProcA2_raw)
+ProcA2_ext <- extract_MS2(ProcA2_raw, verbose = TRUE, out_list = FALSE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -88,7 +88,7 @@ The raw MS2 spectra contains 6226 signals which the majority of them are
 low intensity signals (background noise).
 
 ``` r
-dim(ProcA2_ext$MS2_spec)
+dim(ProcA2_ext)
 #> [1] 6226    4
 ```
 
@@ -103,7 +103,7 @@ Here, we will detect masses by normalization and with a minimum
 intensity of 1%
 
 ``` r
-ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
+ProcA2_detected <- detect_mass(ProcA2_ext,
                                normalize = TRUE, # Allow normalization
                                min_int = 1) # 1% as minimum intensity
 
@@ -143,9 +143,8 @@ The purpose of this section is to compare two MS2 spectra that were
 extracted using this package and using PCDL, a compound library
 developed by Agilent.
 
-In this case, we include the MS2 spectra extracted with PCDL and use
-cosine similarity score to compare them by the `compare_spectra()`
-function.
+Thus, we include the MS2 spectra extracted with PCDL and use cosine
+similarity score to compare them by the `compare_spectra()` function.
 
 ``` r
 # MS2 PCDL spectra
