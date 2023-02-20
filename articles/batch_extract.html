@@ -80,23 +80,25 @@ Quiroz-Moreno</h4>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>In the previous tutorial <em>Introduction to MS2extract package</em>,
-we described in a detailed manner the core functions of the package. If
-you are starting to use the MS2extract package with this tutorial, we
-encourage you to take a look at the aforementioned tutorial.</p>
-<p>Now that you are familiar with the core workflow and core functions
-of this package, now we can dive into an automated pipeline with the
-proposed <code>batch_*()</code> functions.</p>
+<p>In the previous tutorial <a href="https://cooperstonelab.github.io/MS2extract/articles/introduction.html">Introduction
+to MS2extract package</a>, we described in a detailed manner the core
+functions of the package. If you are starting to use the MS2extract
+package with this tutorial, we encourage you to take a look at the
+aforementioned tutorial.</p>
+<p>Now that you are familiar with the core workflow and functions of
+this package, we can dive into an automated pipeline with the proposed
+<code>batch_*()</code> functions.</p>
 <p>We can remember the workflow summary where we specify the alternative
 of core functions for <code>batch_*()</code> alternatives (Figure 1).
 Three main steps has its own batch alternatives functions, importing
-mzXML files, extracting MS/MS spectra, and detecting mass. However,
+mzXML files, extracting MS/MS spectra, and detecting masses. However,
 exporting the database in a msp file is able to detect if the provided
-spectra comes from a single mzXML file or it is a batch spectra.</p>
+spectra comes from a single mzXML file or it is a batch set of
+spectra.</p>
 <div class="figure" style="text-align: center">
-<img src="img/pipeline.png" alt="Figure 1. Overview of general data processing pipeline to extract MS/MS exptra using the MS2extract package" width="80%" height="80%"><p class="caption">
+<img src="img/pipeline.png" alt="Figure 1. Overview of general data processing pipeline to extract MS/MS spectra using the MS2extract package" width="80%" height="80%"><p class="caption">
 Figure 1. Overview of general data processing pipeline to extract MS/MS
-exptra using the MS2extract package
+spectra using the MS2extract package
 </p>
 </div>
 <div class="section level3">
@@ -113,8 +115,8 @@ in this section we describe extra arguments that specific
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cooperstonelab.github.io/MS2extract/">MS2extract</a></span><span class="op">)</span></span></code></pre></div>
 <p>Similarly to <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code> function, we need a compound
 metadata, with at lest the Compound name, Formula, Ionization mode, and
-optionally but suggested, the region of interest (min_rt and
-max_rt).</p>
+optionally but suggested, the region of interest (<em>min_rt</em> and
+<em>max_rt</em>).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Select the csv file name and path</span></span>
@@ -148,8 +150,8 @@ max_rt).</p>
 met_metadata is that you can provide more compounds by adding rows. You
 can see we are working with two compounds, Procyanidin A2 and Rutin.</p>
 <blockquote>
-<p><strong>Tip:</strong> you can specify point multiple compounds to the
-same mzXML.</p>
+<p><strong>Tip:</strong> you can specify multiple compounds to the same
+mzXML if they have different precursor ion m/z.</p>
 </blockquote>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">batch_compounds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/batch_import_mzxml.html">batch_import_mzxml</a></span><span class="op">(</span><span class="va">batch_data</span><span class="op">)</span></span>
@@ -236,7 +238,7 @@ information about each compound.</p>
 <span><span class="co">#&gt; $ INSTRUMENTTYPE  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Q-TOF 6545", "Q-TOF 6546"</span></span>
 <span><span class="co">#&gt; $ COLLISIONENERGY <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "20 eV", "20 eV"</span></span></code></pre></div>
 <p>After having the clean MS/MS spectra and the compound metadata, we
-can proceed to export them into msp files.</p>
+can proceed to export them into a msp files.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span>spec <span class="op">=</span> <span class="va">batch_mass_detected</span>,</span>
 <span>            spec_metadata <span class="op">=</span> <span class="va">metadata_msp</span>,</span>

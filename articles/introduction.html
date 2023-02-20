@@ -89,16 +89,17 @@ targeted extraction of MS/MS scans and it is not able to perform
 compound matching/annotation.</p>
 <p>A simplified workflow is presented in Figure 1. Briefly, mzXML files
 are imported in memory, then based on metadata provided by the user such
-as compound chemical formula, the m/z is calculated extract the MS/MS
-scans matching with the theoretical m/z. Then, low intensity signals, or
-background noise, is removed out of the spectra. Finally, user can
+as compound chemical formula, the theoretical m/z of the ionized
+compound is calculated. Then, product ion scans that are between a ppm
+tolerance are extracted. Furthermore, low intensity signals, or
+background noise, can be removed out of the spectra. Finally, users can
 export the extracted MS/MS spectra to a msp file format to be used as
 reference library for further compound identification and
 annotation.</p>
 <div class="figure" style="text-align: center">
-<img src="img/pipeline.png" alt="Figure 1. Overview of general data processing pipeline to extract MS/MS exptra using the MS2extract package" width="80%" height="80%"><p class="caption">
+<img src="img/pipeline.png" alt="Figure 1. Overview of general data processing pipeline to extract MS/MS spectra using the MS2extract package" width="80%" height="80%"><p class="caption">
 Figure 1. Overview of general data processing pipeline to extract MS/MS
-exptra using the MS2extract package
+spectra using the MS2extract package
 </p>
 </div>
 </div>
@@ -110,16 +111,18 @@ exptra using the MS2extract package
 <li>data import,</li>
 <li>extract MS/MS scans,</li>
 <li>detect mass, and</li>
-<li>exporting MS/MS libraries</li>
+<li>export MS/MS library</li>
 </ul>
-<p>In this section, we will explain in a more detail the main steps as
+<p>In this section, we will explain in a more detail the main steps, as
 well as provide information about the required and optional arguments
-that user may need to provide in order to properly use this package.</p>
+that users may need to provide in order to properly use this
+package.</p>
 <p>Additionally, this package also includes a set of
 <code>batch_*()</code> functions that allows to process multiple mzxml
 files at once. However, more metadata is required to run this automated
 pipeline and the use of this <code>batch_*()</code> functions will be
-described later in this document.</p>
+described in the <a href="https://cooperstonelab.github.io/MS2extract/articles/batch_extract.html">Using
+MS2extract Batch Pipeline</a>.</p>
 <div class="section level3">
 <h3 id="data-import">Data import<a class="anchor" aria-label="anchor" href="#data-import"></a>
 </h3>
@@ -129,7 +132,7 @@ MS/MS data.</p>
 import function in order to read mass spectrometry data from mzXML
 files. The new adaptation consists in importing scans data in a list (S3
 object) rather than into a S4 object, facilitating the downstream tidy
-analysis of this objects.</p>
+analysis of this object.</p>
 <blockquote>
 <p>This function execute a back-end calculation of theoretical ionized
 mass of the compound in order to extract the precursor ions that match
@@ -163,9 +166,9 @@ four:</p>
 <div class="section level4">
 <h4 id="file">File<a class="anchor" aria-label="anchor" href="#file"></a>
 </h4>
-<p>File consist in the file name of your mzXML file that contains MS/MS
-data of your authentic standards or reference material. Here, we provide
-an example file of Procyanidin A2 collected in Negative ionization mode
+<p>File consists in the file name of your mzXML file that contains MS/MS
+data of authentic standards or reference material. Here, we provide an
+example file of Procyanidin A2 collected in Negative ionization mode
 with a collision energy of 20 eV.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Importing the Spectrum of Procyanidin A2 in negative ionization mode</span></span>
@@ -185,10 +188,10 @@ order to properly import scans that are related to the compound of
 interest.</p>
 <p>The <code>met_metadata</code> is a data frame that has required and
 optional columns. The required columns are employed to calculate the
-theoretical ionized m/z of a given formula and ionization mode. In the
-optional columns, we have the option to provide the Region Of Interest
-where the compound elutes in order to only keep this retention time
-window.</p>
+theoretical ionized m/z of a given formula in a given ionization mode.
+In the optional columns, we have the option to provide the Region Of
+Interest (ROI) where the compound elutes in order to only keep this
+retention time window.</p>
 <p>The required columns are:</p>
 <ul>
 <li>
@@ -221,7 +224,7 @@ keep</li>
 <h4 id="ppm">ppm<a class="anchor" aria-label="anchor" href="#ppm"></a>
 </h4>
 <p>ppm refers to the maximum m/z deviation from the theoretical mass. By
-default, 10 ppm are used.</p>
+default, 10 ppm is used.</p>
 </div>
 <div class="section level4">
 <h4 id="import_mzxml">import_mzxml()<a class="anchor" aria-label="anchor" href="#import_mzxml"></a>
@@ -240,12 +243,12 @@ default, 10 ppm are used.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="extracting-ms2-spectra">Extracting MS2 spectra<a class="anchor" aria-label="anchor" href="#extracting-ms2-spectra"></a>
+<h3 id="extracting-msms-spectra">Extracting MS/MS spectra<a class="anchor" aria-label="anchor" href="#extracting-msms-spectra"></a>
 </h3>
 <p>Now that we have the data imported, we con proceed to extract the
 <strong>most intense MS/MS scan</strong> between all scans.</p>
 <p>This function computes the MS/MS TIC by summing up all intensities of
-the MS/MS scans and select the scans with the highest intensities.</p>
+the MS/MS spectra and selects the scans with the highest intensity.</p>
 <p>This function takes three arguments</p>
 <ul>
 <li>
@@ -276,13 +279,13 @@ intensities are kept in the MS/MS spectra.</p>
 intensities are too slow to be seen in the plot.</p>
 </div>
 <div class="section level3">
-<h3 id="detecting-mass">Detecting mass<a class="anchor" aria-label="anchor" href="#detecting-mass"></a>
+<h3 id="detecting-masses">Detecting masses<a class="anchor" aria-label="anchor" href="#detecting-masses"></a>
 </h3>
 <p>Similarly to the MZmine pipeline, detecting masses refers to set a
-minimum signal intensity threshold that ions has to meet in order to be
-kept. Thus, ion with lower intensities are removed from the data frame.
-This function can also normalize the spectra ion intensity to percentage
-based on the base peak.</p>
+minimum signal intensity threshold that ions have to meet in order to be
+kept in the data. Thus, ion with lower intensities are removed from the
+data frame. This function can also normalize the spectra ion intensity
+to percentage based on the base peak.</p>
 <p>The three required arguments are:</p>
 <ul>
 <li>
@@ -290,7 +293,7 @@ based on the base peak.</p>
 <li>
 <strong>normalize:</strong> a boolean indicating if the MS2 spectra
 is normalized by he base peak before proceeding to filter out low
-intensity signal (normalize = TRUE), if normalize = FALSE the user has
+intensity signals (normalize = TRUE), if normalize = FALSE the user has
 to provide the minimum ion count.</li>
 <li>
 <strong>min_int</strong> an integer refereing to the minimum ion
