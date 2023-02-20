@@ -1,7 +1,8 @@
 Package: MS2extract
 Type: Package
-Title: Targeted MS2 spectra extraction
+Title: Targeted MS2 spectra extraction for compound library creation
 Version: 0.1.0
+Date: 2023-02-20
 Authors@R: c(
     person("Cristian", "Quiroz-Moreno",
            email = "cristianquirozd1997@gmail.com",
@@ -9,8 +10,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-9069-9147")) )
 Maintainer: Cristian Quiroz-Moreno <cristianquirozd1997@gmail.com>
 Description: This package has the objective to import mass spectrometry
-   data and extract the desired MS2 spectrum data and perform 
-   basics filters such as remove low intensity counts.
+   data and extract the desired MS2 spectrum data and remove background noise.
+   Subsequently, user can export the spectra in a msp file format as a resulting
+   compound database for further use in compound identification.
 License: MIT + file LICENSE
 LazyData: true
 RdMacros: Rdpack
