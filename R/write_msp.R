@@ -154,7 +154,7 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 
 #' Export MS2 spectra to a msp file
 #'
-#' Thins functions takes an extracted MS2 spectra and writes in a msp file
+#' Thins functions takes an extracted MS2 spectra and writes into a msp file
 #' format. This functions takes the extracted MS2 spectra and the metadata
 #' for the compound. It will draw information such as the precursor m/z
 #' as well as the retention time of the scan from the spec data frame and
@@ -182,8 +182,8 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #'  \item{IONMODE}{}
 #' }
 #'
-#' The follosing fields are also included in the resulting msp files, but are
-#' not requiered to be present in the metadata table. If the column does not
+#' The following fields are also included in the resulting msp files, but are
+#' not required to be present in the metadata table. If the column does not
 #' exist in the column or the value is missing, it will export a blank field.
 #'  \describe{
 #'   \item{INCHIKEY}{}

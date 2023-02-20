@@ -1,14 +1,13 @@
 #' Calculate the m/z difference for a given mass and ppm tolerance
 #'
-#' Given a theretical m/z value and ppm tolerance, computes the m/z
-#' deviation, or the observed m/z value
-#' for the given theoretical m/z value.
+#' Given a theoretical m/z value and ppm tolerance, computes the m/z
+#' deviation.
 #'
 #' @param mz a double, the theoretical m/z value.
 #' @param ppm a double, the ppm error tolerance.
 #'
 #' @return a double with the m/z value deviation from the given
-#' theorical m/z value
+#' theoretical m/z value
 #'
 #' @export
 #'

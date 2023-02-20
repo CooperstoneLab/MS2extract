@@ -1,7 +1,7 @@
 #' Extract scan info out of the list
 #'
 #' Given a list created by masstools::read_mzxml(), this function
-#' extract the scan info for all scans and put it in a tidy format
+#' extract the scan info for all scans in a tidy format.
 #'
 #' @param mzxml a list created by masstools::read_mzxml()
 #'
@@ -23,7 +23,7 @@ extract_scan_info <- function(mzxml) {
 #' Extract MS2 spectrum info out of the list
 #'
 #' Given a list created by masstools::read_mzxml(), this function
-#' extract the spectra per scan and put it in a tidy form
+#' extract the spectra per scan in a tidy format.
 #'
 #' @param scan_list a list created by masstools::read_mzxml()
 #'
@@ -50,7 +50,7 @@ assign_scan_id <- function(scan_list) {
 #' Check compound metadata
 #'
 #' This function evaluates the information provided by the user whether the
-#' right column were provided as well the right ionization modes. Then
+#' right column were provided as well the right ionization modes. Then,
 #' it calculates the neutral exact mass of the compound by the given
 #' formula and depending of the ionization mode, it adds or subtracts the mass
 #' of a proton to obtain the ionized mass of the compounds.
@@ -94,7 +94,7 @@ check_metadata <- function(met_metadata) {
 #' one scan. Subsequently, each element in this list (scans) contains two
 #' sublists that gathers the scan information and the spectra per scan.
 #'
-#' This function will import all the scans contained in the provided mzxml
+#' These function will import all the scans contained in the provided mzxml
 #' file, and users can use filters on the resulting data to extract the
 #' desired information.
 #'
@@ -107,7 +107,7 @@ check_metadata <- function(met_metadata) {
 #'  can be only Positive or Negative}
 #' }
 #'
-#' This two columns are mandatory since the formula is employed with Rdisop
+#' This two columns are mandatory since the formula is employed by the Rdisop
 #' package to calculate the exact mass and the ionization mode will dictate
 #' if the mass of the a proton is added or subtracted.
 #'

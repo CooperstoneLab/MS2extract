@@ -13,3 +13,4 @@
 ^zzz/pipeline_plots\.R$
 ^zzz/MS2_spectra\.jpeg$
 ^zzz/TIC_plot\.jpeg$
+^\./zzz/HexSticker\.R$
