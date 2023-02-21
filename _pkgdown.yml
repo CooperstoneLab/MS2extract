@@ -1,4 +1,22 @@
 url: https://cooperstonelab.github.io/MS2extract/
 template:
   bootstrap: 5
+  bootswatch: flatly
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right:  [search, github, twitter, linkedin]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/CooperstoneLab/MS2extract
+      aria-label: Github
+    twitter:
+      icon: fa-twitter
+      href: https://twitter.com/cristianquirozd
+      aria-label: Twitter
+    linkedin:
+      icon: fa-linkedin
+      href: https://www.linkedin.com/in/danielquirozmoreno/
+      aria-label: Linkedin
 
