@@ -1,5 +1,5 @@
 ---
-title: "Introduction to MS2extract package"
+title: "1 - Introduction to MS2extract package"
 author: "Cristian Quiroz-Moreno"
 date: "`r Sys.Date()`"
 output: 
@@ -9,7 +9,7 @@ output:
     number_sections: true
     fig_caption: true      
 vignette: >
-  %\VignetteIndexEntry{Introduction to MS2extract package}
+  %\VignetteIndexEntry{1 - Introduction to MS2extract package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

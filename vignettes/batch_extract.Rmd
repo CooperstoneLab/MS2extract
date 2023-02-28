@@ -1,5 +1,5 @@
 ---
-title: "Using MS2extract Batch Pipeline"
+title: "2 - Using MS2extract Batch Pipeline"
 author: "Cristian Quiroz-Moreno"
 date: "`r Sys.Date()`"
 output: 
@@ -9,7 +9,7 @@ output:
     number_sections: true
     fig_caption: true    
 vignette: >
-  %\VignetteIndexEntry{Using MS2extract Batch Pipeline}
+  %\VignetteIndexEntry{2 - Using MS2extract Batch Pipeline}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
