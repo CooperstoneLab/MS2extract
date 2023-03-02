@@ -20,3 +20,13 @@ navbar:
       href: https://www.linkedin.com/in/danielquirozmoreno/
       aria-label: Linkedin
 
+template:
+          includes:
+            in_header: |
+               <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={DQ090497}"#' ></s <script>
+                 window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag('js', new Date());
+                 gtag('config', '{DQ090497}');
+               </script>
