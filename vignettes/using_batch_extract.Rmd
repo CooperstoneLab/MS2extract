@@ -149,6 +149,21 @@ purrr::map(batch_mass_detected, dim)
 We see a decrease of number of ions, 38 and 4 ions for Procyanidin A2 and Rutin,
 respectively.
 
+
+### Detected MS2 Procyanidin A2
+
+```{r message=FALSE, warning=FALSE}
+plot_MS2spectra(batch_mass_detected, 'Procyanidin A2')
+```
+
+
+### Detected MS2 Rutin
+
+```{r message=FALSE, warning=FALSE}
+plot_MS2spectra(batch_mass_detected, 'Rutin')
+```
+
+
 ## write_msp
 
 In contrast with the previous batch functions, `write_msp()` is able to detect

@@ -91,7 +91,7 @@ plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
     # Checking compound is providing
     if(is.null(compound)) stop("Please, provide a compound name")
 
-    plot_MS2 <- plot_MS2base(spec = spec[compound], ppm = ppm)
+    plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm)
   }
 
   return(plot_MS2)
