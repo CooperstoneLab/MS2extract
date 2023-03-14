@@ -94,5 +94,7 @@ plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
     plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm)
   }
 
+  plot_MS2 <- plot_MS2 + ggplot2::labs(x = "m/z", y = "Intensity")
+
   return(plot_MS2)
 }
