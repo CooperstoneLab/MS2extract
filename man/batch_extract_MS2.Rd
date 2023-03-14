@@ -12,15 +12,15 @@ batch_extract_MS2(batch_spect, verbose = TRUE, out_list = TRUE)
 \item{verbose}{a boolean indicating if the MS2 TIC chromatogram is displayed}
 
 \item{out_list}{a boolean expressing if the output is a list containing
-the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
-the data frame with the MS2 spectra (verbose = FALSE).}
+the MS2 spectra plus the TIC chromatogram (out_list = TRUE), or only
+the data frame with the MS2 spectra (out_lists = FALSE).}
 }
 \description{
 This function takes multiple spectra imported with batch_import_mzxml()
 function. Then, it parses the argument to extract_MS2()
 function. Briefly, this function takes raw MS2 signal and looks
 for the most intense scan and extracts the MS2 spectra.
-Additionally, it plots the MS2 TIC chromatogram and color
+Additionally, it plots the MS2 TIC chromatogram and colors
 blue the precursor ion and red the ions with highest intensities.
 }
 \examples{

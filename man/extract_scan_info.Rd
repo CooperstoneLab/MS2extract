@@ -20,5 +20,5 @@ a data.frame containing
 }
 \description{
 Given a list created by masstools::read_mzxml(), this function
-extract the scan info for all scans and put it in a tidy format
+extract the scan info for all scans in a tidy format.
 }

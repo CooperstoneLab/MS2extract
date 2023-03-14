@@ -17,7 +17,7 @@ compare_spectra(spec1, spec2, output.list = T, ...)
 }
 \description{
 Wrap function to calculate cosine score between two spectra.
-This function select the \emph{mz} and \emph{intensity} columns before parsing
+This function select the \emph{m/z} and \emph{intensity} columns before parsing
 the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 }
 \examples{

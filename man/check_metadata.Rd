@@ -15,7 +15,7 @@ a double with the ionized mass of the compound.
 }
 \description{
 This function evaluates the information provided by the user whether the
-right column were provided as well the right ionization modes. Then
+right column were provided as well the right ionization modes. Then,
 it calculates the neutral exact mass of the compound by the given
 formula and depending of the ionization mode, it adds or subtracts the mass
 of a proton to obtain the ionized mass of the compounds.

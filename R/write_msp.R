@@ -287,7 +287,7 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #' # Writing msp file
 #'  write_msp(spec = batch_mass_detected,
 #'            spec_metadata = metadata_msp,
-#'            msp_name = "ProcA2_Rutin_batch.msp")
+#'            msp_name = "ProcA2_Rutin_batch")
 #' }
 
 

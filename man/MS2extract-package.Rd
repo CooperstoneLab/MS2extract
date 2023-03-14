@@ -4,9 +4,9 @@
 \name{MS2extract-package}
 \alias{MS2extract}
 \alias{MS2extract-package}
-\title{MS2extract: Targeted MS2 spectra extraction}
+\title{MS2extract: Targeted MS2 spectra extraction for compound library creation}
 \description{
-This package has the objective to import mass spectrometry data and extract the desired MS2 spectrum data and perform basics filters such as remove low intensity counts.
+This package has the objective to import mass spectrometry data and extract the desired MS2 spectrum data and remove background noise. Subsequently, user can export the spectra in a msp file format as a resulting compound database for further use in compound identification.
 }
 \seealso{
 Useful links:

@@ -13,12 +13,11 @@ get_ppm(mz, ppm = 10)
 }
 \value{
 a double with the m/z value deviation from the given
-theorical m/z value
+theoretical m/z value
 }
 \description{
-Given a theretical m/z value and ppm tolerance, computes the m/z
-deviation, or the observed m/z value
-for the given theoretical m/z value.
+Given a theoretical m/z value and ppm tolerance, computes the m/z
+deviation.
 }
 \examples{
 get_ppm(mz = 355.1023, ppm = 20)

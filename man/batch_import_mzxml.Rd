@@ -17,7 +17,7 @@ batch_import_mzxml(compounds_dt)
 }
 
 Additionally, you can provide the ROI by adding two columns
-in the previous data frame.
+in the data frame.
 
 \describe{
 \item{min_rt}{a double with the minumim retention time to keep}
@@ -29,7 +29,8 @@ a list with n elements where n is the number of compounds
 provided in the data.frame
 }
 \description{
-This function takes a data frame containing the basic information of
+This function imports multiple mzXML files into a named list.
+It takes a data frame containing the basic information of
 metabolites such as file name (including the file path), Chemical formula,
 Ionization mode, as required fields. Additionally, Region Of Interest (ROI)
 can be provided to narrow down the elution window.

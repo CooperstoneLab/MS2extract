@@ -20,5 +20,5 @@ a data.frame containing
 }
 \description{
 Given a list created by masstools::read_mzxml(), this function
-extract the spectra per scan and put it in a tidy form
+extract the spectra per scan in a tidy format.
 }

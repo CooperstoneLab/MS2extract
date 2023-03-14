@@ -17,7 +17,7 @@ Required:
 can be only Positive or Negative}
 }
 
-This two columns are mandatory since the formula is employed with Rdisop
+This two columns are mandatory since the formula is employed by the Rdisop
 package to calculate the exact mass and the ionization mode will dictate
 if the mass of the a proton is added or subtracted.
 
@@ -52,7 +52,7 @@ one scan. Subsequently, each element in this list (scans) contains two
 sublists that gathers the scan information and the spectra per scan.
 }
 \details{
-This function will import all the scans contained in the provided mzxml
+These function will import all the scans contained in the provided mzxml
 file, and users can use filters on the resulting data to extract the
 desired information.
 }

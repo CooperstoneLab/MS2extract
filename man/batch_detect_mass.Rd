@@ -24,7 +24,7 @@ function. Then, it parses the argument to detect_mass() function.
 \details{
 Briefly, similarly to MZmine, detect mass filters out low intensity signals
 that can be attributed to background noise. Here, you can opt to detect masses
-by the raw ion intensity or normalize the spectra by the peak base ion
+by the raw ion intensity or normalize the spectra by the base peak ion
 and detect masses by intensity percentage from 1\% (by default) to 100\%.
 }
 \examples{
