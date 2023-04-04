@@ -7,7 +7,12 @@ Authors@R: c(
     person("Cristian", "Quiroz-Moreno",
            email = "cristianquirozd1997@gmail.com",
            role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-9069-9147")) )
+           comment = c(ORCID = "0000-0002-9069-9147") ),
+    person("Jessica", "Cooperstone",
+           email = "cooperstone.1@osu.edu",
+           role = c("aut"),
+           comment = c(ORCID = "0000-0001-7920-0088") )
+           )
 Maintainer: Cristian Quiroz-Moreno <cristianquirozd1997@gmail.com>
 Description: This package has the objective to import mass spectrometry
    data and extract the desired MS2 spectrum data and remove background noise.
