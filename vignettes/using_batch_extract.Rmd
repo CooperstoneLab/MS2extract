@@ -1,6 +1,6 @@
 ---
 title: "2 - Using the MS2extract batch pipeline"
-author: "Cristian Quiroz-Moreno"
+author: "Cristian Quiroz-Moreno & Jessica Cooperstone"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
