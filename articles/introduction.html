@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="MS2extract">
-<title>1 - Introduction to MS2extract package • MS2extract</title>
+<title>1 - Introduction to MS2extract • MS2extract</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="1 - Introduction to MS2extract package">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="1 - Introduction to MS2extract">
 <meta property="og:description" content="MS2extract">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,8 +47,8 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/introduction.html">1 - Introduction to MS2extract package</a>
-    <a class="dropdown-item" href="../articles/using_batch_extract.html">2 - Using MS2extract Batch Pipeline</a>
+    <a class="dropdown-item" href="../articles/introduction.html">1 - Introduction to MS2extract</a>
+    <a class="dropdown-item" href="../articles/using_batch_extract.html">2 - Using the MS2extract batch pipeline</a>
   </div>
 </li>
 <li class="nav-item">
@@ -90,11 +90,11 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>1 - Introduction to MS2extract package</h1>
+      <img src="" class="logo" alt=""><h1>1 - Introduction to MS2extract</h1>
                         <h4 data-toc-skip class="author">Cristian
-Quiroz-Moreno</h4>
+Quiroz-Moreno &amp; Jessica Cooperstone</h4>
             
-            <h4 data-toc-skip class="date">2023-04-03</h4>
+            <h4 data-toc-skip class="date">2023-04-04</h4>
       
       
       <div class="d-none name"><code>introduction.Rmd</code></div>
@@ -106,46 +106,46 @@ Quiroz-Moreno</h4>
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>This vignette has the objective to introduce the
-<strong>MS2extract</strong> package. The main goal of this package is to
-provide a tool to create in-house MS2 compound libraries. Users can
-access a specific function help through the command help(<em>[‘function
+<strong>MS2extract</strong>. The main goal of this package is to provide
+a tool to create in-house MS2 compound libraries. Users can access a
+specific function help through the command help(<em>[‘function
 name’]</em>). It is worth to note that this package is aimed in the
 targeted extraction of MS/MS scans and it is not able to perform
 compound matching/annotation.</p>
 <p>A simplified workflow is presented in Figure 1. Briefly, mzXML files
 are imported in memory, then based on metadata provided by the user such
-as compound chemical formula, the theoretical m/z of the ionized
-compound is calculated. Then, product ion scans that are between a ppm
-tolerance are extracted. Furthermore, low intensity signals, or
-background noise, can be removed out of the spectra. Finally, users can
-export the extracted MS/MS spectra to a msp file format to be used as
-reference library for further compound identification and
-annotation.</p>
+as compound chemical formula, and the theoretical precursor
+<em>m</em>/<em>z</em> based on the chemical formula provided by the user
+in the metadata.Then, product ion scans are extracted with a given ppm
+tolerance. Next, low intensity signals, or background noise, can be
+removed from the spectra. Finally, users can export the extracted MS/MS
+spectra to a msp file format to be used as reference library for further
+compound identification and annotation.</p>
 <div class="figure" style="text-align: center">
-<img src="img/pipeline.png" alt="Figure 1. Overview of general data processing pipeline to extract MS/MS spectra using the MS2extract package" width="80%" height="80%"><p class="caption">
-Figure 1. Overview of general data processing pipeline to extract MS/MS
-spectra using the MS2extract package
+<img src="img/pipeline.png" alt="Figure 1. Overview of the processing pipeline to extract MS/MS spectra using the MS2extract package" width="80%" height="80%"><p class="caption">
+Figure 1. Overview of the processing pipeline to extract MS/MS spectra
+using the MS2extract package
 </p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="basic-workflow">Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
 </h2>
-<p>As previously mentioned, the workflow consist in four main steps:</p>
+<p>The MS2 workflow has four main steps:</p>
 <ul>
 <li>data import,</li>
 <li>extract MS/MS scans,</li>
-<li>detect mass, and</li>
+<li>detect masses, and</li>
 <li>export MS/MS library</li>
 </ul>
 <p>In this section, we will explain in a more detail the main steps, as
 well as provide information about the required and optional arguments
-that users may need to provide in order to properly use this
+that users may need to provide in order to effectively use this
 package.</p>
 <p>Additionally, this package also includes a set of
-<code>batch_*()</code> functions that allows to process multiple mzxml
+<code>batch_*()</code> functions that allows to process multiple .mzXML
 files at once. However, more metadata is required to run this automated
-pipeline and the use of this <code>batch_*()</code> functions will be
+pipeline and the use of this <code>batch_*()</code> functions will is
 described in the <a href="https://cooperstonelab.github.io/MS2extract/articles/batch_extract.html">Using
 MS2extract Batch Pipeline</a>.</p>
 <div class="section level3">
@@ -153,22 +153,22 @@ MS2extract Batch Pipeline</a>.</p>
 </h3>
 <p>This section is focused on describing how MS2extract package imports
 MS/MS data.</p>
-<p>The main import fuction relies on the newly implemented <a href="https://metid.tidymass.org" class="external-link">metID</a> R package. We adapted the
-import function in order to read mass spectrometry data from mzXML
-files. The new adaptation consists in importing scans data in a list (S3
-object) rather than into a S4 object, facilitating the downstream tidy
-analysis of this object.</p>
+<p>The main import function relies on R package <a href="https://metid.tidymass.org" class="external-link">metID</a>. We adapted the import
+function in order to read mass spectrometry data from mzXML files. The
+new adaptation consists in importing scans data in a list (S3 object)
+rather than into a S4 object, facilitating the downstream tidy analysis
+of this object.</p>
 <blockquote>
 <p>This function execute a back-end calculation of theoretical ionized
-mass of the compound in order to extract the precursor ions that match
-that mass with a given ppm.</p>
+<em>m</em>/<em>z</em> of the compound in order to extract the precursor
+ions that match that mass with a given ppm.</p>
 </blockquote>
 <p>The arguments of the <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code> functions are
 four:</p>
 <ul>
-<li>file</li>
-<li>met_metadata</li>
-<li>ppm</li>
+<li><strong>file</strong></li>
+<li><strong>met_metadata</strong></li>
+<li><strong>ppm</strong></li>
 <li>…</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -189,14 +189,14 @@ four:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $...</span></span></code></pre></div>
 <div class="section level4">
-<h4 id="file">File<a class="anchor" aria-label="anchor" href="#file"></a>
+<h4 id="file">file<a class="anchor" aria-label="anchor" href="#file"></a>
 </h4>
-<p>File consists in the file name of your mzXML file that contains MS/MS
+<p>File should contain the name of your .mzXML file that contains MS/MS
 data of authentic standards or reference material. Here, we provide an
-example file of Procyanidin A2 collected in Negative ionization mode
+example file of procyanidin A2 collected in negative ionization mode
 with a collision energy of 20 eV.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Importing the Spectrum of Procyanidin A2 in negative ionization mode</span></span>
+<code class="sourceCode R"><span><span class="co"># Importing  Procyanidin A2 MS/MS spectra in negative ionization mode</span></span>
 <span><span class="co"># and 20 eV as the collision energy</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
 <span>                        <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
@@ -208,20 +208,20 @@ with a collision energy of 20 eV.</p>
 <div class="section level4">
 <h4 id="met_metadata">met_metadata<a class="anchor" aria-label="anchor" href="#met_metadata"></a>
 </h4>
-<p>This argument refers to the metadata that user need to provide in
-order to properly import scans that are related to the compound of
-interest.</p>
+<p>This argument refers to the compound metadata that user need to
+provide in order to properly import scans that are related to the
+compound of interest.</p>
 <p>The <code>met_metadata</code> is a data frame that has required and
 optional columns. The required columns are employed to calculate the
-theoretical ionized m/z of a given formula in a given ionization mode.
-In the optional columns, we have the option to provide the Region Of
-Interest (ROI) where the compound elutes in order to only keep this
-retention time window.</p>
+theoretical ionized <em>m</em>/<em>z</em> for a given formula and
+ionization mode. In the optional columns, we have the option to provide
+a chromatographic Region Of Interest (ROI) specifying where the the
+compound elutes in order to only keep this rentention time window.</p>
 <p>The required columns are:</p>
 <ul>
 <li>
-<strong>Formula:</strong> A character specifying the metabolite
-formula</li>
+<strong>Formula:</strong> A character string specifying the
+metabolite formula</li>
 <li>
 <strong>Ionization_mode:</strong> The ionization mode employed in
 data collection. It can be either <em>Positive</em> or
@@ -232,10 +232,10 @@ data collection. It can be either <em>Positive</em> or
 <ul>
 <li>
 <strong>min_rt:</strong> a double with the minimum retention time to
-keep</li>
+keep (in seconds)</li>
 <li>
 <strong>max_rt:</strong> a double with the minimum retention time to
-keep</li>
+keep (in seconds)</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Procyanidin A2 metadata</span></span>
@@ -248,11 +248,13 @@ keep</li>
 <div class="section level4">
 <h4 id="ppm">ppm<a class="anchor" aria-label="anchor" href="#ppm"></a>
 </h4>
-<p>ppm refers to the maximum m/z deviation from the theoretical mass. By
-default, 10 ppm is used.</p>
+<p>ppm refers to the maximum m/z deviation from the theoretical mass. A
+ppm of 10 units will mean that the total allows <em>m</em>/<em>z</em>
+window in 20 ppm since. By default, 10 ppm is used.</p>
 </div>
 <div class="section level4">
-<h4 id="import_mzxml">import_mzxml()<a class="anchor" aria-label="anchor" href="#import_mzxml"></a>
+<h4 id="import_mzxml">
+<code>import_mzxml()</code><a class="anchor" aria-label="anchor" href="#import_mzxml"></a>
 </h4>
 <p>With all arguments explained, we can use the
 <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code> function.</p>
@@ -270,65 +272,72 @@ default, 10 ppm is used.</p>
 <div class="section level3">
 <h3 id="extracting-msms-spectra">Extracting MS/MS spectra<a class="anchor" aria-label="anchor" href="#extracting-msms-spectra"></a>
 </h3>
-<p>Now that we have the data imported, we con proceed to extract the
-<strong>most intense MS/MS scan</strong> between all scans.</p>
-<p>This function computes the MS/MS TIC by summing up all intensities of
-the MS/MS spectra and selects the scans with the highest intensity.</p>
-<p>This function takes three arguments</p>
+<p>Now that we have the data imported, we can proceed to extract the
+<strong>most intense MS/MS scan</strong> of all scans.</p>
+<p>This function computes the MS/MS Total Ion Chromatogram (TIC) by
+summing up all intensities of the MS/MS spectra and selects the scan
+with the highest intensity.</p>
+<p>This function takes three arguments:</p>
 <ul>
 <li>
 <strong>spec:</strong> the imported MS/MS spectra</li>
 <li>
-<strong>verbose:</strong> a boolean, if verbose = TRUE, the MS/MS
-TIC and spectra is printed, if verbose = FALSE, plots are not
-displayed</li>
+<strong>verbose:</strong> a boolean, if <code>verbose = TRUE</code>,
+the MS/MS TIC and spectra is printed, if <code>verbose = FALSE</code>,
+plots are not displayed</li>
 <li>
-<strong>out_list:</strong> a boolean, if out_list = TRUE, the
-extracted MS/MS spectra table and plots are returned as list, otherwise
-only the MS/MS spectra is returned as data frame.</li>
+<strong>out_list:</strong> a boolean, if
+<code>out_list = TRUE</code>, the extracted MS/MS spectra table and
+plots are returned as list, otherwise only the MS/MS spectra is returned
+as data frame.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: `position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span></span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-6-1.png" width="100%" height="100%"></p>
-<p>Here, we can see in the top plot MS/MS tic that the scan colored in
-red is the most intense and the MS/MS spectra of that scan will be
-exported. At the bottom plot, we can see the Procyanidin A2 MS/MS
-spectra at rt: 170.667. The maximum m/z axis value is &gt; 1500 m/z but
-not significant ions are displayed. This can be explained due to low
-intensities are kept in the MS/MS spectra.</p>
+<p>Here, we can see in the top plot of the MS2 TIC that the scan colored
+in red is the most intense and the one for which the MS/MS spectra will
+be exported (at 170.667 s). In the bottom plot, we can see the
+procyanidin A2 MS/MS spectra at rt: 170.667. The maximum m/z axis value
+is &gt; 1500 m/z but not significant ions are displayed. This can be
+explained due to low intensities are kept in the MS/MS spectra.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span><span class="op">$</span><span class="va">mz</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  100.0852 1699.0981</span></span></code></pre></div>
-<p>The range of the MS/MZ m/z value is from 100 m/z to 1699 m/z, but
-intensities are too slow to be seen in the plot.</p>
+<p>The range of the MS/MS <em>m</em>/<em>z</em> values are from 100 to
+1699 <em>m</em>/<em>z</em>, but intensities are too low to be seen in
+the plot.</p>
 </div>
 <div class="section level3">
 <h3 id="detecting-masses">Detecting masses<a class="anchor" aria-label="anchor" href="#detecting-masses"></a>
 </h3>
-<p>Similarly to the MZmine pipeline, detecting masses refers to set a
-minimum signal intensity threshold that ions have to meet in order to be
-kept in the data. Thus, ion with lower intensities are removed from the
-data frame. This function can also normalize the spectra ion intensity
-to percentage based on the base peak.</p>
+<p>Similarly to the <a href="http://mzmine.github.io/" class="external-link">MZmine
+pipeline</a>, detecting masses refers to set a minimum signal intensity
+threshold value that product ions have to meet in order to be kept in
+the data. This function can also normalize the spectra ion intensity to
+percentage based on the base peak. This is a filtering step that is
+based on percentage of the base peak (most intense ion).</p>
 <p>The three required arguments are:</p>
 <ul>
 <li>
 <strong>spec:</strong> a data frame containing the MS2 spectra.</li>
 <li>
 <strong>normalize:</strong> a boolean indicating if the MS2 spectra
-is normalized by he base peak before proceeding to filter out low
+is normalized by the base peak before proceeding to filter out low
 intensity signals (normalize = TRUE), if normalize = FALSE the user has
 to provide the minimum ion count.</li>
 <li>
-<strong>min_int</strong> an integer refereing to the minimum ion
-intensity</li>
+<strong>min_int:</strong> an integer referring to the minimum ion
+intensity. The value of <em>min_int</em> has to be in line if user
+decides to normalize the spectra or not. If the spectra is normalized,
+the <em>min_intensity</em> value is in percentage, otherwise the
+<em>min_intensity</em> value is expressed in ion count units.</li>
 </ul>
 <p>By default, the normalization is set to <code>TRUE</code> and the
 minimum intensity is set to 1% to remove background noise.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_detected</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p>We can see now the range of m/z values and the maximium value is
+<p>We can see now the range of m/z values and the maximum value is
 576.1221 m/z.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">$</span><span class="va">mz</span><span class="op">)</span></span>
@@ -337,11 +346,12 @@ minimum intensity is set to 1% to remove background noise.</p>
 <div class="section level3">
 <h3 id="msms-spectra-plot">MS/MS spectra plot<a class="anchor" aria-label="anchor" href="#msms-spectra-plot"></a>
 </h3>
-<p>We can proceed to plot the clean MS/MS spectra with
+<p>We can proceed to plot the filtered MS/MS spectra with
 <code><a href="../reference/plot_MS2spectra.html">plot_MS2spectra()</a></code> function. This is a ggplot2 based
 function; the blue diamond refers to the precursor ion.</p>
 <p>If we take a look to the previous MS/MS plot, there is less
-background noise in this MS/MS spectra.</p>
+background noise in this MS/MS spectra because the low intensity ions
+have been removed.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: `position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span></span></code></pre></div>
@@ -351,7 +361,7 @@ background noise in this MS/MS spectra.</p>
 <h3 id="exporting-msms-spectra">Exporting MS/MS spectra<a class="anchor" aria-label="anchor" href="#exporting-msms-spectra"></a>
 </h3>
 <p>Finally after extracting the MS/MS spectra and removing background
-noise, we can proceed to export the MS2 in a msp format.</p>
+noise, we can proceed to export the MS2 in a .msp format.</p>
 <p>For this task, we need extra information about the compound, such as
 SMILES, COLLISIONENERGY, etc.</p>
 <p>An example of this table can be found at:</p>
@@ -382,7 +392,7 @@ is included in the extracted MS/MS spectra.</p>
 spectra</li>
 <li>
 <strong>spec_metadata:</strong> a data frame containing the values
-to be including in the resulting msp file</li>
+to be including in the resulting .msp file</li>
 <li>
 <strong>msp_name:</strong> a string with the name of the msp file
 not containing (.msp) extension</li>
@@ -501,7 +511,7 @@ content:</p>
 <span><span class="co">#&gt; [79] Rdisop_1.58.0         pcaMethods_1.90.0     BiocManager_1.30.20  </span></span>
 <span><span class="co">#&gt; [82] vctrs_0.6.1           foreach_1.5.2         gtable_0.3.3         </span></span>
 <span><span class="co">#&gt; [85] purrr_1.0.1           tidyr_1.3.0           clue_0.3-64          </span></span>
-<span><span class="co">#&gt; [88] cachem_1.0.7          ggplot2_3.4.1         xfun_0.38            </span></span>
+<span><span class="co">#&gt; [88] cachem_1.0.7          ggplot2_3.4.2         xfun_0.38            </span></span>
 <span><span class="co">#&gt; [91] broom_1.0.4           rstatix_0.7.2         ragg_1.2.5           </span></span>
 <span><span class="co">#&gt; [94] ncdf4_1.21            tibble_3.2.1          iterators_1.0.14     </span></span>
 <span><span class="co">#&gt; [97] memoise_2.0.1         IRanges_2.32.0        cluster_2.1.4</span></span></code></pre></div>
@@ -514,7 +524,7 @@ content:</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Cristian Quiroz-Moreno.</p>
+<p>Developed by Cristian Quiroz-Moreno, Jessica Cooperstone.</p>
 </div>
 
 <div class="pkgdown-footer-right">
