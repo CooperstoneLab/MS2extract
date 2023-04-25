@@ -1,12 +1,13 @@
 #' Detect masses for multiple spectra
 #'
-#' This function takes multiple spectra imported with batch_import_mzxml()
-#' function. Then, it parses the argument to detect_mass() function.
-#'
-#' Briefly, similarly to MZmine, detect mass filters out low intensity signals
-#' that can be attributed to background noise. Here, you can opt to detect masses
-#' by the raw ion intensity or normalize the spectra by the base peak ion
-#' and detect masses by intensity percentage from 1% (by default) to 100%.
+#' This function takes multiple spectra imported with the [batch_import_mzxml()]
+#' function. Then, it parses the argument to [detect_mass()] function.
+#' Briefly, similarly to  the mass detection step in the MZmine workflow,
+#' detect mass filters out low intensity signals. Here, you can opt to detect masses
+#' by the raw ion intensity (ion counts), or normalize the spectra
+#'  to the most abundant ion, and detect as an intensity percentage of that ion.
+#' The default is set to include all ions that are at least 1% of the most
+#' abundant ion.
 #'
 #' @param batch_spect a list of MS2 scans imported with batch_import_mzxml()
 #'  function.

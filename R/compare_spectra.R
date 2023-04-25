@@ -1,12 +1,12 @@
 #' Compare two spectra based on cosine score
 #'
-#' Wrap function to calculate cosine score between two spectra.
-#' This function select the *m/z* and *intensity* columns before parsing
+#' A wrapper function to calculate the cosine similarity score between two spectra.
+#' This function selects the *m*/*z* and *intensity* columns before parsing
 #' the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 #'
-#' @param spec1 a data frame containing the spectra info.
-#' @param spec2 a data frame containing the spectra info.
-#' @param output.list a boolean if the the output is returned as a list
+#' @param spec1 a data frame containing spectra info.
+#' @param spec2 a data frame containing spectra info.
+#' @param output.list a boolean, if  TRUE the output is returned as a list
 #' @param ... arguments parsed to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 #' @export
 #' @examples

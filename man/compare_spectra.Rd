@@ -7,17 +7,17 @@
 compare_spectra(spec1, spec2, output.list = T, ...)
 }
 \arguments{
-\item{spec1}{a data frame containing the spectra info.}
+\item{spec1}{a data frame containing spectra info.}
 
-\item{spec2}{a data frame containing the spectra info.}
+\item{spec2}{a data frame containing spectra info.}
 
-\item{output.list}{a boolean if the the output is returned as a list}
+\item{output.list}{a boolean, if  TRUE the output is returned as a list}
 
 \item{...}{arguments parsed to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.}
 }
 \description{
-Wrap function to calculate cosine score between two spectra.
-This function select the \emph{m/z} and \emph{intensity} columns before parsing
+A wrapper function to calculate the cosine similarity score between two spectra.
+This function selects the \emph{m}/\emph{z} and \emph{intensity} columns before parsing
 the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 }
 \examples{

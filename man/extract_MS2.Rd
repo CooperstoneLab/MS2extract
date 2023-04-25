@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_MS2.R
 \name{extract_MS2}
 \alias{extract_MS2}
-\title{Extract the most MS2 intense scan}
+\title{Extract the most intense MS2 scan}
 \usage{
 extract_MS2(spec, verbose = TRUE, out_list = FALSE)
 }
@@ -16,9 +16,11 @@ the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
 the data frame with the MS2 spectra (verbose = FALSE).}
 }
 \description{
-This function takes raw MS2 signal and looks for the most intense scan
-and proceed to extracts the MS2 spectra. Additionally, it plots the MS2 TIC
-chromatogram and color in red the most intense scan.
+This function takes a series of MS2 spectra, selects the
+most intense scan and extracts the MS2 spectra from it.
+Additionally, it plots the MS2 TIC chromatogram and colors
+the most intense scan with red circle, and the precursor ion with a blue
+diamond
 }
 \examples{
 # Importing the Spectrum of Procyanidin A2 in negative ionzation mode

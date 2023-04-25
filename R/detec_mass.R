@@ -1,9 +1,11 @@
 #' Detect masses in a MS2 spectra
 #'
-#' Similarly to MZmine, detect mass filters out low intensity signals that can
-#' be attributed to background noise. Here, you can opt to detect masses
-#' by the raw ion intensity or normalize and detect masses by intensity
-#' percentage from 1% (by default) to 100%.
+#' Similarly to  the mass detection step in the MZmine workflow,
+#' detect mass filters out low intensity signals. Here, you can opt to detect masses
+#' by the raw ion intensity (ion counts), or normalize the spectra
+#'  to the most abundant ion, and detect as an intensity percentage of that ion.
+#' The default is set to include all ions that are at least 1% of the most
+#' abundant ion.
 #'
 #' @param spec a data frame containing the MS2 spectra.
 #' @param normalize a boolean indicating if the MS2 spectra is normalized by

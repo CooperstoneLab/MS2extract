@@ -7,7 +7,7 @@
 #'
 #' @return a data.frame containing
 #'  \describe{
-#'   \item{name}{the scan name (m/z and rt)}
+#'   \item{name}{the scan name (combined *m*/*z* and rt)}
 #'   \item{mz}{the precursor m/z ion}
 #'   \item{rt}{retention time}
 #'   \item{file name}{file name}
@@ -22,14 +22,14 @@ extract_scan_info <- function(mzxml) {
 
 #' Extract MS2 spectrum info out of the list
 #'
-#' Given a list created by masstools::read_mzxml(), this function
-#' extract the spectra per scan in a tidy format.
+#' This function extracts spectra per scan in a tidy format given a list
+#' created by masstools::read_mzxml()
 #'
 #' @param scan_list a list created by masstools::read_mzxml()
 #'
 #' @return a data.frame containing
 #'  \describe{
-#'   \item{mz}{ion m/z value}
+#'   \item{mz}{ion *m*/*z* value}
 #'   \item{intensity}{ion intensity count}
 #'   \item{precursor_mz}{precursor ion}
 #'   \item{rt}{retention time}
@@ -50,10 +50,9 @@ assign_scan_id <- function(scan_list) {
 #' Check compound metadata
 #'
 #' This function evaluates the information provided by the user whether the
-#' right column were provided as well the right ionization modes. Then,
-#' it calculates the neutral exact mass of the compound by the given
-#' formula and depending of the ionization mode, it adds or subtracts the mass
-#' of a proton to obtain the ionized mass of the compounds.
+#' correct column  and ionization modes were provided. Then, it calculates
+#' the neutral exact mass of the compound using the given formula and
+#' ionization mode to obtain a charged mass.
 #'
 #' @param met_metadata a data frame with at least the Formula and the
 #' Ionization_mode

@@ -1,8 +1,9 @@
-#' Calculate the Total Ion Chromatogram (TIC)
+#' Calculate the total ion chromatogram (TIC)
 #'
-#' This function compute the MS2 TIC of a spectra grouping by retention time.
+#' This function computes the MS2 TIC of a given precursor ion grouping by
+#' retention time.
 #'
-#' @param spec a data fram with two columns, mz and intensity
+#' @param spec a data frame with two columns: mz and intensity
 get_TIC <- function(spec) {
   spec_tic <- dplyr::group_by(spec, .data$rt) |>
     dplyr::summarise(TIC = sum(.data$intensity) )
@@ -39,11 +40,13 @@ plot_tic <- function(TIC) {
 }
 
 
-#' Extract the most MS2 intense scan
+#' Extract the most intense MS2 scan
 #'
-#' This function takes raw MS2 signal and looks for the most intense scan
-#' and proceed to extracts the MS2 spectra. Additionally, it plots the MS2 TIC
-#' chromatogram and color in red the most intense scan.
+#' This function takes a series of MS2 spectra, selects the
+#'  most intense scan and extracts the MS2 spectra from it.
+#' Additionally, it plots the MS2 TIC chromatogram and colors
+#' the most intense scan with red circle, and the precursor ion with a blue
+#' diamond
 #'
 #' @param spec a data frame with the MS2 spectra
 #' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed

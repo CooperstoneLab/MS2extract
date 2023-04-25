@@ -2,13 +2,14 @@
 % Please edit documentation in R/extract_MS2.R
 \name{get_TIC}
 \alias{get_TIC}
-\title{Calculate the Total Ion Chromatogram (TIC)}
+\title{Calculate the total ion chromatogram (TIC)}
 \usage{
 get_TIC(spec)
 }
 \arguments{
-\item{spec}{a data fram with two columns, mz and intensity}
+\item{spec}{a data frame with two columns: mz and intensity}
 }
 \description{
-This function compute the MS2 TIC of a spectra grouping by retention time.
+This function computes the MS2 TIC of a given precursor ion grouping by
+retention time.
 }

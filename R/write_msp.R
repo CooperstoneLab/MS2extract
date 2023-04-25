@@ -2,8 +2,7 @@
 #'
 #' This internal functions evaluate non-critical msp fields to be included in the
 #' msp file. This function will create an empty field if any of the
-#' evaluated fields are either NA value in the metadata table or the
-#' column is missing.
+#' evaluated fields are either listed as NA or missing in the metadata table.
 #'
 #' The evaluated additional msp fields are:
 #'
@@ -14,7 +13,7 @@
 #'   \item{COLLISIONENERGY}{}
 #'   \item{INSTRUMENTTYPE}{}
 #' }
-#' @param msp_attribute a string with the name of the msp field
+#' @param msp_attribute a string with the name of an msp field
 #' @param spec_metadata a data frame containing the msp field values
 #' @param msp_backbone the constructed msp string to export
 add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {

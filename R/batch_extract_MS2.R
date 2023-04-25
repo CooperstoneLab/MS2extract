@@ -1,11 +1,12 @@
 #' Extract the most MS2 intense scan from batch spectra
 #'
-#' This function takes multiple spectra imported with batch_import_mzxml()
-#' function. Then, it parses the argument to extract_MS2()
-#' function. Briefly, this function takes raw MS2 signal and looks
-#' for the most intense scan and extracts the MS2 spectra.
+#' This function takes multiple spectra imported with the batch_import_mzxml()
+#' function. Then, it passes the spectra to a version of extract_MS2().
+#'  Briefly, this function takes a series of MS2 spectra, selects the
+#'  most intense scan and extracts the MS2 spectra from it.
 #' Additionally, it plots the MS2 TIC chromatogram and colors
-#' blue the precursor ion and red the ions with highest intensities.
+#' the most intense scan with red circle, and the precursor ion with a blue
+#' diamond
 #'
 #' @param batch_spect a list created by batch_import_mzxml()
 #' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed

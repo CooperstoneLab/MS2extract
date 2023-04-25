@@ -7,7 +7,7 @@
 add_attributes(msp_attribute, spec_metadata, msp_backbone)
 }
 \arguments{
-\item{msp_attribute}{a string with the name of the msp field}
+\item{msp_attribute}{a string with the name of an msp field}
 
 \item{spec_metadata}{a data frame containing the msp field values}
 
@@ -16,8 +16,7 @@ add_attributes(msp_attribute, spec_metadata, msp_backbone)
 \description{
 This internal functions evaluate non-critical msp fields to be included in the
 msp file. This function will create an empty field if any of the
-evaluated fields are either NA value in the metadata table or the
-column is missing.
+evaluated fields are either listed as NA or missing in the metadata table.
 }
 \details{
 The evaluated additional msp fields are:

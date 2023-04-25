@@ -12,13 +12,13 @@ assign_scan_id(scan_list)
 \value{
 a data.frame containing
 \describe{
-\item{mz}{ion m/z value}
+\item{mz}{ion \emph{m}/\emph{z} value}
 \item{intensity}{ion intensity count}
 \item{precursor_mz}{precursor ion}
 \item{rt}{retention time}
 }
 }
 \description{
-Given a list created by masstools::read_mzxml(), this function
-extract the spectra per scan in a tidy format.
+This function extracts spectra per scan in a tidy format given a list
+created by masstools::read_mzxml()
 }

@@ -12,7 +12,7 @@ extract_scan_info(mzxml)
 \value{
 a data.frame containing
 \describe{
-\item{name}{the scan name (m/z and rt)}
+\item{name}{the scan name (combined \emph{m}/\emph{z} and rt)}
 \item{mz}{the precursor m/z ion}
 \item{rt}{retention time}
 \item{file name}{file name}

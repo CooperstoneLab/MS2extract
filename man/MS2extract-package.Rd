@@ -4,7 +4,7 @@
 \name{MS2extract-package}
 \alias{MS2extract}
 \alias{MS2extract-package}
-\title{MS2extract: Targeted MS2 spectra extraction for compound library creation}
+\title{MS2extract: Targeted MS2 spectra extraction for in-house compound library creation}
 \description{
 This package has the objective to import mass spectrometry data and extract the desired MS2 spectrum data and remove background noise. Subsequently, user can export the spectra in a msp file format as a resulting compound database for further use in compound identification.
 }
@@ -17,6 +17,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Cristian Quiroz-Moreno \email{cristianquirozd1997@gmail.com} (\href{https://orcid.org/0000-0002-9069-9147}{ORCID})
+
+Authors:
+\itemize{
+  \item Jessica Cooperstone \email{cooperstone.1@osu.edu} (\href{https://orcid.org/0000-0001-7920-0088}{ORCID})
+}
 
 }
 \keyword{internal}
