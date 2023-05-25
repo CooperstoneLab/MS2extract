@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_msp.R
 \name{write_msp}
 \alias{write_msp}
-\title{Export MS2 spectra to a msp file}
+\title{Export MS2 spectra to a .msp file}
 \usage{
 write_msp(spec = NULL, spec_metadata = NULL, msp_name = NULL)
 }
@@ -18,8 +18,8 @@ colums are required:
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting msp file. The following column are required as vital
-information for the msp output.
+in the resulting .msp file. The following columns are required as vital
+information for the .msp output.
 
 \describe{
 \item{NAME}{}
@@ -29,9 +29,9 @@ information for the msp output.
 \item{IONMODE}{}
 }
 
-The following fields are also included in the resulting msp files, but are
+The following fields can be included in the resulting .msp file, but are
 not required to be present in the metadata table. If the column does not
-exist in the column or the value is missing, it will export a blank field.
+exist in the column or the value is missing, a blank field will be exported
 \describe{
 \item{INCHIKEY}{}
 \item{SMILES}{}
@@ -40,14 +40,12 @@ exist in the column or the value is missing, it will export a blank field.
 \item{INSTRUMENTTYPE}{}
 }}
 
-\item{msp_name}{a string with the name of the msp file not containing (.msp)}
+\item{msp_name}{a string with the name of the .msp file excluding the file extension}
 }
 \description{
-Thins functions takes an extracted MS2 spectra and writes into a msp file
-format. This functions takes the extracted MS2 spectra and the metadata
-for the compound. It will draw information such as the precursor m/z
-as well as the retention time of the scan from the spec data frame and
-the rest of information from the provided metadata.
+This functions takes an extracted MS2 spectra and writes it to a .msp
+file format. This function incorporates the extracted MS2 spectra along
+with metadata for the compound.
 }
 \examples{
 

@@ -41,9 +41,7 @@ exist in the column or the value is missing, it will export a blank field.
 }}
 }
 \description{
-Thins functions takes an extracted MS2 spectra and writes in a msp file
-format. This functions takes the extracted MS2 spectra and the metadata
-for the compound. It will draw information such as the precursor m/z
-as well as the retention time of the scan from the spec data frame and
-the rest of information from the provided metadata.
+This functions takes an extracted MS2 spectra and writes it to a .msp
+file format. This function incorporates the extracted MS2 spectra along
+with metadata for the compound.
 }

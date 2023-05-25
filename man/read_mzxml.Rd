@@ -29,6 +29,5 @@ ProcA2_file <- system.file("extdata",
 ProcA2_raw <- read_mzxml(ProcA2_file)
 }
 \author{
-Xiaotao Shen inspired from the masstools package
-\email{shenxt1990@outlook.com}
+Xiaotao Shen inspired from the masstools package https://www.tidymass.org
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_msp.R
 \name{add_attributes}
 \alias{add_attributes}
-\title{Evaluate additional msp fields}
+\title{Evaluate additional .msp fields}
 \usage{
 add_attributes(msp_attribute, spec_metadata, msp_backbone)
 }

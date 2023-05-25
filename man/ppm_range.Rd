@@ -2,18 +2,18 @@
 % Please edit documentation in R/get_ppm.R
 \name{ppm_range}
 \alias{ppm_range}
-\title{Calculate the m/z upper and lower values limits given a ppm tolerance}
+\title{Calculate the \emph{m}/\emph{z} upper and lower values limits given a ppm tolerance}
 \usage{
 ppm_range(mz, ppm)
 }
 \arguments{
 \item{mz}{a double, the theoretical m/z value.}
 
-\item{ppm}{a double, the ppm error tolerance}
+\item{ppm}{a double, the mass error in ppm}
 }
 \value{
-a vector of two elements containing the upper and lower
-m/z values with the specific ppm error tolerance.
+a vector of two elements containing the upper and lower m/z values
+given the provided mass error tolerance.
 }
 \description{
 Given a theoretical m/z value and a ppm error tolerance,

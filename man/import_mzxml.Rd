@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_mzxml.R
 \name{import_mzxml}
 \alias{import_mzxml}
-\title{Imports mzXML files with MS2 scans}
+\title{Imports mzXML/mzML files with MS2 scans}
 \usage{
 import_mzxml(file = NULL, met_metadata = NULL, ppm = 10, ...)
 }
@@ -12,27 +12,31 @@ import_mzxml(file = NULL, met_metadata = NULL, ppm = 10, ...)
 \item{met_metadata}{a data frame with the following columns.
 Required:
 \describe{
-\item{Formula}{A character specifying the metabolite formula}
+\item{Formula}{A character string specifying the metabolite formula}
 \item{Ionization_mode}{The ionization mode employed in data collection. It
 can be only Positive or Negative}
 }
 
-This two columns are mandatory since the formula is employed by the Rdisop
-package to calculate the exact mass and the ionization mode will dictate
-if the mass of the a proton is added or subtracted.
+These two columns are mandatory since the formula is used by the Rdisop
+package to calculate the exact mass and the ionization mode
+determine whether the the mass of the a proton is added or subtracted to
+calculate the charged mass.
 
 Additionally, you can provide the minimum and maximum retention times
-to look for the peak by including the following columns:
+to look for a peak only within a given area by including the folowing
+columns.
 
 \describe{
 \item{min_rt}{a double with the minimum retention time to keep}
 \item{max_rt}{a double with the minimum retention time to keep}
+
 }
 
-This two columns are highly suggested to be included to narrow down the search
-window.}
+These two columns are highly recommended to be included to narrow down
+the search window and ensure the peak you want is selected. This is
+especially important if you have multiple peaks in an EIC.}
 
-\item{ppm}{the value of the ppm error. 10 ppm is the default value.}
+\item{ppm}{the mass error in ppm. 10 ppm is the default value.}
 
 \item{...}{extra arguments passed to  masstools::read_mzxml()}
 }
@@ -46,15 +50,11 @@ data.frame in a tidy format for MS2 spectra in a tidy format.
 }
 }
 \description{
-This function imports MS2 data using the masstools::read_mzxml()
-function to import the data as a list. Each element in a list \emph{list} represents
-one scan. Subsequently, each element in this list (scans) contains two
-sublists that gathers the scan information and the spectra per scan.
-}
-\details{
-These function will import all the scans contained in the provided mzxml
-file, and users can use filters on the resulting data to extract the
-desired information.
+This function reads .mzXML and .mzML files containing MS2
+data using \code{masstools::read_mzxml()} and import the data as a list.
+Each element in a list list represents one scan. Each element in
+the list of scans contains two sublists that contain 1) the
+scan information and 2) the spectra per scan.
 }
 \examples{
 

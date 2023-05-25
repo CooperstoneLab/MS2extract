@@ -10,18 +10,18 @@ plot_MS2spectra(spec, compound = NULL, ppm = 10)
 \item{spec}{a data frame containing the MS2 spectra of the most intense
 scan}
 
-\item{compound}{a character, if user is using batch_* functions, user need
-to provide a character with the given name of the compound stated in the
-batch_import table.}
+\item{compound}{a character, if user is using batch_* functions, they need
+to provide a character with the identical “Name” of the compound provided
+in the \code{batch_import_mzxml()} table.}
 
-\item{ppm}{ppm error tolerance to check if the mm/z precursor is being
+\item{ppm}{mass error in ppm tolerance to check if the mm/z precursor is being
 detected or not in the MS2 spectra.}
 }
 \value{
-a ggplot plot. Filled blue diamond means that the precursor ion
-was detected in the MS2 spectra. If the precursor ion was not detected in
-the MS2 spectra, the diamond is not filled.
+a \code{ggplot} plot of the MS2 spectra. A filled blue diamond is
+placed above the precursor ion. If the precursor ion was not
+detected in the MS2 spectra, the blue diamond is not filled.
 }
 \description{
-This functions plot the resulting MS2 spectra of the most intense scan
+This functions plots the resulting MS2 spectra of the most intense scan
 }
