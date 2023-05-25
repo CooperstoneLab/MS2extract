@@ -1,11 +1,13 @@
 #' Filtering the region of interest (ROI)
 #'
-#' This functions takes a table with the minimum and maximum retention time,
-#' in seconds, to keep the scans encapsulated in the specified time range
+#' This functions takes a data frame with the minimum and maximum retention time
+#' (in seconds), and keeps the *scans* inside the provided boundaries. This
+#' filter functions aims to keep the scans between the provided ROI and remove
+#' the scans outside the ROI.
 #'
 #' @param spec a data frame containing
 #' @param roi_table a data frame with two columns min_rt and max_rt specifying
-#' the minimum and maximum retention time range
+#' the minimum and maximum retention time for a specific metabolite.
 #' @export
 #' @examples
 #' \donttest{
@@ -15,7 +17,7 @@
 #'                        "ProcyanidinA2_neg_20eV.mzXML",
 #'                         package = "MS2extract")
 #'
-#' # Region of interest table (rt in seconds)
+#' # Region of interest table (rt ins seconds)
 #' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
 #'                      min_rt = 163, max_rt = 180)
 #'

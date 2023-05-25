@@ -1,4 +1,4 @@
-#' Evaluate additional msp fields
+#' Evaluate additional .msp fields
 #'
 #' This internal functions evaluate non-critical msp fields to be included in the
 #' msp file. This function will create an empty field if any of the
@@ -47,12 +47,9 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 
 #' Export MS2 spectra to a msp file
 #'
-#' Thins functions takes an extracted MS2 spectra and writes in a msp file
-#' format. This functions takes the extracted MS2 spectra and the metadata
-#' for the compound. It will draw information such as the precursor m/z
-#' as well as the retention time of the scan from the spec data frame and
-#' the rest of information from the provided metadata.
-#'
+#' This functions takes an extracted MS2 spectra and writes it to a .msp
+#' file format. This function incorporates the extracted MS2 spectra along
+#' with metadata for the compound.
 #' @param spec a data frame containing the extracted MS2 spectra, the following
 #' colums are required:
 #'
@@ -151,13 +148,11 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
   return(msp_entry)
 }
 
-#' Export MS2 spectra to a msp file
+#' Export MS2 spectra to a .msp file
 #'
-#' Thins functions takes an extracted MS2 spectra and writes into a msp file
-#' format. This functions takes the extracted MS2 spectra and the metadata
-#' for the compound. It will draw information such as the precursor m/z
-#' as well as the retention time of the scan from the spec data frame and
-#' the rest of information from the provided metadata.
+#' This functions takes an extracted MS2 spectra and writes it to a .msp
+#' file format. This function incorporates the extracted MS2 spectra along
+#' with metadata for the compound.
 #'
 #' @param spec a data frame containing the extracted MS2 spectra, the following
 #' colums are required:
@@ -170,8 +165,8 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #' }
 #'
 #' @param spec_metadata a data frame containing the values to be including
-#' in the resulting msp file. The following column are required as vital
-#' information for the msp output.
+#' in the resulting .msp file. The following columns are required as vital
+#' information for the .msp output.
 #'
 #' \describe{
 #'  \item{NAME}{}
@@ -181,9 +176,9 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #'  \item{IONMODE}{}
 #' }
 #'
-#' The following fields are also included in the resulting msp files, but are
+#' The following fields can be included in the resulting .msp file, but are
 #' not required to be present in the metadata table. If the column does not
-#' exist in the column or the value is missing, it will export a blank field.
+#' exist in the column or the value is missing, a blank field will be exported
 #'  \describe{
 #'   \item{INCHIKEY}{}
 #'   \item{SMILES}{}
@@ -192,7 +187,7 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #'   \item{INSTRUMENTTYPE}{}
 #' }
 #'
-#' @param msp_name a string with the name of the msp file not containing (.msp)
+#' @param msp_name a string with the name of the .msp file excluding the file extension
 #' @export
 #' @examples
 #'

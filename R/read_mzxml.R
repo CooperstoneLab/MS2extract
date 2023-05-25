@@ -2,8 +2,7 @@
 #' @description This function takes a mzxml file and imports the MS2 data only
 #'  to further create a list contaning to sublists with the scan information
 #'  (fisrt sublits) and the MS2 spectra (second sublist)
-#' @author Xiaotao Shen inspired from the masstools package
-#' \email{shenxt1990@@outlook.com}
+#' @author Xiaotao Shen inspired from the masstools package https://www.tidymass.org
 #' @param file The vector of names of ms2 files. MS2 file must be mzXML or mzML.
 #' @param threads Thread number
 #' @param mode inMemory or onDisk

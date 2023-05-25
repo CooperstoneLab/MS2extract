@@ -25,16 +25,16 @@ get_ppm <- function(mz, ppm = 10) {
   mz_difference
 }
 
-#' Calculate the m/z upper and lower values limits given a ppm tolerance
+#' Calculate the *m*/*z* upper and lower values limits given a ppm tolerance
 #'
 #' Given a theoretical m/z value and a ppm error tolerance,
 #' this function calculates the lower and upper ppm m/z values.
 #'
 #' @param mz a double, the theoretical m/z value.
-#' @param ppm a double, the ppm error tolerance
+#' @param ppm a double, the mass error in ppm
 #'
-#' @return a vector of two elements containing the upper and lower
-#' m/z values with the specific ppm error tolerance.
+#' @return a vector of two elements containing the upper and lower m/z values
+#'   given the provided mass error tolerance.
 #'
 #' @export
 #'
