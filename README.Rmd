@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img src="man/figures/MS2extract_logo.jpg" alt="MS2extract logo" align="right" width = "25%" height="25%"/>
+<img src="man/figures/MS2extract_logo.png" alt="MS2extract logo" align="right" width = "25%" height="25%"/>
 
 # MS2extract
 
@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
+
+[MS2extract website](https://cooperstonelab.github.io/MS2extract/)
 
 The goal of MS2extract is to provide a tool to import MS2 data of known standards
 or material and targeted extract the MS2 expectra in order to create an
