@@ -14,5 +14,8 @@ scan}
 detected or not in the MS2 spectra}
 }
 \description{
+\emph{Internal function}
+}
+\details{
 This is the base function for plotting the MS2 spectra.
 }

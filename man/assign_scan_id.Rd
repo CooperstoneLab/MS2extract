@@ -19,6 +19,9 @@ a data.frame containing
 }
 }
 \description{
+\emph{Internal fuction}
+}
+\details{
 This function extracts spectra per scan in a tidy format given a list
 created by masstools::read_mzxml()
 }

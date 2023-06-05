@@ -1,5 +1,7 @@
 #' Base function for MS2 spectra
 #'
+#' *Internal function*
+#'
 #' This is the base function for plotting the MS2 spectra.
 #'
 #' @param spec a data frame containing the MS2 spectra of the most intense

@@ -14,8 +14,17 @@ Ionization_mode}
 a double with the ionized mass of the compound.
 }
 \description{
-This function evaluates the information provided by the user whether the
-correct column  and ionization modes were provided. Then, it calculates
+\emph{Internal function}
+}
+\details{
+This function evaluates if the metadata has the expected column names.
+Then, it calculates
 the neutral exact mass of the compound using the given formula and
 ionization mode to obtain a charged mass.
+
+Required values
+\describe{
+\item{Formula}{character, compound chemical formula}
+\item{Ionization_mode}{character, only \emph{Positive} and \emph{Negative} values are acepted }
+}
 }

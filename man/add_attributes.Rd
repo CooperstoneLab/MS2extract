@@ -14,11 +14,13 @@ add_attributes(msp_attribute, spec_metadata, msp_backbone)
 \item{msp_backbone}{the constructed msp string to export}
 }
 \description{
+\emph{Internal function}
+}
+\details{
 This internal functions evaluate non-critical msp fields to be included in the
 msp file. This function will create an empty field if any of the
 evaluated fields are either listed as NA or missing in the metadata table.
-}
-\details{
+
 The evaluated additional msp fields are:
 
 \describe{

@@ -19,6 +19,9 @@ a data.frame containing
 }
 }
 \description{
+\emph{Internal function}
+}
+\details{
 Given a list created by masstools::read_mzxml(), this function
 extract the scan info for all scans in a tidy format.
 }

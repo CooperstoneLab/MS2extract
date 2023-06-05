@@ -10,6 +10,8 @@ get_TIC(spec)
 \item{spec}{a data frame with two columns: mz and intensity}
 }
 \description{
-This function computes the MS2 TIC of a given precursor ion grouping by
-retention time.
+\emph{Internal function}
+}
+\details{
+This function computes the MS2 TIC of a given precursor ion.
 }

@@ -14,6 +14,9 @@ a list. The first element is a data frame with the retention time
 with the highest intensity and the TIC plot as the second list element.
 }
 \description{
+\emph{Internal function}
+}
+\details{
 This function plots the MS2 TIC and will mark the most intense scan
 that will be used to extract the MS2 spectra
 }

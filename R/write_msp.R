@@ -1,5 +1,7 @@
 #' Evaluate additional .msp fields
 #'
+#' *Internal function*
+#'
 #' This internal functions evaluate non-critical msp fields to be included in the
 #' msp file. This function will create an empty field if any of the
 #' evaluated fields are either listed as NA or missing in the metadata table.
@@ -46,6 +48,8 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 
 
 #' Export MS2 spectra to a msp file
+#'
+#' *Internal function*
 #'
 #' This functions takes an extracted MS2 spectra and writes it to a .msp
 #' file format. This function incorporates the extracted MS2 spectra along

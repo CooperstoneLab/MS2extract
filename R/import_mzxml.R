@@ -1,5 +1,7 @@
 #' Extract scan info out of the list
 #'
+#' *Internal function*
+#'
 #' Given a list created by masstools::read_mzxml(), this function
 #' extract the scan info for all scans in a tidy format.
 #'
@@ -21,6 +23,8 @@ extract_scan_info <- function(mzxml) {
 }
 
 #' Extract MS2 spectrum info out of the list
+#'
+#' *Internal fuction*
 #'
 #' This function extracts spectra per scan in a tidy format given a list
 #' created by masstools::read_mzxml()
@@ -49,10 +53,18 @@ assign_scan_id <- function(scan_list) {
 
 #' Check compound metadata
 #'
-#' This function evaluates the information provided by the user whether the
-#' correct column  and ionization modes were provided. Then, it calculates
+#' *Internal function*
+#'
+#' This function evaluates if the metadata has the expected column names.
+#' Then, it calculates
 #' the neutral exact mass of the compound using the given formula and
 #' ionization mode to obtain a charged mass.
+#'
+#' Required values
+#' \describe{
+#' \item{Formula}{character, compound chemical formula}
+#' \item{Ionization_mode}{character, only *Positive* and *Negative* values are acepted }
+#' }
 #'
 #' @param met_metadata a data frame with at least the Formula and the
 #' Ionization_mode

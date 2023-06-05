@@ -41,6 +41,9 @@ exist in the column or the value is missing, it will export a blank field.
 }}
 }
 \description{
+\emph{Internal function}
+}
+\details{
 This functions takes an extracted MS2 spectra and writes it to a .msp
 file format. This function incorporates the extracted MS2 spectra along
 with metadata for the compound.
