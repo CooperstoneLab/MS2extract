@@ -143,20 +143,22 @@ metadata, with at minimum the compound name, formula, ionization mode,
 and optionally (but recommended) the region of interest (<em>min_rt</em>
 and <em>max_rt</em>).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Select the csv file name and path</span></span>
+<code class="sourceCode R"><span><span class="co"># Select the csv file name and path</span></span>
 <span><span class="va">batch_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"batch_read.csv"</span>,</span>
-<span>                          package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co"># Read the data frame</span></span>
 <span><span class="va">batch_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">batch_file</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># File paths for Procyanidin A2 and Rutin</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                       <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
-<span>                        package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">Rutin_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                       <span class="st">"Rutin_neg_20eV.mzXML"</span>,</span>
-<span>                        package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  <span class="st">"Rutin_neg_20eV.mzXML"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add file path - User should specified the file path -</span></span>
 <span><span class="va">batch_data</span><span class="op">$</span><span class="va">File</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ProcA2_file</span>, <span class="va">Rutin_file</span><span class="op">)</span></span>
@@ -214,8 +216,9 @@ although most of the arguments remains fairly similar.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Use extract batch extract_MS2</span></span>
 <span><span class="va">batch_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/batch_extract_MS2.html">batch_extract_MS2</a></span><span class="op">(</span><span class="va">batch_compounds</span>,</span>
-<span>                                     verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                                     out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  out_list <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="using_batch_extract_files/figure-html/unnamed-chunk-5-1.png" width="700"><img src="using_batch_extract_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
 <p>By using <code>verbose = TRUE</code>, we can display the MS/MS TIC
 plot as well the raw MS/MS spectra.</p>
@@ -229,8 +232,9 @@ background noise/non-informative product ions based on intensity.
 analogue.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">batch_mass_detected</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/batch_detect_mass.html">batch_detect_mass</a></span><span class="op">(</span><span class="va">batch_extracted</span>, <span class="co"># Compound list</span></span>
-<span>                                         normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize</span></span>
-<span>                                         min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Minimum intensity</span></span>
+<span>  normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize</span></span>
+<span>  min_int <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span> <span class="co"># Minimum intensity</span></span>
 <span></span>
 <span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="va">dim</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`Procyanidin A2`</span></span>
@@ -244,14 +248,14 @@ and rutin, respectively.</p>
 <h5 id="detected-ms2-procyanidin-a2">Detected MS2 Procyanidin A2<a class="anchor" aria-label="anchor" href="#detected-ms2-procyanidin-a2"></a>
 </h5>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">'Procyanidin A2'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">"Procyanidin A2"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="using_batch_extract_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div class="section level5">
 <h5 id="detected-ms2-rutin">Detected MS2 Rutin<a class="anchor" aria-label="anchor" href="#detected-ms2-rutin"></a>
 </h5>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">'Rutin'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">"Rutin"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="using_batch_extract_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 </div>
@@ -267,8 +271,9 @@ database.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Reading batch metadata</span></span>
 <span><span class="va">metadata_msp_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                                 <span class="st">"batch_msp_metadata.csv"</span>,</span>
-<span>                                 package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  <span class="st">"batch_msp_metadata.csv"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">metadata_msp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">metadata_msp_file</span><span class="op">)</span></span>
 <span></span>
@@ -286,9 +291,11 @@ database.</p>
 <p>After having the cleaned MS/MS spectra and the compound metadata, we
 can proceed to export them into a .msp file.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span>spec <span class="op">=</span> <span class="va">batch_mass_detected</span>,</span>
-<span>            spec_metadata <span class="op">=</span> <span class="va">metadata_msp</span>,</span>
-<span>            msp_name <span class="op">=</span> <span class="st">"ProcA2_Rutin_batch.msp"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span></span>
+<span>  spec <span class="op">=</span> <span class="va">batch_mass_detected</span>,</span>
+<span>  spec_metadata <span class="op">=</span> <span class="va">metadata_msp</span>,</span>
+<span>  msp_name <span class="op">=</span> <span class="st">"ProcA2_Rutin_batch.msp"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

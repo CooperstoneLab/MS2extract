@@ -199,8 +199,9 @@ with a collision energy of 20 eV.</p>
 <code class="sourceCode R"><span><span class="co"># Importing  Procyanidin A2 MS/MS spectra in negative ionization mode</span></span>
 <span><span class="co"># and 20 eV as the collision energy</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                        <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
-<span>                         package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co"># File name</span></span>
 <span><span class="va">ProcA2_file</span></span>
 <span><span class="co">#&gt; [1] "/home/runner/work/_temp/Library/MS2extract/extdata/ProcyanidinA2_neg_20eV.mzXML"</span></span></code></pre></div>
@@ -239,8 +240,10 @@ keep (in seconds)</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Procyanidin A2 metadata</span></span>
-<span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>,Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span>,</span>
-<span>                      min_rt <span class="op">=</span> <span class="fl">163</span>, max_rt <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></span>
+<span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>, Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span>,</span>
+<span>  min_rt <span class="op">=</span> <span class="fl">163</span>, max_rt <span class="op">=</span> <span class="fl">180</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">ProcA2_data</span></span>
 <span><span class="co">#&gt;     Formula Ionization_mode min_rt max_rt</span></span>
 <span><span class="co">#&gt; 1 C30H24O12        Negative    163    180</span></span></code></pre></div>
@@ -368,8 +371,9 @@ SMILES, COLLISIONENERGY, etc.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Reading the metadata</span></span>
 <span><span class="va">metadata_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                             <span class="st">"msp_metadata.csv"</span>,</span>
-<span>                             package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span>
+<span>  <span class="st">"msp_metadata.csv"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">metadata_file</span><span class="op">)</span></span>
 <span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">metadata</span><span class="op">)</span></span>
@@ -398,9 +402,11 @@ to be including in the resulting .msp file</li>
 not containing (.msp) extension</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span>spec <span class="op">=</span> <span class="va">ProcA2_detected</span>,</span>
-<span>          spec_metadata <span class="op">=</span> <span class="va">metadata</span>,</span>
-<span>          msp_name <span class="op">=</span> <span class="st">"Procyanidin_A2"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span></span>
+<span>  spec <span class="op">=</span> <span class="va">ProcA2_detected</span>,</span>
+<span>  spec_metadata <span class="op">=</span> <span class="va">metadata</span>,</span>
+<span>  msp_name <span class="op">=</span> <span class="st">"Procyanidin_A2"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>After writing the msp file, you will see the following file
 content:</p>
 <pre><code><span><span class="co">#&gt; NAME: Procyanidin A2</span></span>
