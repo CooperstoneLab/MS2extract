@@ -4,14 +4,15 @@
 \name{MS2extract-package}
 \alias{MS2extract}
 \alias{MS2extract-package}
-\title{MS2extract: Targeted MS2 spectra extraction for in-house compound library creation}
+\title{MS2extract: Targeted MS2 Spectra Extraction for In-house Compound Library Creation}
 \description{
-This package has the objective to import mass spectrometry data and extract the desired MS2 spectrum data and remove background noise. Subsequently, user can export the spectra in a msp file format as a resulting compound database for further use in compound identification.
+A mass spectrometry toolbox with the objective of importing mass spectrometry data, and extracts the desired MS2 spectra for in-house MS/MS compound library creation. Subsequently, users can export the spectra in a .msp file format, as a resulting compound database for further use in compound identification tasks. It is worth to note that this package do not annotate mass spectrometry data.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://cooperstonelab.github.io/MS2extract/}
+  \item Report bugs at \url{https://github.com/CooperstoneLab/MS2extract/issues}
 }
 
 }

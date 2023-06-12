@@ -22,6 +22,6 @@ this function calculates the lower and upper ppm m/z values.
 \examples{
 
 chlorogenic_acid_pos <- 355.1023
-ppm_error = 10
+ppm_error <- 10
 ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 }

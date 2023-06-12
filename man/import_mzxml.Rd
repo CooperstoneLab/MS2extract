@@ -57,27 +57,28 @@ the list of scans contains two sublists that contain 1) the
 scan information and 2) the spectra per scan.
 }
 \examples{
-
 \donttest{
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 # Compound metadata without ROI information
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 ProcA2_raw <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 
 # 26731 ions detected in total
 dim(ProcA2_raw)
 
 # Region of interest table (rt in seconds)
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-                     min_rt = 163, max_rt = 180)
+ProcA2_data <- data.frame(
+  Formula = "C30H24O12", Ionization_mode = "Negative",
+  min_rt = 163, max_rt = 180
+)
 ProcA2_roi <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 
 # 24249 ions detected in ROI
 dim(ProcA2_roi)
-
 }
 }

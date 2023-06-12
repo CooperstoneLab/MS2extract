@@ -24,16 +24,20 @@ the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
 # Importing the MS2 of Procyanidin A2 deconvoluted by PCDL (Agilent)
 ProcA2_pcdl_fl <- system.file("extdata",
-                       "ProcA2_neg_20eV_PCDL.csv",
-                        package = "MS2extract")
+  "ProcA2_neg_20eV_PCDL.csv",
+  package = "MS2extract"
+)
 # Region of interest table (rt in seconds)
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-                     min_rt = 163, max_rt = 180)
+ProcA2_data <- data.frame(
+  Formula = "C30H24O12", Ionization_mode = "Negative",
+  min_rt = 163, max_rt = 180
+)
 # Reading the Procyanidin A2 spectra
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 # Extracting the most instense MS2 spectra
@@ -43,7 +47,7 @@ ProcA2_norm <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 1)
 
 # Plot of the resulting reference MS2 spectra using MS2extract
 plot_MS2spectra(ProcA2_norm) +
-   ggplot2::labs(title = "MS2extract spectra")
+  ggplot2::labs(title = "MS2extract spectra")
 
 # Reading the MS2 spectra of Procynidin A2 by PCDL
 ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)

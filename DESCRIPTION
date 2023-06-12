@@ -14,10 +14,12 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-7920-0088") )
            )
 Maintainer: Cristian Quiroz-Moreno <cristianquirozd1997@gmail.com>
-Description: A mass spectrometry toolbox with the objective of importing mass spectrometry
-   data, and extracts the desired MS2 spectra.
-   Subsequently, users can export the spectra in a .msp file format, as a resulting
-   compound database for further use in compound identification tasks.
+Description: A mass spectrometry toolbox with the objective of importing mass
+   spectrometry data, and extracts the desired MS2 spectra for in-house MS/MS
+   compound library creation. Subsequently, users can export the spectra 
+   in a .msp file format, as a resulting compound database for further use
+   in compound identification tasks. It is worth to note that this package
+   do not annotate mass spectrometry data.
 License: MIT + file LICENSE
 LazyData: true
 RdMacros: Rdpack

@@ -23,8 +23,9 @@ to further create a list contaning to sublists with the scan information
 }
 \examples{
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
 ProcA2_raw <- read_mzxml(ProcA2_file)
 }

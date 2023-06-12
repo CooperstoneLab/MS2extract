@@ -48,20 +48,22 @@ file format. This function incorporates the extracted MS2 spectra along
 with metadata for the compound.
 }
 \examples{
-
-\dontrun{
+\donttest{
 
 # Example with single MS2 spectra -----
 
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
- # Region of interest table (rt in seconds)
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-                     min_rt = 163, max_rt = 180)
+# Region of interest table (rt in seconds)
+ProcA2_data <- data.frame(
+  Formula = "C30H24O12", Ionization_mode = "Negative",
+  min_rt = 163, max_rt = 180
+)
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
@@ -71,19 +73,23 @@ ProcA2_ext <- extract_MS2(ProcA2_raw)
 # Detecting masses with the normalized spectra and ions with
 # intensities greater than 1\%
 ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
-                               normalize = TRUE, # Allow normalization
-                               min_int = 1) # 1\% as minimum intensity
+  normalize = TRUE, # Allow normalization
+  min_int = 1
+) # 1\% as minimum intensity
 
 # Reading the metadata
 metadata_file <- system.file("extdata",
-                             "msp_metadata.csv",
-                              package = "MS2extract")
+  "msp_metadata.csv",
+  package = "MS2extract"
+)
 metadata <- read.csv(metadata_file)
 
 # Exporting msp file
-write_msp(spec = ProcA2_detected,
-          spec_metadata = metadata,
-          msp_name = "Procyanidin_A2")
+write_msp(
+  spec = ProcA2_detected,
+  spec_metadata = metadata,
+  msp_name = "Procyanidin_A2"
+)
 
 
 
@@ -92,17 +98,20 @@ write_msp(spec = ProcA2_detected,
 
 # Select the csv file name and path
 batch_file <- system.file("extdata", "batch_read.csv",
-                          package = "MS2extract")
+  package = "MS2extract"
+)
 # Read the data frame
 batch_data <- read.csv(batch_file)
 
 # File paths for Procyanidin A2 and Rutin
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 Rutin_file <- system.file("extdata",
-                       "Rutin_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "Rutin_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
 # Add file path - User should specified the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
@@ -112,8 +121,9 @@ batch_data
 
 # Reading batch metadata
 metadata_msp_file <- system.file("extdata",
-                                "batch_msp_metadata.csv",
-                                 package = "MS2extract")
+  "batch_msp_metadata.csv",
+  package = "MS2extract"
+)
 
 metadata_msp <- read.csv(metadata_msp_file)
 
@@ -126,10 +136,11 @@ purrr::map(batch_compounds, dim)
 
 batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
 
-#Batch detect mass
+# Batch detect mass
 batch_mass_detected <- batch_detect_mass(batch_extracted_compounds, # Compound list
-                                         normalize = TRUE, # Normalize
-                                         min_int = 1) # Minimum intensity
+  normalize = TRUE, # Normalize
+  min_int = 1
+) # Minimum intensity
 
 # Checking dimension by compound
 # Procyanidin A2: 107 ions
@@ -137,8 +148,10 @@ batch_mass_detected <- batch_detect_mass(batch_extracted_compounds, # Compound l
 purrr::map(batch_mass_detected, dim)
 
 # Writing msp file
- write_msp(spec = batch_mass_detected,
-           spec_metadata = metadata_msp,
-           msp_name = "ProcA2_Rutin_batch")
+write_msp(
+  spec = batch_mass_detected,
+  spec_metadata = metadata_msp,
+  msp_name = "ProcA2_Rutin_batch"
+)
 }
 }

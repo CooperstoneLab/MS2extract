@@ -24,6 +24,6 @@ get_ppm(mz = 355.1023, ppm = 20)
 
 # Chlorogenic acid [M+H]+ = 355.1023 m/z
 chlorogenic_acid_pos <- 355.1023
-ppm_error = 10
+ppm_error <- 10
 get_ppm(mz = chlorogenic_acid_pos, ppm = ppm_error)
 }

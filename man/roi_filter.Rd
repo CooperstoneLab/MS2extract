@@ -23,12 +23,15 @@ the scans outside the ROI.
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
 # Region of interest table (rt ins seconds)
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-                     min_rt = 163, max_rt = 180)
+ProcA2_data <- data.frame(
+  Formula = "C30H24O12", Ionization_mode = "Negative",
+  min_rt = 163, max_rt = 180
+)
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
