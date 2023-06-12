@@ -21,7 +21,7 @@ Description: A mass spectrometry toolbox with the objective of importing mass sp
 License: MIT + file LICENSE
 LazyData: true
 RdMacros: Rdpack
-biocViews: ChemPhys
+biocViews: ChemPhys, MassSpectrometry, Metabolomics
 Depends:
      R (>= 4.2.0)
 RoxygenNote: 7.2.3
@@ -49,4 +49,5 @@ Suggests:
     Rcpp (>= 1.0.9)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+BugReports: https://github.com/CooperstoneLab/MS2extract/issues
 URL: https://cooperstonelab.github.io/MS2extract/
