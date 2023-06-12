@@ -21,7 +21,7 @@ Description: A mass spectrometry toolbox with the objective of importing mass sp
 License: MIT + file LICENSE
 LazyData: true
 RdMacros: Rdpack
-biocViews: ChemPhys, MassSpectrometry, Metabolomics
+biocViews: MassSpectrometry, Metabolomics
 Depends:
      R (>= 4.2.0)
 RoxygenNote: 7.2.3
