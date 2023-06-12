@@ -10,21 +10,24 @@
 #' @export
 #' @examples
 #' ProcA2_file <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'   "ProcyanidinA2_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #'
 #' ProcA2_raw <- read_mzxml(ProcA2_file)
-
 read_mzxml <- function(file,
                        threads = 3,
                        mode = c("inMemory", "onDisk")) {
+  message(crayon::green(paste0(
+    "Reading MS2 data from ",
+    basename(file)
+  )))
 
-  message(crayon::green( paste0("Reading MS2 data from ",
-                                basename(file) ) ) )
-
-  ms2 <- MSnbase::readMSData(files = file,
-                             msLevel. = 2,
-                             mode = mode)
+  ms2 <- MSnbase::readMSData(
+    files = file,
+    msLevel. = 2,
+    mode = mode
+  )
 
   message(crayon::green("Processing..."))
 
@@ -38,10 +41,12 @@ read_mzxml <- function(file,
       info <-
         data.frame(
           name = paste("mz", temp.ms2@precursorMz,
-                       "rt", temp.ms2@rt, sep = ""),
+            "rt", temp.ms2@rt,
+            sep = ""
+          ),
           "mz" = temp.ms2@precursorMz,
           "rt" = temp.ms2@rt,
-          "file" = basename(file[temp.ms2@fromFile]) ,
+          "file" = basename(file[temp.ms2@fromFile]),
           stringsAsFactors = FALSE
         )
       duplicated.name <-
@@ -66,5 +71,3 @@ read_mzxml <- function(file,
   new.ms2 <- new.ms2
   new.ms2
 }
-
-

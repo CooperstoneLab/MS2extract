@@ -12,12 +12,15 @@
 #' # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
-#'                            "ProcyanidinA2_neg_20eV.mzXML",
-#'                             package = "MS2extract")
+#'   "ProcyanidinA2_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #'
 #' # Region of interest table (rt in seconds)
-#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-#'                      min_rt = 163, max_rt = 180)
+#' ProcA2_data <- data.frame(
+#'   Formula = "C30H24O12", Ionization_mode = "Negative",
+#'   min_rt = 163, max_rt = 180
+#' )
 #'
 #' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
@@ -28,13 +31,11 @@
 #' ProcA2_norm <- normalize_spec(ProcA2_raw)
 #' # Ranges: 2 100
 #' range(ProcA2_norm$intensity)
-
 normalize_spec <- function(spec, min_int = 1) {
-
   spec_normalized <- spec |>
     dplyr::group_by(.data$rt) |> # Normalized by the base peak
     dplyr::mutate(intensity = round(.data$intensity /
-                                      max(.data$intensity), 2 ) * 100 ) |>
+      max(.data$intensity), 2) * 100) |>
     # Filter intensities > than 1% by default
     dplyr::filter(.data$intensity > min_int) |>
     dplyr::ungroup()

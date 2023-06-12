@@ -30,17 +30,20 @@
 #'
 #' # Select the csv file name and path
 #' batch_file <- system.file("extdata", "batch_read.csv",
-#'                           package = "MS2extract")
+#'   package = "MS2extract"
+#' )
 #' # Read the data frame
 #' batch_data <- read.csv(batch_file)
 #'
 #' # File paths for Procyanidin A2 and Rutin
 #' ProcA2_file <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'   "ProcyanidinA2_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #' Rutin_file <- system.file("extdata",
-#'                        "Rutin_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'   "Rutin_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #'
 #' # Add file path - User should specified the file path -
 #' batch_data$File <- c(ProcA2_file, Rutin_file)
@@ -57,22 +60,30 @@
 #' purrr::map(batch_compounds, dim)
 batch_import_mzxml <- function(compounds_dt) {
   # Separating compounds by name
-  compounds_list <- split(compounds_dt, f = compounds_dt$Name )
+  compounds_list <- split(compounds_dt, f = compounds_dt$Name)
 
   # Extracting only file names to be read
-  compounds_names <- purrr::map(compounds_list, ~.x[,'File'])
+  compounds_names <- purrr::map(compounds_list, ~ .x[, "File"])
 
   # Extracting min_rt and max_rt from the provided list
-  roi_table <- purrr::map(compounds_list,
-                          ~ data.frame( Formula = .x["Formula"],
-                                        Ionization_mode = .x['Ionization_mode'],
-                                        min_rt = .x["min_rt"],
-                                        max_rt = .x["max_rt"] ) )
+  roi_table <- purrr::map(
+    compounds_list,
+    ~ data.frame(
+      Formula = .x["Formula"],
+      Ionization_mode = .x["Ionization_mode"],
+      min_rt = .x["min_rt"],
+      max_rt = .x["max_rt"]
+    )
+  )
 
   # Submitting everything to import_mzxml with map
-  compounds_out <- purrr::map2(compounds_names, roi_table, # Lists
-                               ~ import_mzxml(file = .x,
-                                              met_metadata = .y) )
+  compounds_out <- purrr::map2(
+    compounds_names, roi_table, # Lists
+    ~ import_mzxml(
+      file = .x,
+      met_metadata = .y
+    )
+  )
 
   return(compounds_out)
 }

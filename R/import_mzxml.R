@@ -16,9 +16,9 @@
 #' }
 
 extract_scan_info <- function(mzxml) {
-  scan_id <- lapply(mzxml, function(x) x[[1]] ) |> # Extract info data
-    dplyr::bind_rows()  |> # Create a dataset of scann info
-    dplyr::mutate(Index = seq( dplyr::n() )) # creating a scan index number
+  scan_id <- lapply(mzxml, function(x) x[[1]]) |> # Extract info data
+    dplyr::bind_rows() |> # Create a dataset of scann info
+    dplyr::mutate(Index = seq(dplyr::n())) # creating a scan index number
   scan_id
 }
 
@@ -45,8 +45,10 @@ assign_scan_id <- function(scan_list) {
   scan_id <- dplyr::rename(.data = scan_id, mz_precursor = "mz")
   scan_data <- scan_list[[2]] # Extract scan data
   scan_data <- scan_data |> # Add rt data to the scan
-    dplyr::mutate(mz_precursor = scan_id$mz_precursor,
-                  rt = scan_id$rt)
+    dplyr::mutate(
+      mz_precursor = scan_id$mz_precursor,
+      rt = scan_id$rt
+    )
   scan_data
 }
 
@@ -75,26 +77,27 @@ check_metadata <- function(met_metadata) {
   ionization_modes <- c("Positive", "Negative")
 
   # Check for Fomrula and Ionization mode in data frame
-  if( all(compund_info %in% names(met_metadata)) ) {
-
+  if (all(compund_info %in% names(met_metadata))) {
     # Calculating the exact mass and the ionized mass
     exact_mass <- Rdisop::getMolecule(met_metadata$Formula)$exactmass
 
     # Checking for ionization mode
-    if( any(met_metadata$Ionization_mode %in% ionization_modes) ){
-
+    if (any(met_metadata$Ionization_mode %in% ionization_modes)) {
       # Check for positive ionization mode
-      if(met_metadata$Ionization_mode == "Positive") {
+      if (met_metadata$Ionization_mode == "Positive") {
         exact_mass <- exact_mass + 1.00727
         # If possitive mode is false, then assume it is negative
-      } else exact_mass <- exact_mass - 1.00727
-
-    } else stop("Only Negative and Positive ionizization modes are accepted")
-
-  } else stop("Fomrula and Ionization_mode colums are required")
+      } else {
+        exact_mass <- exact_mass - 1.00727
+      }
+    } else {
+      stop("Only Negative and Positive ionizization modes are accepted")
+    }
+  } else {
+    stop("Fomrula and Ionization_mode colums are required")
+  }
 
   return(exact_mass)
-
 }
 
 
@@ -149,35 +152,35 @@ check_metadata <- function(met_metadata) {
 #' @export
 #'
 #' @examples
-#'
 #' \donttest{
 #' # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'   "ProcyanidinA2_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #' # Compound metadata without ROI information
-#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+#' ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 #' ProcA2_raw <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 #'
 #' # 26731 ions detected in total
 #' dim(ProcA2_raw)
 #'
 #' # Region of interest table (rt in seconds)
-#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-#'                      min_rt = 163, max_rt = 180)
+#' ProcA2_data <- data.frame(
+#'   Formula = "C30H24O12", Ionization_mode = "Negative",
+#'   min_rt = 163, max_rt = 180
+#' )
 #' ProcA2_roi <- import_mzxml(ProcA2_file, met_metadata = ProcA2_data)
 #'
 #' # 24249 ions detected in ROI
 #' dim(ProcA2_roi)
-#'
 #' }
 import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
-
   # Check info in met_metadta ---
   ionized_mass <- check_metadata(met_metadata)
 
-  ppm_error <-  ppm_range(mz = ionized_mass, ppm = ppm)
+  ppm_error <- ppm_range(mz = ionized_mass, ppm = ppm)
 
   mzxml_raw <- read_mzxml(file, ...)
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
@@ -186,27 +189,33 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
   # mzxml_roi <- mzxml_raw[scan_info$Index]
 
   # Creating a tidy data out of MS2 spectra
-  mzxml_tidy <- lapply(mzxml_raw, assign_scan_id ) |>
+  mzxml_tidy <- lapply(mzxml_raw, assign_scan_id) |>
     dplyr::bind_rows()
 
   # Keep ions with abundance greater than 0
   mzxml_tidy <- mzxml_tidy |> dplyr::filter(.data$intensity > 0)
 
   # Check for precursor m/z to be in the ppm range ---
-  mzxml_tidy <- dplyr::filter(mzxml_tidy,
-                              .data$mz_precursor < ppm_error[2] &
-                                .data$mz_precursor > ppm_error[1])
+  mzxml_tidy <- dplyr::filter(
+    mzxml_tidy,
+    .data$mz_precursor < ppm_error[2] &
+      .data$mz_precursor > ppm_error[1]
+  )
 
-  if ( nrow(mzxml_tidy) == 0 ) stop(paste0("Precursor ion not found with the",
-                                           "given formula and ppm"))
+  if (nrow(mzxml_tidy) == 0) {
+    stop(paste0(
+      "Precursor ion not found with the",
+      "given formula and ppm"
+    ))
+  }
 
   # Eval if roi_table is null ----
   # Check if the columns are present
   is_roi_present <- all(c("min_rt", "max_rt") %in% names(met_metadata))
 
-  if(is_roi_present){
+  if (is_roi_present) {
     # Creating roi table out of met_metadata
-    roi_table  <- dplyr::select(met_metadata, .data$min_rt, .data$max_rt)
+    roi_table <- dplyr::select(met_metadata, .data$min_rt, .data$max_rt)
     # Filtering using roi table
     mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
   }

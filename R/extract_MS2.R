@@ -7,7 +7,7 @@
 #' @param spec a data frame with two columns: mz and intensity
 get_TIC <- function(spec) {
   spec_tic <- dplyr::group_by(spec, .data$rt) |>
-    dplyr::summarise(TIC = sum(.data$intensity) )
+    dplyr::summarise(TIC = sum(.data$intensity))
   spec_tic
 }
 
@@ -27,15 +27,22 @@ plot_tic <- function(TIC) {
   most_intense <- TIC |>
     dplyr::filter(TIC == max(.data$TIC))
 
-  TIC_plot <- ggplot2::ggplot(data = TIC,
-                              aes(x = .data$rt, y = .data$TIC)) +
-    ggplot2::geom_line() + ggplot2::geom_point(size = 2) +
+  TIC_plot <- ggplot2::ggplot(
+    data = TIC,
+    aes(x = .data$rt, y = .data$TIC)
+  ) +
+    ggplot2::geom_line() +
+    ggplot2::geom_point(size = 2) +
     ggplot2::geom_point(data = most_intense, color = "red", size = 3) +
-    ggplot2::labs(title = "MS2 TIC plot",
-                  subtitle = paste0("MS2 spectra at ","rt: ",
-                                    most_intense$rt,
-                                    " will be exported"),
-                  x = "rt (s)", y = "Intensity") +
+    ggplot2::labs(
+      title = "MS2 TIC plot",
+      subtitle = paste0(
+        "MS2 spectra at ", "rt: ",
+        most_intense$rt,
+        " will be exported"
+      ),
+      x = "rt (s)", y = "Intensity"
+    ) +
     ggplot2::theme_bw()
 
   return_list <- list(most_intense = most_intense, TIC_plot = TIC_plot)
@@ -62,12 +69,15 @@ plot_tic <- function(TIC) {
 #' # Importing the Spectrum of Procyanidin A2 in negative ionzation mode
 #' # and 20 eV as the collision energy
 #' ProcA2_file <- system.file("extdata",
-#'                        "ProcyanidinA2_neg_20eV.mzXML",
-#'                         package = "MS2extract")
+#'   "ProcyanidinA2_neg_20eV.mzXML",
+#'   package = "MS2extract"
+#' )
 #'
 #' # Region of interest table (rt in seconds)
-#' ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-#'                      min_rt = 163, max_rt = 180)
+#' ProcA2_data <- data.frame(
+#'   Formula = "C30H24O12", Ionization_mode = "Negative",
+#'   min_rt = 163, max_rt = 180
+#' )
 #' # Importing MS2 data
 #' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
@@ -77,9 +87,7 @@ plot_tic <- function(TIC) {
 #'
 #' # Returning MS2 spectra only
 #' extract_MS2(ProcA2_raw, out_list = FALSE)
-
 extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
-
   # Get MS2 TIC
   TIC <- get_TIC(spec)
   # Plot MS2 TIC
@@ -95,12 +103,12 @@ extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
 
   plot_results <- ggpubr::ggarrange(TIC_results$TIC_plot, spec_plot, ncol = 1)
   # IF verbose = T print the plot
-  if(verbose) print(plot_results)
+  if (verbose) print(plot_results)
 
   # Modify what is returned
-  if(out_list){
-    return( list(MS2_spec = MS2_spec, TIC_plot = plot_results) )
+  if (out_list) {
+    return(list(MS2_spec = MS2_spec, TIC_plot = plot_results))
   } else {
-      return(MS2_spec)
-    }
+    return(MS2_spec)
+  }
 }

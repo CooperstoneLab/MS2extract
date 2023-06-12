@@ -48,7 +48,7 @@ tolerance.
 library(MS2extract)
 ## calculating ppm range
 chlorogenic_acid_pos <- 355.1023
-ppm_error = 10
+ppm_error <- 10
 # Calculate ranges
 ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 ```
@@ -62,10 +62,11 @@ Procyanidin A2 spectra in negative mode, with a collision energy of 20 eV.
 ```{r}
 # File path
 ProcA2_file <- system.file("extdata",
-                           "ProcyanidinA2_neg_20eV.mzXML",
-                           package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 # Compound data
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 ```
@@ -105,8 +106,9 @@ Here, we will detect masses by normalization and with a minimum intensity of
 
 ```{r}
 ProcA2_detected <- detect_mass(ProcA2_ext,
-                               normalize = TRUE, # Allow normalization
-                               min_int = 1) # 1% as minimum intensity
+  normalize = TRUE, # Allow normalization
+  min_int = 1
+) # 1% as minimum intensity
 
 dim(ProcA2_detected)
 ```
@@ -137,14 +139,14 @@ similarity score to compare them by the `compare_spectra()` function.
 ```{r}
 # MS2 PCDL spectra
 ProcA2_pcdl_fl <- system.file("extdata",
-                              "ProcA2_neg_20eV_PCDL.csv",
-                              package = "MS2extract")
+  "ProcA2_neg_20eV_PCDL.csv",
+  package = "MS2extract"
+)
 # Reading the spectra
 ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
 
 # Comparing both spectra
 compare_spectra(ProcA2_detected, ProcA2_PCDL)
-
 ```
 
 

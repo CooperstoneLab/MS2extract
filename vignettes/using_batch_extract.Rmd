@@ -65,20 +65,22 @@ recommended) the region of interest (*min_rt* and *max_rt*).
 
 
 ```{r}
-
 # Select the csv file name and path
 batch_file <- system.file("extdata", "batch_read.csv",
-                          package = "MS2extract")
+  package = "MS2extract"
+)
 # Read the data frame
 batch_data <- read.csv(batch_file)
 
 # File paths for Procyanidin A2 and Rutin
 ProcA2_file <- system.file("extdata",
-                       "ProcyanidinA2_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 Rutin_file <- system.file("extdata",
-                       "Rutin_neg_20eV.mzXML",
-                        package = "MS2extract")
+  "Rutin_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 
 # Add file path - User should specified the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
@@ -121,8 +123,9 @@ similar.
 ```{r}
 # Use extract batch extract_MS2
 batch_extracted <- batch_extract_MS2(batch_compounds,
-                                     verbose = TRUE,
-                                     out_list = FALSE)
+  verbose = TRUE,
+  out_list = FALSE
+)
 ```
 
 By using `verbose = TRUE`, we can display the MS/MS TIC plot as well the raw
@@ -138,8 +141,9 @@ than its core analogue.
 
 ```{r}
 batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
-                                         normalize = TRUE, # Normalize
-                                         min_int = 1) # Minimum intensity
+  normalize = TRUE, # Normalize
+  min_int = 1
+) # Minimum intensity
 
 purrr::map(batch_mass_detected, dim)
 ```
@@ -152,14 +156,14 @@ respectively.
 #### Detected MS2 Procyanidin A2
 
 ```{r message=FALSE, warning=FALSE}
-plot_MS2spectra(batch_mass_detected, 'Procyanidin A2')
+plot_MS2spectra(batch_mass_detected, "Procyanidin A2")
 ```
 
 
 #### Detected MS2 Rutin
 
 ```{r message=FALSE, warning=FALSE}
-plot_MS2spectra(batch_mass_detected, 'Rutin')
+plot_MS2spectra(batch_mass_detected, "Rutin")
 ```
 
 
@@ -173,8 +177,9 @@ resulting .msp database.
 ```{r}
 # Reading batch metadata
 metadata_msp_file <- system.file("extdata",
-                                 "batch_msp_metadata.csv",
-                                 package = "MS2extract")
+  "batch_msp_metadata.csv",
+  package = "MS2extract"
+)
 
 metadata_msp <- read.csv(metadata_msp_file)
 
@@ -185,9 +190,11 @@ After having the cleaned MS/MS spectra and the compound metadata, we can proceed
 to export them into a .msp file.
 
 ```{r eval=FALSE, include=TRUE}
-write_msp(spec = batch_mass_detected,
-            spec_metadata = metadata_msp,
-            msp_name = "ProcA2_Rutin_batch.msp")
+write_msp(
+  spec = batch_mass_detected,
+  spec_metadata = metadata_msp,
+  msp_name = "ProcA2_Rutin_batch.msp"
+)
 ```
 
 

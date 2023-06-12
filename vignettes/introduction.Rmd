@@ -109,8 +109,9 @@ energy of 20 eV.
 # Importing  Procyanidin A2 MS/MS spectra in negative ionization mode
 # and 20 eV as the collision energy
 ProcA2_file <- system.file("extdata",
-                        "ProcyanidinA2_neg_20eV.mzXML",
-                         package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 # File name
 ProcA2_file
 ```
@@ -140,8 +141,10 @@ The optional columns are:
 
 ```{r}
 # Procyanidin A2 metadata
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative",
-                      min_rt = 163, max_rt = 180)
+ProcA2_data <- data.frame(
+  Formula = "C30H24O12", Ionization_mode = "Negative",
+  min_rt = 163, max_rt = 180
+)
 ProcA2_data
 ```
 
@@ -255,8 +258,9 @@ An example of this table can be found at:
 ```{r warning=FALSE}
 # Reading the metadata
 metadata_file <- system.file("extdata",
-                             "msp_metadata.csv",
-                             package = "MS2extract")
+  "msp_metadata.csv",
+  package = "MS2extract"
+)
 
 metadata <- read.csv(metadata_file)
 dplyr::glimpse(metadata)
@@ -273,16 +277,18 @@ The three arguments for this function are:
 * **msp_name:** a string with the name of the msp file not containing (.msp) extension
 
 ```{r eval=FALSE, include=TRUE}
-write_msp(spec = ProcA2_detected,
-          spec_metadata = metadata,
-          msp_name = "Procyanidin_A2")
+write_msp(
+  spec = ProcA2_detected,
+  spec_metadata = metadata,
+  msp_name = "Procyanidin_A2"
+)
 ```
 
 
 After writing the msp file, you will see the following file content:
 
 ```{r echo=FALSE}
-cat(write_msp_base(ProcA2_detected, metadata) )
+cat(write_msp_base(ProcA2_detected, metadata))
 ```
 
 
