@@ -124,17 +124,20 @@ minimum ion count.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Select the csv file name and path</span></span></span>
 <span class="r-in"><span><span class="va">batch_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"batch_read.csv"</span>,</span></span>
-<span class="r-in"><span>                          package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Read the data frame</span></span></span>
 <span class="r-in"><span><span class="va">batch_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">batch_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># File paths for Procyanidin A2 and Rutin</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
-<span class="r-in"><span>                       <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span></span>
-<span class="r-in"><span>                        package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span></span>
+<span class="r-in"><span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Rutin_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
-<span class="r-in"><span>                       <span class="st">"Rutin_neg_20eV.mzXML"</span>,</span></span>
-<span class="r-in"><span>                        package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="st">"Rutin_neg_20eV.mzXML"</span>,</span></span>
+<span class="r-in"><span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Add file path - User should specified the file path -</span></span></span>
 <span class="r-in"><span><span class="va">batch_data</span><span class="op">$</span><span class="va">File</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ProcA2_file</span>, <span class="va">Rutin_file</span><span class="op">)</span></span></span>
@@ -167,17 +170,19 @@ minimum ion count.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting MS2 spec</span></span></span>
 <span class="r-in"><span><span class="va">batch_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="batch_extract_MS2.html">batch_extract_MS2</a></span><span class="op">(</span><span class="va">batch_compounds</span>,</span></span>
-<span class="r-in"><span>                                     verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>                                     out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  out_list <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span>
 <span class="r-plt img"><img src="batch_detect_mass-1.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="batch_detect_mass-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">#Batch detect mass</span></span></span>
+<span class="r-in"><span><span class="co"># Batch detect mass</span></span></span>
 <span class="r-in"><span><span class="va">batch_mass_detected</span> <span class="op">&lt;-</span> <span class="fu">batch_detect_mass</span><span class="op">(</span><span class="va">batch_extracted</span>, <span class="co"># Compound list</span></span></span>
-<span class="r-in"><span>                                         normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize</span></span></span>
-<span class="r-in"><span>                                         min_int <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Minimum intensity</span></span></span>
+<span class="r-in"><span>  normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize</span></span></span>
+<span class="r-in"><span>  min_int <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="co"># Minimum intensity</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Checking dimension by compound</span></span></span>
 <span class="r-in"><span><span class="co"># Procyanidin A2: 38 ions</span></span></span>

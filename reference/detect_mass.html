@@ -118,11 +118,14 @@ minimum ion count.</p></dd>
 <span class="r-in"><span><span class="co"># Importing the Spectrum of Procyanidin A2 in negative ionization mode</span></span></span>
 <span class="r-in"><span><span class="co"># and 20 eV as the collision energy</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
-<span class="r-in"><span>                       <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span></span>
-<span class="r-in"><span>                        package <span class="op">=</span> <span class="st">"MS2extract"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="st">"ProcyanidinA2_neg_20eV.mzXML"</span>,</span></span>
+<span class="r-in"><span>  package <span class="op">=</span> <span class="st">"MS2extract"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Region of interest table (rt in seconds)</span></span></span>
-<span class="r-in"><span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>,Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span>,</span></span>
-<span class="r-in"><span>                     min_rt <span class="op">=</span> <span class="fl">163</span>, max_rt <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>, Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span>,</span></span>
+<span class="r-in"><span>  min_rt <span class="op">=</span> <span class="fl">163</span>, max_rt <span class="op">=</span> <span class="fl">180</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="import_mzxml.html">import_mzxml</a></span><span class="op">(</span><span class="va">ProcA2_file</span>, <span class="va">ProcA2_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
