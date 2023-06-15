@@ -290,7 +290,7 @@ write_msp(
 After writing the msp file, you will see the following file content:
 
 ```{r echo=FALSE}
-cat(write_msp_base(ProcA2_detected, metadata))
+cat(MS2extract:::write_msp_base(ProcA2_detected, metadata))
 ```
 
 
