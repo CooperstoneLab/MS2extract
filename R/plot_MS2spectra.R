@@ -86,7 +86,7 @@ plot_MS2base <- function(spec, ppm) {
 #'  detected in the MS2 spectra, the blue diamond is not filled.
 #'
 #' @export
-#' @example
+#' @examples
 #'
 #' Rutin_file <- system.file("extdata",
 #'   "Rutin_neg_20eV.mzXML",

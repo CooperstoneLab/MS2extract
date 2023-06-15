@@ -4,7 +4,7 @@
 \alias{compare_spectra}
 \title{Compare two spectra based on cosine score}
 \usage{
-compare_spectra(spec1, spec2, output.list = T, ...)
+compare_spectra(spec1, spec2, output.list = TRUE, ...)
 }
 \arguments{
 \item{spec1}{a data frame containing spectra info.}
