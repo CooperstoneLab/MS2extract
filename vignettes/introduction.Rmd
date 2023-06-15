@@ -32,9 +32,9 @@ help(*['function name']*). It is worth to note that this package is aimed in
 the targeted extraction of MS/MS scans and it is not able to perform compound
 matching/annotation.
 
-A simplified workflow is presented in Figure 1. Briefly, mzXML files are imported
-in memory, then based on metadata provided by the user such as compound chemical
-formula, and the theoretical precursor *m*/*z* based on the
+A simplified workflow is presented in Figure 1. Briefly, mzXML files are 
+imported in memory, then based on metadata provided by the user such as 
+compound chemical formula, and the theoretical precursor *m*/*z* based on the
 chemical formula provided by the user in the metadata.Then, product
 ion scans are extracted with a given ppm tolerance.
 Next, low intensity signals, or background noise, can be removed
@@ -63,7 +63,8 @@ that users may need to provide in order to effectively use this package.
 
 Additionally, this package also includes a set of `batch_*()` functions that
 allows to process multiple .mzXML files at once. However, more metadata is
-required to run this automated pipeline and the use of this `batch_*()` functions
+required to run this automated pipeline and the use of this `batch_*()` 
+functions
 will is described in the
 [Using MS2extract Batch Pipeline](https://cooperstonelab.github.io/MS2extract/articles/batch_extract.html).
 
@@ -119,8 +120,8 @@ ProcA2_file
 
 ### met_metadata
 
-This argument refers to the compound metadata that user need to provide in order to 
-properly import scans that are related to the compound of interest.
+This argument refers to the compound metadata that user need to provide in
+order to  properly import scans that are related to the compound of interest.
 
 The `met_metadata` is a data frame that has required and optional columns. The
 required columns are employed to calculate the theoretical ionized *m*/*z* for a 
@@ -131,7 +132,7 @@ the compound elutes in order to only keep this rentention time window.
 The required columns are:
 
 * **Formula:** A character string specifying the metabolite formula
-* **Ionization_mode:** The ionization mode employed in data collection. It can be either *Positive* or *Negative*
+* **Ionization_mode:** The ionization mode employed in data collection. 
 
 The optional columns are: 
 
@@ -191,10 +192,11 @@ ProcA2_extracted <- extract_MS2(ProcA2_raw, verbose = TRUE, out_list = FALSE)
 
 
 Here, we can see in the top plot of the MS2 TIC that the scan colored in red is
-the most intense and the one for which the MS/MS spectra will be exported (at 170.667 s).
-In the bottom plot, we can see the procyanidin A2 MS/MS spectra at rt: 170.667.
-The maximum m/z axis value is > 1500 m/z but not significant ions are displayed.
-This can be explained due to low intensities are kept in the MS/MS spectra.
+the most intense and the one for which the MS/MS spectra will be
+exported (at 170.667 s). In the bottom plot, we can see the procyanidin A2 MS/MS
+spectra at rt: 170.667.] The maximum m/z axis value is > 1500 m/z but not 
+significant ions are displayed. This can be explained due to low intensities
+are kept in the MS/MS spectra.
 
 ```{r}
 range(ProcA2_extracted$mz)
@@ -208,10 +210,10 @@ intensities are too low to be seen in the plot.
 
 Similarly to the [MZmine pipeline]( http://mzmine.github.io/), 
 detecting masses refers to set a minimum
-signal intensity threshold value that product ions have to meet in order to be kept in the data. 
-This function can also normalize the spectra ion intensity to percentage 
-based on the base peak. This is a filtering step that is based on percentage of 
-the base peak (most intense ion).
+signal intensity threshold value that product ions have to meet in order to be
+kept in the data.  This function can also normalize the spectra ion intensity to
+percentage  based on the base peak. This is a filtering step that is based 
+on percentage ofthe base peak (most intense ion).
 
 The three required arguments are:
 
@@ -234,8 +236,8 @@ range(ProcA2_detected$mz)
 
 ## MS/MS spectra plot 
 
-We can proceed to plot the filtered MS/MS spectra with `plot_MS2spectra()` function.
-This is a ggplot2 based function; the blue diamond refers to the precursor ion.
+We can proceed to plot the filtered MS/MS spectra with `plot_MS2spectra()` 
+function. This is a ggplot2 based function; the blue diamond refers to the precursor ion.
 
 If we take a look to the previous MS/MS plot, there is less background noise
 in this MS/MS spectra because the low intensity ions have been removed.

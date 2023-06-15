@@ -89,7 +89,6 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'   \item{COLLISIONENERGY}{}
 #'   \item{INSTRUMENTTYPE}{}
 #' }
-#' @export
 #'
 write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
   # Number of rows equals the numbers of peaks

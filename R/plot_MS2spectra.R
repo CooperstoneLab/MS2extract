@@ -86,6 +86,27 @@ plot_MS2base <- function(spec, ppm) {
 #'  detected in the MS2 spectra, the blue diamond is not filled.
 #'
 #' @export
+#' @example
+#'
+#' Rutin_file <- system.file("extdata",
+#'   "Rutin_neg_20eV.mzXML",
+#'    package = "MS2extract"
+#'  )
+#'
+#'  # Region of interest table (rt in seconds)
+#' Rutin_data <- data.frame(Formula = "C27H30O16",
+#'     Ionization_mode = "Negative",
+#'     min_rt = 160, max_rt = 175
+#'  )
+#'  # Importing MS2 data
+#' rutin_raw <- import_mzxml(Rutin_file, Rutin_data)
+#' Rutin_extracted <- extract_MS2(rutin_raw)
+#'
+#' Rutin_detected <- detect_mass(Rutin_extracted,
+#'    normalize = TRUE, # Allow normalization
+#'    min_int = 1) # 1% as minimum intensity
+#' MS2_spectra <- plot_MS2spectra(Rutin_detected)
+#' print(MS2_spectra)
 
 plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
   # Checking if spec is single object or list

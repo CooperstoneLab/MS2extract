@@ -115,9 +115,9 @@ purrr::map(batch_compounds, dim)
 ### batch_extract_MS2
 
 Now that we have our data in imported, we can proceed to extract the most
-intense MS/MS scan for each compound. In this case, the `batch_extract_MS2()` functions
-do not have extra arguments, although most of the arguments remains fairly
-similar.
+intense MS/MS scan for each compound. In this case, the `batch_extract_MS2()`
+functions do not have extra arguments, although most of the arguments remains
+fairly similar.
 
 
 ```{r}
