@@ -9,7 +9,7 @@ output:
     number_sections: true
     fig_caption: true      
 vignette: >
-  %\VignetteIndexEntry{1 - Introduction to MS2extract package}
+  %\VignetteIndexEntry{1 - Introduction to MS2extract}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
