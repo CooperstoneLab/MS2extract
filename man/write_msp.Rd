@@ -48,7 +48,6 @@ file format. This function incorporates the extracted MS2 spectra along
 with metadata for the compound.
 }
 \examples{
-\donttest{
 
 # Example with single MS2 spectra -----
 
@@ -72,7 +71,7 @@ ProcA2_ext <- extract_MS2(ProcA2_raw)
 
 # Detecting masses with the normalized spectra and ions with
 # intensities greater than 1\%
-ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
+ProcA2_detected <- detect_mass(ProcA2_ext,
   normalize = TRUE, # Allow normalization
   min_int = 1
 ) # 1\% as minimum intensity
@@ -153,5 +152,4 @@ write_msp(
   spec_metadata = metadata_msp,
   msp_name = "ProcA2_Rutin_batch"
 )
-}
 }

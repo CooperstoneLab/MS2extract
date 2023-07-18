@@ -206,7 +206,6 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #' @param msp_name a string with the name of the .msp file excluding the file extension
 #' @export
 #' @examples
-#' \donttest{
 #'
 #' # Example with single MS2 spectra -----
 #'
@@ -230,7 +229,7 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #'
 #' # Detecting masses with the normalized spectra and ions with
 #' # intensities greater than 1%
-#' ProcA2_detected <- detect_mass(ProcA2_ext$MS2_spec,
+#' ProcA2_detected <- detect_mass(ProcA2_ext,
 #'   normalize = TRUE, # Allow normalization
 #'   min_int = 1
 #' ) # 1% as minimum intensity
@@ -311,7 +310,6 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #'   spec_metadata = metadata_msp,
 #'   msp_name = "ProcA2_Rutin_batch"
 #' )
-#' }
 write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
   # Checking of all args are provided
   if (is.null(spec)) stop("Please provide a spec data")
