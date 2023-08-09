@@ -1,7 +1,7 @@
 Package: MS2extract
 Type: Package
 Title: Targeted MS2 Spectra Extraction for In-house Compound Library Creation
-Version: 0.1.0
+Version: 0.01.0
 Date: 2023-06-08
 Authors@R: c(
     person("Cristian", "Quiroz-Moreno",

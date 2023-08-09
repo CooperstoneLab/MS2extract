@@ -204,7 +204,7 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
 
   if (nrow(mzxml_tidy) == 0) {
     stop(paste0(
-      "Precursor ion not found with the",
+      "Precursor ion not found with the ",
       "given formula and ppm"
     ))
   }
