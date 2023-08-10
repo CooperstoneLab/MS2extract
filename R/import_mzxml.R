@@ -203,10 +203,14 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
   )
 
   if (nrow(mzxml_tidy) == 0) {
-    stop(paste0(
-      "Precursor ion not found with the ",
-      "given formula and ppm"
-    ))
+    #metabolite <- met_metadata$Name
+    formula <- met_metadata$Formula
+    file <- basename(file)
+    ppm_error <- round(ppm_error, 4)
+    cli::cli_abort(
+      c("Precursor ion not found in {file} ",
+        "i" = "given {formula} and {ppm} ppm: {ppm_error}  m/z range was evaluated" )
+    )
   }
 
   # Eval if roi_table is null ----
