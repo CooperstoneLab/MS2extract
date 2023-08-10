@@ -8,20 +8,6 @@
 <!-- badges: start -->
 
 [![test-coverage](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml)
-[![Bioc release
-status](http://www.bioconductor.org/shields/build/release/bioc/MS2extract.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/MS2extract)
-[![Bioc devel
-status](http://www.bioconductor.org/shields/build/devel/bioc/MS2extract.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/MS2extract)
-[![Bioc downloads
-rank](https://bioconductor.org/shields/downloads/release/MS2extract.svg)](http://bioconductor.org/packages/stats/bioc/MS2extract/)
-[![Bioc
-support](https://bioconductor.org/shields/posts/MS2extract.svg)](https://support.bioconductor.org/tag/MS2extract)
-[![Bioc
-history](https://bioconductor.org/shields/years-in-bioc/MS2extract.svg)](https://bioconductor.org/packages/release/bioc/html/MS2extract.html#since)
-[![Bioc last
-commit](https://bioconductor.org/shields/lastcommit/devel/bioc/MS2extract.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/MS2extract/)
-[![Bioc
-dependencies](https://bioconductor.org/shields/dependencies/release/MS2extract.svg)](https://bioconductor.org/packages/release/bioc/html/MS2extract.html#since)
 <!-- badges: end -->
 
 [MS2extract website](https://cooperstonelab.github.io/MS2extract/)
@@ -33,7 +19,7 @@ create an in-house MS2 library.
 > This package aids the creation and automatization of in-house
 > libraries
 
-> This package DO NOT support algorithms to annotate MS/MS data
+> This package DOES NOT support algorithms to annotate MS/MS data
 
 ## Installation
 

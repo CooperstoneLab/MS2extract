@@ -15,3 +15,4 @@
 ^zzz/TIC_plot\.jpeg$
 ^\./zzz/HexSticker\.R$
 ^data-raw$
+^vignettes/Batch6545_Neg20\.Rmd$

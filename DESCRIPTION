@@ -49,7 +49,10 @@ Suggests:
     rmarkdown,
     prettydoc,
     testthat (>= 3.0.0),
-    Rcpp (>= 1.0.9)
+    Rcpp (>= 1.0.9),
+    BiocStyle,
+    RefManageR,
+    sessioninfo
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 BugReports: https://github.com/CooperstoneLab/MS2extract/issues
