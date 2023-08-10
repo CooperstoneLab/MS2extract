@@ -101,10 +101,10 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
   # Writing the spectra metadata
   msp_entry <- paste0(
     "NAME: ", spec_metadata$NAME, "\n",
-    "PRECURSORMZ: ", unique(spec$mz_precursor), "\n",
+    "PRECURSORMZ: ", round(as.numeric(unique(spec$mz_precursor)), 5) , "\n",
     "PRECURSORTYPE: ", spec_metadata$PRECURSORTYPE, "\n",
     "FORMULA: ", spec_metadata$FORMULA, "\n",
-    "RETENTIONTIME: ", unique(spec$rt), "\n",
+    "RETENTIONTIME: ", round(as.numeric(unique(spec$rt))/60, 3), "\n",
     "IONMODE: ", spec_metadata$IONMODE, "\n",
     "COMMENT: ", "Spectra extracted with MS2extract R package", "\n"
   )
