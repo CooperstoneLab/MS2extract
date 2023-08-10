@@ -1,7 +1,6 @@
 url: https://cooperstonelab.github.io/MS2extract/
 template:
   bootstrap: 5
-  bootswatch: flatly
   includes:
     in_header: |
        <!-- Global site tag (gtag.js) - Google Analytics -->
