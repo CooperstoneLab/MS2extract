@@ -7,15 +7,33 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CooperstoneLab/MS2extract/actions/workflows/test-coverage.yaml)
+[![Bioc release
+status](http://www.bioconductor.org/shields/build/release/bioc/MS2extract.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/MS2extract)
+[![Bioc devel
+status](http://www.bioconductor.org/shields/build/devel/bioc/MS2extract.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/MS2extract)
+[![Bioc downloads
+rank](https://bioconductor.org/shields/downloads/release/MS2extract.svg)](http://bioconductor.org/packages/stats/bioc/MS2extract/)
+[![Bioc
+support](https://bioconductor.org/shields/posts/MS2extract.svg)](https://support.bioconductor.org/tag/MS2extract)
+[![Bioc
+history](https://bioconductor.org/shields/years-in-bioc/MS2extract.svg)](https://bioconductor.org/packages/release/bioc/html/MS2extract.html#since)
+[![Bioc last
+commit](https://bioconductor.org/shields/lastcommit/devel/bioc/MS2extract.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/MS2extract/)
+[![Bioc
+dependencies](https://bioconductor.org/shields/dependencies/release/MS2extract.svg)](https://bioconductor.org/packages/release/bioc/html/MS2extract.html#since)
 <!-- badges: end -->
 
 [MS2extract website](https://cooperstonelab.github.io/MS2extract/)
 
 The goal of MS2extract is to provide a tool to import MS2 data of known
-standards or material and targeted extract the MS2 expectra in order to
+standards or material and targeted extract the MS2 spectra in order to
 create an in-house MS2 library.
+
+> This package aids the creation and automatization of in-house
+> libraries
+
+> This package DO NOT support algorithms to annotate MS/MS data
 
 ## Installation
 
@@ -36,15 +54,15 @@ ppm tolerance.
 
 ``` r
 library(MS2extract)
-#> Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.9)
-#> than is installed on your system (1.0.10). This might lead to errors
+#> Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.10)
+#> than is installed on your system (1.0.11). This might lead to errors
 #> when loading mzR. If you encounter such issues, please send a report,
 #> including the output of sessionInfo() to the Bioc support forum at 
 #> https://support.bioconductor.org/. For details see also
 #> https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
 ## calculating ppm range
 chlorogenic_acid_pos <- 355.1023
-ppm_error = 10
+ppm_error <- 10
 # Calculate ranges
 ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 #> [1] 355.0987 355.1059
@@ -60,10 +78,11 @@ energy of 20 eV.
 ``` r
 # File path
 ProcA2_file <- system.file("extdata",
-                           "ProcyanidinA2_neg_20eV.mzXML",
-                           package = "MS2extract")
+  "ProcyanidinA2_neg_20eV.mzXML",
+  package = "MS2extract"
+)
 # Compound data
-ProcA2_data <- data.frame(Formula = "C30H24O12",Ionization_mode = "Negative")
+ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #> Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML
@@ -108,8 +127,9 @@ intensity of 1%
 
 ``` r
 ProcA2_detected <- detect_mass(ProcA2_ext,
-                               normalize = TRUE, # Allow normalization
-                               min_int = 1) # 1% as minimum intensity
+  normalize = TRUE, # Allow normalization
+  min_int = 1
+) # 1% as minimum intensity
 
 dim(ProcA2_detected)
 #> [1] 38  4
@@ -153,8 +173,9 @@ similarity score to compare them by the `compare_spectra()` function.
 ``` r
 # MS2 PCDL spectra
 ProcA2_pcdl_fl <- system.file("extdata",
-                              "ProcA2_neg_20eV_PCDL.csv",
-                              package = "MS2extract")
+  "ProcA2_neg_20eV_PCDL.csv",
+  package = "MS2extract"
+)
 # Reading the spectra
 ProcA2_PCDL <- read.csv(ProcA2_pcdl_fl)
 

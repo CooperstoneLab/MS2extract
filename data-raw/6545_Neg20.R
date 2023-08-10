@@ -13,7 +13,7 @@ batch_compounds <- batch_import_mzxml(tmp)
 
 # Use extract batch extract_MS2
 batch_extracted <- batch_extract_MS2(batch_compounds,
-                                     verbose = TRUE,
+                                     verbose = FALSE,
                                      out_list = FALSE )
 
 batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
