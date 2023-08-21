@@ -95,7 +95,7 @@
                         <h4 data-toc-skip class="author">Cristian
 Quiroz-Moreno &amp; Jessica Cooperstone</h4>
             
-            <h4 data-toc-skip class="date">2023-08-10</h4>
+            <h4 data-toc-skip class="date">2023-08-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/CooperstoneLab/MS2extract/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="d-none name"><code>introduction.Rmd</code></div>
@@ -384,7 +384,7 @@ SMILES, COLLISIONENERGY, etc.</p>
 <span><span class="co">#&gt; $ INCHIKEY        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NSEWTSAADLNHNH-LSBOWGMISA-N"</span></span>
 <span><span class="co">#&gt; $ SMILES          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "C1C(C(OC2=C1C(=CC3=C2C4C(C(O3)(OC5=CC(=CC(=C45)O)O)C6…</span></span>
 <span><span class="co">#&gt; $ IONMODE         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Negative"</span></span>
-<span><span class="co">#&gt; $ INSTRUMENTTYPE  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Q-TOF 6545"</span></span>
+<span><span class="co">#&gt; $ INSTRUMENTTYPE  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "LC-ESI-QTOF"</span></span>
 <span><span class="co">#&gt; $ COLLISIONENERGY <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "20 eV"</span></span></code></pre></div>
 <p>The precursor ion is not necessary to provide since this information
 is included in the extracted MS/MS spectra.</p>
@@ -419,7 +419,7 @@ content:</p>
 <span><span class="co">#&gt; SMILES: C1C(C(OC2=C1C(=CC3=C2C4C(C(O3)(OC5=CC(=CC(=C45)O)O)C6=CC(=C(C=C6)O)O)O)O)C7=CC(=C(C=C7)O)O)O</span></span>
 <span><span class="co">#&gt; CCS: </span></span>
 <span><span class="co">#&gt; COLLISIONENERGY: 20 eV</span></span>
-<span><span class="co">#&gt; INSTRUMENTTYPE: Q-TOF 6545</span></span>
+<span><span class="co">#&gt; INSTRUMENTTYPE: LC-ESI-QTOF</span></span>
 <span><span class="co">#&gt; Num Peaks: 38</span></span>
 <span><span class="co">#&gt; 125.02431 10</span></span>
 <span><span class="co">#&gt; 137.02441 3</span></span>
@@ -497,13 +497,13 @@ content:</p>
 <span><span class="co">#&gt; [13] sass_0.4.7            tools_4.3.1           utf8_1.2.3           </span></span>
 <span><span class="co">#&gt; [16] yaml_2.3.7            knitr_1.43            ggsignif_0.6.4       </span></span>
 <span><span class="co">#&gt; [19] labeling_0.4.2        plyr_1.8.8            abind_1.4-5          </span></span>
-<span><span class="co">#&gt; [22] BiocParallel_1.34.2   withr_2.5.0           purrr_1.0.1          </span></span>
+<span><span class="co">#&gt; [22] BiocParallel_1.34.2   withr_2.5.0           purrr_1.0.2          </span></span>
 <span><span class="co">#&gt; [25] BiocGenerics_0.46.0   desc_1.4.2            grid_4.3.1           </span></span>
 <span><span class="co">#&gt; [28] stats4_4.3.1          preprocessCore_1.62.1 fansi_1.0.4          </span></span>
-<span><span class="co">#&gt; [31] ggpubr_0.6.0          colorspace_2.1-0      ggplot2_3.4.2        </span></span>
+<span><span class="co">#&gt; [31] ggpubr_0.6.0          colorspace_2.1-0      ggplot2_3.4.3        </span></span>
 <span><span class="co">#&gt; [34] scales_1.2.1          iterators_1.0.14      MASS_7.3-60          </span></span>
 <span><span class="co">#&gt; [37] cli_3.6.1             crayon_1.5.2          mzR_2.34.1           </span></span>
-<span><span class="co">#&gt; [40] rmarkdown_2.23        ragg_1.2.5            generics_0.1.3       </span></span>
+<span><span class="co">#&gt; [40] rmarkdown_2.24        ragg_1.2.5            generics_0.1.3       </span></span>
 <span><span class="co">#&gt; [43] Rdisop_1.60.0         ncdf4_1.21            cachem_1.0.8         </span></span>
 <span><span class="co">#&gt; [46] affy_1.78.2           stringr_1.5.0         zlibbioc_1.46.0      </span></span>
 <span><span class="co">#&gt; [49] parallel_4.3.1        impute_1.74.1         BiocManager_1.30.22  </span></span>
@@ -517,11 +517,11 @@ content:</p>
 <span><span class="co">#&gt; [73] cowplot_1.1.1         stringi_1.7.12        gtable_0.3.3         </span></span>
 <span><span class="co">#&gt; [76] OrgMassSpecR_0.5-3    mzID_1.38.0           munsell_0.5.0        </span></span>
 <span><span class="co">#&gt; [79] tibble_3.2.1          pillar_1.9.0          pcaMethods_1.92.0    </span></span>
-<span><span class="co">#&gt; [82] htmltools_0.5.5       R6_2.5.1              textshaping_0.3.6    </span></span>
+<span><span class="co">#&gt; [82] htmltools_0.5.6       R6_2.5.1              textshaping_0.3.6    </span></span>
 <span><span class="co">#&gt; [85] doParallel_1.0.17     rprojroot_2.0.3       evaluate_0.21        </span></span>
 <span><span class="co">#&gt; [88] lattice_0.21-8        Biobase_2.60.0        highr_0.10           </span></span>
 <span><span class="co">#&gt; [91] backports_1.4.1       memoise_2.0.1         broom_1.0.5          </span></span>
-<span><span class="co">#&gt; [94] bslib_0.5.0           Rcpp_1.0.11           xfun_0.39            </span></span>
+<span><span class="co">#&gt; [94] bslib_0.5.1           Rcpp_1.0.11           xfun_0.40            </span></span>
 <span><span class="co">#&gt; [97] MsCoreUtils_1.12.0    fs_1.6.3              pkgconfig_2.0.3</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
