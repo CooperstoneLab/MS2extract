@@ -103,10 +103,10 @@ dim(ProcA2_ext)
 
 ### Detecting masses
 
-The objective is to remove low intensity signals, you can detec masses
+The objective is to remove low intensity signals, you can detect masses
 by allowing normalization by the base peak and then filtering the
-signals by a minimum treshold, or detecting mass with the abolute signal
-intensity.
+signals by a minimum threshold, or detecting mass with the absolute
+signal intensity.
 
 Here, we will detect masses by normalization and with a minimum
 intensity of 1%
