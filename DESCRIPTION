@@ -31,6 +31,7 @@ Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Imports: 
     cli,
+    Rdpack,
     crayon,
     dplyr,
     ggplot2,
@@ -44,7 +45,6 @@ Imports:
     Rdisop,
     rlang
 Suggests:
-    Rdpack,
     knitr,
     rmarkdown,
     prettydoc,
