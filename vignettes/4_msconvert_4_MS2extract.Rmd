@@ -71,9 +71,11 @@ scenarios are:
 \*Note:\* this is a fourd vignette for this package and if you find some
 terms unclear, or are not familiar with the concepts, please visit the
 previous vignettes ([Package
-introduction](https://cooperstonelab.github.io/MS2extract/articles/introduction.html),
+introduction](https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html),
 [Batch mode
-introduction](https://cooperstonelab.github.io/MS2extract/articles/using_batch_extract.html)).
+introduction](https://cooperstonelab.github.io/MS2extract/articles/2_using_batch_extract.html),
+and [Importing MS/MS
+data](https://cooperstonelab.github.io/MS2extract/articles/4_import_mzml_explanation.html)).
 
 # Concept of MS2extract
 
@@ -185,11 +187,11 @@ Code for creating the vignette
 ```{r createVignette, eval=FALSE}
 ## Create the vignette
 library("rmarkdown")
-system.time(render("msconvert_4_MS2extract.Rmd", "BiocStyle::html_document"))
+system.time(render("4_msconvert_4_MS2extract.Rmd", "BiocStyle::html_document"))
 
 ## Extract the R code
 library("knitr")
-knit("msconvert_4_MS2extract.Rmd", tangle = TRUE)
+knit("4_msconvert_4_MS2extract.Rmd", tangle = TRUE)
 ```
 
 Date the vignette was generated.
