@@ -129,7 +129,7 @@ and</li>
 </h2>
 <p>One of the main inputs, besides the .mzML data, is the
 <code>met_metadata</code> data frame used in
-<code><a href="../reference/import_mzxml.html">import_mzxml()</a></code>. This data frame contains the minimum
+<code><a href="../reference/import_mzxml.html">import_mzxml()</a></code>. This dataframe contains the minimum
 information to calculate the theoretical precursor ion <em>m/z</em>
 given the following information:</p>
 <ul>
@@ -159,13 +159,12 @@ scan that the precursor ion value falls within this range.</p>
 <div class="section level3">
 <h3 id="using-retention-time-region-of-interest">Using retention time region of interest<a class="anchor" aria-label="anchor" href="#using-retention-time-region-of-interest"></a>
 </h3>
-<p>Although providing a retention time window, it is highly suggested to
-have more control over the regions of the run that we look for the MS/MS
-scans. If you do not provide for a specific rt ROI, this package will
-look for the most intense scan, even if that do not represent the
-desired scans from the provided metabolite.</p>
-<p>This is a case example, that you can trim the retention time for the
-specific elution time of the metabolite.</p>
+<p>Although providing a retention time window is not mandatory, it is
+highly suggested to provide this information to have more control over
+the regions of the run that we look for the MS/MS scans. If you do not
+provide a specific rt ROI, this package will look for the most intense
+scan, even if that do not represent the desired scans from the provided
+metabolite.</p>
 <p><img src="img/import/import_2.jpg"></p>
 </div>
 <div class="section level3">
@@ -176,9 +175,10 @@ knowing the rt ROI, we can look in the data for the MS/MS scans that
 have this information.</p>
 <p>If <code>MS2extract</code> do not find at least one MS/MS scan within
 the given <em>m/z</em> range and rt ROI, it will stop.</p>
-<p>In the following example, the scan in the first does not meet these
-requierements, and it is discard, while the second and third scan falls
-within these requierements, and are keept for the next steps.</p>
+<p>In the following example, the scan in the first row does not meet
+these requierements, and it is discarded, while the second and third
+scan falls within these requierements, and are keept for the next
+steps.</p>
 <p><img src="img/import/import_3.jpg"></p>
 </div>
 </div>
@@ -195,9 +195,9 @@ within these requierements, and are keept for the next steps.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"3_import_mzml_explanation.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-08-26 19:53:22 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-08-26 20:05:30 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 5.171 secs</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 5.844 secs</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
