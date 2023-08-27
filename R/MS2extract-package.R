@@ -22,6 +22,7 @@
 #' @importFrom purrr map
 #' @importFrom purrr map2
 #' @importFrom Rdisop getMolecule
+#' @importFrom Rdpack reprompt
 #' @importFrom rlang .data
 ## usethis namespace: end
 NULL
