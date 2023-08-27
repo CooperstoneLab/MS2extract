@@ -77,7 +77,7 @@ given the following information:
 
 This process can be depicted in the following image.
 
-![](img/import/Import_1.jpg)
+![](img/import/Import_1.png)
 
 Here, we are going to use procyanidin A2 to demonstrate this process.
 (1) First, by using the `r Biocpkg("Rdisop")` package, we calculate the
@@ -105,7 +105,7 @@ scans. If you do not provide a specific rt ROI, this package will
 look for the most intense scan, even if that do not represent the
 desired scans from the provided metabolite.
 
-![](img/import/import_2.jpg)
+![](img/import/import_2.png)
 
 ## Filtering using *m/z* range and rt ROI
 
@@ -120,7 +120,7 @@ In the following example, the scan in the first row does not meet these
 requierements, and it is discarded, while the second and third scan falls
 within these requierements, and are keept for the next steps.
 
-![](img/import/import_3.jpg)
+![](img/import/import_3.png)
 
 # Information about this vignette
 
