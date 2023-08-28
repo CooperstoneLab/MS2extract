@@ -67,7 +67,7 @@ MS/MS data that are:
 # Calculating the theoretical precursor ion
 
 One of the main inputs, besides the .mzML data, is the `met_metadata`
-data frame used in `import_mzxml()`. This dataframe contains the
+data frame used in `import_mzxml()`. This data frame contains the
 minimum information to calculate the theoretical precursor ion *m/z*
 given the following information:
 
@@ -98,14 +98,14 @@ ppm_range(mz = 575.12604, ppm = 10)
 
 ## Using retention time region of interest
 
-Although providing a retention time window is not mandatory,
-it is highly suggested to provide this information to
-have more control over the regions of the run that we look for the MS/MS
-scans. If you do not provide a specific rt ROI, this package will
-look for the most intense scan, even if that do not represent the
-desired scans from the provided metabolite.
+Although providing a retention time window is not mandatory, it is
+highly suggested to provide this information to have more control over
+the regions of the run that we look for the MS/MS scans. If you do not
+provide a specific rt ROI, this package will look for the most intense
+scan, even if that do not represent the desired scans from the provided
+metabolite.
 
-![](img/import/import_2.png)
+![](img/import/Import_2.png)
 
 ## Filtering using *m/z* range and rt ROI
 
@@ -117,10 +117,10 @@ If `MS2extract` do not find at least one MS/MS scan within the given
 *m/z* range and rt ROI, it will stop.
 
 In the following example, the scan in the first row does not meet these
-requierements, and it is discarded, while the second and third scan falls
-within these requierements, and are keept for the next steps.
+requirements, and it is discarded, while the second and third scan falls
+within these requirements, and are kept for the next steps.
 
-![](img/import/import_3.png)
+![](img/import/Import_3.png)
 
 # Information about this vignette
 
