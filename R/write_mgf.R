@@ -1,3 +1,49 @@
+#' Checking names in the provided GNPS metadata
+#'
+#' * Internal Function *
+#'
+#' This function evaluates if the names in the provided table  (`met_metadata`)
+#' matches the required column names.
+#'
+#' @param met_metadata library metadata provided according to the GNPS
+#' [template](https://ccms-ucsd.github.io/GNPSDocumentation/batchupload).
+#'
+#' You can check a working example of this template retrieving the
+#' `GNPS_template.xlsx` file by using:
+#' `system.file("extdata", "GNPS_template.xlsx", package = "MS2extract")`.
+#'
+#' @examples
+#'
+#' gnps_template <- system.file("extdata", "GNPS_template.xlsx",
+#'                              package = "MS2extract")
+#'
+#' gnps_template <- readxl::read_excel(path = template_file,
+#'                 sheet = "batch_example")
+#'
+#' check_gnps_metadata(gnps_template)
+#'
+
+check_gnps_metadata <- function(met_metadata) {
+
+  # Names of the required column names in the GNPS metadata
+  MS2extract_GNPS_names <- c("COMPOUND_NAME", "INSTRUMENT", "COLLISIONENERGY",
+                             "IONSOURCE", "SMILES", "INCHI", "INCHIAUX",
+                             "IONMODE", "PUBMED", "ACQUISITION",
+                             "DATACOLLECTOR", "INTEREST", "LIBQUALITY", "GENUS",
+                             "SPECIES", "STRAIN", "CASNUMBER", "PI")
+
+  provided_names <- names(met_metadata)
+
+  # Checking if the provided names match the required names
+  names_check <- MS2extract_GNPS_names %in% provided_names
+
+  if(all(names_check)) {
+    return(TRUE) } else {
+      return(MS2extract_GNPS_names[!names_check])
+    }
+
+}
+
 #' Create the GNPS mgf backbone file format
 #'
 #' *Internal function*
@@ -113,6 +159,16 @@
 #'
 write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
 
+  # Checking spec_metada ----
+  metadata_check <- check_gnps_metadata(met_metadata = spec_metadata)
+
+  if(!isTRUE(metadata_check))
+    cli::cli_abort(
+      c("Column names provided do not match with the required column names",
+        "i" = "Column{?s} {metadata_check} missing.")
+    )
+
+  # Writing MFG ----
   # https://fiehnlab.ucdavis.edu/projects/lipidblast/mgf-files
   # the minimum mgf definition contains precursor mass, charge and m/z abundance
 

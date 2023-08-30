@@ -91,10 +91,16 @@ check_metadata <- function(met_metadata) {
         exact_mass <- exact_mass - 1.00727
       }
     } else {
-      stop("Only Negative and Positive ionizization modes are accepted")
+      cli::cli_abort(
+        c("Value provided in {.Ionization_mode} is prohibited",
+          "i" = "{.Ionization_mode} accepts only Positive or Negative values" )
+      )
     }
   } else {
-    stop("Fomrula and Ionization_mode colums are required")
+    cli::cli_abort(
+      c("{.Fomrula} and {.Ionization_mode} colums are required")
+    )
+
   }
 
   return(exact_mass)
