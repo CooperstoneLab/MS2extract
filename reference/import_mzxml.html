@@ -153,6 +153,9 @@ especially important if you have multiple peaks in an EIC.</p></dd>
 <dt>rt</dt>
 <dd><p>retention time (in seconds)</p></dd>
 
+<dt>Formula</dt>
+<dd><p>Chemical formula provided in <code>met_metada</code></p></dd>
+
 
 </dl></div>
 
@@ -169,11 +172,11 @@ especially important if you have multiple peaks in an EIC.</p></dd>
 <span class="r-in"><span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>, Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu">import_mzxml</span><span class="op">(</span><span class="va">ProcA2_file</span>, met_metadata <span class="op">=</span> <span class="va">ProcA2_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing... ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 26731 ions detected in total</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_raw</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 26731     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 26731     5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Region of interest table (rt in seconds)</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
@@ -182,11 +185,11 @@ especially important if you have multiple peaks in an EIC.</p></dd>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_roi</span> <span class="op">&lt;-</span> <span class="fu">import_mzxml</span><span class="op">(</span><span class="va">ProcA2_file</span>, met_metadata <span class="op">=</span> <span class="va">ProcA2_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing... ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 24249 ions detected in ROI</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_roi</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24249     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24249     5</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

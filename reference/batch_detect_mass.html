@@ -156,18 +156,18 @@ minimum ion count.</p></dd>
 <span class="r-in"><span><span class="co"># Using batch import to import multiple compounds</span></span></span>
 <span class="r-in"><span><span class="va">batch_compounds</span> <span class="op">&lt;-</span> <span class="fu"><a href="batch_import_mzxml.html">batch_import_mzxml</a></span><span class="op">(</span><span class="va">batch_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing... ProcyanidinA2_neg_20eV.mzXML</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from Rutin_neg_20eV.mzXML</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing...</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing... Rutin_neg_20eV.mzXML</span></span>
 <span class="r-in"><span><span class="co"># Checking dimension by compound</span></span></span>
 <span class="r-in"><span><span class="co"># Procyanidin A2: 24249 ions</span></span></span>
 <span class="r-in"><span><span class="co"># Rutin: 22096 ions</span></span></span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">batch_compounds</span>, <span class="va">dim</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Procyanidin A2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24249     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24249     5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Rutin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22096     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22096     5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting MS2 spec</span></span></span>
@@ -191,10 +191,10 @@ minimum ion count.</p></dd>
 <span class="r-in"><span><span class="co"># Rutin: 4 ions</span></span></span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="va">dim</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Procyanidin A2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38  4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38  5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Rutin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
