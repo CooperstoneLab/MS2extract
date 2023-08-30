@@ -4,7 +4,7 @@
 \alias{write_msp_base}
 \title{Export MS2 spectra to a msp file}
 \usage{
-write_msp_base(spec = NULL, spec_metadata = NULL)
+write_msp_base(spec = NULL, spec_metadata = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{a data frame containing the extracted MS2 spectra, the following
@@ -29,8 +29,8 @@ information for the msp output.
 \item{IONMODE}{}
 }
 
-The follosing fields are also included in the resulting msp files, but are
-not requiered to be present in the metadata table. If the column does not
+The following fields are also included in the resulting msp files, but are
+not required to be present in the metadata table. If the column does not
 exist in the column or the value is missing, it will export a blank field.
 \describe{
 \item{INCHIKEY}{}
@@ -39,6 +39,11 @@ exist in the column or the value is missing, it will export a blank field.
 \item{COLLISIONENERGY}{}
 \item{INSTRUMENTTYPE}{}
 }}
+
+\item{type}{character, either if you plan to use the out .mgf library file
+with GNPS, or MZMINE. The main difference is for MZmine, the retention time,
+in seconds is included in the exported MS/MS library, while this information
+is ommited}
 }
 \description{
 \emph{Internal function}

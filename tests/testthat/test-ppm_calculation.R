@@ -2,7 +2,7 @@ test_that("ppm calculation works", {
   chlorogenic_acid_pos <- 355.1023
   ppm_error <- 10
   ppm_value <- get_ppm(mz = chlorogenic_acid_pos, ppm = ppm_error)
-  # Calculate the mass diference
+  # Calculate the mass difference
   expect_equal(ppm_value, 0.00355, tolerance = 0.0005)
 
   # Calculate ranges

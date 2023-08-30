@@ -29,7 +29,7 @@ read_mzxml <- function(file,
     mode = mode
   )
 
-  message(crayon::green("Processing..."))
+  message(crayon::green(paste("Processing...",  base::basename(file)) ))
 
   new.ms2 <- ProtGenerics::spectra(object = ms2)
 

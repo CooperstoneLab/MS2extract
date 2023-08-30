@@ -47,6 +47,7 @@ data.frame in a tidy format for MS2 spectra in a tidy format.
 \item{intensity}{ion intensity count}
 \item{precursor_mz}{precursor ion}
 \item{rt}{retention time (in seconds)}
+\item{Formula}{Chemical formula provided in \code{met_metada}}
 }
 }
 \description{

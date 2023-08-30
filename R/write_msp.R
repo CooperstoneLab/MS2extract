@@ -79,8 +79,8 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'  \item{IONMODE}{}
 #' }
 #'
-#' The follosing fields are also included in the resulting msp files, but are
-#' not requiered to be present in the metadata table. If the column does not
+#' The following fields are also included in the resulting msp files, but are
+#' not required to be present in the metadata table. If the column does not
 #' exist in the column or the value is missing, it will export a blank field.
 #'  \describe{
 #'   \item{INCHIKEY}{}
@@ -90,7 +90,11 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'   \item{INSTRUMENTTYPE}{}
 #' }
 #'
-write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
+#' @param type character, either if you plan to use the out .mgf library file
+#' with GNPS, or MZMINE. The main difference is for MZmine, the retention time,
+#' in seconds is included in the exported MS/MS library, while this information
+#' is ommited
+write_msp_base <- function(spec = NULL, spec_metadata = NULL, type = NULL) {
   # Number of rows equals the numbers of peaks
   n_peaks <- nrow(spec)
 

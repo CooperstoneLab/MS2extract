@@ -43,7 +43,8 @@ Imports:
     ProtGenerics,
     purrr,
     Rdisop,
-    rlang
+    rlang,
+    readxl
 Suggests:
     knitr,
     rmarkdown,

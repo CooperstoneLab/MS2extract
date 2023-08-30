@@ -147,6 +147,7 @@ check_metadata <- function(met_metadata) {
 #'   \item{intensity}{ion intensity count}
 #'   \item{precursor_mz}{precursor ion}
 #'   \item{rt}{retention time (in seconds)}
+#'   \item{Formula}{Chemical formula provided in `met_metada`}
 #' }
 #'
 #' @export
@@ -223,6 +224,8 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
     # Filtering using roi table
     mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
   }
+
+  mzxml_tidy <- mutate(mzxml_tidy, Formula = met_metadata$Formula)
 
   return(mzxml_tidy)
 }
