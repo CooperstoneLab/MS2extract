@@ -156,8 +156,9 @@
 <span><span class="va">ProcA2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Formula <span class="op">=</span> <span class="st">"C30H24O12"</span>, Ionization_mode <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ProcA2_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_mzxml.html">import_mzxml</a></span><span class="op">(</span><span class="va">ProcA2_file</span>, <span class="va">ProcA2_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML</span></span>
-<span><span class="co">#&gt; Processing...</span></span></code></pre></div>
+<span><span class="co">#&gt; Reading MS2 data from</span></span>
+<span><span class="co">#&gt; Processing... ProcyanidinA2_neg_20eV.mzXML</span></span>
+<span><span class="co">#&gt; 1 different collsion energies were found: 20</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extracting-procyanidin-a2-spectra">Extracting Procyanidin A2 spectra<a class="anchor" aria-label="anchor" href="#extracting-procyanidin-a2-spectra"></a>
@@ -170,7 +171,7 @@
 <p>The raw MS2 spectra contains 6226 signals which the majority of them are low intensity signals (background noise).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 6226    4</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 6226    6</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="detecting-masses">Detecting masses<a class="anchor" aria-label="anchor" href="#detecting-masses"></a>
@@ -184,7 +185,7 @@
 <span><span class="op">)</span> <span class="co"># 1% as minimum intensity</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 38  4</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 38  6</span></span></code></pre></div>
 <p>Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z since the low intensity signals were removed.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
@@ -192,16 +193,16 @@
 <p>Although the resulting MS2 spectra contains 38 signals, for displaying purposes we are going to include signlas greater than 10% intensity</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ProcA2_detected</span>, <span class="va">intensity</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         mz intensity mz_precursor      rt</span></span>
-<span><span class="co">#&gt; 1 285.0406        62     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 2 289.0718        48     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 3 407.0769        16     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 4 423.0723        53     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 5 449.0880        51     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 6 452.0745        15     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 7 539.0983        22     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 8 575.1197       100     575.1196 170.667</span></span>
-<span><span class="co">#&gt; 9 576.1221        13     575.1196 170.667</span></span></code></pre></div>
+<span><span class="co">#&gt;         mz intensity mz_precursor      rt CE   Formula</span></span>
+<span><span class="co">#&gt; 1 285.0406        62     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 2 289.0718        48     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 3 407.0769        16     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 4 423.0723        53     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 5 449.0880        51     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 6 452.0745        15     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 7 539.0983        22     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 8 575.1197       100     575.1196 170.667 20 C30H24O12</span></span>
+<span><span class="co">#&gt; 9 576.1221        13     575.1196 170.667 20 C30H24O12</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="comparing-two-ms2-spectra-with-cosine-score">Comparing two MS2 spectra with cosine score<a class="anchor" aria-label="anchor" href="#comparing-two-ms2-spectra-with-cosine-score"></a>
