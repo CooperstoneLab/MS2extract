@@ -17,7 +17,7 @@
 #' gnps_template <- system.file("extdata", "GNPS_template.xlsx",
 #'                              package = "MS2extract")
 #'
-#' gnps_template <- readxl::read_excel(path = template_file,
+#' gnps_template <- readxl::read_excel(path = gnps_template,
 #'                 sheet = "batch_example")
 #'
 #' check_gnps_metadata(gnps_template)

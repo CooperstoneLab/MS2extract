@@ -32,7 +32,7 @@ read_mzxml <- function(file,
   new.ms2 <- ProtGenerics::spectra(object = ms2)
   unique_CE <- unique(ms2_CE)
   n_CE <- length(unique_CE)
-  cli::cli_text("{n_CE} different collsion energies were found: {unique_CE}")
+  cli::cli_text("Found {n_CE} CE value{?s}: {unique_CE}")
 
 
   rm(list = c("ms2"))
