@@ -237,6 +237,7 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
   }
 
   mzxml_tidy <- mutate(mzxml_tidy, Formula = met_metadata$Formula)
-
+  mzxml_tidy <- dplyr::group_by(mzxml_tidy, Formula, CE)
+  cli::col_green("Succesfully imported!")
   return(mzxml_tidy)
 }

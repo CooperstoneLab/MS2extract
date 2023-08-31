@@ -44,7 +44,8 @@ Imports:
     purrr,
     Rdisop,
     rlang,
-    readxl
+    readxl,
+    readr
 Suggests:
     knitr,
     rmarkdown,

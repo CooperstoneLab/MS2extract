@@ -92,6 +92,10 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'
 
 write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
+
+  # Filtering for specific CE
+  spec <- CE_filter(spec, spec_metadata)
+
   # Number of rows equals the numbers of peaks
   n_peaks <- nrow(spec)
 

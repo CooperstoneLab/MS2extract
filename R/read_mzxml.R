@@ -27,12 +27,18 @@ read_mzxml <- function(file,
   )
   ms2_CE <- MSnbase::collisionEnergy(ms2)
 
-  message(crayon::green(paste("Processing...",  base::basename(file)) ))
+  #message(crayon::green(paste("Processing:",  base::basename(file)) ))
 
   new.ms2 <- ProtGenerics::spectra(object = ms2)
   unique_CE <- unique(ms2_CE)
   n_CE <- length(unique_CE)
-  cli::cli_text("Found {n_CE} CE value{?s}: {unique_CE}")
+  cli::cli_li(c(
+    paste("Processing: ",  base::basename(file)),
+    "Found {n_CE} CE value{?s}: {unique_CE}",
+    "Remember to match CE velues  in {.field spec_metadata}
+    when exporting your library"))
+
+  cli::cli_text("...")
 
 
   rm(list = c("ms2"))
