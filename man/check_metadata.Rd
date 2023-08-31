@@ -19,12 +19,14 @@ a double with the ionized mass of the compound.
 \details{
 This function evaluates if the metadata has the expected column names.
 Then, it calculates
-the neutral exact mass of the compound using the given formula and
+the theoretical exact mass of the compound using the given formula and
 ionization mode to obtain a charged mass.
 
 Required values
+
 \describe{
 \item{Formula}{character, compound chemical formula}
-\item{Ionization_mode}{character, only \emph{Positive} and \emph{Negative} values are acepted }
+\item{Ionization_mode}{character,
+only \emph{Positive} and \emph{Negative} values are acepted }
 }
 }

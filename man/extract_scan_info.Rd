@@ -15,6 +15,7 @@ a data.frame containing
 \item{name}{the scan name (combined \emph{m}/\emph{z} and rt)}
 \item{mz}{the precursor m/z ion}
 \item{rt}{retention time}
+\item{CE}{collision energy}
 \item{file name}{file name}
 }
 }
@@ -22,6 +23,6 @@ a data.frame containing
 \emph{Internal function}
 }
 \details{
-Given a list created by masstools::read_mzxml(), this function
-extract the scan info for all scans in a tidy format.
+Given a list created by \code{MS2extract:::read_mzxml()}, this function
+extracts the scan info for all scans in a tidy format.
 }

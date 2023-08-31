@@ -7,7 +7,7 @@
 assign_scan_id(scan_list)
 }
 \arguments{
-\item{scan_list}{a list created by masstools::read_mzxml()}
+\item{scan_list}{a list created by \code{MS2extract::read_mzxml()}}
 }
 \value{
 a data.frame containing
@@ -19,9 +19,9 @@ a data.frame containing
 }
 }
 \description{
-\emph{Internal fuction}
+\emph{Internal function}
 }
 \details{
 This function extracts spectra per scan in a tidy format given a list
-created by masstools::read_mzxml()
+created by \code{MS2extract:::read_mzxml()}
 }

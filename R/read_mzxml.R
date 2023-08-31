@@ -18,20 +18,22 @@
 read_mzxml <- function(file,
                        threads = 3,
                        mode = c("inMemory", "onDisk")) {
-  message(crayon::green(paste0(
-    "Reading MS2 data from ",
-    basename(file)
-  )))
+  message(crayon::green( paste0("Reading MS2 data from ") ))
 
   ms2 <- MSnbase::readMSData(
     files = file,
     msLevel. = 2,
     mode = mode
   )
+  ms2_CE <- MSnbase::collisionEnergy(ms2)
 
   message(crayon::green(paste("Processing...",  base::basename(file)) ))
 
   new.ms2 <- ProtGenerics::spectra(object = ms2)
+  unique_CE <- unique(ms2_CE)
+  n_CE <- length(unique_CE)
+  cli::cli_text("{n_CE} different collsion energies were found: {unique_CE}")
+
 
   rm(list = c("ms2"))
 
@@ -46,6 +48,7 @@ read_mzxml <- function(file,
           ),
           "mz" = temp.ms2@precursorMz,
           "rt" = temp.ms2@rt,
+          "CE" = ms2_CE[idx],
           "file" = basename(file[temp.ms2@fromFile]),
           stringsAsFactors = FALSE
         )

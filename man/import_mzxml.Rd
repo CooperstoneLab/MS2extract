@@ -7,10 +7,11 @@
 import_mzxml(file = NULL, met_metadata = NULL, ppm = 10, ...)
 }
 \arguments{
-\item{file}{file name of the mzXML file}
+\item{file}{file name and path of the .mzXML or .mzML MS/MS data}
 
 \item{met_metadata}{a data frame with the following columns.
-Required:
+
+\strong{Required}:
 \describe{
 \item{Formula}{A character string specifying the metabolite formula}
 \item{Ionization_mode}{The ionization mode employed in data collection. It
@@ -23,22 +24,22 @@ determine whether the the mass of the a proton is added or subtracted to
 calculate the charged mass.
 
 Additionally, you can provide the minimum and maximum retention times
-to look for a peak only within a given area by including the folowing
-columns.
+to look for a peak only within a given area by including the following
+columns:
 
 \describe{
-\item{min_rt}{a double with the minimum retention time to keep}
-\item{max_rt}{a double with the minimum retention time to keep}
+\item{min_rt}{numeric, with the minimum retention time to keep}
+\item{max_rt}{numeric, with the minimum retention time to keep}
 
 }
 
 These two columns are highly recommended to be included to narrow down
 the search window and ensure the peak you want is selected. This is
-especially important if you have multiple peaks in an EIC.}
+especially important if you have multiple peaks in the same data file.}
 
 \item{ppm}{the mass error in ppm. 10 ppm is the default value.}
 
-\item{...}{extra arguments passed to  masstools::read_mzxml()}
+\item{...}{extra arguments passed to  MS2extract:::read_mzxml()}
 }
 \value{
 data.frame in a tidy format for MS2 spectra in a tidy format.
@@ -51,11 +52,11 @@ data.frame in a tidy format for MS2 spectra in a tidy format.
 }
 }
 \description{
-This function reads .mzXML and .mzML files containing MS2
-data using \code{masstools::read_mzxml()} and import the data as a list.
-Each element in a list list represents one scan. Each element in
-the list of scans contains two sublists that contain 1) the
-scan information and 2) the spectra per scan.
+This function reads .mzXML and .mzML files containing MS2. This function is
+inspired on \code{masstools::read_mzxml()}which imports the data as a list. Then,
+each element in a list list represents one scan. Then, each scans contains
+two sub-lists that contain (1) the scan information and
+(2) the spectra per scan.
 }
 \examples{
 \donttest{

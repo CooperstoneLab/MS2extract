@@ -2,8 +2,8 @@
 #'
 #' *Internal function*
 #'
-#' Given a list created by masstools::read_mzxml(), this function
-#' extract the scan info for all scans in a tidy format.
+#' Given a list created by `MS2extract:::read_mzxml()`, this function
+#' extracts the scan info for all scans in a tidy format.
 #'
 #' @param mzxml a list created by masstools::read_mzxml()
 #'
@@ -12,6 +12,7 @@
 #'   \item{name}{the scan name (combined *m*/*z* and rt)}
 #'   \item{mz}{the precursor m/z ion}
 #'   \item{rt}{retention time}
+#'   \item{CE}{collision energy}
 #'   \item{file name}{file name}
 #' }
 
@@ -24,12 +25,12 @@ extract_scan_info <- function(mzxml) {
 
 #' Extract MS2 spectrum info out of the list
 #'
-#' *Internal fuction*
+#' *Internal function*
 #'
 #' This function extracts spectra per scan in a tidy format given a list
-#' created by masstools::read_mzxml()
+#' created by `MS2extract:::read_mzxml()`
 #'
-#' @param scan_list a list created by masstools::read_mzxml()
+#' @param scan_list a list created by `MS2extract::read_mzxml()`
 #'
 #' @return a data.frame containing
 #'  \describe{
@@ -47,7 +48,8 @@ assign_scan_id <- function(scan_list) {
   scan_data <- scan_data |> # Add rt data to the scan
     dplyr::mutate(
       mz_precursor = scan_id$mz_precursor,
-      rt = scan_id$rt
+      rt = scan_id$rt,
+      CE = scan_id$CE
     )
   scan_data
 }
@@ -59,13 +61,15 @@ assign_scan_id <- function(scan_list) {
 #'
 #' This function evaluates if the metadata has the expected column names.
 #' Then, it calculates
-#' the neutral exact mass of the compound using the given formula and
+#' the theoretical exact mass of the compound using the given formula and
 #' ionization mode to obtain a charged mass.
 #'
 #' Required values
+#'
 #' \describe{
 #' \item{Formula}{character, compound chemical formula}
-#' \item{Ionization_mode}{character, only *Positive* and *Negative* values are acepted }
+#' \item{Ionization_mode}{character,
+#'  only *Positive* and *Negative* values are acepted }
 #' }
 #'
 #' @param met_metadata a data frame with at least the Formula and the
@@ -109,15 +113,16 @@ check_metadata <- function(met_metadata) {
 
 #' Imports mzXML/mzML files with MS2 scans
 #'
-#' This function reads .mzXML and .mzML files containing MS2
-#' data using `masstools::read_mzxml()` and import the data as a list.
-#' Each element in a list list represents one scan. Each element in
-#' the list of scans contains two sublists that contain 1) the
-#' scan information and 2) the spectra per scan.
+#' This function reads .mzXML and .mzML files containing MS2. This function is
+#' inspired on `masstools::read_mzxml()`which imports the data as a list. Then,
+#' each element in a list list represents one scan. Then, each scans contains
+#' two sub-lists that contain (1) the scan information and
+#' (2) the spectra per scan.
 #'
-#' @param file file name of the mzXML file
+#' @param file file name and path of the .mzXML or .mzML MS/MS data
 #' @param met_metadata a data frame with the following columns.
-#' Required:
+#'
+#' **Required**:
 #' \describe{
 #'  \item{Formula}{A character string specifying the metabolite formula}
 #'  \item{Ionization_mode}{The ionization mode employed in data collection. It
@@ -130,22 +135,22 @@ check_metadata <- function(met_metadata) {
 #' calculate the charged mass.
 #'
 #' Additionally, you can provide the minimum and maximum retention times
-#' to look for a peak only within a given area by including the folowing
-#' columns.
+#' to look for a peak only within a given area by including the following
+#' columns:
 #'
 #' \describe{
-#'  \item{min_rt}{a double with the minimum retention time to keep}
-#'  \item{max_rt}{a double with the minimum retention time to keep}
+#'  \item{min_rt}{numeric, with the minimum retention time to keep}
+#'  \item{max_rt}{numeric, with the minimum retention time to keep}
 #'
 #' }
 #'
 #' These two columns are highly recommended to be included to narrow down
 #' the search window and ensure the peak you want is selected. This is
-#' especially important if you have multiple peaks in an EIC.
+#' especially important if you have multiple peaks in the same data file.
 #'
 #' @param ppm the mass error in ppm. 10 ppm is the default value.
 #'
-#' @param ... extra arguments passed to  masstools::read_mzxml()
+#' @param ... extra arguments passed to  MS2extract:::read_mzxml()
 #'
 #' @return data.frame in a tidy format for MS2 spectra in a tidy format.
 #'  \describe{
@@ -216,7 +221,7 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
     ppm_error <- round(ppm_error, 4)
     cli::cli_abort(
       c("Precursor ion not found in {file} ",
-        "i" = "given {formula} and {ppm} ppm: {ppm_error}  m/z range was evaluated" )
+        "i" = "given {formula} and {ppm} ppm: {ppm_error} m/z range was evaluated" )
     )
   }
 
@@ -226,7 +231,7 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
 
   if (is_roi_present) {
     # Creating roi table out of met_metadata
-    roi_table <- dplyr::select(met_metadata, .data$min_rt, .data$max_rt)
+    roi_table <- dplyr::select(met_metadata, min_rt, max_rt)
     # Filtering using roi table
     mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
   }

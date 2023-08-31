@@ -144,7 +144,7 @@ check_gnps_metadata <- function(met_metadata) {
 #' batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
 #'
 #' # Batch detect mass
-#' batch_mass_detected <- batch_detect_mass(batch_extracted_compounds, # Compound list
+#' batch_mass_detected <- batch_detect_mass(batch_extracted_compounds,
 #'   normalize = TRUE, # Normalize
 #'   min_int = 1
 #' ) # Minimum intensity

@@ -90,11 +90,8 @@ add_attributes <- function(msp_attribute, spec_metadata, msp_backbone) {
 #'   \item{INSTRUMENTTYPE}{}
 #' }
 #'
-#' @param type character, either if you plan to use the out .mgf library file
-#' with GNPS, or MZMINE. The main difference is for MZmine, the retention time,
-#' in seconds is included in the exported MS/MS library, while this information
-#' is ommited
-write_msp_base <- function(spec = NULL, spec_metadata = NULL, type = NULL) {
+
+write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
   # Number of rows equals the numbers of peaks
   n_peaks <- nrow(spec)
 

@@ -4,7 +4,7 @@
 \alias{write_msp_base}
 \title{Export MS2 spectra to a msp file}
 \usage{
-write_msp_base(spec = NULL, spec_metadata = NULL, type = NULL)
+write_msp_base(spec = NULL, spec_metadata = NULL)
 }
 \arguments{
 \item{spec}{a data frame containing the extracted MS2 spectra, the following
@@ -39,11 +39,6 @@ exist in the column or the value is missing, it will export a blank field.
 \item{COLLISIONENERGY}{}
 \item{INSTRUMENTTYPE}{}
 }}
-
-\item{type}{character, either if you plan to use the out .mgf library file
-with GNPS, or MZMINE. The main difference is for MZmine, the retention time,
-in seconds is included in the exported MS/MS library, while this information
-is ommited}
 }
 \description{
 \emph{Internal function}
