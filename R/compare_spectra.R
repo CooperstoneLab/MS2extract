@@ -50,9 +50,11 @@
 #' compare_spectra(ProcA2_norm, ProcA2_PCDL)
 compare_spectra <- function(spec1, spec2, output.list = TRUE, ...) {
   # select mz and intensity columns from spec1
+  spec1 <- dplyr::ungroup(spec1)
   spec1 <- dplyr::select(spec1, .data$mz, .data$intensity)
 
   # select mz and intensity columns from spec2
+  spec2 <- dplyr::ungroup(spec2)
   spec2 <- dplyr::select(spec2, .data$mz, .data$intensity)
 
 
