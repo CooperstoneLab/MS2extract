@@ -71,8 +71,9 @@ ProcA2_file <- system.file("extdata",
 ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
-#> Reading MS2 data from ProcyanidinA2_neg_20eV.mzXML
-#> Processing...
+#> Reading MS2 data from
+#> Processing... ProcyanidinA2_neg_20eV.mzXML
+#> 1 different collsion energies were found: 20
 ```
 
 ### Extracting Procyanidin A2 spectra
@@ -98,7 +99,7 @@ low intensity signals (background noise).
 
 ``` r
 dim(ProcA2_ext)
-#> [1] 6226    4
+#> [1] 6226    6
 ```
 
 ### Detecting masses
@@ -118,7 +119,7 @@ ProcA2_detected <- detect_mass(ProcA2_ext,
 ) # 1% as minimum intensity
 
 dim(ProcA2_detected)
-#> [1] 38  4
+#> [1] 38  6
 ```
 
 Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z
@@ -135,16 +136,16 @@ purposes we are going to include signlas greater than 10% intensity
 
 ``` r
 dplyr::filter(ProcA2_detected, intensity > 10)
-#>         mz intensity mz_precursor      rt
-#> 1 285.0406        62     575.1196 170.667
-#> 2 289.0718        48     575.1196 170.667
-#> 3 407.0769        16     575.1196 170.667
-#> 4 423.0723        53     575.1196 170.667
-#> 5 449.0880        51     575.1196 170.667
-#> 6 452.0745        15     575.1196 170.667
-#> 7 539.0983        22     575.1196 170.667
-#> 8 575.1197       100     575.1196 170.667
-#> 9 576.1221        13     575.1196 170.667
+#>         mz intensity mz_precursor      rt CE   Formula
+#> 1 285.0406        62     575.1196 170.667 20 C30H24O12
+#> 2 289.0718        48     575.1196 170.667 20 C30H24O12
+#> 3 407.0769        16     575.1196 170.667 20 C30H24O12
+#> 4 423.0723        53     575.1196 170.667 20 C30H24O12
+#> 5 449.0880        51     575.1196 170.667 20 C30H24O12
+#> 6 452.0745        15     575.1196 170.667 20 C30H24O12
+#> 7 539.0983        22     575.1196 170.667 20 C30H24O12
+#> 8 575.1197       100     575.1196 170.667 20 C30H24O12
+#> 9 576.1221        13     575.1196 170.667 20 C30H24O12
 ```
 
 ### Comparing two MS2 spectra with cosine score
