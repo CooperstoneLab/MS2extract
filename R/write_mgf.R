@@ -11,17 +11,7 @@
 #' You can check a working example of this template retrieving the
 #' `GNPS_template.xlsx` file by using:
 #' `system.file("extdata", "GNPS_template.xlsx", package = "MS2extract")`.
-#'
-#' @examples
-#'
-#' gnps_template <- system.file("extdata", "GNPS_template.xlsx",
-#'                              package = "MS2extract")
-#'
-#' gnps_template <- readxl::read_excel(path = gnps_template,
-#'                 sheet = "batch_example")
-#'
-#' check_gnps_metadata(gnps_template)
-#'
+
 
 check_gnps_metadata <- function(met_metadata) {
 

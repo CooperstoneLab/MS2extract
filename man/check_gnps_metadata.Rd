@@ -23,14 +23,3 @@ You can check a working example of this template retrieving the
 This function evaluates if the names in the provided table  (\code{met_metadata})
 matches the required column names.
 }
-\examples{
-
-gnps_template <- system.file("extdata", "GNPS_template.xlsx",
-                             package = "MS2extract")
-
-gnps_template <- readxl::read_excel(path = gnps_template,
-                sheet = "batch_example")
-
-check_gnps_metadata(gnps_template)
-
-}
