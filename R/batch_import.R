@@ -60,10 +60,16 @@
 #' purrr::map(batch_compounds, dim)
 batch_import_mzxml <- function(compounds_dt) {
   # Separating compounds by name
-  compounds_list <- split(compounds_dt, f = compounds_dt$Name)
+  compounds_list <- split(compounds_dt,
+                          f = ~compounds_dt$Name + compounds_dt$COLLISIONENERGY)
 
   # Extracting only file names to be read
-  compounds_names <- purrr::map(compounds_list, ~ .x[, "File"])
+  compounds_names <- purrr::map2(compounds_list, names(compounds_list),
+                                 function(x, y){
+                                   file_name <- x[, "File"]
+                                   names(file_name) <- y
+                                   return(file_name)
+                                   } )
 
   # Extracting min_rt and max_rt from the provided list
   roi_table <- purrr::map(
@@ -75,15 +81,23 @@ batch_import_mzxml <- function(compounds_dt) {
       max_rt = .x["max_rt"]
     )
   )
-
+  cli::cli_h1("Begining batch import")
   # Submitting everything to import_mzxml with map
   compounds_out <- purrr::map2(
-    compounds_names, roi_table, # Lists
-    ~ import_mzxml(
-      file = .x,
-      met_metadata = .y
-    )
-  )
+    compounds_names, roi_table,
+    .f = function(x, y) {  # Lists
+      cli::cli_h2('--')
+      mzml_name <- names(x = x)
+      #cli::cli_h2("{MS2extract compound: {mzml_name}")
+      mzml_imported <- import_mzxml(
+        file = x,
+        met_metadata = y
+      )
 
+      cli::cli_li("Compound name: {.field {mzml_name}}")
+      return(mzml_imported)
+    }
+  )
+  cli::cli_h1("End batch import")
   return(compounds_out)
 }

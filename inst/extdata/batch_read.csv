@@ -1,3 +1,3 @@
-Name,Formula,Ionization_mode,min_rt,max_rt
-Procyanidin A2,C30H24O12,Negative,163,180
-Rutin,C27H30O16,Negative,162,171
+Name,Formula,Ionization_mode,min_rt,max_rt,COLLISIONENERGY
+Procyanidin A2,C30H24O12,Negative,163,180, 20 eV
+Rutin,C27H30O16,Negative,162,171, 20 eV

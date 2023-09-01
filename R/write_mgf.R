@@ -1,3 +1,42 @@
+#' Writes the GNPS .mgf backbone
+#'
+#' *Internal Function*
+#'
+#' This function writes the backbone of the .mgf format compatible with GNPS.
+#'
+#' @param spec extracted spectra
+#' @param spec_metadata spectra metadata
+#' @param mgf_filename file name of the .mgf library. This name is created in
+#' the calling function.
+#'
+
+mgf_GNPS_core <- function(spec, spec_metadata, mgf_filename) {
+
+  # MGF top core ----
+  mgf_core_top <- paste0(
+    "BEGIN IONS", "\n",
+    "PEPMASS=", round(as.numeric(unique(spec$mz_precursor)), 5), "\n",
+    "CHARGE=1",  "\n",#Only supporting single charged
+    "MSLEVEL=2",  "\n",# Only supporting MS2 data
+    "FILENAME=", mgf_file_name, "\n",
+    "SEQ=", "*..*", "\n",
+    "IONMODE=", spec_metadata$IONMODE, "\n",
+    "ORGANISM=", spec_metadata$SPECIES, "\n",
+    "NAME=", paste(spec_metadata$COMPOUND_NAME,
+                   spec_metadata$COLLISIONENERGY), "\n",
+    "PI=", spec_metadata$PI, "\n",
+    "DATACOLECTOR=", spec_metadata$DATACOLLECTOR, "\n",
+    "SMILES=", spec_metadata$SMILES, "\n",
+    "INCHI=", spec_metadata$INCHI, "\n",
+    "INCHIAUX=", spec_metadata$INCHIAUX, "\n",
+    "PUBMED=", spec_metadata$PUBMED, "\n",
+    #SUBMITUSER=USER
+    "LIBRARYQUALITY=", spec_metadata$LIBQUALITY, "\n"
+  )
+
+  return(mgf_core_top)
+}
+
 #' Checking names in the provided GNPS metadata
 #'
 #' * Internal Function *
@@ -148,7 +187,17 @@ check_gnps_metadata <- function(met_metadata) {
 #'
 #'
 write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
+  # Checking for arguments ----
+  if(is.null(spec))
+    cli::cli_abort(c("{.field spec} is empty",
+                     "i" = "Please provide a spectra extracted with MS2extract"))
+  if(is.null(mgf_name))
+    cli::cli_abort(c("{.field spec_metadata} is empty",
+                     "i" = "Please provide spectra metadata"))
 
+  if(is.null(mgf_name))
+    cli::cli_abort(c("{.field mgf_name} is empty",
+                     "i" = "Please provide a name for the .mgf library"))
   # Checking spec_metada ----
   metadata_check <- check_gnps_metadata(met_metadata = spec_metadata)
 
@@ -163,33 +212,15 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   # the minimum mgf definition contains precursor mass, charge and m/z abundance
 
   #creating .mgf file
-  mgf_file_name <- paste0(mgf_name, unique(spec_metadata$IONMODE),
-                          collapse = "_")
+  mgf_file_name <- paste(mgf_name, unique(spec_metadata$IONMODE),
+                          sep = "_")
   mgf_file_name <- paste0(mgf_file_name, ".mgf")
 
+  # Filter for CE
+  spec <- CE_filter(spec = spec, spec_metadata = spec_metadata)
 
-  # MGF top core ----
-  mgf_core_top <- paste0(
-    "BEGIN IONS", "\n",
-    "PEPMASS=", round(as.numeric(unique(spec$mz_precursor)), 5), "\n",
-    "CHARGE=1",  "\n",#Only supporting single charged
-    "MSLEVEL=2",  "\n",# Only supporting MS2 data
-    "FILENAME=", mgf_file_name, "\n",
-    "SEQ=", "*..*", "\n",
-    "IONMODE=", spec_metadata$IONMODE, "\n",
-    "ORGANISM=", spec_metadata$SPECIES, "\n",
-    "NAME=", paste(spec_metadata$COMPOUND_NAME,
-                   spec_metadata$COLLISIONENERGY), "\n",
-    "PI=", spec_metadata$PI, "\n",
-    "DATACOLECTOR=", spec_metadata$DATACOLLECTOR, "\n",
-    "SMILES=", spec_metadata$SMILES, "\n",
-    "INCHI=", spec_metadata$INCHI, "\n",
-    "INCHIAUX=", spec_metadata$INCHIAUX, "\n",
-    "PUBMED=", spec_metadata$PUBMED, "\n",
-    #SUBMITUSER=USER
-    "LIBRARYQUALITY=", spec_metadata$LIBQUALITY, "\n"
-  )
-
+  mgf_core_top <- mgf_GNPS_core(spec = spec, spec_metadata = spec_metadata,
+                                mgf_filename = mgf_filename)
   # Add more attributes
 
   # Writing ions ----
@@ -203,6 +234,12 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   }
 
   mgf_entry <- paste0(mgf_core_top, "END IONS")
-  return(mgf_entry)
+  mgf_entry <- paste0(mgf_entry, collapse = "\n\n")
+
+  sink(mgf_file_name)
+  cat(mgf_entry)
+  sink()
+
+
 }
 

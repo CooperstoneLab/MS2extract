@@ -42,5 +42,7 @@ CE_filter <- function(spec, spec_metadata) {
   cli::cli_li("Filtering MS/MS scans for {CE_spec} CE")
   # Filter for provided CE
   spec_filtered <- dplyr::filter(spec, CE == CE_dt_number)
+  spec_filtered <- dplyr::ungroup(spec_filtered)
   return(spec_filtered)
 }
+

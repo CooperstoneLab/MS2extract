@@ -213,7 +213,8 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
     .data$mz_precursor < ppm_error[2] &
       .data$mz_precursor > ppm_error[1]
   )
-
+  #ppm_calculated <- unique(mzxml_tidy$mz_precursor)
+  cli::cli_li("m/z range given {ppm} ppm: {round(ppm_error, 5)}")
   if (nrow(mzxml_tidy) == 0) {
     #metabolite <- met_metadata$Name
     formula <- met_metadata$Formula

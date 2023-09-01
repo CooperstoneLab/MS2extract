@@ -1,3 +1,5 @@
+
+
 #' @title Read mzxml/mzML files containing MS2 data
 #' @description This function takes a mzxml file and imports the MS2 data only
 #'  to further create a list contaning to sublists with the scan information
@@ -18,7 +20,7 @@
 read_mzxml <- function(file,
                        threads = 3,
                        mode = c("inMemory", "onDisk")) {
-  message(crayon::green( paste0("Reading MS2 data from ") ))
+  #message(crayon::green( paste0("Reading MS2 data from ") ))
 
   ms2 <- MSnbase::readMSData(
     files = file,
@@ -35,10 +37,10 @@ read_mzxml <- function(file,
   cli::cli_li(c(
     paste("Processing: ",  base::basename(file)),
     "Found {n_CE} CE value{?s}: {unique_CE}",
-    "Remember to match CE velues  in {.field spec_metadata}
+    "Remember to match CE velues  in {.emph spec_metadata}
     when exporting your library"))
 
-  cli::cli_text("...")
+  #cli::cli_text("...")
 
 
   rm(list = c("ms2"))
