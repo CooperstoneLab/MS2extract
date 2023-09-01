@@ -155,34 +155,44 @@ provided in the data.frame</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Checking batch_data data frame</span></span></span>
 <span class="r-in"><span><span class="va">batch_data</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Name   Formula Ionization_mode min_rt max_rt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Procyanidin A2 C30H24O12        Negative    163    180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2          Rutin C27H30O16        Negative    162    171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Name   Formula Ionization_mode min_rt max_rt COLLISIONENERGY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Procyanidin A2 C30H24O12        Negative    163    180           20 eV</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2          Rutin C27H30O16        Negative    162    171           20 eV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                              File</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 /home/runner/work/_temp/Library/MS2extract/extdata/ProcyanidinA2_neg_20eV.mzXML</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2         /home/runner/work/_temp/Library/MS2extract/extdata/Rutin_neg_20eV.mzXML</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using batch import to import multiple compounds</span></span></span>
 <span class="r-in"><span><span class="va">batch_compounds</span> <span class="op">&lt;-</span> <span class="fu">batch_import_mzxml</span><span class="op">(</span><span class="va">batch_data</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Begining batch import</span> <span style="color: #00BBBB;">───────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">--</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> • Processing: ProcyanidinA2_neg_20eV.mzXML</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> • Found 1 CE value: 20</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> • Remember to match CE velues in <span style="color: #00BB00;">spec_metadata</span> when exporting your library</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Reading MS2 data from </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Remember to match CE velues in <span style="font-style: italic;">spec_metadata</span> when exporting your library</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • m/z range given 10 ppm: 575.11376 and 575.12526</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Compound name: <span style="color: #00BB00;">Procyanidin A2. 20 eV</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">--</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> • Processing: Rutin_neg_20eV.mzXML</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> • Found 1 CE value: 20</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> • Remember to match CE velues in <span style="color: #00BB00;">spec_metadata</span> when exporting your library</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Remember to match CE velues in <span style="font-style: italic;">spec_metadata</span> when exporting your library</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • m/z range given 10 ppm: 609.14002 and 609.15221</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Compound name: <span style="color: #00BB00;">Rutin. 20 eV</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">End batch import</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Checking dimension by compound</span></span></span>
 <span class="r-in"><span><span class="co"># Procyanidin A2: 24249 ions</span></span></span>
 <span class="r-in"><span><span class="co"># Rutin: 22096 ions</span></span></span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">batch_compounds</span>, <span class="va">dim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Procyanidin A2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Procyanidin A2. 20 eV`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24249     6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Rutin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Rutin. 20 eV`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22096     6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
