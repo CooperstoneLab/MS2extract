@@ -71,9 +71,10 @@ ProcA2_file <- system.file("extdata",
 ProcA2_data <- data.frame(Formula = "C30H24O12", Ionization_mode = "Negative")
 
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
-#> Reading MS2 data from
-#> Processing... ProcyanidinA2_neg_20eV.mzXML
-#> 1 different collsion energies were found: 20
+#> • Processing: ProcyanidinA2_neg_20eV.mzXML
+#> • Found 1 CE value: 20
+#> • Remember to match CE velues in spec_metadata when exporting your library
+#> • m/z range given 10 ppm: 575.11376 and 575.12526
 ```
 
 ### Extracting Procyanidin A2 spectra
@@ -136,16 +137,19 @@ purposes we are going to include signlas greater than 10% intensity
 
 ``` r
 dplyr::filter(ProcA2_detected, intensity > 10)
-#>         mz intensity mz_precursor      rt CE   Formula
-#> 1 285.0406        62     575.1196 170.667 20 C30H24O12
-#> 2 289.0718        48     575.1196 170.667 20 C30H24O12
-#> 3 407.0769        16     575.1196 170.667 20 C30H24O12
-#> 4 423.0723        53     575.1196 170.667 20 C30H24O12
-#> 5 449.0880        51     575.1196 170.667 20 C30H24O12
-#> 6 452.0745        15     575.1196 170.667 20 C30H24O12
-#> 7 539.0983        22     575.1196 170.667 20 C30H24O12
-#> 8 575.1197       100     575.1196 170.667 20 C30H24O12
-#> 9 576.1221        13     575.1196 170.667 20 C30H24O12
+#> # A tibble: 9 × 6
+#> # Groups:   Formula, CE [1]
+#>      mz intensity mz_precursor    rt    CE Formula  
+#>   <dbl>     <dbl>        <dbl> <dbl> <dbl> <chr>    
+#> 1  285.        62         575.  171.    20 C30H24O12
+#> 2  289.        48         575.  171.    20 C30H24O12
+#> 3  407.        16         575.  171.    20 C30H24O12
+#> 4  423.        53         575.  171.    20 C30H24O12
+#> 5  449.        51         575.  171.    20 C30H24O12
+#> 6  452.        15         575.  171.    20 C30H24O12
+#> 7  539.        22         575.  171.    20 C30H24O12
+#> 8  575.       100         575.  171.    20 C30H24O12
+#> 9  576.        13         575.  171.    20 C30H24O12
 ```
 
 ### Comparing two MS2 spectra with cosine score

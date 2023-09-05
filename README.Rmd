@@ -139,7 +139,7 @@ using this package and using PCDL, a compound library developed by Agilent.
 
 Thus, we include the MS2 spectra extracted with PCDL and use cosine
 similarity score to compare them by the `compare_spectra()` function.
-
+ 
 ```{r}
 # MS2 PCDL spectra
 ProcA2_pcdl_fl <- system.file("extdata",
