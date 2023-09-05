@@ -2,23 +2,24 @@
 % Please edit documentation in R/extract_MS2.R
 \name{extract_MS2}
 \alias{extract_MS2}
-\title{Extract the most intense MS2 scan}
+\title{Extract the most intense MS/MS  scan}
 \usage{
 extract_MS2(spec, verbose = TRUE, out_list = FALSE)
 }
 \arguments{
-\item{spec}{a data frame with the MS2 spectra}
+\item{spec}{a data frame with the MS/MS  spectra}
 
-\item{verbose}{a boolean indicating if the MS2 TIC chromatogram is displayed}
+\item{verbose}{a boolean indicating if the MS/MS EIC chromatogram
+is displayed}
 
 \item{out_list}{a boolean expressing if the output is a list containing
-the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
-the data frame with the MS2 spectra (verbose = FALSE).}
+the MS/MS spectra plus the EIC chromatogram (verbose = TRUE), or only
+the data frame with the MS/MS  spectra (verbose = FALSE).}
 }
 \description{
-This function takes a series of MS2 spectra, selects the
-most intense scan and extracts the MS2 spectra from it.
-Additionally, it plots the MS2 TIC chromatogram and colors
+This function takes a series of MS/MS spectra, selects the
+most intense scan and extracts the MS/MS  spectra from it.
+Additionally, it plots the MS/MS EIC chromatogram and colors
 the most intense scan with red circle, and the precursor ion with a blue
 diamond
 }
@@ -35,13 +36,13 @@ ProcA2_data <- data.frame(
   Formula = "C30H24O12", Ionization_mode = "Negative",
   min_rt = 163, max_rt = 180
 )
-# Importing MS2 data
+# Importing MS/MS data
 ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 
 # Extracting most intense scan ----
 # Returning plot + MS2 spectra
 extract_MS2(ProcA2_raw)
 
-# Returning MS2 spectra only
+# Returning MS/MS spectra only
 extract_MS2(ProcA2_raw, out_list = FALSE)
 }

@@ -13,5 +13,5 @@ get_TIC(spec)
 \emph{Internal function}
 }
 \details{
-This function computes the MS2 TIC of a given precursor ion.
+This function computes the MS/MS TIC of a given precursor ion.
 }

@@ -2,7 +2,7 @@
 #'
 #' *Internal function*
 #'
-#' This function computes the MS2 TIC of a given precursor ion.
+#' This function computes the MS/MS TIC of a given precursor ion.
 #'
 #' @param spec a data frame with two columns: mz and intensity
 get_TIC <- function(spec) {
@@ -16,14 +16,19 @@ get_TIC <- function(spec) {
 #' *Internal function*
 #'
 #' This function plots the MS2 TIC and will mark the most intense scan
-#' that will be used to extract the MS2 spectra
+#' that will be used to extract the MS/MS spectra
 #'
-#' @param TIC a data frame with the TIC
+#' @param spec a data frame with the MS/MS spectra
 #'
 #' @return a list. The first element is a data frame with the retention time
-#' with the highest intensity and the TIC plot as the second list element.
+#' with the highest intensity and the EIC plot as the second list element.
 
-plot_tic <- function(TIC) {
+plot_tic <- function(spec) {
+  # Calculating the TIC (MS/MS EIC)
+  TIC <- get_TIC(spec)
+
+  #Getting the precursor m/z to display in plot
+  precursorIon <- as.character(round(unique(spec$mz_precursor), 5))
   most_intense <- TIC |>
     dplyr::filter(TIC == max(.data$TIC))
 
@@ -35,10 +40,10 @@ plot_tic <- function(TIC) {
     ggplot2::geom_point(size = 2) +
     ggplot2::geom_point(data = most_intense, color = "red", size = 3) +
     ggplot2::labs(
-      title = "MS2 TIC plot",
+      title = paste0(precursorIon, " MS/MS EIC plot"),
       subtitle = paste0(
-        "MS2 spectra at ", "rt: ",
-        most_intense$rt,
+        "MS/MS spectra at ", "rt: ",
+        round(most_intense$rt, 0), " (s)",
         " will be exported"
       ),
       x = "rt (s)", y = "Intensity"
@@ -50,19 +55,20 @@ plot_tic <- function(TIC) {
 }
 
 
-#' Extract the most intense MS2 scan
+#' Extract the most intense MS/MS  scan
 #'
-#' This function takes a series of MS2 spectra, selects the
-#'  most intense scan and extracts the MS2 spectra from it.
-#' Additionally, it plots the MS2 TIC chromatogram and colors
+#' This function takes a series of MS/MS spectra, selects the
+#'  most intense scan and extracts the MS/MS  spectra from it.
+#' Additionally, it plots the MS/MS EIC chromatogram and colors
 #' the most intense scan with red circle, and the precursor ion with a blue
 #' diamond
 #'
-#' @param spec a data frame with the MS2 spectra
-#' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed
+#' @param spec a data frame with the MS/MS  spectra
+#' @param verbose a boolean indicating if the MS/MS EIC chromatogram
+#'  is displayed
 #' @param out_list a boolean expressing if the output is a list containing
-#' the MS2 spectra plus the TIC chromatogram (verbose = TRUE), or only
-#' the data frame with the MS2 spectra (verbose = FALSE).
+#' the MS/MS spectra plus the EIC chromatogram (verbose = TRUE), or only
+#' the data frame with the MS/MS  spectra (verbose = FALSE).
 
 #' @export
 #' @examples
@@ -78,20 +84,20 @@ plot_tic <- function(TIC) {
 #'   Formula = "C30H24O12", Ionization_mode = "Negative",
 #'   min_rt = 163, max_rt = 180
 #' )
-#' # Importing MS2 data
+#' # Importing MS/MS data
 #' ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #'
 #' # Extracting most intense scan ----
 #' # Returning plot + MS2 spectra
 #' extract_MS2(ProcA2_raw)
 #'
-#' # Returning MS2 spectra only
+#' # Returning MS/MS spectra only
 #' extract_MS2(ProcA2_raw, out_list = FALSE)
 extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
   # Get MS2 TIC
   TIC <- get_TIC(spec)
   # Plot MS2 TIC
-  TIC_results <- plot_tic(TIC)
+  TIC_results <- plot_tic(spec)
 
   # Calculate the most intense scan
   most_intense <- TIC_results$most_intense

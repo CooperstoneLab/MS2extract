@@ -156,7 +156,7 @@ check_metadata <- function(met_metadata) {
 #'  \describe{
 #'   \item{mz}{ion m/z value}
 #'   \item{intensity}{ion intensity count}
-#'   \item{precursor_mz}{precursor ion}
+#'   \item{mz_precursor}{precursor ion}
 #'   \item{rt}{retention time (in seconds)}
 #'   \item{Formula}{Chemical formula provided in `met_metada`}
 #' }
