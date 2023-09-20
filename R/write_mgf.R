@@ -12,6 +12,10 @@
 
 mgf_GNPS_core <- function(spec, spec_metadata, mgf_filename) {
 
+
+  # Filter for CE
+  spec <- CE_filter(spec = spec, spec_metadata = spec_metadata)
+
   # MGF top core ----
   mgf_core_top <- paste0(
     "BEGIN IONS", "\n",
@@ -19,6 +23,7 @@ mgf_GNPS_core <- function(spec, spec_metadata, mgf_filename) {
     "CHARGE=1",  "\n",#Only supporting single charged
     "MSLEVEL=2",  "\n",# Only supporting MS2 data
     "FILENAME=", mgf_file_name, "\n",
+    "SCANS=", spec_metadata$SCANS,"\n",
     "SEQ=", "*..*", "\n",
     "IONMODE=", spec_metadata$IONMODE, "\n",
     "ORGANISM=", spec_metadata$SPECIES, "\n",
@@ -34,7 +39,20 @@ mgf_GNPS_core <- function(spec, spec_metadata, mgf_filename) {
     "LIBRARYQUALITY=", spec_metadata$LIBQUALITY, "\n"
   )
 
-  return(mgf_core_top)
+
+  # Core bottom ----
+  # Writing ions ----
+  # Number of rows equals number of peaks
+  n_peaks <- nrow(spec)
+  for (ion in seq(1, n_peaks)) {
+    mgf_core_top <- paste0(
+      mgf_core_top,
+      round(spec[ion, "mz"], 5), "\t", spec[ion, "intensity"], "\n"
+    )
+  }
+  mgf_entry <- paste0(mgf_core_top, "END IONS\n")
+
+  return(mgf_entry)
 }
 
 #' Checking names in the provided GNPS metadata
@@ -175,8 +193,8 @@ check_gnps_metadata <- function(met_metadata) {
 #' # Batch detect mass
 #' batch_mass_detected <- batch_detect_mass(batch_extracted_compounds,
 #'   normalize = TRUE, # Normalize
-#'   min_int = 1
-#' ) # Minimum intensity
+#'   min_int = 1 # Minimum intensity
+#' )
 #'
 #' # Reading metadata from GNPS template
 #' template_file <- system.file("extdata", "GNPS_template.xlsx",
@@ -191,7 +209,7 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   if(is.null(spec))
     cli::cli_abort(c("{.field spec} is empty",
                      "i" = "Please provide a spectra extracted with MS2extract"))
-  if(is.null(mgf_name))
+  if(is.null(spec_metadata))
     cli::cli_abort(c("{.field spec_metadata} is empty",
                      "i" = "Please provide spectra metadata"))
 
@@ -212,30 +230,51 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   # the minimum mgf definition contains precursor mass, charge and m/z abundance
 
   #creating .mgf file
+  # Checking only one Ionizatio mode is provided
+  uniq_ion <- unique(spec_metadata$IONMODE)  # Extract unique value
+  is_uniq_ion <- uniq_ion %in% "Positive" | uniq_ion %in% "Negative"
+
+  # If true, only one mode and matching character was found
+  if(!isTRUE(is_uniq_ion))
+    cli::cli_abort(
+      c("Multiple or not matching ionization mode was provided",
+        "i" = "{.filed IONMODE} must be either {.field Positive} or
+        {.field Negative}, {uniq_ion} was provided")
+    )
+
+
   mgf_file_name <- paste(mgf_name, unique(spec_metadata$IONMODE),
                           sep = "_")
   mgf_file_name <- paste0(mgf_file_name, ".mgf")
 
-  # Filter for CE
-  spec <- CE_filter(spec = spec, spec_metadata = spec_metadata)
 
-  mgf_core_top <- mgf_GNPS_core(spec = spec, spec_metadata = spec_metadata,
-                                mgf_filename = mgf_filename)
-  # Add more attributes
+  if (is.list(spec) & !is.data.frame(spec)) {
+    # Splitting metadata per compound
+    spec_metadata <- dplyr::mutate(spec_metadata, SCANS = seq(1, dplyr::n() ))
+    spec_metadata <- split(spec_metadata, f = spec_metadata$COMPOUND_NAME)
 
-  # Writing ions ----
-  # Number of rows equals number of peaks
-  n_peaks <- nrow(spec)
-  for (ion in seq(1, n_peaks)) {
-    mgf_core_top <- paste0(
-      mgf_core_top,
-      round(spec[ion, "mz"], 5), "\t", spec[ion, "intensity"], "\n"
+    mgf_entry <- purrr::map2(
+      .x = spec,
+      .y = spec_metadata,
+      .f = function(x, y){
+        mgf_core_top <- mgf_GNPS_core(spec = x,
+                                      spec_metadata = y,
+                                      mgf_filename = mgf_filename)
+
+
+      }
     )
+
+    mgf_entry <- paste0(mgf_entry, collapse = "\n")
+
+
+  } else { # write individual mgf entry
+    mgf_core_top <- mgf_GNPS_core(spec = spec, spec_metadata = spec_metadata,
+                                  mgf_filename = mgf_filename)
   }
 
-  mgf_entry <- paste0(mgf_core_top, "END IONS")
-  mgf_entry <- paste0(mgf_entry, collapse = "\n\n")
 
+  # Writing in mgf file
   sink(mgf_file_name)
   cat(mgf_entry)
   sink()

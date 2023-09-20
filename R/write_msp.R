@@ -317,13 +317,21 @@ write_msp_base <- function(spec = NULL, spec_metadata = NULL) {
 #' )
 write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
   # Checking of all args are provided
-  if (is.null(spec)) stop("Please provide a spec data")
-  if (is.null(spec_metadata)) stop("Please provide MS2 msp metadata")
-  if (is.null(msp_name)) stop("Please provide a msp file name")
+  if (is.null(spec))
+    cli::cli_abort(c("{.field spec} is empty",
+                     "i" = "Please provide a spectra extracted with MS2extract"))
+
+  if (is.null(spec_metadata))
+    cli::cli_abort(c("{.field spec_metadata} is empty",
+                     "i" = "Please provide spectra metadata"))
+
+  if (is.null(msp_name))
+    cli::cli_abort(c("{.field msp_name} is empty",
+                     "i" = "Please provide a name for the .msp library"))
 
   # Writing for batch compound extraction
   if (is.list(spec) & !is.data.frame(spec)) {
-    # Spliting metadata per compond
+    # Spliting metadata per compuond
     spec_metadata <- split(spec_metadata, f = spec_metadata$NAME)
     msp_entry <- purrr::map2(
       .x = spec, # List MS2 spectra table
