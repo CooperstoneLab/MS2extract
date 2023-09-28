@@ -1,5 +1,5 @@
 ---
-title: "4 - Using MSconvert to filter usefull standard MS/MS data"
+title: "4 - Using MSconvert to filter useful standard MS/MS data"
 author: 
   - name: Daniel Quiroz, Jessica Cooperstone
     affiliation:
@@ -68,7 +68,7 @@ scenarios are:
 -   Trimming for specific retention time, and
 -   Extracting MS/MS scans of multiples CE from the same run
 
-\*Note:\* this is a fourd vignette for this package and if you find some
+\*Note:\* this is the fourth vignette for this package and if you find some
 terms unclear, or are not familiar with the concepts, please visit the
 previous vignettes ([Package
 introduction](https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html),
