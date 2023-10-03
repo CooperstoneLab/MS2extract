@@ -150,7 +150,6 @@ check_metadata <- function(met_metadata) {
 #'
 #' @param ppm the mass error in ppm. 10 ppm is the default value.
 #'
-#' @param ... extra arguments passed to  MS2extract:::read_mzxml()
 #'
 #' @return data.frame in a tidy format for MS2 spectra in a tidy format.
 #'  \describe{
@@ -188,13 +187,13 @@ check_metadata <- function(met_metadata) {
 #' # 24249 ions detected in ROI
 #' dim(ProcA2_roi)
 #' }
-import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10, ...) {
+import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10) {
   # Check info in met_metadta ---
   ionized_mass <- check_metadata(met_metadata)
 
   ppm_error <- ppm_range(mz = ionized_mass, ppm = ppm)
 
-  mzxml_raw <- read_mzxml(file, ...)
+  mzxml_raw <- read_mzxml(file)
   scan_info <- extract_scan_info(mzxml_raw) # Scan info
 
   # Getting scan index number by ROI

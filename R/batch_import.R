@@ -81,6 +81,7 @@ batch_import_mzxml <- function(compounds_dt) {
       max_rt = .x["max_rt"]
     )
   )
+
   cli::cli_h1("Begining batch import")
   # Submitting everything to import_mzxml with map
   compounds_out <- purrr::map2(
@@ -90,7 +91,7 @@ batch_import_mzxml <- function(compounds_dt) {
       mzml_name <- names(x = x)
       #cli::cli_h2("{MS2extract compound: {mzml_name}")
       mzml_imported <- import_mzxml(
-        file = x,
+        file = unlist(x),
         met_metadata = y
       )
 

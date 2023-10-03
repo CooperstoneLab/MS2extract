@@ -13,3 +13,4 @@ NEWS.md
 vignettes/phenolics_6545_Neg20.msp
 vignettes/Batch6545_Neg20.Rmd
 inst/extdata/~$GNPS_template.xlsx
+/vignettes/*.msp

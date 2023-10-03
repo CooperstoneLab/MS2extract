@@ -356,4 +356,6 @@ write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
   sink(paste0(msp_name, ".msp"))
   cat(msp_entry)
   sink()
+
+  invisible(msp_entry)
 }
