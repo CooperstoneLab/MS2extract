@@ -109,8 +109,8 @@ batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
 # Batch detect mass
 batch_mass_detected <- batch_detect_mass(batch_extracted_compounds,
   normalize = TRUE, # Normalize
-  min_int = 1
-) # Minimum intensity
+  min_int = 1 # Minimum intensity
+)
 
 # Reading metadata from GNPS template
 template_file <- system.file("extdata", "GNPS_template.xlsx",

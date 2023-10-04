@@ -4,7 +4,7 @@
 \alias{import_mzxml}
 \title{Imports mzXML/mzML files with MS2 scans}
 \usage{
-import_mzxml(file = NULL, met_metadata = NULL, ppm = 10, ...)
+import_mzxml(file = NULL, met_metadata = NULL, ppm = 10)
 }
 \arguments{
 \item{file}{file name and path of the .mzXML or .mzML MS/MS data}
@@ -38,8 +38,6 @@ the search window and ensure the peak you want is selected. This is
 especially important if you have multiple peaks in the same data file.}
 
 \item{ppm}{the mass error in ppm. 10 ppm is the default value.}
-
-\item{...}{extra arguments passed to  MS2extract:::read_mzxml()}
 }
 \value{
 data.frame in a tidy format for MS2 spectra in a tidy format.
