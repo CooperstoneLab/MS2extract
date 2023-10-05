@@ -68,8 +68,8 @@ plot_MS2base <- function(spec, ppm) {
   if( length(unique(spec$CE)) > 1 ) {ms2_spec <- ms2_spec + facet_wrap("CE")}
 
   # Changing theme
-  ms2_spec <- ms2_spec + theme_light() + # Using a white background theme
-    theme(legend.position = "none", # Removing legend
+  ms2_spec <- ms2_spec + ggplot2::theme_light() + # Using a white background theme
+    ggplot2::theme(legend.position = "none", # Removing legend
           panel.grid.major = ggplot2::element_blank(),  # Removing grinds
           panel.grid.minor = ggplot2::element_blank())
 
