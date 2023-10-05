@@ -9,6 +9,10 @@
 #' @param ppm ppm error tolerance to check if the mm/z precursor is being
 #' detected or not in the MS2 spectra
 plot_MS2base <- function(spec, ppm) {
+
+  # Adding CE: for plot labeling purposes
+  spec <- dplyr::mutate(spec, CE = paste0("CE: ", CE))
+
   # Check if the precursor ion is being detected in MS2 spectra -----
   # Round the precursor ion to 4 digits
   precursor_ion <- unique(spec$mz_precursor)
@@ -24,8 +28,6 @@ plot_MS2base <- function(spec, ppm) {
 
   precursor_ion <- round(unique(spec$mz_precursor), 5)
 
-
-
   # Stop if there is more than one precursor ion
   if (nrow(precursor_table) > 1) stop("More than one precursor ion detected")
 
@@ -33,8 +35,7 @@ plot_MS2base <- function(spec, ppm) {
     spec,
     aes(.data$mz, .data$intensity)
   ) +
-    ggplot2::geom_col(width = 1) +
-    ggplot2::theme_bw()
+    ggplot2::geom_col(width = 1)
 
   if (nrow(precursor_table) > 0) {
     # Adding 5% of intensity to display diamond
@@ -63,6 +64,14 @@ plot_MS2base <- function(spec, ppm) {
         aes(label = .data$mz)
       )
   }
+
+  if( length(unique(spec$CE)) > 1 ) {ms2_spec <- ms2_spec + facet_wrap("CE")}
+
+  # Changing theme
+  ms2_spec <- ms2_spec + theme_light() + # Using a white background theme
+    theme(legend.position = "none", # Removing legend
+          panel.grid.major = ggplot2::element_blank(),  # Removing grinds
+          panel.grid.minor = ggplot2::element_blank())
 
   return(ms2_spec)
 }

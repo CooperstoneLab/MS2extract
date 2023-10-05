@@ -135,7 +135,7 @@ extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
 
   # Get the rt of the most intense scan
   MS2_spec <- dplyr::filter(spec, .data$rt %in% most_intense$rt)
-  spec_plot <- plot_MS2spectra(MS2_spec)
+  spec_plot <- plot_MS2spectra(spec = MS2_spec)
 
 
   plot_results <- ggpubr::ggarrange(TIC_results$TIC_plot, spec_plot, ncol = 1)
