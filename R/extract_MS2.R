@@ -6,8 +6,9 @@
 #'
 #' @param spec a data frame with two columns: mz and intensity
 get_TIC <- function(spec) {
-  spec_tic <- dplyr::group_by(spec, .data$rt) |>
-    dplyr::summarise(TIC = sum(.data$intensity))
+  spec_tic <- dplyr::group_by(spec, .data$rt, .data$CE) |>
+    dplyr::summarise(TIC = sum(.data$intensity)) |>
+    dplyr::group_by(CE)
   spec_tic
 }
 
@@ -29,25 +30,55 @@ plot_tic <- function(spec) {
 
   #Getting the precursor m/z to display in plot
   precursorIon <- as.character(round(unique(spec$mz_precursor), 5))
-  most_intense <- TIC |>
-    dplyr::filter(TIC == max(.data$TIC))
 
-  TIC_plot <- ggplot2::ggplot(
-    data = TIC,
-    aes(x = .data$rt, y = .data$TIC)
-  ) +
-    ggplot2::geom_line() +
-    ggplot2::geom_point(size = 2) +
-    ggplot2::geom_point(data = most_intense, color = "red", size = 3) +
-    ggplot2::labs(
-      title = paste0(precursorIon, " MS/MS EIC plot"),
-      subtitle = paste0(
-        "MS/MS spectra at ", "rt: ",
-        round(most_intense$rt, 0), " (s)",
-        " will be exported"
-      ),
-      x = "rt (s)", y = "Intensity"
-    ) +
+  # Getting max TIC by CE
+  most_intense <- TIC |> dplyr::reframe(TIC = max(TIC))
+
+  # Boolean, more than 1 CE found
+  n_mostIntense <- nrow(most_intense) > 1L
+
+  most_intense <- TIC %>% dplyr::filter(TIC %in% most_intense$TIC)
+
+  TIC_plot <- ggplot2::ggplot( data = TIC,
+                               aes(x = .data$rt, y = .data$TIC) ) +
+    ggplot2::geom_line()
+
+  # Coloring most intense scans
+  if(n_mostIntense) {
+    # Creating all subtitle - based on CE availables
+    subtitles <- dplyr::rowwise (most_intense)  |>
+      dplyr::mutate(Subtitle = paste("CE:", CE, "at", round(rt, 2),
+                                     " will be exported", collapse = " "))
+    subtitles <- paste(subtitles$Subtitle, collapse  = "\n")
+
+    TIC_plot <- TIC_plot +
+      ggplot2::geom_point(aes(color = factor(CE) )) +
+      ggplot2::labs(color = "CE") +
+      ggrepel::geom_label_repel(data = most_intense,
+                               aes(label = paste0("CE: ", CE) )) +
+      ggplot2::labs(
+        title = paste0(precursorIon, " MS/MS EIC plot"),
+        subtitle = subtitles
+      ) +
+      ggsci::scale_color_aaas()
+
+  } else {
+    TIC_plot <- TIC_plot + ggplot2::geom_point(size = 2) +
+      ggplot2::geom_point(data = most_intense,
+                          aes(x = .data$rt, y = .data$TIC),
+                          size = 3, inherit.aes = F, color = "red") +
+      ggplot2::labs(
+        title = paste0(precursorIon, " MS/MS ", "@",most_intense$CE," EIC plot"),
+        subtitle = paste0(
+          "MS/MS spectra at ", "rt: ",
+          round(most_intense$rt, 0), " (s)",
+          " will be exported"
+        ),
+        x = "rt (s)", y = "Intensity"
+      )
+    }
+
+    TIC_plot <- TIC_plot +
     ggplot2::theme_bw()
 
   return_list <- list(most_intense = most_intense, TIC_plot = TIC_plot)
@@ -103,7 +134,7 @@ extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
   most_intense <- TIC_results$most_intense
 
   # Get the rt of the most intense scan
-  MS2_spec <- dplyr::filter(spec, .data$rt == most_intense$rt)
+  MS2_spec <- dplyr::filter(spec, .data$rt %in% most_intense$rt)
   spec_plot <- plot_MS2spectra(MS2_spec)
 
 
