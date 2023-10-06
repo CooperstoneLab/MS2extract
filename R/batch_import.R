@@ -61,7 +61,8 @@
 batch_import_mzxml <- function(compounds_dt) {
   # Separating compounds by name
   compounds_list <- split(compounds_dt,
-                          f = ~compounds_dt$Name + compounds_dt$COLLISIONENERGY)
+                          f = ~compounds_dt$Name + compounds_dt$COLLISIONENERGY,
+                          drop = TRUE)
 
   # Extracting only file names to be read
   compounds_names <- purrr::map2(compounds_list, names(compounds_list),
