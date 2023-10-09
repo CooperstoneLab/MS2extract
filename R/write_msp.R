@@ -329,10 +329,14 @@ write_msp <- function(spec = NULL, spec_metadata = NULL, msp_name = NULL) {
     cli::cli_abort(c("{.field msp_name} is empty",
                      "i" = "Please provide a name for the .msp library"))
 
+
+
   # Writing for batch compound extraction
   if (is.list(spec) & !is.data.frame(spec)) {
     # Spliting metadata per compuond
-    spec_metadata <- split(spec_metadata, f = spec_metadata$NAME)
+    spec_metadata <- split(spec_metadata,
+                           f = ~spec_metadata$NAME +
+                             spec_metadata$COLLISIONENERGY, drop = TRUE)
     msp_entry <- purrr::map2(
       .x = spec, # List MS2 spectra table
       .y = spec_metadata, # Metadata for MSP entry
