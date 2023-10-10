@@ -22,7 +22,7 @@ mgf_GNPS_core <- function(spec, spec_metadata, mgf_filename) {
     "PEPMASS=", round(as.numeric(unique(spec$mz_precursor)), 5), "\n",
     "CHARGE=1",  "\n",#Only supporting single charged
     "MSLEVEL=2",  "\n",# Only supporting MS2 data
-    "FILENAME=", mgf_file_name, "\n",
+    "FILENAME=", mgf_filename, "\n",
     "SCANS=", spec_metadata$SCANS,"\n",
     "SEQ=", "*..*", "\n",
     "IONMODE=", spec_metadata$IONMODE, "\n",
@@ -243,15 +243,16 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
     )
 
 
-  mgf_file_name <- paste(mgf_name, unique(spec_metadata$IONMODE),
+  mgf_filename <- paste(mgf_name, unique(spec_metadata$IONMODE),
                           sep = "_")
-  mgf_file_name <- paste0(mgf_file_name, ".mgf")
+  mgf_filename <- paste0(mgf_filename, ".mgf")
 
 
   if (is.list(spec) & !is.data.frame(spec)) {
     # Splitting metadata per compound
     spec_metadata <- dplyr::mutate(spec_metadata, SCANS = seq(1, dplyr::n() ))
-    spec_metadata <- split(spec_metadata, f = spec_metadata$COMPOUND_NAME)
+    spec_metadata <- split(spec_metadata,  f = ~spec_metadata$COMPOUND_NAME +
+                             spec_metadata$COLLISIONENERGY, drop = TRUE)
 
     mgf_entry <- purrr::map2(
       .x = spec,
@@ -275,7 +276,7 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
 
 
   # Writing in mgf file
-  sink(mgf_file_name)
+  sink(mgf_filename)
   cat(mgf_entry)
   sink()
 
