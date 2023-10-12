@@ -344,7 +344,7 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
       .f = function(x, y){
         gnps_table_out <- write_gnps_table(spec = x,
                                            spec_metadata = y,
-                                           mfg_filename = mgf_filename)
+                                           mgf_filename = mgf_filename)
       }
     )
 
