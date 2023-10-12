@@ -221,7 +221,7 @@ check_gnps_metadata <- function(met_metadata) {
 #' @return if batch spectra are found, this function writes two files,
 #' the `.mgf` library and the required `.tsv` table required by GNPS. If single
 #' spectrum is detected, it will only write the `.mgf` library.
-#'
+#' @export
 #' @examples
 #' # Example with batch spectra ----
 #'
