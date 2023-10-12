@@ -4,7 +4,7 @@
 \alias{write_gnps_table}
 \title{Creates the batch upload table for GNPS batch upload}
 \usage{
-write_gnps_table(spec, spec_metadata, mfg_filename)
+write_gnps_table(spec, spec_metadata, mgf_filename)
 }
 \arguments{
 \item{spec}{extracted spectra}

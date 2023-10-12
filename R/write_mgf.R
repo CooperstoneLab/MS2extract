@@ -12,7 +12,7 @@
 #' @param mgf_filename file name of the .mgf library. This name is created in
 #' the calling function.
 
-write_gnps_table <- function(spec, spec_metadata, mfg_filename) {
+write_gnps_table <- function(spec, spec_metadata, mgf_filename) {
 
   cmp_name <- paste(spec_metadata$COMPOUND_NAME, # Compound name
                     spec_metadata$COLLISIONENERGY)
@@ -32,7 +32,7 @@ write_gnps_table <- function(spec, spec_metadata, mfg_filename) {
 
 
 
-  gnps_table <- data.frame(FILENAME = mfg_filename,
+  gnps_table <- data.frame(FILENAME = mgf_filename,
                            SEQ = "*..*",
                            COMPOUND_NAME = cmp_name,
                            COLLISIONENERGY = spec_metadata$COLLISIONENERGY,
