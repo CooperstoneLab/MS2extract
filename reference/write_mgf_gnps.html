@@ -176,10 +176,18 @@ fragmentation</p></dd>
 
 
 <dt>mgf_name</dt>
-<dd><p>file name for the exported mgf library. It does not have
+<dd><p>file name for the exported <code>mgf</code>library. It does not have
 to contain the file extension  <code>.mgf</code>.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
+
+<p>if batch spectra are found, this function writes two files,
+the <code>.mgf</code> library and the required <code>.tsv</code> table required by GNPS. If single
+spectrum is detected, it will only write the <code>.mgf</code> library.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function facilitates to create the structure of the GNPS .mgf format.
@@ -275,6 +283,10 @@ visit this <a href="https://ccms-ucsd.github.io/GNPSDocumentation/batchupload" c
 <span class="r-in"><span><span class="va">gnps_template</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">read_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">template_file</span>,</span></span>
 <span class="r-in"><span>                sheet <span class="op">=</span> <span class="st">"batch_example"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">write_mgf_gnps</span><span class="op">(</span>spec <span class="op">=</span> <span class="va">batch_mass_detected</span>,</span></span>
+<span class="r-in"><span>               spec_metadata <span class="op">=</span> <span class="va">gnps_template</span>,</span></span>
+<span class="r-in"><span>               mgf_name <span class="op">=</span> <span class="st">"PhenolicsDB"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in write_mgf_gnps(spec = batch_mass_detected, spec_metadata = gnps_template,     mgf_name = "PhenolicsDB"):</span> could not find function "write_mgf_gnps"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
