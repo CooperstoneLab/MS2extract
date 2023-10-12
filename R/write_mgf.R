@@ -1,3 +1,67 @@
+#' Creates the batch upload table for GNPS batch upload
+#'
+#' * Internal Function *
+#'
+#' This function is designed to create the batch upload table required by GNPS
+#' [batch upload](https://ccms-ucsd.github.io/GNPSDocumentation/batchupload)
+#' job. This function takes both, `spec` data and the `spec_metadata` to create
+#' the bath upload table.
+#'
+#' @param spec extracted spectra
+#' @param spec_metadata spectra metadata
+#' @param mgf_filename file name of the .mgf library. This name is created in
+#' the calling function.
+
+write_gnps_table <- function(spec, spec_metadata, mfg_filename) {
+
+  cmp_name <- paste(spec_metadata$COMPOUND_NAME, # Compound name
+                    spec_metadata$COLLISIONENERGY)
+
+  # Ionized mass
+  # Calculating the exact mass and the ionized mass
+  exact_mass <- Rdisop::getMolecule(unique(spec$Formula))$exactmass
+
+  if (spec_metadata$IONMODE == "Positive") {
+    ionized_mass <- exact_mass + 1.00727
+    adduct_type <- "M+H"
+    # If possitive mode is false, then assume it is negative
+  } else {
+    ionized_mass <- exact_mass - 1.00727
+    adduct_type <- "M-H"
+  }
+
+
+
+  gnps_table <- data.frame(FILENAME = mfg_filename,
+                           SEQ = "*..*",
+                           COMPOUND_NAME = cmp_name,
+                           COLLISIONENERGY = spec_metadata$COLLISIONENERGY,
+                           MOLECULEMASS = ionized_mass,
+                           INSTRUMENT = spec_metadata$INSTRUMENT,
+                           IONSOURCE = spec_metadata$IONSOURCE,
+                           EXTRACTSCAN = spec_metadata$SCANS,
+                           SMILES = spec_metadata$SMILES,
+                           INCHI = spec_metadata$INCHI,
+                           INCHIAUX = spec_metadata$INCHIAUX,
+                           CHARGE = 1, # Only supporting single charged now
+                           IONMODE = spec_metadata$IONMODE,
+                           PUBMED = spec_metadata$PUBMED,
+                           ACQUISITION = spec_metadata$ACQUISITION,
+                           EXACTMASS = exact_mass,
+                           DATACOLLECTOR = spec_metadata$DATACOLLECTOR,
+                           ADDUCT = adduct_type,
+                           INTEREST = spec_metadata$INTEREST,
+                           LIBQUALITY = spec_metadata$LIBQUALITY,
+                           GENUS = spec_metadata$GENUS,
+                           SPECIES = spec_metadata$SPECIES,
+                           STRAIN = spec_metadata$STRAIN,
+                           CASNUMBER = spec_metadata$CASNUMBER,
+                           PI = spec_metadata$PI)
+
+  return(gnps_table)
+}
+
+
 #' Writes the GNPS .mgf backbone
 #'
 #' *Internal Function*
@@ -151,8 +215,12 @@ check_gnps_metadata <- function(met_metadata) {
 #'   \item{PI}{character, principal investigator}
 #' }
 #'
-#' @param mgf_name  file name for the exported mgf library. It does not have
+#' @param mgf_name  file name for the exported `mgf`library. It does not have
 #' to contain the file extension  `.mgf`.
+#'
+#' @return if batch spectra are found, this function writes two files,
+#' the `.mgf` library and the required `.tsv` table required by GNPS. If single
+#' spectrum is detected, it will only write the `.mgf` library.
 #'
 #' @examples
 #' # Example with batch spectra ----
@@ -203,6 +271,9 @@ check_gnps_metadata <- function(met_metadata) {
 #' gnps_template <- readxl::read_excel(path = template_file,
 #'                 sheet = "batch_example")
 #'
+#' write_mgf_gnps(spec = batch_mass_detected,
+#'                spec_metadata = gnps_template,
+#'                mgf_name = "PhenolicsDB")
 #'
 write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   # Checking for arguments ----
@@ -243,14 +314,15 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
     )
 
 
-  mgf_filename <- paste(mgf_name, unique(spec_metadata$IONMODE),
+  mgf_filename_base <- paste(mgf_name, unique(spec_metadata$IONMODE),
                           sep = "_")
-  mgf_filename <- paste0(mgf_filename, ".mgf")
+  mgf_filename <- paste0(mgf_filename_base, ".mgf")
 
 
   if (is.list(spec) & !is.data.frame(spec)) {
     # Splitting metadata per compound
     spec_metadata <- dplyr::mutate(spec_metadata, SCANS = seq(1, dplyr::n() ))
+
     spec_metadata <- split(spec_metadata,  f = ~spec_metadata$COMPOUND_NAME +
                              spec_metadata$COLLISIONENERGY, drop = TRUE)
 
@@ -261,13 +333,23 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
         mgf_core_top <- mgf_GNPS_core(spec = x,
                                       spec_metadata = y,
                                       mgf_filename = mgf_filename)
-
-
       }
     )
 
     mgf_entry <- paste0(mgf_entry, collapse = "\n")
 
+    gnps_table_out <- purrr::map2_df(
+      .x = spec,
+      .y = spec_metadata,
+      .f = function(x, y){
+        gnps_table_out <- write_gnps_table(spec = x,
+                                           spec_metadata = y,
+                                           mfg_filename = mgf_filename)
+      }
+    )
+
+    readr::write_tsv(x = gnps_table_out, eol = "\n",
+                     file = paste0(mgf_filename_base, ".tsv"), append = F)
 
   } else { # write individual mgf entry
     mgf_core_top <- mgf_GNPS_core(spec = spec, spec_metadata = spec_metadata,

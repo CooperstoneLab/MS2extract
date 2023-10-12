@@ -56,8 +56,13 @@ fragmentation}
 \item{PI}{character, principal investigator}
 }}
 
-\item{mgf_name}{file name for the exported mgf library. It does not have
+\item{mgf_name}{file name for the exported \code{mgf}library. It does not have
 to contain the file extension  \code{.mgf}.}
+}
+\value{
+if batch spectra are found, this function writes two files,
+the \code{.mgf} library and the required \code{.tsv} table required by GNPS. If single
+spectrum is detected, it will only write the \code{.mgf} library.
 }
 \description{
 \emph{Internal function}
@@ -119,5 +124,8 @@ template_file <- system.file("extdata", "GNPS_template.xlsx",
 gnps_template <- readxl::read_excel(path = template_file,
                 sheet = "batch_example")
 
+write_mgf_gnps(spec = batch_mass_detected,
+               spec_metadata = gnps_template,
+               mgf_name = "PhenolicsDB")
 
 }
