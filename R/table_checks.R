@@ -24,16 +24,16 @@ sort_compound_table <- function(compounds_dt = NULL) {
 
   # Creating unique keey
    compound_check <- compounds_dt |>
-    dplyr::mutate(KEY = paste(Name, Ionization_mode,
-                               readr::parse_number(COLLISIONENERGY),
+    dplyr::mutate(KEY = paste(.data$Name, I.data$onization_mode,
+                               readr::parse_number(.data$COLLISIONENERGY),
                               sep = "_"))
   # Check if unique keys are repeated
   is_KEY_unique <- length(unique(compound_check$KEY)) == nrow(compounds_dt)
 
   if(!is_KEY_unique) {
 
-    duplicated_KEY <- compound_check |> dplyr::group_by(KEY) |>
-      dplyr::add_count() |> dplyr::filter(n > 1)
+    duplicated_KEY <- compound_check |> dplyr::group_by(.data$KEY) |>
+      dplyr::add_count() |> dplyr::filter(.data$n > 1)
 
     n_dup_key <- nrow(duplicated_KEY)
 
@@ -46,7 +46,7 @@ sort_compound_table <- function(compounds_dt = NULL) {
 
   # Sorting by Name and CE
   compound_check <- compound_check |>
-    dplyr::arrange(Name, COLLISIONENERGY)
+    dplyr::arrange(.data$Name, .data$COLLISIONENERGY)
 
   return(compound_check)
 
@@ -83,10 +83,10 @@ check_specdt_msp <- function(spec_metadata = NULL) {
   }
 
   spec_metadata <-  spec_metadata |>
-    dplyr::mutate(KEY = paste(NAME, IONMODE,
-                              readr::parse_number(COLLISIONENERGY),
+    dplyr::mutate(KEY = paste(.data$NAME, .data$IONMODE,
+                              readr::parse_number(.data$COLLISIONENERGY),
                               sep = "_")) |>
-    dplyr::arrange(NAME, COLLISIONENERGY)
+    dplyr::arrange(.data$NAME, .data$COLLISIONENERGY)
 
   return(spec_metadata)
 
@@ -125,10 +125,10 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
   }
 
   spec_metadata <-  spec_metadata |>
-    dplyr::mutate(KEY = paste(COMPOUND_NAME, IONMODE,
-                              readr::parse_number(COLLISIONENERGY),
+    dplyr::mutate(KEY = paste(.data$COMPOUND_NAME, .data$IONMODE,
+                              readr::parse_number(.data$COLLISIONENERGY),
                               sep = "_")) |>
-    dplyr::arrange(COMPOUND_NAME, COLLISIONENERGY)
+    dplyr::arrange(.data$COMPOUND_NAME, .data$COLLISIONENERGY)
 
   return(spec_metadata)
 }
