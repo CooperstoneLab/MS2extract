@@ -116,17 +116,16 @@ US<br><a class="author_email" href="mailto:#"></a><a href="mailto:quirozmoreno.1
 scenarios about how to use <a href="https://link.springer.com/protocol/10.1007/978-1-4939-6747-6_23" class="external-link">MSconvert</a>
 in order to transform your raw MS/MS data to .mzMl or mzXML format in
 order to be imported with <a href="https://github.com/CooperstoneLab/MS2extract" class="external-link">MS2extract</a>.</p>
-<p>Here, we will explore three different scenarios that you might find
-useful depending on your MS/MS data collection approach. The explained
+<p>Here, we will explore different scenarios that you might find useful
+depending on your MS/MS data collection approach. The explained
 scenarios are:</p>
 <ul>
-<li>Converting to .mzML the entire run,</li>
-<li>Trimming for specific retention time, and</li>
-<li>Extracting MS/MS scans of multiples CE from the same run</li>
+<li>Converting to <code>.mzML</code> the entire run, and</li>
+<li>Trimming for specific retention time,</li>
 </ul>
-<p>*Note:* this is the fourth vignette for this package and if you find
-some terms unclear, or are not familiar with the concepts, please visit
-the previous vignettes (<a href="https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html">Package
+<p><em>Note:</em> this is the fourth vignette for this package and if
+you find some terms unclear, or are not familiar with the concepts,
+please visit the previous vignettes (<a href="https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html">Package
 introduction</a>, <a href="https://cooperstonelab.github.io/MS2extract/articles/2_using_batch_extract.html">Batch
 mode introduction</a>, and <a href="https://cooperstonelab.github.io/MS2extract/articles/4_import_mzml_explanation.html">Importing
 MS/MS data</a>).</p>
@@ -151,13 +150,13 @@ data.</p>
 <p>In this case, although is not the optimal approach, it will get the
 job done, if your data meets a requirement.</p>
 <blockquote>
-<p>Requirement: the precursor ion of your standard has to produce the
+<p>Requirement 1: the precursor ion of your standard has to produce the
 most intense MS/MS signal in the entire run.</p>
 </blockquote>
 <blockquote>
-<p>Requirement: If you have isomers in the same run, but they elute at
-different retention times, you must provide different retention times
-windows.</p>
+<p>Requirement 2: If you have compositional isomers in the same run, but
+they elute at different retention times, you must provide different
+retention times windows.</p>
 </blockquote>
 <p>Since <a href="https://github.com/CooperstoneLab/MS2extract" class="external-link">MS2extract</a>
 searches for the most intense MS/MS scan, you can only have one
@@ -220,57 +219,6 @@ MSconvert task will look like the following image.</p>
 <p><img src="img/msconvert/mzml_trimming.png"></p>
 </div>
 <div class="section level2">
-<h2 id="case-3-multiple-ce-in-the-same-run">Case 3: Multiple CE in the same run<a class="anchor" aria-label="anchor" href="#case-3-multiple-ce-in-the-same-run"></a>
-</h2>
-<p>Unfortunately, the current version of <a href="https://github.com/CooperstoneLab/MS2extract" class="external-link">MS2extract</a> does
-not support importing MS/MS data with different CE in the same run.
-Then, the user will need to manually separate different CE in different
-files as it is explained below.</p>
-<p>For this example, we are going to use guaijaverin (quercetin
-3-arabinopyranoside) to exemplify this case. In the following image, you
-can see the EIC of this metabolite in negative polarity. Then, the first
-MS/MS spectra refers to the fragmentation pattern at 60 eV, while the
-second MS/MS spectra refers to 80 eV.</p>
-<p><img src="img/msconvert/Case_3A.png"></p>
-<p>Now, in order to separate scans in MSconvert we need to specify one
-CE at a time. Here, you can see that we are using the
-<em>collisionEnergy</em> filter to subset MS/MS scans with a CE of 60
-eV. Then, the filters for this metabolite will be:</p>
-<table class="table">
-<thead><tr class="header">
-<th>Filter</th>
-<th>Parameters</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>peakPicking</td>
-<td>vendor msLevel=2-2</td>
-</tr>
-<tr class="even">
-<td>msLevel</td>
-<td>2-2</td>
-</tr>
-<tr class="odd">
-<td>scanTime</td>
-<td>[min rt, max rt]</td>
-</tr>
-<tr class="even">
-<td>collisionEnergy</td>
-<td>low=60 high=60</td>
-</tr>
-</tbody>
-</table>
-<p><img src="img/msconvert/Case_3b.png"></p>
-<p>Once you convert this raw data file to mzML at 60 eV, you can change
-the collision energy to a different value and then convert for the rest
-of available CE values. The same principle can be applied for MS/MS data
-with multiple polarities in the same run.</p>
-<blockquote>
-<p>Note: remember to change the .mzml file name as it will overwrite the
-file with the new CE value.</p>
-</blockquote>
-</div>
-<div class="section level2">
 <h2 id="information-about-this-vignette">Information about this vignette<a class="anchor" aria-label="anchor" href="#information-about-this-vignette"></a>
 </h2>
 <p>Code for creating the vignette</p>
@@ -283,9 +231,9 @@ file with the new CE value.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"4_msconvert_4_MS2extract.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-10-13 18:03:19 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-10-13 20:21:10 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 0.649 secs</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 0.635 secs</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>

@@ -108,24 +108,23 @@ Quiroz-Moreno &amp; Jessica Cooperstone</h4>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>This vignette has the objective to introduce the
-<strong>MS2extract</strong>. The main goal of this package is to provide
+<p>This vignette has the objective to introduce
+<strong>MS2extract</strong>. The main goal of this package is providing
 a tool to create in-house MS/MS compound libraries. Users can access a
 specific function help through the command help(<em>[‘function
-name’]</em>). It is worth to note that this package is aimed in the
-targeted extraction of MS/MS scans and it is not able to perform
-compound match or annotation.</p>
-<p>A simplified workflow is presented in Figure 1. Briefly, mzMl/mzXML
-files are imported in memory, then based on metadata provided by the
-user such as analyte chemical formula, and ionization mode, MS2extract
-computes the theoretical precursor <em>m</em>/<em>z</em>. Then, product
-ion scans that matches the theoretical analyte precursor ion are
-extracted, with a given ppm tolerance. Next, low intensity signals, or
-background noise can be removed from the spectra. Finally, users can
-export the extracted MS/MS spectra to a MS/MS library format (.msp/.mgf)
-to be used as reference library for further compound identification and
-annotation, or deposit the created library in different repositories
-such as GNPS, or MassBank.</p>
+name’]</em>).</p>
+<p>A simplified workflow is presented in Figure 1. Briefly,
+<code>mzML</code>/<code>mzXML</code> files are imported in memory. Then,
+based on metadata provided by the user such as metabolite chemical
+formula, and ionization mode, MS2extract computes the theoretical
+precursor <em>m</em>/<em>z</em>. With this information, product ion
+scans that matches the theoretical ionized mass are extracted, with a
+given ppm tolerance. Next, low intensity signals, or background noise
+can be removed from the spectra. Finally, users can export the extracted
+MS/MS spectra to a MS/MS library format (.msp/.mgf) to be used as
+reference library for further compound identification and annotation, or
+deposit the created library in different repositories such as GNPS, or
+MassBank.</p>
 <div class="figure" style="text-align: center">
 <img src="img/pipeline.png" alt="Figure 1. Overview of the processing pipeline of MS2extract" width="80%" height="80%"><p class="caption">
 Figure 1. Overview of the processing pipeline of MS2extract
@@ -169,8 +168,7 @@ analysis of this object.</p>
 <em>m</em>/<em>z</em> of the compound in order to extract the precursor
 ions that match that mass with a given ppm.</p>
 </blockquote>
-<p>The arguments of the <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code> functions are
-four:</p>
+<p>The arguments of the <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code> function are:</p>
 <ul>
 <li>
 <strong>file:</strong> mzML/mzXML file name</li>
@@ -198,10 +196,9 @@ four:</p>
 <div class="section level4">
 <h4 id="file">file<a class="anchor" aria-label="anchor" href="#file"></a>
 </h4>
-<p>File should contain the name of your mzML/mzXML file that contains
-MS/MS data of authentic standards or reference material. Here, we
-provide an example file of procyanidin A2 collected in negative
-ionization mode, and a collision energy of 20 eV.</p>
+<p>This argument is to pass the file name of your MS/MS data. We provide
+an example file of procyanidin A2, collected in negative ionization mode
+at a 20 eV CE.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Importing  Procyanidin A2 MS/MS spectra in negative ionization mode</span></span>
 <span><span class="co"># and 20 eV as the collision energy</span></span>
@@ -216,12 +213,12 @@ ionization mode, and a collision energy of 20 eV.</p>
 <div class="section level4">
 <h4 id="met_metadata">met_metadata<a class="anchor" aria-label="anchor" href="#met_metadata"></a>
 </h4>
-<p>This argument refers to the compound metadata that user need to
+<p>This argument refers to the compound metadata that users need to
 provide in order to properly import scans that are related to the
 compound of interest.</p>
 <p>The <code>met_metadata</code> is a data frame that has required and
 optional columns. The required columns are employed to calculate the
-theoretical ionized <em>m</em>/<em>z</em> for a given formula and
+theoretical ionized <em>m</em>/<em>z</em> value, for a given formula and
 ionization mode. In the optional columns, we have the option to provide
 a chromatographic region of Interest (ROI), specifying at what time the
 the compound elutes, in order to only keep this retention time
@@ -234,15 +231,18 @@ metabolite formula</li>
 <li>
 <strong>Ionization_mode:</strong> The ionization mode employed in
 data collection.</li>
+<li>
+<strong>COLLISIONENERGY:</strong> CE applied in MS/MS
+fragmentation</li>
 </ul>
 <p>The optional columns are:</p>
 <ul>
 <li>
-<strong>min_rt:</strong> a double with the minimum retention time to
-keep (in seconds)</li>
+<strong>min_rt:</strong> a double, minimum retention time to keep
+(in seconds)</li>
 <li>
-<strong>max_rt:</strong> a double with the minimum retention time to
-keep (in seconds)</li>
+<strong>max_rt:</strong> a double, maximum retention time to keep
+(in seconds)</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Procyanidin A2 metadata</span></span>
@@ -257,9 +257,9 @@ keep (in seconds)</li>
 <div class="section level4">
 <h4 id="ppm">ppm<a class="anchor" aria-label="anchor" href="#ppm"></a>
 </h4>
-<p>ppm refers to the maximum m/z deviation from the theoretical mass. A
-ppm of 10 units will mean that the total allows <em>m</em>/<em>z</em>
-window in 20 ppm. By default, 10 ppm is used.</p>
+<p>ppm refers to the maximum <em>m/z</em> deviation from the theoretical
+mass. A ppm of 10 units will mean that the total allows
+<em>m</em>/<em>z</em> window in 20 ppm. By default, 10 ppm is used.</p>
 </div>
 <div class="section level4">
 <h4 id="import_mzxml">
@@ -313,15 +313,15 @@ as data frame.</li>
 <p>We generated two plots, the MS/MS EIC of the precursor ion (top
 plot), and the MS/MS spectra of the most intense MS/MS scan (bottom
 plot). In the MS/MS spectra, the blue diamond is placed on top of the
-precursor <em>m/z</em> ion. If the diamond is filled in blue, it means
-the precursor ion was found in the MS/MS fragmentation data, while a
-diamond that is not filled will represent that the precursor ion was not
-found in the fragmentation data.</p>
-<p>Furthemore, we can note that the x axis in the MS/MS spectra ranges
-from 0 to 1700 <em>m/z</em>. This is more related to the acquisition
-parameters used in data callection <em>m/z</em> range: 50-1700, which
-creates low intensity signal that are captured and included in the
-resulting MS/MS spectra.</p>
+precursor <em>m/z</em> ion. If the diamond is a blue fill diamond, it
+means the precursor ion was found in the MS/MS fragmentation data, while
+a diamond that is not blue filled, it will represent that the precursor
+ion was not found in the fragmentation data.</p>
+<p>Furthermore, we can note that the <em>x</em> axis in the MS/MS
+spectra ranges from 0 to 1700 <em>m/z</em>. This is more related to the
+acquisition parameters used in data collection <em>m/z</em> range:
+50-1700, which creates low intensity signals that are captured and
+included in the resulting MS/MS spectra.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">ProcA2_extracted</span><span class="op">$</span><span class="va">mz</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  100.0852 1699.0981</span></span></code></pre></div>
@@ -376,8 +376,7 @@ function; the blue diamond refers to the precursor ion.</p>
 background noise in this MS/MS spectra because the low intensity ions
 have been removed.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: `position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Aintroduction_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
 </div>
 <div class="section level3">

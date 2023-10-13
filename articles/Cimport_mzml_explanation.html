@@ -116,7 +116,7 @@ US<br><a class="author_email" href="mailto:#"></a><a href="mailto:quirozmoreno.1
 manner how we import and process MS/MS when you use
 <code><a href="../reference/import_mzxml.html">import_mzxml()</a></code>.</p>
 <p>This document is organized based on the main steps we take to import
-MS/MS data that are:</p>
+MS/MS data:</p>
 <ul>
 <li>Calculating the theoretical precursor ion,</li>
 <li>Filtering MS/MS scans for a given precursor ion and rt range,
@@ -143,10 +143,10 @@ given the following information:</p>
 (1) First, by using the <em><a href="https://bioconductor.org/packages/3.17/Rdisop" class="external-link">Rdisop</a></em>
 package, we calculate the theoretical monoisotopic mass. (2) Then, given
 an specific polarity (<em>Positive</em> or <em>Negative</em>), we add or
-subtract the mass of a proton to calculate the theoretical ion
-<em>m/z</em>. (3) Finally, we used the provided ppm value (10 ppm by
-default) to calculate the <em>m/z</em> range that will be used to filter
-scan that the precursor ion value falls within this range.</p>
+subtract the mass of a proton to calculate the theoretical ionized
+<em>m/z</em> value. (3) Finally, we used the provided ppm value (10 ppm
+by default) to calculate the <em>m/z</em> range that will be used to
+filter scan that the precursor ion value falls within this range.</p>
 <p>You can also calculate this ppm range with
 <code><a href="../reference/ppm_range.html">ppm_range()</a></code></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -163,8 +163,8 @@ scan that the precursor ion value falls within this range.</p>
 highly suggested to provide this information to have more control over
 the regions of the run that we look for the MS/MS scans. If you do not
 provide a specific rt ROI, this package will look for the most intense
-scan, even if that do not represent the desired scans from the provided
-metabolite.</p>
+scan, even if those scans do not represent the desired scans from the
+provided metabolite.</p>
 <p><img src="img/import/Import_2.png"></p>
 </div>
 <div class="section level3">
@@ -194,9 +194,9 @@ falls within these requirements, and are kept for the next steps.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"3_import_mzml_explanation.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-10-13 18:03:14 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-10-13 20:21:05 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 5.601 secs</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 6.306 secs</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>

@@ -105,9 +105,9 @@
 <!-- badges: start -->
 
 <p><a href="https://cooperstonelab.github.io/MS2extract/">MS2extract website</a></p>
-<p>The goal of MS2extract is to provide a tool to import MS2 data of known standards or material and targeted extract the MS2 spectra in order to create an in-house MS2 library.</p>
+<p>The goal of MS2extract is to provide a tool to import MS/MS data of known standards or material and targeted extract the MS/MS spectra in order to create an in-house MS/MS library.</p>
 <blockquote>
-<p>This package aids the creation and automatization of in-house libraries</p>
+<p>This package aids the creation and automatization of in-house MS/MS libraries</p>
 </blockquote>
 <blockquote>
 <p>This package DOES NOT support algorithms to annotate MS/MS data</p>
@@ -124,9 +124,9 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="section level3">
-<h3 id="ppm-calculation">PPM calculation<a class="anchor" aria-label="anchor" href="#ppm-calculation"></a>
+<h3 id="ppm-calculation">ppm calculation<a class="anchor" aria-label="anchor" href="#ppm-calculation"></a>
 </h3>
-<p>with ppm_range you can compute a the ppm error given a m/z value and a ppm tolerance.</p>
+<p>with <code><a href="reference/ppm_range.html">ppm_range()</a></code> you can compute mass error given a ppm tolerance.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cooperstonelab.github.io/MS2extract/">MS2extract</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.10)</span></span>
@@ -143,9 +143,9 @@
 <span><span class="co">#&gt; [1] 355.0987 355.1059</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="importing-mzxml-files">Importing mzxml files<a class="anchor" aria-label="anchor" href="#importing-mzxml-files"></a>
+<h3 id="importing-mzxmlmzml-files">Importing <code>.mzXML</code>/<code>.mzML</code> files<a class="anchor" aria-label="anchor" href="#importing-mzxmlmzml-files"></a>
 </h3>
-<p>You can import mzxml files with the <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import MS2 scans into a data frame. In this case, we are going to work with the Procyanidin A2 spectra in negative mode, with a collision energy of 20 eV.</p>
+<p>You can import <code>.mzXML</code> or <code>.mzML</code> files with the <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import MS/MS scans into a data frame. In this case, we are going to work with the Procyanidin A2 spectra in negative mode, with a collision energy of 20 eV.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># File path</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
@@ -164,11 +164,11 @@
 <div class="section level3">
 <h3 id="extracting-procyanidin-a2-spectra">Extracting Procyanidin A2 spectra<a class="anchor" aria-label="anchor" href="#extracting-procyanidin-a2-spectra"></a>
 </h3>
-<p>Here, the mzxml file contains only the scans in the retention time window of Procyanidin A2. With the <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> functions users can detect and extract the most intense MS2 scans, and displays the TIC indicating which scan is the most intense</p>
+<p>Here, the <code>.mzXML</code> file contains only the MS/MS scans in the retention time window where Procyanidin A2 elutes. With the <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> function, users can detect and extract the most intense MS/MS scan, and displays the TIC indicating which scan is the most intense</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
-<p>This function returns a list, which contains the MS2 spectra, and the MS2 TIC plot. Since the extracted MS2 spectra contains low intensity signals (i.e. background noise), you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
+<p>This function returns a list, which contains the MS/MS spectra, and the extracted MS/MS EIC plot. Since the extracted MS/MS spectra contains low intensity signals (i.e. background noise), you can remove them by using the <code><a href="reference/detect_mass.html">detect_mass()</a></code> function.</p>
 <p>The raw MS2 spectra contains 6226 signals which the majority of them are low intensity signals (background noise).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_ext</span><span class="op">)</span></span>
@@ -182,16 +182,16 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_detected</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/detect_mass.html">detect_mass</a></span><span class="op">(</span><span class="va">ProcA2_ext</span>,</span>
 <span>  normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Allow normalization</span></span>
-<span>  min_int <span class="op">=</span> <span class="fl">1</span></span>
-<span><span class="op">)</span> <span class="co"># 1% as minimum intensity</span></span>
+<span>  min_int <span class="op">=</span> <span class="fl">1</span> <span class="co"># 1% as minimum intensity</span></span>
+<span><span class="op">)</span> </span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 38  6</span></span></code></pre></div>
-<p>Now we can see that the x-axis in the MS2 spectra is reduced to 575 m/z since the low intensity signals were removed.</p>
+<p>Now we can see that the x-axis in the MS/MS spectra is reduced to 575 <em>m/z</em> since the low intensity signals were removed.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
-<p>Although the resulting MS2 spectra contains 38 signals, for displaying purposes we are going to include signlas greater than 10% intensity</p>
+<p>Although the resulting MS/MS spectra contains 38 signals (ions), we are going to include signals with an abundance greater than 10% relative intensity for displaying purposes</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ProcA2_detected</span>, <span class="va">intensity</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 6</span></span>
@@ -209,10 +209,10 @@
 <span><span class="co">#&gt; 9  576.        13         575.  171.    20 C30H24O12</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="comparing-two-ms2-spectra-with-cosine-score">Comparing two MS2 spectra with cosine score<a class="anchor" aria-label="anchor" href="#comparing-two-ms2-spectra-with-cosine-score"></a>
+<h3 id="comparing-two-msms-spectra-with-cosine-score">Comparing two MS/MS spectra with cosine score<a class="anchor" aria-label="anchor" href="#comparing-two-msms-spectra-with-cosine-score"></a>
 </h3>
-<p>The purpose of this section is to compare two MS2 spectra that were extracted using this package and using PCDL, a compound library developed by Agilent.</p>
-<p>Thus, we include the MS2 spectra extracted with PCDL and use cosine similarity score to compare them by the <code><a href="reference/compare_spectra.html">compare_spectra()</a></code> function.</p>
+<p>The purpose of this section is to compare two MS/MS spectra that were extracted using this package and using PCDL, a compound library developed by Agilent.</p>
+<p>Thus, we include the MS/MS spectra extracted with PCDL and use cosine similarity score to compare them by the <code><a href="reference/compare_spectra.html">compare_spectra()</a></code> function.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># MS2 PCDL spectra</span></span>
 <span><span class="va">ProcA2_pcdl_fl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
