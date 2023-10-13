@@ -23,7 +23,7 @@ extract_scan_info <- function(mzxml) {
   scan_id
 }
 
-#' Extract MS2 spectrum info out of the list
+#' Extract MS/MS spectrum info out of the list
 #'
 #' *Internal function*
 #'
@@ -69,7 +69,7 @@ assign_scan_id <- function(scan_list) {
 #' \describe{
 #' \item{Formula}{character, compound chemical formula}
 #' \item{Ionization_mode}{character,
-#'  only *Positive* and *Negative* values are acepted }
+#'  only *Positive* and *Negative* values are accepted }
 #' }
 #'
 #' @param met_metadata a data frame with at least the Formula and the
@@ -111,11 +111,12 @@ check_metadata <- function(met_metadata) {
 }
 
 
-#' Imports mzXML/mzML files with MS2 scans
+#' Imports mzXML/mzML files with MS/MS scans
 #'
-#' This function reads .mzXML and .mzML files containing MS2. This function is
-#' inspired on `masstools::read_mzxml()`which imports the data as a list. Then,
-#' each element in a list list represents one scan. Then, each scans contains
+#' This function reads `.mzXML` and `.mzML` files containing MS/MS.
+#' This function is inspired on `masstools::read_mzxml()`which imports
+#' the data as a list. Then, each element in a list represents one scan.
+#' Also, each scans contains
 #' two sub-lists that contain (1) the scan information and
 #' (2) the spectra per scan.
 #'
@@ -155,9 +156,9 @@ check_metadata <- function(met_metadata) {
 #' @param ppm the mass error in ppm. 10 ppm is the default value.
 #'
 #'
-#' @return data.frame in a tidy format for MS2 spectra in a tidy format.
+#' @return data.frame in a tidy format for MS/MS spectra in a tidy format.
 #'  \describe{
-#'   \item{mz}{ion m/z value}
+#'   \item{mz}{ion *m*/*z* value}
 #'   \item{intensity}{ion intensity count}
 #'   \item{mz_precursor}{precursor ion}
 #'   \item{rt}{retention time (in seconds)}

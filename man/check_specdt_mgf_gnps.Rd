@@ -8,14 +8,14 @@ check_specdt_mgf_gnps(spec_metadata = NULL)
 }
 \arguments{
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting mgf file. In this case, this is the minimum mandatory
+in the resulting \code{.mgf}file. In this case, this is the minimum mandatory
 information to be included.}
 }
 \description{
 \emph{Internal function}
 }
 \details{
-This functions aims to create a unique KEY to sort and iterate the compound
+This function aims to create a unique KEY to sort and iterate the compound
 table in order to match the keys created when MS/MS was imported in
 \code{sort_compound_table()}.
 

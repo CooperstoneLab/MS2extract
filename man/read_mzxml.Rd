@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_mzxml.R
 \name{read_mzxml}
 \alias{read_mzxml}
-\title{Read mzxml/mzML files containing MS2 data}
+\title{Read \code{.mzxml}/\code{.mzML} files containing MS/MS data}
 \usage{
 read_mzxml(file, threads = 3, mode = c("inMemory", "onDisk"))
 }
@@ -17,9 +17,13 @@ read_mzxml(file, threads = 3, mode = c("inMemory", "onDisk"))
 Return ms2 data. This is a list.
 }
 \description{
-This function takes a mzxml file and imports the MS2 data only
-to further create a list contaning to sublists with the scan information
-(fisrt sublits) and the MS2 spectra (second sublist)
+\itemize{
+\item Internal Function *
+}
+
+This function takes a \code{.mzxml}/\code{.mzML} file and imports
+the MS/MS data only to further create a list containing two sublists
+with the scan information (fisrt sublist) and the MS2 spectra (second sublist)
 }
 \examples{
 ProcA2_file <- system.file("extdata",

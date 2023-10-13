@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_MS2.R
 \name{plot_tic}
 \alias{plot_tic}
-\title{Plot MS2 TIC}
+\title{Plot MS/MS TIC}
 \usage{
 plot_tic(spec)
 }
@@ -17,6 +17,6 @@ with the highest intensity and the EIC plot as the second list element.
 \emph{Internal function}
 }
 \details{
-This function plots the MS2 TIC and will mark the most intense scan
+This function plots the MS/MS TIC and will mark the most intense scan
 that will be used to extract the MS/MS spectra
 }

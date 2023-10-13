@@ -7,23 +7,24 @@
 batch_detect_mass(batch_spect, normalize = TRUE, min_int = 1)
 }
 \arguments{
-\item{batch_spect}{a list of MS2 scans imported with batch_import_mzxml()
+\item{batch_spect}{a list of MS/MS scans imported with \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}
 function.}
 
-\item{normalize}{a boolean indicating if the MS2 spectra is normalized by
+\item{normalize}{a boolean indicating if the MS/MS spectra is normalized by
 the base peak before proceeding to filter out low intensity signals
-(normalize  = TRUE), if normalize = FALSE the user has to provide the
+(normalize  = TRUE), if normalize = FALSE  user has to provide the
 minimum ion count.}
 
-\item{min_int}{a integer with the minimum ion intensity}
+\item{min_int}{an integer with the minimum ion intensity}
 }
 \description{
 This function takes multiple spectra imported with the \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}
 function. Then, it parses the argument to \code{\link[=detect_mass]{detect_mass()}} function.
 Briefly, similarly to  the mass detection step in the MZmine workflow,
-detect mass filters out low intensity signals. Here, you can opt to detect masses
-by the raw ion intensity (ion counts), or normalize the spectra
-to the most abundant ion, and detect as an intensity percentage of that ion.
+\code{\link[=detect_mass]{detect_mass()}} filters out low intensity signals.
+Here, you can opt to detect masses by the raw ion intensity (ion counts),
+or normalize the spectra  to the most abundant ion, and detect as an
+intensity percentage of that ion.
 The default is set to include all ions that are at least 1\% of the most
 abundant ion.
 }

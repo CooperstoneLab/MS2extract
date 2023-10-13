@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_mgf.R
 \name{write_gnps_table}
 \alias{write_gnps_table}
-\title{Creates the batch upload table for GNPS batch upload}
+\title{Creates the batch upload \code{.tsv} table for GNPS batch upload job}
 \usage{
 write_gnps_table(spec, spec_metadata, mgf_filename)
 }

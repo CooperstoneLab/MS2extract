@@ -1,18 +1,18 @@
-#' Extract the most MS2 intense scan from batch spectra
+#' Extract the most MS/MS intense scan from batch spectra
 #'
-#' This function takes multiple spectra imported with the batch_import_mzxml()
-#' function. Then, it passes the spectra to a version of extract_MS2().
-#'  Briefly, this function takes a series of MS2 spectra, selects the
-#'  most intense scan and extracts the MS2 spectra from it.
-#' Additionally, it plots the MS2 TIC chromatogram and colors
+#' This function takes multiple spectra imported with the [batch_import_mzxml()]
+#' function. Then, it passes the spectra to a version of [extract_MS2()].
+#'  Briefly, this function takes a series of MS/MS spectra, selects the
+#'  most intense scan and extracts the MS/MS spectra from it.
+#' Additionally, it plots the MS/MS TIC chromatogram and colors
 #' the most intense scan with red circle, and the precursor ion with a blue
 #' diamond
 #'
-#' @param batch_spect a list created by batch_import_mzxml()
-#' @param verbose a boolean indicating if the MS2 TIC chromatogram is displayed
+#' @param batch_spect a list created by [batch_import_mzxml()]
+#' @param verbose a boolean indicating if the MS/MS TIC chromatogram is displayed
 #' @param out_list a boolean expressing if the output is a list containing
-#' the MS2 spectra plus the TIC chromatogram (out_list = TRUE), or only
-#' the data frame with the MS2 spectra (out_lists = FALSE).
+#' the MS/MS spectra plus the TIC chromatogram (out_list = TRUE), or only
+#' the data frame with the MS/MS spectra (out_lists = FALSE).
 #' @export
 #' @examples
 #'

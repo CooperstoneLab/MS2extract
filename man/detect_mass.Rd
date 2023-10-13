@@ -2,14 +2,14 @@
 % Please edit documentation in R/detec_mass.R
 \name{detect_mass}
 \alias{detect_mass}
-\title{Detect masses in a MS2 spectra}
+\title{Detect masses in a MS/MS spectra}
 \usage{
 detect_mass(spec, normalize = TRUE, min_int = 1)
 }
 \arguments{
-\item{spec}{a data frame containing the MS2 spectra.}
+\item{spec}{a data frame containing the MS/MS spectra.}
 
-\item{normalize}{a boolean indicating if the MS2 spectra is normalized by
+\item{normalize}{a boolean indicating if the MS/MS spectra is normalized by
 the base peak before proceeding to filter out low intensity signal
 (normalize  = TRUE), if normalize = FALSE the user has to provide the
 minimum ion count.}

@@ -1,10 +1,11 @@
 #' Batch import mzxml files
 #'
-#' This function imports multiple mzXML files into a named list.
+#' This function imports multiple `.mzXML`/`.mzML` files into a named list.
 #' It takes a data frame containing the basic information of
 #' metabolites such as file name (including the file path), Chemical formula,
-#' Ionization mode, as required fields. Additionally, Region Of Interest (ROI)
-#' can be provided to narrow down the elution window.
+#' Ionization mode, and Collision Energy, as required fields.
+#' Additionally, Region Of Interest (ROI) can be provided to narrow down
+#' the elution window.
 #'
 #' @param compounds_dt a data frame containing the following columns.
 #' \describe{
@@ -12,7 +13,7 @@
 #'  \item{Formula}{The compound's chemical formula}
 #'  \item{Ionization_mode}{The ionization mode set in data collection
 #'  (only Positive and Negative mode allowed).}
-#'  \item{File}{The filename of the mzXML file inluding the path}
+#'  \item{File}{The filename of the `.mzXML`/`.mzML` file inluding the path}
 #'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
@@ -20,12 +21,12 @@
 #' in the data frame.
 #'
 #' \describe{
-#'  \item{min_rt}{a double with the minumim retention time to keep}
-#'  \item{max_rt}{a double with the minimum retention time to keep}
+#'  \item{min_rt}{a double, minumim retention time to keep}
+#'  \item{max_rt}{a double maximum retention time to keep}
 #' }
 #'
-#' @return a list with n elements where n is the number of compounds
-#' provided in the data.frame
+#' @return a list with *n* elements, where n is the number of compounds
+#' provided in the `compounds_dt`
 #' @export
 #' @examples
 #'

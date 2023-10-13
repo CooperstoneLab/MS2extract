@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_ppm.R
 \name{get_ppm}
 \alias{get_ppm}
-\title{Calculate the m/z difference for a given mass and ppm tolerance}
+\title{Calculate the  \emph{m}/\emph{z} difference for a given mass and ppm tolerance}
 \usage{
 get_ppm(mz, ppm = 10)
 }
@@ -16,7 +16,7 @@ a double with the m/z value deviation from the given
 theoretical m/z value
 }
 \description{
-Given a theoretical m/z value and ppm tolerance, computes the m/z
+Given a theoretical  \emph{m}/\emph{z} value and ppm tolerance, it computes the  \emph{m}/\emph{z}
 deviation.
 }
 \examples{

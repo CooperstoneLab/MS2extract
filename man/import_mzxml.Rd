@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_mzxml.R
 \name{import_mzxml}
 \alias{import_mzxml}
-\title{Imports mzXML/mzML files with MS2 scans}
+\title{Imports mzXML/mzML files with MS/MS scans}
 \usage{
 import_mzxml(file = NULL, met_metadata = NULL, ppm = 10)
 }
@@ -44,9 +44,9 @@ especially important if you have multiple peaks in the same data file.}
 \item{ppm}{the mass error in ppm. 10 ppm is the default value.}
 }
 \value{
-data.frame in a tidy format for MS2 spectra in a tidy format.
+data.frame in a tidy format for MS/MS spectra in a tidy format.
 \describe{
-\item{mz}{ion m/z value}
+\item{mz}{ion \emph{m}/\emph{z} value}
 \item{intensity}{ion intensity count}
 \item{mz_precursor}{precursor ion}
 \item{rt}{retention time (in seconds)}
@@ -54,9 +54,10 @@ data.frame in a tidy format for MS2 spectra in a tidy format.
 }
 }
 \description{
-This function reads .mzXML and .mzML files containing MS2. This function is
-inspired on \code{masstools::read_mzxml()}which imports the data as a list. Then,
-each element in a list list represents one scan. Then, each scans contains
+This function reads \code{.mzXML} and \code{.mzML} files containing MS/MS.
+This function is inspired on \code{masstools::read_mzxml()}which imports
+the data as a list. Then, each element in a list represents one scan.
+Also, each scans contains
 two sub-lists that contain (1) the scan information and
 (2) the spectra per scan.
 }

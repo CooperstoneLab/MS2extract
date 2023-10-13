@@ -1,4 +1,4 @@
-#' Compare two spectra based on cosine score
+#' Compare two MS/MS spectra based on cosine score
 #'
 #' A wrapper function to calculate the cosine similarity score between two spectra.
 #' This function selects the *m*/*z* and *intensity* columns before parsing

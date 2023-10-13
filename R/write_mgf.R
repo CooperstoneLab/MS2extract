@@ -1,4 +1,4 @@
-#' Creates the batch upload table for GNPS batch upload
+#' Creates the batch upload `.tsv` table for GNPS batch upload job
 #'
 #' * Internal Function *
 #'
@@ -62,15 +62,15 @@ write_gnps_table <- function(spec, spec_metadata, mgf_filename) {
 }
 
 
-#' Writes the GNPS .mgf backbone
+#' Writes the GNPS `.mgf` backbone
 #'
 #' *Internal Function*
 #'
-#' This function writes the backbone of the .mgf format compatible with GNPS.
+#' This function writes the backbone of the `.mgf` format compatible with GNPS.
 #'
 #' @param spec extracted spectra
 #' @param spec_metadata spectra metadata
-#' @param mgf_filename file name of the .mgf library. This name is created in
+#' @param mgf_filename file name of the `.mgf` library. This name is created in
 #' the calling function.
 #'
 
@@ -155,19 +155,15 @@ check_gnps_metadata <- function(met_metadata) {
 
 }
 
-#' Create the GNPS mgf backbone file format
-#'
-#' *Internal function*
+#' Create the GNPS `.mgf` backbone file format
 #'
 #' This function facilitates to create the structure of the GNPS .mgf format.
 #' For more information about submitting your spectra to GNPS, please
 #' visit this [link](https://ccms-ucsd.github.io/GNPSDocumentation/batchupload).
-#'
 #' You can find the GNPS template spreadsheet in this
 #'  [link](https://ccms-ucsd.github.io/GNPSDocumentation/static/Template.xlsx).
-
-#' @param spec a data frame containing the extracted MS2 spectra, the following
-#' colums are required:
+#' @param spec a data frame containing the extracted MS/MS spectra, the following
+#' column are required:
 #'
 #' \describe{
 #'  \item{mz_precursor}{precursor ion}
@@ -177,7 +173,7 @@ check_gnps_metadata <- function(met_metadata) {
 #' }
 #'
 #' @param spec_metadata a data frame containing the values to be including
-#' in the resulting mgf file. In this case, this is the minimum mandatory
+#' in the resulting `.mgf` file. In this case, this is the minimum mandatory
 #' information to be included.
 #'
 #' The full explanation about fields and field content can be found in
@@ -215,7 +211,7 @@ check_gnps_metadata <- function(met_metadata) {
 #'   \item{PI}{character, principal investigator}
 #' }
 #'
-#' @param mgf_name  file name for the exported `mgf`library. It does not have
+#' @param mgf_name  file name for the exported `.mgf`library. It does not have
 #' to contain the file extension  `.mgf`.
 #'
 #' @return if batch spectra are found, this function writes two files,

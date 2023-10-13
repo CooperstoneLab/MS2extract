@@ -2,25 +2,25 @@
 % Please edit documentation in R/batch_extract_MS2.R
 \name{batch_extract_MS2}
 \alias{batch_extract_MS2}
-\title{Extract the most MS2 intense scan from batch spectra}
+\title{Extract the most MS/MS intense scan from batch spectra}
 \usage{
 batch_extract_MS2(batch_spect, verbose = TRUE, out_list = TRUE)
 }
 \arguments{
-\item{batch_spect}{a list created by batch_import_mzxml()}
+\item{batch_spect}{a list created by \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}}
 
-\item{verbose}{a boolean indicating if the MS2 TIC chromatogram is displayed}
+\item{verbose}{a boolean indicating if the MS/MS TIC chromatogram is displayed}
 
 \item{out_list}{a boolean expressing if the output is a list containing
-the MS2 spectra plus the TIC chromatogram (out_list = TRUE), or only
-the data frame with the MS2 spectra (out_lists = FALSE).}
+the MS/MS spectra plus the TIC chromatogram (out_list = TRUE), or only
+the data frame with the MS/MS spectra (out_lists = FALSE).}
 }
 \description{
-This function takes multiple spectra imported with the batch_import_mzxml()
-function. Then, it passes the spectra to a version of extract_MS2().
-Briefly, this function takes a series of MS2 spectra, selects the
-most intense scan and extracts the MS2 spectra from it.
-Additionally, it plots the MS2 TIC chromatogram and colors
+This function takes multiple spectra imported with the \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}
+function. Then, it passes the spectra to a version of \code{\link[=extract_MS2]{extract_MS2()}}.
+Briefly, this function takes a series of MS/MS spectra, selects the
+most intense scan and extracts the MS/MS spectra from it.
+Additionally, it plots the MS/MS TIC chromatogram and colors
 the most intense scan with red circle, and the precursor ion with a blue
 diamond
 }

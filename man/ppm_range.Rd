@@ -7,17 +7,17 @@
 ppm_range(mz, ppm)
 }
 \arguments{
-\item{mz}{a double, the theoretical m/z value.}
+\item{mz}{a double, the theoretical \emph{m}/\emph{z} value.}
 
 \item{ppm}{a double, the mass error in ppm}
 }
 \value{
-a vector of two elements containing the upper and lower m/z values
+a vector of two elements containing the upper and lower \emph{m}/\emph{z}values
 given the provided mass error tolerance.
 }
 \description{
-Given a theoretical m/z value and a ppm error tolerance,
-this function calculates the lower and upper ppm m/z values.
+Given a theoretical \emph{m}/\emph{z} value, and a ppm error tolerance,
+this function calculates the lower and upper \emph{m}/\emph{z} values.
 }
 \examples{
 

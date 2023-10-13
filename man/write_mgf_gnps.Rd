@@ -2,13 +2,13 @@
 % Please edit documentation in R/write_mgf.R
 \name{write_mgf_gnps}
 \alias{write_mgf_gnps}
-\title{Create the GNPS mgf backbone file format}
+\title{Create the GNPS \code{.mgf} backbone file format}
 \usage{
 write_mgf_gnps(spec = NULL, spec_metadata = NULL, mgf_name = NULL)
 }
 \arguments{
-\item{spec}{a data frame containing the extracted MS2 spectra, the following
-colums are required:
+\item{spec}{a data frame containing the extracted MS/MS spectra, the following
+column are required:
 
 \describe{
 \item{mz_precursor}{precursor ion}
@@ -18,7 +18,7 @@ colums are required:
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting mgf file. In this case, this is the minimum mandatory
+in the resulting \code{.mgf} file. In this case, this is the minimum mandatory
 information to be included.
 
 The full explanation about fields and field content can be found in
@@ -56,7 +56,7 @@ fragmentation}
 \item{PI}{character, principal investigator}
 }}
 
-\item{mgf_name}{file name for the exported \code{mgf}library. It does not have
+\item{mgf_name}{file name for the exported \code{.mgf}library. It does not have
 to contain the file extension  \code{.mgf}.}
 }
 \value{
@@ -65,13 +65,9 @@ the \code{.mgf} library and the required \code{.tsv} table required by GNPS. If 
 spectrum is detected, it will only write the \code{.mgf} library.
 }
 \description{
-\emph{Internal function}
-}
-\details{
 This function facilitates to create the structure of the GNPS .mgf format.
 For more information about submitting your spectra to GNPS, please
 visit this \href{https://ccms-ucsd.github.io/GNPSDocumentation/batchupload}{link}.
-
 You can find the GNPS template spreadsheet in this
 \href{https://ccms-ucsd.github.io/GNPSDocumentation/static/Template.xlsx}{link}.
 }

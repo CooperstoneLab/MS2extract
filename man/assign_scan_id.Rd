@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_mzxml.R
 \name{assign_scan_id}
 \alias{assign_scan_id}
-\title{Extract MS2 spectrum info out of the list}
+\title{Extract MS/MS spectrum info out of the list}
 \usage{
 assign_scan_id(scan_list)
 }

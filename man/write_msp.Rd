@@ -2,13 +2,13 @@
 % Please edit documentation in R/write_msp.R
 \name{write_msp}
 \alias{write_msp}
-\title{Export MS2 spectra to a .msp file}
+\title{Export MS/MS spectra to a \code{.msp} file}
 \usage{
 write_msp(spec = NULL, spec_metadata = NULL, msp_name = NULL)
 }
 \arguments{
-\item{spec}{a data frame containing the extracted MS2 spectra, the following
-colums are required:
+\item{spec}{a data frame containing the extracted MS/MS spectra, the following
+columnS are required:
 
 \describe{
 \item{mz_precursor}{}
@@ -18,8 +18,8 @@ colums are required:
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting .msp file. The following columns are required as vital
-information for the .msp output.
+in the resulting \code{.msp} file. The following columns are required as vital
+information for the \code{.msp} output.
 
 \describe{
 \item{NAME}{}
@@ -29,7 +29,7 @@ information for the .msp output.
 \item{IONMODE}{}
 }
 
-The following fields can be included in the resulting .msp file, but are
+The following fields can be included in the resulting \code{.msp} file, but are
 not required to be present in the metadata table. If the column does not
 exist in the column or the value is missing, a blank field will be exported
 \describe{
@@ -40,16 +40,17 @@ exist in the column or the value is missing, a blank field will be exported
 \item{INSTRUMENTTYPE}{}
 }}
 
-\item{msp_name}{a string with the name of the .msp file excluding the file extension}
+\item{msp_name}{a string with the name of the \code{.msp} file excluding the
+file extension}
 }
 \description{
-This functions takes an extracted MS2 spectra and writes it to a .msp
-file format. This function incorporates the extracted MS2 spectra along
+This functions takes an extracted MS/MS spectra and writes it to a \code{.msp}
+file format. This function incorporates the extracted MS/MS spectra along
 with metadata for the compound.
 }
 \examples{
 
-# Example with single MS2 spectra -----
+# Example with single MS/MS spectra -----
 
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode
 # and 20 eV as the collision energy

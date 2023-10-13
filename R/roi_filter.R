@@ -1,11 +1,11 @@
 #' Filtering the region of interest (ROI)
 #'
-#' This functions takes a data frame with the minimum and maximum retention time
+#' This function takes a data frame with the minimum and maximum retention time
 #' (in seconds), and keeps the *scans* inside the provided boundaries. This
-#' filter functions aims to keep the scans between the provided ROI and remove
+#' filter function aims to keep the scans between the provided ROI and remove
 #' the scans outside the ROI.
 #'
-#' @param spec a data frame containing
+#' @param spec a data frame containing the MS/MS data.
 #' @param roi_table a data frame with two columns min_rt and max_rt specifying
 #' the minimum and maximum retention time for a specific metabolite.
 #' @export

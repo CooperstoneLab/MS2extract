@@ -1,4 +1,4 @@
-#' Detect masses in a MS2 spectra
+#' Detect masses in a MS/MS spectra
 #'
 #' Similarly to  the mass detection step in the MZmine workflow,
 #' detect mass filters out low intensity signals. Here, you can opt to detect masses
@@ -7,8 +7,8 @@
 #' The default is set to include all ions that are at least 1% of the most
 #' abundant ion.
 #'
-#' @param spec a data frame containing the MS2 spectra.
-#' @param normalize a boolean indicating if the MS2 spectra is normalized by
+#' @param spec a data frame containing the MS/MS spectra.
+#' @param normalize a boolean indicating if the MS/MS spectra is normalized by
 #' the base peak before proceeding to filter out low intensity signal
 #' (normalize  = TRUE), if normalize = FALSE the user has to provide the
 #' minimum ion count.

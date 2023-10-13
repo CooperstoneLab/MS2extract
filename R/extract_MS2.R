@@ -12,11 +12,11 @@ get_TIC <- function(spec) {
   spec_tic
 }
 
-#' Plot MS2 TIC
+#' Plot MS/MS TIC
 #'
 #' *Internal function*
 #'
-#' This function plots the MS2 TIC and will mark the most intense scan
+#' This function plots the MS/MS TIC and will mark the most intense scan
 #' that will be used to extract the MS/MS spectra
 #'
 #' @param spec a data frame with the MS/MS spectra

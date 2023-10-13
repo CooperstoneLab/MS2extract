@@ -27,6 +27,6 @@ Required values
 \describe{
 \item{Formula}{character, compound chemical formula}
 \item{Ionization_mode}{character,
-only \emph{Positive} and \emph{Negative} values are acepted }
+only \emph{Positive} and \emph{Negative} values are accepted }
 }
 }

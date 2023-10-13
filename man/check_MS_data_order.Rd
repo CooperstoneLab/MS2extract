@@ -7,8 +7,8 @@
 check_MS_data_order(spec = NULL, spec_metadata = NULL)
 }
 \arguments{
-\item{spec}{a data frame containing the extracted MS2 spectra, the following
-colums are required:
+\item{spec}{a data frame containing the extracted MS/MS spectra,
+the following columns are required:
 
 \describe{
 \item{mz_precursor}{}
@@ -18,7 +18,7 @@ colums are required:
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting .msp file. The following columns are required as vital
+in the resulting \code{.msp} file. The following columns are required as vital
 information for the .msp output.
 
 \describe{
@@ -38,8 +38,8 @@ information for the .msp output.
 \details{
 This function is intended to check the order of the key of the spec
 data and the spec metadata. If both keys are aligned, the code continues.
-If the keys are not aligned, it aborts. This function will try to align the
-keys, as the the keys are ordered back-end and key alignment is expected.
+If the keys are not aligned, it aborts. This function will not try to align
+the keys, as the the keys are ordered back-end and key alignment is expected.
 
 Checks in this function include:
 \itemize{

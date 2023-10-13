@@ -2,7 +2,7 @@
 #'
 #' * Internal Function *
 #'
-#' This functions evaluate the collision energy value provided in the
+#' This function evaluate the collision energy value provided in the
 #' `spe_metadata` data frame, and matches this value with the collision
 #' energy value found in the MS/MS data. This function uses
 #' [readr::parse_number()]  to extract the numeric value provided in

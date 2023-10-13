@@ -2,12 +2,12 @@
 #'
 #' *Internal function*
 #'
-#' This is the base function for plotting the MS2 spectra.
+#' This is the base function for plotting the MS/MS spectra.
 #'
-#' @param spec a data frame containing the MS2 spectra of the most intense
+#' @param spec a data frame containing the MS/MS spectra of the most intense
 #' scan
-#' @param ppm ppm error tolerance to check if the mm/z precursor is being
-#' detected or not in the MS2 spectra
+#' @param ppm ppm error tolerance to check if the *m*/*z* precursor is being
+#' detected or not in the MS/MS spectra
 plot_MS2base <- function(spec, ppm) {
 
   # Adding CE: for plot labeling purposes
@@ -78,21 +78,21 @@ plot_MS2base <- function(spec, ppm) {
 
 
 
-#' Plot MS2 spectra
+#' Plot MS/ms spectra
 #'
-#' This functions plots the resulting MS2 spectra of the most intense scan
+#' This function plots the resulting MS/MS spectra of the most intense scan
 #'
-#' @param spec a data frame containing the MS2 spectra of the most intense
+#' @param spec a data frame containing the MS/MS spectra of the most intense
 #' scan
 #' @param compound a character, if user is using batch_* functions, they need
 #'  to provide a character with the identical “Name” of the compound provided
 #'  in the `batch_import_mzxml()` table.
-#' @param ppm mass error in ppm tolerance to check if the mm/z precursor is being
-#'  detected or not in the MS2 spectra.
+#' @param ppm mass error in ppm tolerance to check if the *m*/*z* precursor is being
+#'  detected or not in the MS/MS spectra.
 #'
-#' @return a `ggplot` plot of the MS2 spectra. A filled blue diamond is
+#' @return a `ggplot` plot of the MS/MS spectra. A filled blue diamond is
 #'  placed above the precursor ion. If the precursor ion was not
-#'  detected in the MS2 spectra, the blue diamond is not filled.
+#'  detected in the MS/MS spectra, the blue diamond is not filled.
 #'
 #' @export
 #' @examples

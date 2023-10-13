@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_mgf.R
 \name{mgf_GNPS_core}
 \alias{mgf_GNPS_core}
-\title{Writes the GNPS .mgf backbone}
+\title{Writes the GNPS \code{.mgf} backbone}
 \usage{
 mgf_GNPS_core(spec, spec_metadata, mgf_filename)
 }
@@ -11,12 +11,12 @@ mgf_GNPS_core(spec, spec_metadata, mgf_filename)
 
 \item{spec_metadata}{spectra metadata}
 
-\item{mgf_filename}{file name of the .mgf library. This name is created in
+\item{mgf_filename}{file name of the \code{.mgf} library. This name is created in
 the calling function.}
 }
 \description{
 \emph{Internal Function}
 }
 \details{
-This function writes the backbone of the .mgf format compatible with GNPS.
+This function writes the backbone of the \code{.mgf} format compatible with GNPS.
 }

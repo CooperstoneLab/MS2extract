@@ -2,13 +2,13 @@
 % Please edit documentation in R/write_msp.R
 \name{write_msp_base}
 \alias{write_msp_base}
-\title{Export MS2 spectra to a msp file}
+\title{Export MS/ms spectra to a \code{.msp} file}
 \usage{
 write_msp_base(spec = NULL, spec_metadata = NULL)
 }
 \arguments{
-\item{spec}{a data frame containing the extracted MS2 spectra, the following
-colums are required:
+\item{spec}{a data frame containing the extracted MS/MS spectra, the following
+columns are required:
 
 \describe{
 \item{mz_precursor}{}
@@ -18,8 +18,8 @@ colums are required:
 }}
 
 \item{spec_metadata}{a data frame containing the values to be including
-in the resulting msp file. The following column are required as vital
-information for the msp output.
+in the resulting \code{.msp} file. The following column are required as vital
+information for the \code{.msp} output.
 
 \describe{
 \item{NAME}{}
@@ -44,7 +44,7 @@ exist in the column or the value is missing, it will export a blank field.
 \emph{Internal function}
 }
 \details{
-This functions takes an extracted MS2 spectra and writes it to a .msp
-file format. This function incorporates the extracted MS2 spectra along
+This functions takes an extracted MS/MS spectra and writes it to a \code{.msp}
+file format. This function incorporates the extracted MS/ms spectra along
 with metadata for the compound.
 }

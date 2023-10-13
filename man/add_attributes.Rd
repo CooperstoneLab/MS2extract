@@ -2,26 +2,26 @@
 % Please edit documentation in R/write_msp.R
 \name{add_attributes}
 \alias{add_attributes}
-\title{Evaluate additional .msp fields}
+\title{Evaluate additional \code{.msp} fields}
 \usage{
 add_attributes(msp_attribute, spec_metadata, msp_backbone)
 }
 \arguments{
-\item{msp_attribute}{a string with the name of an msp field}
+\item{msp_attribute}{a string with the name of an \code{.msp} field}
 
-\item{spec_metadata}{a data frame containing the msp field values}
+\item{spec_metadata}{a data frame containing the \code{.msp} field values}
 
-\item{msp_backbone}{the constructed msp string to export}
+\item{msp_backbone}{the constructed \code{.msp} string to export}
 }
 \description{
 \emph{Internal function}
 }
 \details{
-This internal functions evaluate non-critical msp fields to be included in the
-msp file. This function will create an empty field if any of the
+This internal function evaluate non-critical \code{.msp} fields to be included
+in the \code{.msp} file. This function will create an empty field if any of the
 evaluated fields are either listed as NA or missing in the metadata table.
 
-The evaluated additional msp fields are:
+The evaluated additional \code{.msp} fields are:
 
 \describe{
 \item{INCHIKEY}{}

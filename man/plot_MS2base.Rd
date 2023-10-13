@@ -7,15 +7,15 @@
 plot_MS2base(spec, ppm)
 }
 \arguments{
-\item{spec}{a data frame containing the MS2 spectra of the most intense
+\item{spec}{a data frame containing the MS/MS spectra of the most intense
 scan}
 
-\item{ppm}{ppm error tolerance to check if the mm/z precursor is being
-detected or not in the MS2 spectra}
+\item{ppm}{ppm error tolerance to check if the \emph{m}/\emph{z} precursor is being
+detected or not in the MS/MS spectra}
 }
 \description{
 \emph{Internal function}
 }
 \details{
-This is the base function for plotting the MS2 spectra.
+This is the base function for plotting the MS/MS spectra.
 }

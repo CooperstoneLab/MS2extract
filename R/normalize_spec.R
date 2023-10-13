@@ -1,12 +1,14 @@
 #' Normalization and low intensity signal filtering
 #'
 #' This function normalizes raw spectra by converting from raw intensities,
-#' to 0-100. It also can filter based on the relative abundance of ions
-#'  relative to the base peak (i.e., the most abundant ion).
-#'  The default minimum intensity is 1 percent.
+#' to 0-100% relative intensity based on the most intense ion.
+#' This function also remove low intensity signals based on minimum cutoff.
+#' The default cutoff is 1% and the spectra is normalized.
 #'
-#' @param spec a data frame produced by `import_mzxml` function or with the same columns
-#' @param min_int a integer the minimum normalized ion intensity between 1 and 100 percent.
+#' @param spec a data frame produced by `import_mzxml()` function.
+#' @param min_int an integer, minimum  intensity. If spectra is normalized,
+#' this values should be in a 0-100 range. If the spectra is not
+#' not normalized, this value must be ion count.
 #' @export
 #' @examples
 #' # Importing the Spectrum of Procyanidin A2 in negative ionization mode

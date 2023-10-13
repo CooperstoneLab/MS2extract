@@ -1,9 +1,11 @@
 
 
-#' @title Read mzxml/mzML files containing MS2 data
-#' @description This function takes a mzxml file and imports the MS2 data only
-#'  to further create a list contaning to sublists with the scan information
-#'  (fisrt sublits) and the MS2 spectra (second sublist)
+#' @title Read `.mzxml`/`.mzML` files containing MS/MS data
+#' @description * Internal Function *
+#'
+#' This function takes a `.mzxml`/`.mzML` file and imports
+#'  the MS/MS data only to further create a list containing two sublists
+#'  with the scan information (fisrt sublist) and the MS2 spectra (second sublist)
 #' @author Xiaotao Shen inspired from the masstools package https://www.tidymass.org
 #' @param file The vector of names of ms2 files. MS2 file must be mzXML or mzML.
 #' @param threads Thread number

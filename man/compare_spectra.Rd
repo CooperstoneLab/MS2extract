@@ -2,7 +2,7 @@
 % Please edit documentation in R/compare_spectra.R
 \name{compare_spectra}
 \alias{compare_spectra}
-\title{Compare two spectra based on cosine score}
+\title{Compare two MS/MS spectra based on cosine score}
 \usage{
 compare_spectra(spec1, spec2, output.list = TRUE, ...)
 }

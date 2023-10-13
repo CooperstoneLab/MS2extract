@@ -3,11 +3,11 @@
 #' *Internal function*
 #'
 #' This function check for the compound data to have unique values (metabolites)
-#' per row before importing the MS/MS data. This function performs the
+#' per row, before importing the MS/MS data. This function performs the
 #' following checks:
 #'
 #' * Create a unique row key: Compound name + Polarity + CE
-#' * Check if there are any duplicated values
+#' * Check if there are any duplicated values based on the keys
 #' * Sort the compound table by Name and CE value
 #'
 #' @param compounds_dt  a data frame containing the following columns.
@@ -16,7 +16,7 @@
 #'  \item{Formula}{The compound's chemical formula}
 #'  \item{Ionization_mode}{The ionization mode set in data collection
 #'  (only Positive and Negative mode allowed).}
-#'  \item{File}{The filename of the mzXML file inluding the path}
+#'  \item{File}{The filename of the `.mzXML`/`.mzML` file inluding the path}
 #'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
@@ -102,7 +102,7 @@ check_specdt_msp <- function(spec_metadata = NULL) {
 #'
 #' *Internal function*
 #'
-#' This functions aims to create a unique KEY to sort and iterate the compound
+#' This function aims to create a unique KEY to sort and iterate the compound
 #' table in order to match the keys created when MS/MS was imported in
 #' `sort_compound_table()`.
 #'
@@ -113,7 +113,7 @@ check_specdt_msp <- function(spec_metadata = NULL) {
 #' * Sort the compound table by Name and CE value
 #'
 #' @param spec_metadata a data frame containing the values to be including
-#' in the resulting mgf file. In this case, this is the minimum mandatory
+#' in the resulting `.mgf`file. In this case, this is the minimum mandatory
 #' information to be included.
 
 check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
@@ -147,15 +147,15 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
 #'
 #' This function is intended to check the order of the key of the spec
 #' data and the spec metadata. If both keys are aligned, the code continues.
-#' If the keys are not aligned, it aborts. This function will try to align the
-#' keys, as the the keys are ordered back-end and key alignment is expected.
+#' If the keys are not aligned, it aborts. This function will not try to align
+#' the keys, as the the keys are ordered back-end and key alignment is expected.
 #'
 #' Checks in this function include:
 #' * Check equal number of MS/MS data and number of observations in spec_metadata
 #' * All key names are aligned
 #'
-#' @param spec a data frame containing the extracted MS2 spectra, the following
-#' colums are required:
+#' @param spec a data frame containing the extracted MS/MS spectra,
+#' the following columns are required:
 #'
 #' \describe{
 #'  \item{mz_precursor}{}
@@ -165,7 +165,7 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
 #' }
 #'
 #' @param spec_metadata a data frame containing the values to be including
-#' in the resulting .msp file. The following columns are required as vital
+#' in the resulting `.msp` file. The following columns are required as vital
 #' information for the .msp output.
 #'
 #' \describe{
