@@ -24,7 +24,7 @@ sort_compound_table <- function(compounds_dt = NULL) {
 
   # Creating unique keey
    compound_check <- compounds_dt |>
-    dplyr::mutate(KEY = paste(.data$Name, I.data$onization_mode,
+    dplyr::mutate(KEY = paste(.data$Name, .data$Ionization_mode,
                                readr::parse_number(.data$COLLISIONENERGY),
                               sep = "_"))
   # Check if unique keys are repeated
