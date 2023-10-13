@@ -314,6 +314,14 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
     )
 
 
+  # Create unique keys
+  spec_metadata <- check_specdt_mgf_gnps(spec_metadata = spec_metadata)
+
+  # Checking all MS/MS data present in spec_metadta
+  check_all_compounds <- check_MS_data_order(spec = spec,
+                                             spec_metadata = spec_metadata)
+
+
   mgf_filename_base <- paste(mgf_name, unique(spec_metadata$IONMODE),
                           sep = "_")
   mgf_filename <- paste0(mgf_filename_base, ".mgf")
@@ -323,8 +331,7 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
     # Splitting metadata per compound
     spec_metadata <- dplyr::mutate(spec_metadata, SCANS = seq(1, dplyr::n() ))
 
-    spec_metadata <- split(spec_metadata,  f = ~spec_metadata$COMPOUND_NAME +
-                             spec_metadata$COLLISIONENERGY, drop = TRUE)
+    spec_metadata <- split(spec_metadata,  f = ~spec_metadata$KEY, drop = TRUE)
 
     mgf_entry <- purrr::map2(
       .x = spec,

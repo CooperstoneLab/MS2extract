@@ -127,6 +127,10 @@ check_metadata <- function(met_metadata) {
 #'  \item{Formula}{A character string specifying the metabolite formula}
 #'  \item{Ionization_mode}{The ionization mode employed in data collection. It
 #'  can be only Positive or Negative}
+#'  \item{Ionization_mode}{The ionization mode set in data collection
+#'  (only Positive and Negative mode allowed).}
+#'  \item{File}{The filename of the mzXML file inluding the path}
+#'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
 #' These two columns are mandatory since the formula is used by the Rdisop

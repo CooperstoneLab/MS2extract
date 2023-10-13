@@ -13,6 +13,7 @@
 #'  \item{Ionization_mode}{The ionization mode set in data collection
 #'  (only Positive and Negative mode allowed).}
 #'  \item{File}{The filename of the mzXML file inluding the path}
+#'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
 #' Additionally, you can provide the ROI by adding two columns
@@ -59,9 +60,13 @@
 #' # Rutin: 22096 ions
 #' purrr::map(batch_compounds, dim)
 batch_import_mzxml <- function(compounds_dt) {
-  # Separating compounds by name
+
+  # Create unique Keys
+  compounds_dt <- sort_compound_table(compounds_dt)
+
+   # Separating compounds by name
   compounds_list <- split(compounds_dt,
-                          f = ~compounds_dt$Name + compounds_dt$COLLISIONENERGY,
+                          f = compounds_dt$KEY,
                           drop = TRUE)
 
   # Extracting only file names to be read
@@ -100,6 +105,7 @@ batch_import_mzxml <- function(compounds_dt) {
       return(mzml_imported)
     }
   )
+
   cli::cli_h1("End batch import")
   return(compounds_out)
 }

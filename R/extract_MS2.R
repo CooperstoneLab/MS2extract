@@ -133,14 +133,18 @@ extract_MS2 <- function(spec, verbose = TRUE, out_list = FALSE) {
   # Calculate the most intense scan
   most_intense <- TIC_results$most_intense
 
+
   # Get the rt of the most intense scan
   MS2_spec <- dplyr::filter(spec, .data$rt %in% most_intense$rt)
-  spec_plot <- plot_MS2spectra(spec = MS2_spec)
 
 
-  plot_results <- ggpubr::ggarrange(TIC_results$TIC_plot, spec_plot, ncol = 1)
   # IF verbose = T print the plot
-  if (verbose) print(plot_results)
+  if (verbose){
+    spec_plot <- plot_MS2spectra(spec = MS2_spec)
+    plot_results <- ggpubr::ggarrange(TIC_results$TIC_plot, spec_plot, ncol = 1)
+
+    print(plot_results)
+  }
 
   # Modify what is returned
   if (out_list) {

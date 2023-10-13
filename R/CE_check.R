@@ -36,7 +36,7 @@ CE_filter <- function(spec, spec_metadata) {
   if(!is_CE_val_present) {
     cli::cli_abort(c("CE value provided in metadata does not match CE value in data",
                      "i" = "CE value provided: {CE_dt_number}",
-                     "x" = "CE value in data: {CE_spec}"))
+                     "x" = "CE value in MS/MS data: {CE_spec}"))
   }
 
   cli::cli_li("Filtering MS/MS scans for {CE_dt_number} CE")

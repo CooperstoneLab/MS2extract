@@ -14,6 +14,7 @@ batch_import_mzxml(compounds_dt)
 \item{Ionization_mode}{The ionization mode set in data collection
 (only Positive and Negative mode allowed).}
 \item{File}{The filename of the mzXML file inluding the path}
+\item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 }
 
 Additionally, you can provide the ROI by adding two columns
