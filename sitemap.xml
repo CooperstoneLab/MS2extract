@@ -52,10 +52,19 @@
     <loc>https://cooperstonelab.github.io/MS2extract/reference/batch_import_mzxml.html</loc>
   </url>
   <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_MS_data_order.html</loc>
+  </url>
+  <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/check_gnps_metadata.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/check_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_mgf_gnps.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_msp.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/compare_spectra.html</loc>
@@ -104,6 +113,9 @@
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/roi_filter.html</loc>
+  </url>
+  <url>
+    <loc>https://cooperstonelab.github.io/MS2extract/reference/sort_compound_table.html</loc>
   </url>
   <url>
     <loc>https://cooperstonelab.github.io/MS2extract/reference/write_gnps_table.html</loc>
