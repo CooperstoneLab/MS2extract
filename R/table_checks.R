@@ -131,7 +131,6 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
     dplyr::arrange(COMPOUND_NAME, COLLISIONENERGY)
 
   return(spec_metadata)
-
 }
 
 #' Check if spec MS/MS data and spec_metadata is proper aligned
@@ -167,7 +166,7 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
 #'  \item{FORMULA}{}
 #'  \item{RETENTIONTIME}{}
 #'  \item{IONMODE}{}
-#'  \item{COLLISIONENERGY}
+#'  \item{COLLISIONENERGY}{}
 #' }
 #'
 check_MS_data_order <- function(spec = NULL, spec_metadata = NULL) {

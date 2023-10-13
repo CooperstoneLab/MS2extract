@@ -156,14 +156,14 @@ respectively.
 #### Detected MS2 Procyanidin A2
 
 ```{r message=FALSE, warning=FALSE}
-plot_MS2spectra(batch_mass_detected, "Procyanidin A2. 20 eV")
+plot_MS2spectra(batch_mass_detected, "Procyanidin A2_Negative_20")
 ```
 
 
 #### Detected MS2 Rutin
 
 ```{r message=FALSE, warning=FALSE}
-plot_MS2spectra(batch_mass_detected, "Rutin. 20 eV")
+plot_MS2spectra(batch_mass_detected, "Rutin_Negative_20")
 ```
 
 

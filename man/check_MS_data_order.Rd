@@ -27,7 +27,7 @@ information for the .msp output.
 \item{FORMULA}{}
 \item{RETENTIONTIME}{}
 \item{IONMODE}{}
-\item{COLLISIONENERGY}
+\item{COLLISIONENERGY}{}
 }}
 }
 \description{
