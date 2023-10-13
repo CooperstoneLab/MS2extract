@@ -37,8 +37,9 @@ at once, you will want to use these`batch_*()` functions
 
 The first three main steps have a separate `batch_*()` alternative functions;
 importing mzXML files, extracting MS/MS spectra,
-and detecting masses. However, exporting your library to a .msp file is able to
-detect if the provided spectra comes from a single or multiple .mzXML file,
+and detecting masses. However, exporting your library to a `.msp` or `.mgf`
+file is able to detect if the provided spectra comes from a 
+single or multiple `.mzXML`/`.mzML` files,
 so the same function works in both cases.
 
 ```{r Fig 1, echo=FALSE, fig.cap= "Figure 1. Overview of general data processing pipeline to extract MS/MS spectra using the MS2extract package", out.width= "80%", out.height="80%", message=FALSE, warning=FALSE, paged.print=FALSE, fig.align='center'}
@@ -47,20 +48,21 @@ knitr::include_graphics("img/pipeline.png")
 
 ## Batch functions
 
-We are familiar with the arguments that the core functions accept, here in this
+We are familiar with the arguments that the core functions accept, in this
 section we describe extra arguments that specific `batch_*()` functions require.
 
 ### batch_import_mzxml
 
 
-```{r setup}
+```{r setup, include=FALSE, eval=TRUE}
 knitr::opts_chunk$set(warning = FALSE)
 library(MS2extract)
 ```
 
-Similarly to `import_mzxml()`, we need to provide compound metadata, with at 
-minimum the compound name, formula, ionization mode, and optionally (but 
-recommended) the region of interest (*min_rt* and *max_rt*).
+Similarly to `import_mzxml()`, we need to provide the compound metadata, with at 
+minimum the compound name, formula, ionization mode, and collision energy. 
+Optionally, but recommended, the region of interest where each compound
+elute (*min_rt* and *max_rt*).
 
 
 
@@ -90,8 +92,8 @@ dplyr::glimpse(batch_data)
 ```
 
 The only difference between `batch_import_mzxml()` and  `import_mzxml()` 
-is that  met_metadata can be more than one row. Here we are working with two 
-compounds, procyanidin A2 and rutin.
+is that  `met_metadata` can be more than one row. In this example, 
+we are working with two compounds, procyanidin A2 and rutin.
 
 
 > **Tip:** you can extract multiple compounds from the same .mzXML if they have different precursor ion *m*/*z*.
@@ -112,7 +114,7 @@ The raw mzXML data contains:
 purrr::map(batch_compounds, dim)
 ```
 
-### batch_extract_MS2
+### batch_extract_MS2()
 
 Now that we have our data in imported, we can proceed to extract the most
 intense MS/MS scan for each compound. In this case, the `batch_extract_MS2()`
@@ -129,21 +131,20 @@ batch_extracted <- batch_extract_MS2(batch_compounds,
 ```
 
 By using `verbose = TRUE`, we can display the MS/MS TIC plot as well the raw
-MS/MS spectra.
+MS/MS spectra of the most intense scan for each compound.
 
-### batch_detect_mass
+### batch_detect_mass()
 
 Now that we have the raw MS/MS spectra, we are going to remove background 
-noise/non-informative product ions
-based on intensity. `batch_detect_mass()` has the same arguments
+noise based on intensity. `batch_detect_mass()` has the same arguments
 than its core analogue.
 
 
 ```{r}
 batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
-  normalize = TRUE, # Normalize
-  min_int = 1
-) # Minimum intensity
+  normalize = TRUE, # Normalize 
+  min_int = 1  # 1% minimum intensity
+)
 
 purrr::map(batch_mass_detected, dim)
 ```
@@ -170,7 +171,7 @@ plot_MS2spectra(batch_mass_detected, "Rutin_Negative_20")
 ## write_msp
 
 In contrast with the previous batch functions, `write_msp()` is able to detect
-if the user is providing a single spectra or multiple spectra. However, the
+if the user is providing a single or multiple spectra. However, the
 user needs to provide metadata about each compound to be included in the 
 resulting .msp database.
 

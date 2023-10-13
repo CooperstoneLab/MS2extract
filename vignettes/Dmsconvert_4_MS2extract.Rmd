@@ -60,15 +60,14 @@ in order to transform your raw MS/MS data to .mzMl or mzXML format in
 order to be imported with
 [MS2extract](https://github.com/CooperstoneLab/MS2extract).
 
-Here, we will explore three different scenarios that you might find
+Here, we will explore different scenarios that you might find
 useful depending on your MS/MS data collection approach. The explained
 scenarios are:
 
--   Converting to .mzML the entire run,
--   Trimming for specific retention time, and
--   Extracting MS/MS scans of multiples CE from the same run
+-   Converting to `.mzML` the entire run, and
+-   Trimming for specific retention time, 
 
-\*Note:\* this is the fourth vignette for this package and if you find some
+*Note:* this is the fourth vignette for this package and if you find some
 terms unclear, or are not familiar with the concepts, please visit the
 previous vignettes ([Package
 introduction](https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html),
@@ -96,12 +95,12 @@ with the specified precursor ion to extract the MS/MS data.
 In this case, although is not the optimal approach, it will get the job
 done, if your data meets a requirement.
 
-> Requirement: the precursor ion of your standard has to produce the
+> Requirement 1: the precursor ion of your standard has to produce the
 > most intense MS/MS signal in the entire run.
 
-> Requirement: If you have isomers in the same run, but they elute at
-> different retention times, you must provide different retention times
-> windows.
+> Requirement 2: If you have compositional isomers in the same run, 
+> but they elute at different retention times, you must provide different 
+> retention times windows.
 
 Since [MS2extract](https://github.com/CooperstoneLab/MS2extract)
 searches for the most intense MS/MS scan, you can only have one
@@ -141,44 +140,6 @@ time are 133 and 145 (s), respectively. Therefore, the MSconvert task
 will look like the following image.
 
 ![](img/msconvert/mzml_trimming.png)
-
-# Case 3: Multiple CE in the same run
-
-Unfortunately, the current version of
-[MS2extract](https://github.com/CooperstoneLab/MS2extract) does not
-support importing MS/MS data with different CE in the same run. Then,
-the user will need to manually separate different CE in different files
-as it is explained below.
-
-For this example, we are going to use guaijaverin (quercetin
-3-arabinopyranoside) to exemplify this case. In the following image, you
-can see the EIC of this metabolite in negative polarity. Then, the first
-MS/MS spectra refers to the fragmentation pattern at 60 eV, while the
-second MS/MS spectra refers to 80 eV.
-
-![](img/msconvert/Case_3A.png)
-
-Now, in order to separate scans in MSconvert we need to specify one CE
-at a time. Here, you can see that we are using the *collisionEnergy*
-filter to subset MS/MS scans with a CE of 60 eV. Then, the filters for
-this metabolite will be:
-
-| Filter          | Parameters         |
-|-----------------|--------------------|
-| peakPicking     | vendor msLevel=2-2 |
-| msLevel         | 2-2                |
-| scanTime        | [min rt, max rt]   |
-| collisionEnergy | low=60 high=60     |
-
-![](img/msconvert/Case_3b.png)
-
-Once you convert this raw data file to mzML at 60 eV, you can change the
-collision energy to a different value and then convert for the rest of
-available CE values. The same principle can be applied for MS/MS data
-with multiple polarities in the same run.
-
-> Note: remember to change the .mzml file name as it will overwrite the
-> file with the new CE value.
 
 # Information about this vignette
 
