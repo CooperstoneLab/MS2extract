@@ -193,4 +193,4 @@ compare_spectra(ProcA2_detected, ProcA2_PCDL)
     #> 10 576.1221            13                0
     #> 
     #> $plot
-    #> gTree[GRID.gTree.168]
+    #> gTree[GRID.gTree.160]
