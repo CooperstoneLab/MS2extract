@@ -1,4 +1,25 @@
-# CHANGES IN VERSION 0.1.0
+# CHANGES IN VERSION v0.02.0
+
+## Package test
+
+MS2extract v0.02.0 has been tested for compatibility with
+[PhenolicsDB](https://github.com/CooperstoneLab/PhenolicsDB) v0.04.0
+
+## New functions
+
+* Create `.mgf` format for GNPS batch upload
+
+* write_mgf_gnps()
+
+## Documentation
+
+Two more vignettes:
+
+* 3 - Behind the curtains of importing MS/MS data
+* 4 - Using MSconverto to convert MS/MS data
+
+
+# CHANGES IN VERSION v0.01.0
 
 ## Package creation, available functions:
 
