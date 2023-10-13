@@ -65,6 +65,10 @@ sort_compound_table <- function(compounds_dt = NULL) {
 #' * Create a unique row key: Compound name + Polarity + CE
 #' * Check if there are any duplicated values
 #' * Sort the compound table by Name and CE value
+#'
+#' @param spec_metadata a data frame containing the values to be including
+#' in the resulting `.mgf` file. In this case, this is the minimum mandatory
+#' information to be included.
 
 check_specdt_msp <- function(spec_metadata = NULL) {
 
@@ -107,6 +111,10 @@ check_specdt_msp <- function(spec_metadata = NULL) {
 #' * Create a unique row key: Compound name + Polarity + CE
 #' * Check if there are any duplicated values
 #' * Sort the compound table by Name and CE value
+#'
+#' @param spec_metadata a data frame containing the values to be including
+#' in the resulting mgf file. In this case, this is the minimum mandatory
+#' information to be included.
 
 check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
 

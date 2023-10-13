@@ -6,6 +6,11 @@
 \usage{
 check_specdt_msp(spec_metadata = NULL)
 }
+\arguments{
+\item{spec_metadata}{a data frame containing the values to be including
+in the resulting \code{.mgf} file. In this case, this is the minimum mandatory
+information to be included.}
+}
 \description{
 \emph{Internal function}
 }
