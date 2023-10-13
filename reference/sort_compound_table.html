@@ -95,7 +95,7 @@
 (only Positive and Negative mode allowed).</p></dd>
 
 <dt>File</dt>
-<dd><p>The filename of the mzXML file inluding the path</p></dd>
+<dd><p>The filename of the <code>.mzXML</code>/<code>.mzML</code> file inluding the path</p></dd>
 
 <dt>COLLISIONENERGY</dt>
 <dd><p>Collision energy applied in MS/MS fragmentation</p></dd>
@@ -107,9 +107,9 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function check for the compound data to have unique values (metabolites)
-per row before importing the MS/MS data. This function performs the
+per row, before importing the MS/MS data. This function performs the
 following checks:</p><ul><li><p>Create a unique row key: Compound name + Polarity + CE</p></li>
-<li><p>Check if there are any duplicated values</p></li>
+<li><p>Check if there are any duplicated values based on the keys</p></li>
 <li><p>Sort the compound table by Name and CE value</p></li>
 </ul></div>
 
