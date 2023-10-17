@@ -16,7 +16,7 @@ MS2extract v0.02.0 has been tested for compatibility with
 Two more vignettes:
 
 * 3 - Behind the curtains of importing MS/MS data
-* 4 - Using MSconverto to convert MS/MS data
+* 4 - Using MSconvert to convert MS/MS data
 
 
 # CHANGES IN VERSION v0.01.0

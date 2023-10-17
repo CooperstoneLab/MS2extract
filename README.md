@@ -12,9 +12,9 @@
 
 [MS2extract website](https://cooperstonelab.github.io/MS2extract/)
 
-The goal of MS2extract is to provide a tool to import MS/MS data of
-known standards or material and targeted extract the MS/MS spectra in
-order to create an in-house MS/MS library.
+The goal of MS2extract is to provide a tool to create in-house MS/MS
+libraries that could be used internally, or even better, shared with the
+community.
 
 > This package aids the creation and automatization of in-house MS/MS
 > libraries
@@ -57,7 +57,7 @@ ppm_range(mz = chlorogenic_acid_pos, ppm = ppm_error)
 
 You can import `.mzXML` or `.mzML` files with the `import_mzxml()`
 function. This will import MS/MS scans into a data frame. In this case,
-we are going to work with the Procyanidin A2 spectra in negative mode,
+we are going to work with the procyanidin A2 spectra in negative mode,
 with a collision energy of 20 eV.
 
 ``` r
@@ -76,10 +76,10 @@ ProcA2_raw <- import_mzxml(ProcA2_file, ProcA2_data)
 #> • m/z range given 10 ppm: 575.11376 and 575.12526
 ```
 
-### Extracting Procyanidin A2 spectra
+### Extracting the procyanidin A2 spectra
 
 Here, the `.mzXML` file contains only the MS/MS scans in the retention
-time window where Procyanidin A2 elutes. With the `extract_MS2()`
+time window where procyanidin A2 elutes. With the `extract_MS2()`
 function, users can detect and extract the most intense MS/MS scan, and
 displays the TIC indicating which scan is the most intense
 
