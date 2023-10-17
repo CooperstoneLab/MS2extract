@@ -105,7 +105,7 @@
 <!-- badges: start -->
 
 <p><a href="https://cooperstonelab.github.io/MS2extract/">MS2extract website</a></p>
-<p>The goal of MS2extract is to provide a tool to import MS/MS data of known standards or material and targeted extract the MS/MS spectra in order to create an in-house MS/MS library.</p>
+<p>The goal of MS2extract is to provide a tool to create in-house MS/MS libraries that could be used internally, or even better, shared with the community.</p>
 <blockquote>
 <p>This package aids the creation and automatization of in-house MS/MS libraries</p>
 </blockquote>
@@ -145,7 +145,7 @@
 <div class="section level3">
 <h3 id="importing-mzxmlmzml-files">Importing <code>.mzXML</code>/<code>.mzML</code> files<a class="anchor" aria-label="anchor" href="#importing-mzxmlmzml-files"></a>
 </h3>
-<p>You can import <code>.mzXML</code> or <code>.mzML</code> files with the <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import MS/MS scans into a data frame. In this case, we are going to work with the Procyanidin A2 spectra in negative mode, with a collision energy of 20 eV.</p>
+<p>You can import <code>.mzXML</code> or <code>.mzML</code> files with the <code><a href="reference/import_mzxml.html">import_mzxml()</a></code> function. This will import MS/MS scans into a data frame. In this case, we are going to work with the procyanidin A2 spectra in negative mode, with a collision energy of 20 eV.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># File path</span></span>
 <span><span class="va">ProcA2_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
@@ -162,9 +162,9 @@
 <span><span class="co">#&gt; • m/z range given 10 ppm: 575.11376 and 575.12526</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="extracting-procyanidin-a2-spectra">Extracting Procyanidin A2 spectra<a class="anchor" aria-label="anchor" href="#extracting-procyanidin-a2-spectra"></a>
+<h3 id="extracting-the-procyanidin-a2-spectra">Extracting the procyanidin A2 spectra<a class="anchor" aria-label="anchor" href="#extracting-the-procyanidin-a2-spectra"></a>
 </h3>
-<p>Here, the <code>.mzXML</code> file contains only the MS/MS scans in the retention time window where Procyanidin A2 elutes. With the <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> function, users can detect and extract the most intense MS/MS scan, and displays the TIC indicating which scan is the most intense</p>
+<p>Here, the <code>.mzXML</code> file contains only the MS/MS scans in the retention time window where procyanidin A2 elutes. With the <code><a href="reference/extract_MS2.html">extract_MS2()</a></code> function, users can detect and extract the most intense MS/MS scan, and displays the TIC indicating which scan is the most intense</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
