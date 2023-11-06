@@ -8,7 +8,7 @@ write_mgf_gnps(spec = NULL, spec_metadata = NULL, mgf_name = NULL)
 }
 \arguments{
 \item{spec}{a data frame containing the extracted MS/MS spectra, the following
-column are required:
+columns are required:
 
 \describe{
 \item{mz_precursor}{precursor ion}
@@ -25,7 +25,7 @@ The full explanation about fields and field content can be found in
 GNPS batch library upload
 \href{https://ccms-ucsd.github.io/GNPSDocumentation/batchupload}{link}.
 
-For the rest of fields that are included in the final library file,
+For the rest of the fields that are included in the final library file,
 MS2extract will get this information for the extracted spectra.
 
 We highly suggest to check the \code{gnps_template.xlsx} file described in
@@ -65,7 +65,7 @@ the \code{.mgf} library and the required \code{.tsv} table required by GNPS. If 
 spectrum is detected, it will only write the \code{.mgf} library.
 }
 \description{
-This function facilitates to create the structure of the GNPS .mgf format.
+This function facilitates the creation of the GNPS .mgf format.
 For more information about submitting your spectra to GNPS, please
 visit this \href{https://ccms-ucsd.github.io/GNPSDocumentation/batchupload}{link}.
 You can find the GNPS template spreadsheet in this
@@ -92,7 +92,7 @@ Rutin_file <- system.file("extdata",
   package = "MS2extract"
 )
 
-# Add file path - User should specified the file path -
+# Add file path - User should specify the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
 
 # Checking batch_data data frame
@@ -107,7 +107,7 @@ purrr::map(batch_compounds, dim)
 
 batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
 
-# Batch detect mass
+# Batch detects mass
 batch_mass_detected <- batch_detect_mass(batch_extracted_compounds,
   normalize = TRUE, # Normalize
   min_int = 1 # Minimum intensity

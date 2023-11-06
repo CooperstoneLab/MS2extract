@@ -39,7 +39,7 @@ information for the .msp output.
 This function is intended to check the order of the key of the spec
 data and the spec metadata. If both keys are aligned, the code continues.
 If the keys are not aligned, it aborts. This function will not try to align
-the keys, as the the keys are ordered back-end and key alignment is expected.
+the keys, as the keys are ordered back-end, and an aligned key is expected.
 
 Checks in this function include:
 \itemize{

@@ -16,7 +16,8 @@ compare_spectra(spec1, spec2, output.list = TRUE, ...)
 \item{...}{arguments parsed to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.}
 }
 \description{
-A wrapper function to calculate the cosine similarity score between two spectra.
+A wrapper function to calculate the cosine similarity score
+between two spectra.
 This function selects the \emph{m}/\emph{z} and \emph{intensity} columns before parsing
 the data frames to \code{\link[OrgMassSpecR]{SpectrumSimilarity}}.
 }

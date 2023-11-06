@@ -32,13 +32,13 @@ help(*['function name']*).
 
 A simplified workflow is presented in Figure 1. Briefly, `mzML`/`mzXML`
 files are imported in memory. Then, based on metadata provided 
-by the user such as  metabolite chemical formula, and ionization mode,
-MS2extract computes the theoretical precursor *m*/*z*. With this information,
-product ion scans that matches the theoretical ionized mass
-are extracted, with a given ppm tolerance.
-Next, low intensity signals, or background noise can be removed
+by the user, such as  metabolite chemical formula and ionization mode,
+MS2extract computes the theoretical precursor *m*/*z*. This information extracts
+product ion scans that match the theoretical ionized mass
+with a given ppm tolerance.
+Next, low-intensity signals, or background noise can be removed
 from the spectra. Finally, users can export the extracted MS/MS spectra to
-a MS/MS library format (.msp/.mgf) to be used as reference library for
+a MS/MS library format (.msp/.mgf) to be used as a reference library for
 further compound identification and annotation, or deposit the created library
 in different repositories such as GNPS, or MassBank.
 
@@ -79,10 +79,10 @@ vignette.
 The main import function relies on R package
 [metID](https://metid.tidymass.org). We adapted the import function in
 order to read mass spectrometry data from mzML/mzXML files. The new adaptation 
-consists in importing scans data in a list (S3 object) rather than into a S4
+consists of importing scan data in a list (S3 object) rather than into a S4
 object, facilitating the downstream tidy analysis of this object.
 
-> This function execute a back-end calculation of theoretical ionized *m*/*z*
+> This function executes a back-end calculation of theoretical ionized *m*/*z*
 of the compound in order to extract the precursor ions that match that mass
 with a given ppm.
 
@@ -123,13 +123,13 @@ ProcA2_file
 ### met_metadata
 
 This argument refers to the compound metadata that users need to provide in
-order to  properly import scans that are related to the compound of interest.
+order to properly import scans that are related to the compound of interest.
 
 The `met_metadata` is a data frame that has required and optional columns. The
 required columns are employed to calculate the theoretical ionized *m*/*z* value,
 for a  given formula and ionization mode. In the optional columns, we have the option
 to provide a chromatographic region of Interest (ROI),  specifying at what time
-the  the compound elutes, in order to only keep this retention time window.
+the compound elutes, in order to only keep this retention time window.
 
 The required columns are:
 
@@ -184,7 +184,7 @@ by summing up all intensities of the MS/MS
 scans, and selects the scan with the highest total intensity. It is worth noting
 that we only imported MS/MS scans that the precursor ion matches the 
 theoretical *m/z* value of the compound provided in the previous step.
-Therefore, it is more accurrate to  interpret this chromatogram as 
+Therefore, it is more accurate to interpret this chromatogram as 
 an EIC of the precursor ion, where only the MS/MS scans are included.
 
 This function takes three arguments:
@@ -207,7 +207,7 @@ represent that the precursor ion was not found in the fragmentation data.
 
 Furthermore, we can note that the *x* axis in the MS/MS spectra ranges from 0 to
 1700 *m/z*. This is more related to the acquisition parameters used in data
-collection *m/z* range: 50-1700, which creates low intensity signals that are
+collection *m/z* range: 50-1700, which creates low-intensity signals that are
 captured and included in the resulting MS/MS spectra.
 
 ```{r}
@@ -222,25 +222,25 @@ intensities are too low to be seen in the plot.
 
 Similarly to the [MZmine pipeline]( http://mzmine.github.io/), 
 detecting masses refers to setting a signal intensity threshold that MS/MS ions
-has to meet to be kept in the data, while signals that do not meet the defined
+have to meet to be kept in the data, while signals that do not meet the defined
 threshold are removed.  This function can also normalize the spectra ion 
-intensity to percentage  based on the base peak. This is a filtering step 
-that is based  on percentage of the base peak (most intense ion).
+intensity to a percentage, based on the base peak. This is a filtering step 
+that is based on the percentage of the base peak (most intense ion).
 
 The three required arguments are:
 
 * **spec:** a data frame containing the MS/MS spectra.
-* **normalize:** a boolean indicating if the MS/MS spectra is normalized by the base peak before proceeding to filter out low intensity signals (normalize  = TRUE), if normalize = FALSE the user has to provide the minimum ion count.
+* **normalize:** a boolean indicating if the MS/MS spectra are normalized by the base peak before proceeding to filter out low intensity signals (normalize  = TRUE), if normalize = FALSE the user has to provide the minimum ion count.
 * **min_int:** an integer referring to the minimum ion intensity. The value of *min_int* has to be in line if user decides to normalize the spectra or not. If the spectra is normalized, the *min_intensity* value is in percentage, otherwise the *min_intensity* value is expressed in ion count units.
 
-By default, the normalization is set to `TRUE` and the minimum intensity is 
+By default, the normalization is set to `TRUE`, and the minimum intensity is 
 set to 1% to remove background noise.
 
 ```{r}
 ProcA2_detected <- detect_mass(ProcA2_extracted, normalize = TRUE, min_int = 1)
 ```
 
-We can see now the range of m/z values and the maximum value is 576.1221 m/z.
+We can now see the range of m/z values and the maximum value of 576.1221 m/z.
 
 ```{r}
 range(ProcA2_detected$mz)
@@ -249,10 +249,10 @@ range(ProcA2_detected$mz)
 ## MS/MS spectra plot 
 
 We can proceed to plot the filtered MS/MS spectra with `plot_MS2spectra()` 
-function. This is a ggplot2 based function; the blue diamond refers to the precursor ion.
+function. This is a ggplot2-based function; the blue diamond refers to the precursor ion.
 
-If we take a look to the previous MS/MS plot, there is less background noise
-in this MS/MS spectra because the low intensity ions have been removed.
+If we take a look at the previous MS/MS plot, there is less background noise
+in this MS/MS spectra because the low-intensity ions have been removed.
 
 ```{r warning=FALSE, out.width="100%"}
 plot_MS2spectra(ProcA2_detected)
@@ -263,7 +263,7 @@ plot_MS2spectra(ProcA2_detected)
 
 ### NIST .msp format
 
-Finally after extracting the MS/MS spectra and removing background noise, we 
+Finally, after extracting the MS/MS spectra and removing background noise, we 
 can proceed to export the MS/MS in a NIST .msp format.
 
 For this task, we need extra information about the compound, such as 
@@ -290,8 +290,8 @@ dplyr::glimpse(metadata)
 The three arguments for this function are:
 
 * **spec:** a data frame containing the extracted MS/MS spectra
-* **spec_metadata:** a data frame containing the values to be including in the resulting .msp file
-* **msp_name:** a string with the name of the msp file not containing (.msp) extension
+* **spec_metadata:** a data frame containing the values to be included in the resulting .msp file
+* **msp_name:** a string with the name of the .msp file not containing (.msp) extension
 
 ```{r eval=FALSE, include=TRUE}
 write_msp(
@@ -302,7 +302,7 @@ write_msp(
 ```
 
 
-After writing the msp file, you will see the following file content:
+After writing the .msp file, you will see the following file content:
 
 ```{r echo=FALSE}
 cat(MS2extract:::write_msp_base(ProcA2_detected, metadata))

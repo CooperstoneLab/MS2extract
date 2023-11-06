@@ -16,8 +16,8 @@ a double with the m/z value deviation from the given
 theoretical m/z value
 }
 \description{
-Given a theoretical  \emph{m}/\emph{z} value and ppm tolerance, it computes the  \emph{m}/\emph{z}
-deviation.
+Given a theoretical  \emph{m}/\emph{z} value and ppm tolerance,
+it computes the  \emph{m}/\emph{z} deviation.
 }
 \examples{
 get_ppm(mz = 355.1023, ppm = 20)

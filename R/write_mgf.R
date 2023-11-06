@@ -157,13 +157,13 @@ check_gnps_metadata <- function(met_metadata) {
 
 #' Create the GNPS `.mgf` backbone file format
 #'
-#' This function facilitates to create the structure of the GNPS .mgf format.
+#' This function facilitates the creation of the GNPS .mgf format.
 #' For more information about submitting your spectra to GNPS, please
 #' visit this [link](https://ccms-ucsd.github.io/GNPSDocumentation/batchupload).
 #' You can find the GNPS template spreadsheet in this
 #'  [link](https://ccms-ucsd.github.io/GNPSDocumentation/static/Template.xlsx).
 #' @param spec a data frame containing the extracted MS/MS spectra, the following
-#' column are required:
+#' columns are required:
 #'
 #' \describe{
 #'  \item{mz_precursor}{precursor ion}
@@ -180,7 +180,7 @@ check_gnps_metadata <- function(met_metadata) {
 #' GNPS batch library upload
 #' [link](https://ccms-ucsd.github.io/GNPSDocumentation/batchupload).
 #'
-#' For the rest of fields that are included in the final library file,
+#' For the rest of the fields that are included in the final library file,
 #' MS2extract will get this information for the extracted spectra.
 #'
 #' We highly suggest to check the `gnps_template.xlsx` file described in
@@ -239,7 +239,7 @@ check_gnps_metadata <- function(met_metadata) {
 #'   package = "MS2extract"
 #' )
 #'
-#' # Add file path - User should specified the file path -
+#' # Add file path - User should specify the file path -
 #' batch_data$File <- c(ProcA2_file, Rutin_file)
 #'
 #' # Checking batch_data data frame
@@ -254,7 +254,7 @@ check_gnps_metadata <- function(met_metadata) {
 #'
 #' batch_extracted_compounds <- batch_extract_MS2(batch_compounds)
 #'
-#' # Batch detect mass
+#' # Batch detects mass
 #' batch_mass_detected <- batch_detect_mass(batch_extracted_compounds,
 #'   normalize = TRUE, # Normalize
 #'   min_int = 1 # Minimum intensity
@@ -297,7 +297,7 @@ write_mgf_gnps <- function(spec = NULL, spec_metadata = NULL, mgf_name = NULL) {
   # the minimum mgf definition contains precursor mass, charge and m/z abundance
 
   #creating .mgf file
-  # Checking only one Ionizatio mode is provided
+  # Checking only one Ionization mode is provided
   uniq_ion <- unique(spec_metadata$IONMODE)  # Extract unique value
   is_uniq_ion <- uniq_ion %in% "Positive" | uniq_ion %in% "Negative"
 

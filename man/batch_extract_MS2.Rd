@@ -21,7 +21,7 @@ function. Then, it passes the spectra to a version of \code{\link[=extract_MS2]{
 Briefly, this function takes a series of MS/MS spectra, selects the
 most intense scan and extracts the MS/MS spectra from it.
 Additionally, it plots the MS/MS TIC chromatogram and colors
-the most intense scan with red circle, and the precursor ion with a blue
+the most intense scan with a red circle, and the precursor ion with a blue
 diamond
 }
 \examples{
@@ -43,7 +43,7 @@ Rutin_file <- system.file("extdata",
   package = "MS2extract"
 )
 
-# Add file path - User should specified the file path -
+# Add file path - User should specify the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
 
 # Checking batch_data data frame

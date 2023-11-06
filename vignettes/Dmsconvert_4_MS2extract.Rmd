@@ -15,7 +15,7 @@ output:
 date: "`r doc_date()`"
 package: "`r pkg_ver('MS2extract')`"
 vignette: >
-  %\VignetteIndexEntry{4 - Using MSconvert to filter usefull standard MS/MS data}
+  %\VignetteIndexEntry{4 - Using MSconvert to filter useful standard MS/MS data}
   %\VignetteEncoding{UTF-8}  
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -67,7 +67,7 @@ scenarios are:
 -   Converting to `.mzML` the entire run, and
 -   Trimming for specific retention time, 
 
-*Note:* this is the fourth vignette for this package and if you find some
+*Note:* this is the fourth vignette for this package, and if you find some
 terms unclear, or are not familiar with the concepts, please visit the
 previous vignettes ([Package
 introduction](https://cooperstonelab.github.io/MS2extract/articles/1_introduction.html),
@@ -92,7 +92,7 @@ with the specified precursor ion to extract the MS/MS data.
 
 # Case 1: Converting to .mzML the entire run
 
-In this case, although is not the optimal approach, it will get the job
+In this case, although it is not the optimal approach, it will get the job
 done, if your data meets a requirement.
 
 > Requirement 1: the precursor ion of your standard has to produce the
@@ -135,7 +135,7 @@ where you can find the retention time window for each metabolite.
 | scanTime    | [min rt, max rt]   |
 
 In the following example, we are using the procyanidin B2 standard data,
-with a elution time of 138 (s), and the minimum and maximum retention
+with an elution time of 138 (s), and minimum and maximum retention
 time are 133 and 145 (s), respectively. Therefore, the MSconvert task
 will look like the following image.
 

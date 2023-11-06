@@ -118,12 +118,12 @@ plot_MS2base <- function(spec, ppm) {
 #' print(MS2_spectra)
 
 plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
-  # Checking if spec is single object or list
+  # Checking if spec is a single object or a list
 
   is_list <- is.list(spec)
   is_dtframe <- is.data.frame(spec)
 
-  # If spec is single compound proceed to plot
+  # If spec is a single compound proceed to plot
   if (any(c(!is_list, is_dtframe))) {
     plot_MS2 <- plot_MS2base(spec = spec, ppm = ppm)
   } else {

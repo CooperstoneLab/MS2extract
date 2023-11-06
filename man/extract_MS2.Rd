@@ -20,7 +20,7 @@ the data frame with the MS/MS  spectra (verbose = FALSE).}
 This function takes a series of MS/MS spectra, selects the
 most intense scan and extracts the MS/MS  spectra from it.
 Additionally, it plots the MS/MS EIC chromatogram and colors
-the most intense scan with red circle, and the precursor ion with a blue
+the most intense scan with a red circle, and the precursor ion with a blue
 diamond
 }
 \examples{

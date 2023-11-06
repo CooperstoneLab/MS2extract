@@ -2,7 +2,7 @@ Package: MS2extract
 Type: Package
 Title: Targeted MS/MS Spectra Extraction for In-house Compound Library Creation
 Version: 0.02.0
-Date: 2023-10-13
+Date: 2023-11-06
 Authors@R: c(
     person("Cristian", "Quiroz-Moreno",
            email = "cristianquirozd1997@gmail.com",

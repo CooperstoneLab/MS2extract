@@ -17,14 +17,14 @@ import_mzxml(file = NULL, met_metadata = NULL, ppm = 10)
 \item{Ionization_mode}{The ionization mode employed in data collection. It
 can be only Positive or Negative}
 \item{Ionization_mode}{The ionization mode set in data collection
-(only Positive and Negative mode allowed).}
-\item{File}{The filename of the mzXML file inluding the path}
+(only Positive and Negative modes allowed).}
+\item{File}{The filename of the mzXML file including the path}
 \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 }
 
 These two columns are mandatory since the formula is used by the Rdisop
 package to calculate the exact mass and the ionization mode
-determine whether the the mass of the a proton is added or subtracted to
+determine whether the mass of a proton is added or subtracted to
 calculate the charged mass.
 
 Additionally, you can provide the minimum and maximum retention times
@@ -55,9 +55,9 @@ data.frame in a tidy format for MS/MS spectra in a tidy format.
 }
 \description{
 This function reads \code{.mzXML} and \code{.mzML} files containing MS/MS.
-This function is inspired on \code{masstools::read_mzxml()}which imports
+This function is inspired on \code{masstools::read_mzxml()} which imports
 the data as a list. Then, each element in a list represents one scan.
-Also, each scans contains
+Also, each scan contains
 two sub-lists that contain (1) the scan information and
 (2) the spectra per scan.
 }

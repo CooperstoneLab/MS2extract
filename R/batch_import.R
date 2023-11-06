@@ -1,4 +1,4 @@
-#' Batch import mzxml files
+#' Batch import mzML/mzxML files
 #'
 #' This function imports multiple `.mzXML`/`.mzML` files into a named list.
 #' It takes a data frame containing the basic information of
@@ -12,8 +12,8 @@
 #'  \item{Name}{The name of the compound}
 #'  \item{Formula}{The compound's chemical formula}
 #'  \item{Ionization_mode}{The ionization mode set in data collection
-#'  (only Positive and Negative mode allowed).}
-#'  \item{File}{The filename of the `.mzXML`/`.mzML` file inluding the path}
+#'  (only Positive and Negative modes allowed).}
+#'  \item{File}{The filename of the `.mzXML`/`.mzML` file including the path}
 #'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
@@ -30,7 +30,7 @@
 #' @export
 #' @examples
 #'
-#' # Select the csv file name and path
+#' # Select the CSV file name and path
 #' batch_file <- system.file("extdata", "batch_read.csv",
 #'   package = "MS2extract"
 #' )
@@ -47,7 +47,7 @@
 #'   package = "MS2extract"
 #' )
 #'
-#' # Add file path - User should specified the file path -
+#' # Add file path - User should specify the file path -
 #' batch_data$File <- c(ProcA2_file, Rutin_file)
 #'
 #' # Checking batch_data data frame

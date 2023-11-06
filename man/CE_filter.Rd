@@ -18,7 +18,7 @@ one of the provided columns.}
 }
 }
 \details{
-This function evaluate the collision energy value provided in the
+This function evaluates the collision energy value provided in the
 \code{spe_metadata} data frame, and matches this value with the collision
 energy value found in the MS/MS data. This function uses
 \code{\link[readr:parse_number]{readr::parse_number()}}  to extract the numeric value provided in

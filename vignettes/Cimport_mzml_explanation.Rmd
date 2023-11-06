@@ -81,11 +81,11 @@ This process can be depicted in the following image.
 
 Here, we are going to use procyanidin A2 to demonstrate this process.
 (1) First, by using the `r Biocpkg("Rdisop")` package, we calculate the
-theoretical monoisotopic mass. (2) Then, given an specific polarity
+theoretical monoisotopic mass. (2) Then, given a specific polarity
 (*Positive* or *Negative*), we add or subtract the mass of a proton to
 calculate the theoretical ionized *m/z* value. (3) Finally, we used the provided
 ppm value (10 ppm by default) to calculate the *m/z* range that will be
-used to filter scan that the precursor ion value falls within this
+used to filter scans that the precursor ion value falls within this
 range.
 
 You can also calculate this ppm range with `ppm_range()`
@@ -113,7 +113,7 @@ Then, after calculating the theoretical *m/z* range, and knowing the rt
 ROI, we can look in the data for the MS/MS scans that have this
 information.
 
-If `MS2extract` do not find at least one MS/MS scan within the given
+If `MS2extract` does not find at least one MS/MS scan within the given
 *m/z* range and rt ROI, it will stop.
 
 In the following example, the scan in the first row does not meet these

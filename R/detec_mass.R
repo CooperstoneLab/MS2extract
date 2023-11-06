@@ -1,18 +1,18 @@
 #' Detect masses in a MS/MS spectra
 #'
 #' Similarly to  the mass detection step in the MZmine workflow,
-#' detect mass filters out low intensity signals. Here, you can opt to detect masses
-#' by the raw ion intensity (ion counts), or normalize the spectra
-#'  to the most abundant ion, and detect as an intensity percentage of that ion.
-#' The default is set to include all ions that are at least 1% of the most
-#' abundant ion.
+#' this function filters out low-intensity signals. Here, you can opt 
+#' to detect masses by the raw ion intensity (ion counts), or normalize
+#' the spectra to the most abundant ion, and detect as an intensity 
+#' percentage of that ion. The default is set to include all ions that
+#' are at least 1% of the most abundant ion.
 #'
 #' @param spec a data frame containing the MS/MS spectra.
-#' @param normalize a boolean indicating if the MS/MS spectra is normalized by
-#' the base peak before proceeding to filter out low intensity signal
+#' @param normalize a boolean indicating if the MS/MS spectra are normalized by
+#' the base peak before proceeding to filter out low-intensity signal
 #' (normalize  = TRUE), if normalize = FALSE the user has to provide the
 #' minimum ion count.
-#' @param min_int a integer with the minimum ion intensity
+#' @param min_int an integer with the minimum ion intensity
 #' @export
 #' @examples
 #'

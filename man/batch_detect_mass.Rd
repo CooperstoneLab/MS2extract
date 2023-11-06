@@ -10,8 +10,8 @@ batch_detect_mass(batch_spect, normalize = TRUE, min_int = 1)
 \item{batch_spect}{a list of MS/MS scans imported with \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}
 function.}
 
-\item{normalize}{a boolean indicating if the MS/MS spectra is normalized by
-the base peak before proceeding to filter out low intensity signals
+\item{normalize}{a boolean indicating if the MS/MS spectra are normalized by
+the base peak before proceeding to filter out low-intensity signals
 (normalize  = TRUE), if normalize = FALSE  user has to provide the
 minimum ion count.}
 
@@ -21,16 +21,16 @@ minimum ion count.}
 This function takes multiple spectra imported with the \code{\link[=batch_import_mzxml]{batch_import_mzxml()}}
 function. Then, it parses the argument to \code{\link[=detect_mass]{detect_mass()}} function.
 Briefly, similarly to  the mass detection step in the MZmine workflow,
-\code{\link[=detect_mass]{detect_mass()}} filters out low intensity signals.
+\code{\link[=detect_mass]{detect_mass()}} filters out low-intensity signals.
 Here, you can opt to detect masses by the raw ion intensity (ion counts),
-or normalize the spectra  to the most abundant ion, and detect as an
-intensity percentage of that ion.
+or normalize the spectra  to the most abundant ion, and express them as an
+percentage intensity of the most abundant ion.
 The default is set to include all ions that are at least 1\% of the most
 abundant ion.
 }
 \examples{
 
-# Select the csv file name and path
+# Select the CSV file name and path
 batch_file <- system.file("extdata", "batch_read.csv",
   package = "MS2extract"
 )
@@ -47,7 +47,7 @@ Rutin_file <- system.file("extdata",
   package = "MS2extract"
 )
 
-# Add file path - User should specified the file path -
+# Add file path - User should specify the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
 
 # Checking batch_data data frame
@@ -66,7 +66,7 @@ batch_extracted <- batch_extract_MS2(batch_compounds,
   out_list = FALSE
 )
 
-# Batch detect mass
+# Batch detects mass
 batch_mass_detected <- batch_detect_mass(batch_extracted, # Compound list
   normalize = TRUE, # Normalize
   min_int = 1

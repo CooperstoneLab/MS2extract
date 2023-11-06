@@ -2,22 +2,22 @@
 % Please edit documentation in R/normalize_spec.R
 \name{normalize_spec}
 \alias{normalize_spec}
-\title{Normalization and low intensity signal filtering}
+\title{Normalization and low-intensity signal filtering}
 \usage{
 normalize_spec(spec, min_int = 1)
 }
 \arguments{
 \item{spec}{a data frame produced by \code{import_mzxml()} function.}
 
-\item{min_int}{an integer, minimum  intensity. If spectra is normalized,
-this values should be in a 0-100 range. If the spectra is not
-not normalized, this value must be ion count.}
+\item{min_int}{an integer, minimum intensity. If spectra are normalized,
+this value should be in a 0-100 range. If the spectra are
+not normalized, this value must be in raw ion count.}
 }
 \description{
 This function normalizes raw spectra by converting from raw intensities,
 to 0-100\% relative intensity based on the most intense ion.
-This function also remove low intensity signals based on minimum cutoff.
-The default cutoff is 1\% and the spectra is normalized.
+This function also removes low-intensity signals based on the minimum cutoff.
+The default cutoff is 1\% and the spectra are normalized.
 }
 \examples{
 # Importing the Spectrum of Procyanidin A2 in negative ionization mode

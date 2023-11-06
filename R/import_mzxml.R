@@ -18,7 +18,7 @@
 
 extract_scan_info <- function(mzxml) {
   scan_id <- lapply(mzxml, function(x) x[[1]]) |> # Extract info data
-    dplyr::bind_rows() |> # Create a dataset of scann info
+    dplyr::bind_rows() |> # Create a dataset of scan info
     dplyr::mutate(Index = seq(dplyr::n())) # creating a scan index number
   scan_id
 }
@@ -114,9 +114,9 @@ check_metadata <- function(met_metadata) {
 #' Imports mzXML/mzML files with MS/MS scans
 #'
 #' This function reads `.mzXML` and `.mzML` files containing MS/MS.
-#' This function is inspired on `masstools::read_mzxml()`which imports
+#' This function is inspired on `masstools::read_mzxml()` which imports
 #' the data as a list. Then, each element in a list represents one scan.
-#' Also, each scans contains
+#' Also, each scan contains
 #' two sub-lists that contain (1) the scan information and
 #' (2) the spectra per scan.
 #'
@@ -129,14 +129,14 @@ check_metadata <- function(met_metadata) {
 #'  \item{Ionization_mode}{The ionization mode employed in data collection. It
 #'  can be only Positive or Negative}
 #'  \item{Ionization_mode}{The ionization mode set in data collection
-#'  (only Positive and Negative mode allowed).}
-#'  \item{File}{The filename of the mzXML file inluding the path}
+#'  (only Positive and Negative modes allowed).}
+#'  \item{File}{The filename of the mzXML file including the path}
 #'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
 #' These two columns are mandatory since the formula is used by the Rdisop
 #' package to calculate the exact mass and the ionization mode
-#' determine whether the the mass of the a proton is added or subtracted to
+#' determine whether the mass of a proton is added or subtracted to
 #' calculate the charged mass.
 #'
 #' Additionally, you can provide the minimum and maximum retention times

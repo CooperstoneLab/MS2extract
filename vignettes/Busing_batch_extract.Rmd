@@ -33,12 +33,12 @@ a look at this tutorial first.
 Once you are familiar with the core workflow and functions of this
 package, we can dive into an automated pipeline with the proposed
 `batch_*()` functions. If you find that you want to extract many MS/MS spectra 
-at once, you will want to use these`batch_*()` functions
+at once, you will want to use these `batch_*()` functions
 
 The first three main steps have a separate `batch_*()` alternative functions;
 importing mzXML files, extracting MS/MS spectra,
 and detecting masses. However, exporting your library to a `.msp` or `.mgf`
-file is able to detect if the provided spectra comes from a 
+file is able to detect if the provided spectra come from a 
 single or multiple `.mzXML`/`.mzML` files,
 so the same function works in both cases.
 
@@ -48,8 +48,8 @@ knitr::include_graphics("img/pipeline.png")
 
 ## Batch functions
 
-We are familiar with the arguments that the core functions accept, in this
-section we describe extra arguments that specific `batch_*()` functions require.
+We are familiar with the arguments that the core functions accept. In this
+section, we describe extra arguments that specific `batch_*()` functions require.
 
 ### batch_import_mzxml
 
@@ -59,10 +59,10 @@ knitr::opts_chunk$set(warning = FALSE)
 library(MS2extract)
 ```
 
-Similarly to `import_mzxml()`, we need to provide the compound metadata, with at 
-minimum the compound name, formula, ionization mode, and collision energy. 
+Similarly to `import_mzxml()`, we need to provide the compound metadata, describing
+the compound name, formula, ionization mode, and collision energy. 
 Optionally, but recommended, the region of interest where each compound
-elute (*min_rt* and *max_rt*).
+elutes (*min_rt* and *max_rt*).
 
 
 
@@ -84,7 +84,7 @@ Rutin_file <- system.file("extdata",
   package = "MS2extract"
 )
 
-# Add file path - User should specified the file path -
+# Add file path - User should specify the file path -
 batch_data$File <- c(ProcA2_file, Rutin_file)
 
 # Checking batch_data data frame
@@ -96,9 +96,9 @@ is that  `met_metadata` can be more than one row. In this example,
 we are working with two compounds, procyanidin A2 and rutin.
 
 
-> **Tip:** you can extract multiple compounds from the same .mzXML if they have different precursor ion *m*/*z*.
+> **Tip:** You can extract multiple compounds from the same .mzXML if they have different precursor ion *m*/*z*.
 
-> **Tip:** you can also specify multiple compounds that have the same m/z as long as they have different retention time.
+> **Tip:** You can also specify multiple compounds with the same m/z as long as they have different retention times.
 
 ```{r}
 batch_compounds <- batch_import_mzxml(batch_data)
@@ -110,15 +110,15 @@ The raw mzXML data contains:
 * Rutin: 22096 ions
 
 ```{r}
-# Checking dimension by compound
+# Checking dimensions by compound
 purrr::map(batch_compounds, dim)
 ```
 
 ### batch_extract_MS2()
 
-Now that we have our data in imported, we can proceed to extract the most
+Now that we have our data imported, we can proceed to extract the most
 intense MS/MS scan for each compound. In this case, the `batch_extract_MS2()`
-functions do not have extra arguments, although most of the arguments remains
+functions do not have extra arguments, although most arguments remian
 fairly similar.
 
 
@@ -135,9 +135,9 @@ MS/MS spectra of the most intense scan for each compound.
 
 ### batch_detect_mass()
 
-Now that we have the raw MS/MS spectra, we are going to remove background 
+Now that we have the raw MS/MS spectra, we will remove background 
 noise based on intensity. `batch_detect_mass()` has the same arguments
-than its core analogue.
+as its core analog.
 
 
 ```{r}
@@ -150,7 +150,7 @@ purrr::map(batch_mass_detected, dim)
 ```
 
 
-We see a decrease of number of ions, 38 and 4 ions for procyanidin A2 and rutin,
+We see a decrease in the number of ions, 38 and 4 ions for procyanidin A2 and rutin,
 respectively.
 
 

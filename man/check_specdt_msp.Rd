@@ -15,7 +15,7 @@ information to be included.}
 \emph{Internal function}
 }
 \details{
-This functions aims to create a unique KEY to sort and iterate the compound
+This function aims to create a unique KEY to sort and iterate the compound
 table in order to match the keys created when MS/MS was imported in
 \code{sort_compound_table()}.
 

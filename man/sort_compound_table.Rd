@@ -12,8 +12,8 @@ sort_compound_table(compounds_dt = NULL)
 \item{Name}{The name of the compound}
 \item{Formula}{The compound's chemical formula}
 \item{Ionization_mode}{The ionization mode set in data collection
-(only Positive and Negative mode allowed).}
-\item{File}{The filename of the \code{.mzXML}/\code{.mzML} file inluding the path}
+(only Positive and Negative modes allowed).}
+\item{File}{The filename of the \code{.mzXML}/\code{.mzML} file including the path}
 \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 }}
 }
@@ -21,9 +21,9 @@ sort_compound_table(compounds_dt = NULL)
 \emph{Internal function}
 }
 \details{
-This function check for the compound data to have unique values (metabolites)
-per row, before importing the MS/MS data. This function performs the
-following checks:
+This function checks for the compound data to have unique values
+(metabolites) per row, before importing the MS/MS data.
+This function performs the following checks:
 \itemize{
 \item Create a unique row key: Compound name + Polarity + CE
 \item Check if there are any duplicated values based on the keys

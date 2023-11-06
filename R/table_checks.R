@@ -2,9 +2,9 @@
 #'
 #' *Internal function*
 #'
-#' This function check for the compound data to have unique values (metabolites)
-#' per row, before importing the MS/MS data. This function performs the
-#' following checks:
+#' This function checks for the compound data to have unique values 
+#' (metabolites) per row, before importing the MS/MS data.
+#' This function performs the following checks:
 #'
 #' * Create a unique row key: Compound name + Polarity + CE
 #' * Check if there are any duplicated values based on the keys
@@ -15,8 +15,8 @@
 #'  \item{Name}{The name of the compound}
 #'  \item{Formula}{The compound's chemical formula}
 #'  \item{Ionization_mode}{The ionization mode set in data collection
-#'  (only Positive and Negative mode allowed).}
-#'  \item{File}{The filename of the `.mzXML`/`.mzML` file inluding the path}
+#'  (only Positive and Negative modes allowed).}
+#'  \item{File}{The filename of the `.mzXML`/`.mzML` file including the path}
 #'  \item{COLLISIONENERGY}{Collision energy applied in MS/MS fragmentation}
 #' }
 #'
@@ -56,7 +56,7 @@ sort_compound_table <- function(compounds_dt = NULL) {
 #'
 #' *Internal function*
 #'
-#' This functions aims to create a unique KEY to sort and iterate the compound
+#' This function aims to create a unique KEY to sort and iterate the compound
 #' table in order to match the keys created when MS/MS was imported in
 #' `sort_compound_table()`.
 #'
@@ -122,7 +122,7 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
   spec_names <- names(spec_metadata)
   expected_names <- c("COMPOUND_NAME", "COLLISIONENERGY", "IONMODE")
 
-  # All three names present in hte spec_metadata
+  # All three names present in the spec_metadata
   is_names_present <- all(expected_names %in% spec_names)
 
   if(!is_names_present){
@@ -148,7 +148,7 @@ check_specdt_mgf_gnps <- function(spec_metadata = NULL) {
 #' This function is intended to check the order of the key of the spec
 #' data and the spec metadata. If both keys are aligned, the code continues.
 #' If the keys are not aligned, it aborts. This function will not try to align
-#' the keys, as the the keys are ordered back-end and key alignment is expected.
+#' the keys, as the keys are ordered back-end, and an aligned key is expected.
 #'
 #' Checks in this function include:
 #' * Check equal number of MS/MS data and number of observations in spec_metadata
