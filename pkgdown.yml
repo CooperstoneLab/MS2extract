@@ -1,12 +1,12 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   Aintroduction: Aintroduction.html
   Busing_batch_extract: Busing_batch_extract.html
   Cimport_mzml_explanation: Cimport_mzml_explanation.html
   Dmsconvert_4_MS2extract: Dmsconvert_4_MS2extract.html
-last_built: 2023-10-17T15:38Z
+last_built: 2024-04-22T18:11Z
 urls:
   reference: https://cooperstonelab.github.io/MS2extract/reference
   article: https://cooperstonelab.github.io/MS2extract/articles
