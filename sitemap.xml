@@ -1,132 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/404.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/articles/Aintroduction.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/articles/Busing_batch_extract.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/articles/Cimport_mzml_explanation.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/articles/Dmsconvert_4_MS2extract.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/CE_filter.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/MS2extract-package.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/add_attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/assign_scan_id.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/batch_detect_mass.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/batch_extract_MS2.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/batch_import_mzxml.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_MS_data_order.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_gnps_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_mgf_gnps.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_msp.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/compare_spectra.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/detect_mass.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/extract_MS2.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/extract_scan_info.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/get_TIC.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/get_ppm.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/import_mzxml.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/mgf_GNPS_core.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/normalize_spec.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/plot_MS2base.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/plot_MS2spectra.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/plot_tic.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/ppm_range.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/read_mzxml.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/roi_filter.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/sort_compound_table.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/write_gnps_table.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/write_mgf_gnps.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/write_msp.html</loc>
-  </url>
-  <url>
-    <loc>https://cooperstonelab.github.io/MS2extract/reference/write_msp_base.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://cooperstonelab.github.io/MS2extract/404.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/LICENSE-text.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/articles/Aintroduction.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/articles/Busing_batch_extract.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/articles/Cimport_mzml_explanation.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/articles/Dmsconvert_4_MS2extract.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/articles/index.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/authors.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/index.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/news/index.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/CE_filter.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/MS2extract-package.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/add_attributes.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/assign_scan_id.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/batch_detect_mass.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/batch_extract_MS2.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/batch_import_mzxml.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/check_MS_data_order.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/check_gnps_metadata.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/check_metadata.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_mgf_gnps.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/check_specdt_msp.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/compare_spectra.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/detect_mass.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/extract_MS2.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/extract_scan_info.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/get_TIC.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/get_ppm.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/import_mzxml.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/index.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/mgf_GNPS_core.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/normalize_spec.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/plot_MS2base.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/plot_MS2spectra.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/plot_tic.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/ppm_range.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/read_mzxml.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/roi_filter.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/sort_compound_table.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/write_gnps_table.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/write_mgf_gnps.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/write_msp.html</loc></url>
+<url><loc>https://cooperstonelab.github.io/MS2extract/reference/write_msp_base.html</loc></url>
 </urlset>
+
