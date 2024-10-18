@@ -73,7 +73,7 @@
                         <h4 data-toc-skip class="author">Cristian
 Quiroz-Moreno &amp; Jessica Cooperstone</h4>
             
-            <h4 data-toc-skip class="date">2024-09-10</h4>
+            <h4 data-toc-skip class="date">2024-10-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/CooperstoneLab/MS2extract/blob/main/vignettes/Aintroduction.Rmd" class="external-link"><code>vignettes/Aintroduction.Rmd</code></a></small>
       <div class="d-none name"><code>Aintroduction.Rmd</code></div>
@@ -102,7 +102,7 @@ reference library for further compound identification and annotation, or
 deposit the created library in different repositories such as GNPS, or
 MassBank.</p>
 <div class="figure" style="text-align: center">
-<img src="img/pipeline.png" alt="Figure 1. Overview of the processing pipeline of MS2extract" width="80%" height="80%"><p class="caption">
+<img src="img%2Fpipeline.png" alt="Figure 1. Overview of the processing pipeline of MS2extract" width="80%" height="80%"><p class="caption">
 Figure 1. Overview of the processing pipeline of MS2extract
 </p>
 </div>
@@ -470,7 +470,7 @@ content:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.4.1 (2024-06-14)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 22.04.4 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.5 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -503,28 +503,28 @@ content:</p>
 <span><span class="co">#&gt;  [17] XVector_0.44.0              labeling_0.4.3             </span></span>
 <span><span class="co">#&gt;  [19] utf8_1.2.4                  rmarkdown_2.28             </span></span>
 <span><span class="co">#&gt;  [21] tzdb_0.4.0                  UCSC.utils_1.0.0           </span></span>
-<span><span class="co">#&gt;  [23] preprocessCore_1.66.0       ragg_1.3.2                 </span></span>
-<span><span class="co">#&gt;  [25] purrr_1.0.2                 xfun_0.47                  </span></span>
+<span><span class="co">#&gt;  [23] preprocessCore_1.66.0       ragg_1.3.3                 </span></span>
+<span><span class="co">#&gt;  [25] purrr_1.0.2                 xfun_0.48                  </span></span>
 <span><span class="co">#&gt;  [27] MultiAssayExperiment_1.30.3 zlibbioc_1.50.0            </span></span>
 <span><span class="co">#&gt;  [29] cachem_1.1.0                GenomeInfoDb_1.40.1        </span></span>
-<span><span class="co">#&gt;  [31] jsonlite_1.8.8              highr_0.11                 </span></span>
+<span><span class="co">#&gt;  [31] jsonlite_1.8.9              highr_0.11                 </span></span>
 <span><span class="co">#&gt;  [33] DelayedArray_0.30.1         BiocParallel_1.38.0        </span></span>
-<span><span class="co">#&gt;  [35] broom_1.0.6                 parallel_4.4.1             </span></span>
+<span><span class="co">#&gt;  [35] broom_1.0.7                 parallel_4.4.1             </span></span>
 <span><span class="co">#&gt;  [37] cluster_2.1.6               R6_2.5.1                   </span></span>
 <span><span class="co">#&gt;  [39] bslib_0.8.0                 stringi_1.8.4              </span></span>
-<span><span class="co">#&gt;  [41] limma_3.60.4                car_3.1-2                  </span></span>
-<span><span class="co">#&gt;  [43] cellranger_1.1.0            GenomicRanges_1.56.1       </span></span>
+<span><span class="co">#&gt;  [41] limma_3.60.6                car_3.1-3                  </span></span>
+<span><span class="co">#&gt;  [43] cellranger_1.1.0            GenomicRanges_1.56.2       </span></span>
 <span><span class="co">#&gt;  [45] jquerylib_0.1.4             iterators_1.0.14           </span></span>
 <span><span class="co">#&gt;  [47] Rcpp_1.0.13                 SummarizedExperiment_1.34.0</span></span>
 <span><span class="co">#&gt;  [49] knitr_1.48                  readr_2.1.5                </span></span>
 <span><span class="co">#&gt;  [51] IRanges_2.38.1              Matrix_1.7-0               </span></span>
 <span><span class="co">#&gt;  [53] igraph_2.0.3                tidyselect_1.2.1           </span></span>
-<span><span class="co">#&gt;  [55] abind_1.4-5                 yaml_2.3.10                </span></span>
+<span><span class="co">#&gt;  [55] abind_1.4-8                 yaml_2.3.10                </span></span>
 <span><span class="co">#&gt;  [57] doParallel_1.0.17           codetools_0.2-20           </span></span>
 <span><span class="co">#&gt;  [59] affy_1.82.0                 lattice_0.22-6             </span></span>
 <span><span class="co">#&gt;  [61] tibble_3.2.1                plyr_1.8.9                 </span></span>
 <span><span class="co">#&gt;  [63] withr_3.0.1                 Biobase_2.64.0             </span></span>
-<span><span class="co">#&gt;  [65] evaluate_0.24.0             OrgMassSpecR_0.5-3         </span></span>
+<span><span class="co">#&gt;  [65] evaluate_1.0.1              OrgMassSpecR_0.5-3         </span></span>
 <span><span class="co">#&gt;  [67] desc_1.4.3                  ggpubr_0.6.0               </span></span>
 <span><span class="co">#&gt;  [69] pillar_1.9.0                affyio_1.74.0              </span></span>
 <span><span class="co">#&gt;  [71] BiocManager_1.30.25         carData_3.0-5              </span></span>
@@ -534,27 +534,28 @@ content:</p>
 <span><span class="co">#&gt;  [79] generics_0.1.3              hms_1.1.3                  </span></span>
 <span><span class="co">#&gt;  [81] S4Vectors_0.42.1            ggplot2_3.5.1              </span></span>
 <span><span class="co">#&gt;  [83] munsell_0.5.1               scales_1.3.0               </span></span>
-<span><span class="co">#&gt;  [85] glue_1.7.0                  lazyeval_0.2.2             </span></span>
+<span><span class="co">#&gt;  [85] glue_1.8.0                  lazyeval_0.2.2             </span></span>
 <span><span class="co">#&gt;  [87] tools_4.4.1                 mzID_1.42.0                </span></span>
 <span><span class="co">#&gt;  [89] QFeatures_1.14.2            vsn_3.72.0                 </span></span>
 <span><span class="co">#&gt;  [91] mzR_2.38.0                  ggsignif_0.6.4             </span></span>
 <span><span class="co">#&gt;  [93] fs_1.6.4                    XML_3.99-0.17              </span></span>
 <span><span class="co">#&gt;  [95] cowplot_1.1.3               grid_4.4.1                 </span></span>
 <span><span class="co">#&gt;  [97] impute_1.78.0               tidyr_1.3.1                </span></span>
-<span><span class="co">#&gt;  [99] rbibutils_2.2.16            MsCoreUtils_1.16.1         </span></span>
+<span><span class="co">#&gt;  [99] rbibutils_2.3               MsCoreUtils_1.16.1         </span></span>
 <span><span class="co">#&gt; [101] colorspace_2.1-1            GenomeInfoDbData_1.2.12    </span></span>
-<span><span class="co">#&gt; [103] PSMatch_1.8.0               cli_3.6.3                  </span></span>
-<span><span class="co">#&gt; [105] textshaping_0.4.0           fansi_1.0.6                </span></span>
-<span><span class="co">#&gt; [107] S4Arrays_1.4.1              dplyr_1.1.4                </span></span>
-<span><span class="co">#&gt; [109] AnnotationFilter_1.28.0     pcaMethods_1.96.0          </span></span>
-<span><span class="co">#&gt; [111] gtable_0.3.5                rstatix_0.7.2              </span></span>
-<span><span class="co">#&gt; [113] sass_0.4.9                  digest_0.6.37              </span></span>
-<span><span class="co">#&gt; [115] BiocGenerics_0.50.0         ggrepel_0.9.6              </span></span>
-<span><span class="co">#&gt; [117] SparseArray_1.4.8           farver_2.1.2               </span></span>
-<span><span class="co">#&gt; [119] htmlwidgets_1.6.4           htmltools_0.5.8.1          </span></span>
-<span><span class="co">#&gt; [121] pkgdown_2.1.0               lifecycle_1.0.4            </span></span>
-<span><span class="co">#&gt; [123] httr_1.4.7                  Rdisop_1.64.0              </span></span>
-<span><span class="co">#&gt; [125] statmod_1.5.0               MASS_7.3-60.2</span></span></code></pre></div>
+<span><span class="co">#&gt; [103] PSMatch_1.8.0               Formula_1.2-5              </span></span>
+<span><span class="co">#&gt; [105] cli_3.6.3                   textshaping_0.4.0          </span></span>
+<span><span class="co">#&gt; [107] fansi_1.0.6                 S4Arrays_1.4.1             </span></span>
+<span><span class="co">#&gt; [109] dplyr_1.1.4                 AnnotationFilter_1.28.0    </span></span>
+<span><span class="co">#&gt; [111] pcaMethods_1.96.0           gtable_0.3.5               </span></span>
+<span><span class="co">#&gt; [113] rstatix_0.7.2               sass_0.4.9                 </span></span>
+<span><span class="co">#&gt; [115] digest_0.6.37               BiocGenerics_0.50.0        </span></span>
+<span><span class="co">#&gt; [117] ggrepel_0.9.6               SparseArray_1.4.8          </span></span>
+<span><span class="co">#&gt; [119] farver_2.1.2                htmlwidgets_1.6.4          </span></span>
+<span><span class="co">#&gt; [121] htmltools_0.5.8.1           pkgdown_2.1.1              </span></span>
+<span><span class="co">#&gt; [123] lifecycle_1.0.4             httr_1.4.7                 </span></span>
+<span><span class="co">#&gt; [125] Rdisop_1.64.0               statmod_1.5.0              </span></span>
+<span><span class="co">#&gt; [127] MASS_7.3-60.2</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -567,7 +568,7 @@ content:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
