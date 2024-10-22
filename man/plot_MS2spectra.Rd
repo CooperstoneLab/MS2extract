@@ -4,7 +4,7 @@
 \alias{plot_MS2spectra}
 \title{Plot MS/ms spectra}
 \usage{
-plot_MS2spectra(spec, compound = NULL, ppm = 10)
+plot_MS2spectra(spec, compound = NULL, ppm = 10, top_n_ions = 3)
 }
 \arguments{
 \item{spec}{a data frame containing the MS/MS spectra of the most intense
@@ -16,6 +16,9 @@ in the \code{batch_import_mzxml()} table.}
 
 \item{ppm}{mass error in ppm tolerance to check if the \emph{m}/\emph{z} precursor is being
 detected or not in the MS/MS spectra.}
+
+\item{top_n_ions}{top \emph{n} ions to add \emph{m}/\emph{z} labels. By default, the top 3
+most intense ions are labeled}
 }
 \value{
 a \code{ggplot} plot of the MS/MS spectra. A filled blue diamond is

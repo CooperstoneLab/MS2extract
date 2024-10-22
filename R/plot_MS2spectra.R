@@ -8,7 +8,9 @@
 #' scan
 #' @param ppm ppm error tolerance to check if the *m*/*z* precursor is being
 #' detected or not in the MS/MS spectra
-plot_MS2base <- function(spec, ppm) {
+#' @param top_n_ions top *n* ions to add *m*/*z* labels. By default, the top 3
+#' most intense ions are labeled
+plot_MS2base <- function(spec, ppm, top_n_ions) {
 
   # Adding CE: for plot labeling purposes
   spec <- dplyr::mutate(spec, CE = paste0("CE: ", CE))
@@ -26,7 +28,16 @@ plot_MS2base <- function(spec, ppm) {
       .data$mz < precursor_range[2]
   )
 
+  # format precursor ion
   precursor_ion <- round(unique(spec$mz_precursor), 5)
+
+  # Filter top most intense ions
+  ions_labels <- dplyr::arrange(
+    spec, -intensity
+  ) |> dplyr::filter(mz < precursor_ion) |>
+    dplyr::mutate(tmp = seq(dplyr::n()) ) |>
+    dplyr::filter(tmp <= top_n_ions)
+
 
   # Stop if there is more than one precursor ion
   if (nrow(precursor_table) > 1) stop("More than one precursor ion detected")
@@ -35,12 +46,12 @@ plot_MS2base <- function(spec, ppm) {
     spec,
     aes(.data$mz, .data$intensity)
   ) +
-    ggplot2::geom_col(width = 1)
+    ggplot2::geom_col(width = 0.1)
 
   if (nrow(precursor_table) > 0) {
     # Adding 5% of intensity to display diamond
     precursor_table <- dplyr::mutate(precursor_table,
-      intensity = .data$intensity * 1.05
+                                     intensity = .data$intensity * 1.05
     )
 
     ms2_spec <- ms2_spec +
@@ -51,17 +62,24 @@ plot_MS2base <- function(spec, ppm) {
       ggrepel::geom_label_repel(
         data = precursor_table,
         aes(label = precursor_ion)
+      ) + ggrepel::geom_text_repel(
+        data = ions_labels,
+        aes(label = mz)
       )
   } else {
     repel_data <- data.frame(mz = precursor_ion, intensity = 0)
     ms2_spec <- ms2_spec +
       ggplot2::geom_point(aes(x = precursor_ion, y = 0),
-        shape = 23,
-        size = 2, fill = "white", color = "blue"
+                          shape = 23,
+                          size = 2, fill = "white", color = "blue"
       ) +
       ggrepel::geom_label_repel(
         data = repel_data,
         aes(label = .data$mz)
+      ) +
+      ggrepel::geom_text_repel(
+        data = ions_labels,
+        aes(label = mz)
       )
   }
 
@@ -70,8 +88,8 @@ plot_MS2base <- function(spec, ppm) {
   # Changing theme
   ms2_spec <- ms2_spec + ggplot2::theme_light() + # Using a white background theme
     ggplot2::theme(legend.position = "none", # Removing legend
-          panel.grid.major = ggplot2::element_blank(),  # Removing grinds
-          panel.grid.minor = ggplot2::element_blank())
+                   panel.grid.major = ggplot2::element_blank(),  # Removing grinds
+                   panel.grid.minor = ggplot2::element_blank())
 
   return(ms2_spec)
 }
@@ -89,6 +107,8 @@ plot_MS2base <- function(spec, ppm) {
 #'  in the `batch_import_mzxml()` table.
 #' @param ppm mass error in ppm tolerance to check if the *m*/*z* precursor is being
 #'  detected or not in the MS/MS spectra.
+#' @param top_n_ions top *n* ions to add *m*/*z* labels. By default, the top 3
+#' most intense ions are labeled
 #'
 #' @return a `ggplot` plot of the MS/MS spectra. A filled blue diamond is
 #'  placed above the precursor ion. If the precursor ion was not
@@ -117,7 +137,7 @@ plot_MS2base <- function(spec, ppm) {
 #' MS2_spectra <- plot_MS2spectra(Rutin_detected)
 #' print(MS2_spectra)
 
-plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
+plot_MS2spectra <- function(spec, compound = NULL, ppm = 10, top_n_ions = 3) {
   # Checking if spec is single object or list
 
   is_list <- is.list(spec)
@@ -125,15 +145,15 @@ plot_MS2spectra <- function(spec, compound = NULL, ppm = 10) {
 
   # If spec is single compound proceed to plot
   if (any(c(!is_list, is_dtframe))) {
-    plot_MS2 <- plot_MS2base(spec = spec, ppm = ppm)
+    plot_MS2 <- plot_MS2base(spec = spec, ppm = ppm, top_n_ions)
   } else {
     # Checking compound is providing
     if (is.null(compound)) stop("Please, provide a compound name")
 
-    plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm)
+    plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm, top_n_ions)
   }
 
-  plot_MS2 <- plot_MS2 + ggplot2::labs(x = "m/z", y = "Intensity")
+  plot_MS2 <- plot_MS2 + ggplot2::labs(x = "*m/z*", y = "Intensity")
 
   return(plot_MS2)
 }

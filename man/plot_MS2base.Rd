@@ -4,7 +4,7 @@
 \alias{plot_MS2base}
 \title{Base function for MS2 spectra}
 \usage{
-plot_MS2base(spec, ppm)
+plot_MS2base(spec, ppm, top_n_ions)
 }
 \arguments{
 \item{spec}{a data frame containing the MS/MS spectra of the most intense
@@ -12,6 +12,9 @@ scan}
 
 \item{ppm}{ppm error tolerance to check if the \emph{m}/\emph{z} precursor is being
 detected or not in the MS/MS spectra}
+
+\item{top_n_ions}{top \emph{n} ions to add \emph{m}/\emph{z} labels. By default, the top 3
+most intense ions are labeled}
 }
 \description{
 \emph{Internal function}

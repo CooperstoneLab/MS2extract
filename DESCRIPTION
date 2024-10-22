@@ -26,7 +26,7 @@ RdMacros: Rdpack
 biocViews: MassSpectrometry, Metabolomics
 Depends:
      R (>= 4.2.0)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Imports: 
