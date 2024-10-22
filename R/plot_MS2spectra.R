@@ -66,7 +66,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
       ) + ggrepel::geom_text_repel(
         data = ions_labels, box.padding = 0.5,
         aes(label = mz)
-      ) + ggplot2::geom_point(data = ions_labels, color = "red")
+      ) + ggplot2::geom_point(data = ions_labels, color = "red", alpha = 0.5)
   } else {
     repel_data <- data.frame(mz = precursor_ion, intensity = 0)
     ms2_spec <- ms2_spec +
@@ -82,7 +82,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
         data = ions_labels, box.padding = 0.5,
         aes(label = mz)
       ) +
-      ggplot2::geom_point(data = ions_labels, color = "red")
+      ggplot2::geom_point(data = ions_labels, color = "red", alpha = 0.5)
   }
 
   if( length(unique(spec$CE)) > 1 ) {ms2_spec <- ms2_spec + facet_wrap("CE")}
