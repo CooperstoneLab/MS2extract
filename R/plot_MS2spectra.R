@@ -36,7 +36,8 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
     spec, -intensity
   ) |> dplyr::filter(mz < precursor_ion) |>
     dplyr::mutate(tmp = seq(dplyr::n()) ) |>
-    dplyr::filter(tmp <= top_n_ions)
+    dplyr::filter(tmp <= top_n_ions) |>
+    dplyr::mutate(mz = round(x = mz, digits = 4) )
 
 
   # Stop if there is more than one precursor ion
@@ -46,7 +47,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
     spec,
     aes(.data$mz, .data$intensity)
   ) +
-    ggplot2::geom_col(width = 0.1)
+    ggplot2::geom_col(width = 1)
 
   if (nrow(precursor_table) > 0) {
     # Adding 5% of intensity to display diamond
@@ -63,9 +64,9 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
         data = precursor_table,
         aes(label = precursor_ion)
       ) + ggrepel::geom_text_repel(
-        data = ions_labels,
+        data = ions_labels, box.padding = 0.5,
         aes(label = mz)
-      )
+      ) + ggplot2::geom_point(data = ions_labels, color = "red")
   } else {
     repel_data <- data.frame(mz = precursor_ion, intensity = 0)
     ms2_spec <- ms2_spec +
@@ -78,9 +79,10 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
         aes(label = .data$mz)
       ) +
       ggrepel::geom_text_repel(
-        data = ions_labels,
+        data = ions_labels, box.padding = 0.5,
         aes(label = mz)
-      )
+      ) +
+      ggplot2::geom_point(data = ions_labels, color = "red")
   }
 
   if( length(unique(spec$CE)) > 1 ) {ms2_spec <- ms2_spec + facet_wrap("CE")}
@@ -153,7 +155,8 @@ plot_MS2spectra <- function(spec, compound = NULL, ppm = 10, top_n_ions = 3) {
     plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm, top_n_ions)
   }
 
-  plot_MS2 <- plot_MS2 + ggplot2::labs(x = "*m/z*", y = "Intensity")
+  plot_MS2 <- plot_MS2 + ggplot2::labs(x = expression(italic("m/z")),
+                                       y = "Intensity")
 
   return(plot_MS2)
 }

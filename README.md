@@ -39,8 +39,8 @@ with `ppm_range()` you can compute mass error given a ppm tolerance.
 
 ``` r
 library(MS2extract)
-#> Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.10)
-#> than is installed on your system (1.0.11). This might lead to errors
+#> Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.12)
+#> than is installed on your system (1.0.13). This might lead to errors
 #> when loading mzR. If you encounter such issues, please send a report,
 #> including the output of sessionInfo() to the Bioc support forum at 
 #> https://support.bioconductor.org/. For details see also
@@ -193,4 +193,4 @@ compare_spectra(ProcA2_detected, ProcA2_PCDL)
     #> 10 576.1221            13                0
     #> 
     #> $plot
-    #> gTree[GRID.gTree.160]
+    #> gTree[GRID.gTree.174]
