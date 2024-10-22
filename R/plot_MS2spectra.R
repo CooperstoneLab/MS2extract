@@ -155,7 +155,7 @@ plot_MS2spectra <- function(spec, compound = NULL, ppm = 10, top_n_ions = 3) {
     plot_MS2 <- plot_MS2base(spec = spec[[compound]], ppm = ppm, top_n_ions)
   }
 
-  plot_MS2 <- plot_MS2 + ggplot2::labs(x = expression(italic("m/z")),
+  plot_MS2 <- plot_MS2 + ggplot2::labs(x = "m/z" ,
                                        y = "Intensity")
 
   return(plot_MS2)
