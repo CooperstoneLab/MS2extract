@@ -18,7 +18,7 @@
 
 extract_scan_info <- function(mzxml) {
   scan_id <- lapply(mzxml, function(x) x[[1]]) |> # Extract info data
-    dplyr::bind_rows() |> # Create a dataset of scann info
+    dplyr::bind_rows() |> # Create a dataset of scan info
     dplyr::mutate(Index = seq(dplyr::n())) # creating a scan index number
   scan_id
 }
@@ -241,7 +241,10 @@ import_mzxml <- function(file = NULL, met_metadata = NULL, ppm = 10) {
     mzxml_tidy <- roi_filter(mzxml_tidy, roi_table)
   }
 
-  mzxml_tidy <- mutate(mzxml_tidy, Formula = met_metadata$Formula)
+  mzxml_tidy <- dplyr::mutate(mzxml_tidy, Formula = met_metadata$Formula)
+  # Filter to keep ions lower than precursor ion
+  # Allowing for monosiotpic pattern
+  mzxml_tidy <- dplyr::filter(mzxml_tidy, mz <=  ppm_error[2] + 3 )
   mzxml_tidy <- dplyr::group_by(mzxml_tidy, Formula, CE)
   cli::col_green("Succesfully imported!")
   return(mzxml_tidy)
