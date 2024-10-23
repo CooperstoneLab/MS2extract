@@ -96,7 +96,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
                    panel.grid.major = ggplot2::element_blank(),  # Removing grinds
                    panel.grid.minor = ggplot2::element_blank()) +
     ggplot2::lims(x = c(0, precursor_ion)) +
-    ggplot2::scale_x_continuous(breaks=seq(0, mz_max, round(mz_max/7, 0) ))
+    ggplot2::scale_x_continuous(breaks=seq(0, round(precursor_ion), round(precursor_ion/7)  ))
 
   return(ms2_spec)
 }

@@ -99,7 +99,7 @@ low intensity signals (background noise).
 
 ``` r
 dim(ProcA2_ext)
-#> [1] 6226    6
+#> [1] 4561    6
 ```
 
 ### Detecting masses
