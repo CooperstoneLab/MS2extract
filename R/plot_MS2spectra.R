@@ -37,8 +37,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
   ions_labels <- dplyr::arrange(
     spec, -intensity
   ) |> dplyr::filter(mz < precursor_ion) |>
-    dplyr::mutate(tmp = seq(dplyr::n()) ) |>
-    dplyr::filter(tmp <= top_n_ions) |>
+    dplyr::top_n(top_n_ions, intensity) |>
     dplyr::mutate(mz = round(x = mz, digits = 4) )
 
 
