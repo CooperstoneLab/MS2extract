@@ -47,7 +47,9 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
     spec,
     aes(.data$mz, .data$intensity)
   ) +
-    ggplot2::geom_col(width = 1)
+    ggplot2::geom_col(
+      width = precursor_ion/(precursor_ion+precursor_ion * 0.1)
+      )
 
   if (nrow(precursor_table) > 0) {
     # Adding 5% of intensity to display diamond
