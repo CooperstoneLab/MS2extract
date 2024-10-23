@@ -214,8 +214,13 @@ although most of the arguments remains fairly similar.</p>
 <span><span class="va">batch_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/batch_extract_MS2.html">batch_extract_MS2</a></span><span class="op">(</span><span class="va">batch_compounds</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  out_list <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-5-1.png" width="700"><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">x</span> is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span></span></code></pre></div>
+<p><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<pre><code><span><span class="co">#&gt; Scale for <span style="color: #00BB00;">x</span> is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span></span></code></pre>
+<p><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
 <p>By using <code>verbose = TRUE</code>, we can display the MS/MS TIC
 plot as well the raw MS/MS spectra of the most intense scan for each
 compound.</p>
@@ -226,7 +231,7 @@ compound.</p>
 <p>Now that we have the raw MS/MS spectra, we are going to remove
 background noise based on intensity. <code><a href="../reference/batch_detect_mass.html">batch_detect_mass()</a></code>
 has the same arguments than its core analogue.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">batch_mass_detected</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/batch_detect_mass.html">batch_detect_mass</a></span><span class="op">(</span><span class="va">batch_extracted</span>, <span class="co"># Compound list</span></span>
 <span>  normalize <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Normalize </span></span>
 <span>  min_int <span class="op">=</span> <span class="fl">1</span>  <span class="co"># 1% minimum intensity</span></span>
@@ -243,14 +248,14 @@ and rutin, respectively.</p>
 <div class="section level5">
 <h5 id="detected-ms2-procyanidin-a2">Detected MS2 Procyanidin A2<a class="anchor" aria-label="anchor" href="#detected-ms2-procyanidin-a2"></a>
 </h5>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">"Procyanidin A2_Negative_20"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div class="section level5">
 <h5 id="detected-ms2-rutin">Detected MS2 Rutin<a class="anchor" aria-label="anchor" href="#detected-ms2-rutin"></a>
 </h5>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">batch_mass_detected</span>, <span class="st">"Rutin_Negative_20"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Busing_batch_extract_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
@@ -263,7 +268,7 @@ and rutin, respectively.</p>
 <code><a href="../reference/write_msp.html">write_msp()</a></code> is able to detect if the user is providing a
 single or multiple spectra. However, the user needs to provide metadata
 about each compound to be included in the resulting .msp database.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Reading batch metadata</span></span>
 <span><span class="va">metadata_msp_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
 <span>  <span class="st">"batch_msp_metadata.csv"</span>,</span>
@@ -285,7 +290,7 @@ about each compound to be included in the resulting .msp database.</p>
 <span><span class="co">#&gt; $ COLLISIONENERGY <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "20 eV", "20 eV"</span></span></code></pre></div>
 <p>After having the cleaned MS/MS spectra and the compound metadata, we
 can proceed to export them into a .msp file.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/write_msp.html">write_msp</a></span><span class="op">(</span></span>
 <span>  spec <span class="op">=</span> <span class="va">batch_mass_detected</span>,</span>
 <span>  spec_metadata <span class="op">=</span> <span class="va">metadata_msp</span>,</span>
@@ -296,7 +301,7 @@ can proceed to export them into a .msp file.</p>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.4.1 (2024-06-14)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>

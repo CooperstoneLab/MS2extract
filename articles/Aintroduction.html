@@ -284,6 +284,8 @@ as data frame.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ProcA2_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">x</span> is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span></span>
 <span><span class="co">#&gt; Warning: `position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span></span></span>
 <span><span class="co">#&gt; intervals.</span></span></code></pre></div>
 <p><img src="Aintroduction_files/figure-html/unnamed-chunk-6-1.png" width="100%" height="100%"></p>
@@ -353,7 +355,9 @@ function; the blue diamond refers to the precursor ion.</p>
 background noise in this MS/MS spectra because the low intensity ions
 have been removed.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_detected</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">x</span> is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Aintroduction_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
 </div>
 <div class="section level3">

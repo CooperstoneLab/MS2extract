@@ -111,6 +111,8 @@ the data frames to <code><a href="https://rdrr.io/pkg/OrgMassSpecR/man/SpectrumS
 <span class="r-msg co"><span class="r-pr">#&gt;</span> • m/z range given 10 ppm: 575.11376 and 575.12526</span>
 <span class="r-in"><span><span class="co"># Extracting the most instense MS2 spectra</span></span></span>
 <span class="r-in"><span><span class="va">ProcA2_extracted</span> <span class="op">&lt;-</span> <span class="fu"><a href="extract_MS2.html">extract_MS2</a></span><span class="op">(</span><span class="va">ProcA2_raw</span>, out_list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">x</span> is already present.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals.</span>
 <span class="r-plt img"><img src="compare_spectra-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># Detecting masses</span></span></span>
@@ -119,6 +121,8 @@ the data frames to <code><a href="https://rdrr.io/pkg/OrgMassSpecR/man/SpectrumS
 <span class="r-in"><span><span class="co"># Plot of the resulting reference MS2 spectra using MS2extract</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="plot_MS2spectra.html">plot_MS2spectra</a></span><span class="op">(</span><span class="va">ProcA2_norm</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"MS2extract spectra"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">x</span> is already present.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">x</span>, which will replace the existing scale.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`position_stack()` requires non-overlapping <span style="color: #00BB00;">x</span> intervals.</span>
 <span class="r-plt img"><img src="compare_spectra-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
