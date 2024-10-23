@@ -20,6 +20,8 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
   precursor_ion <- unique(spec$mz_precursor)
   # Get the range of ppm given a precursor ion
   precursor_range <- ppm_range(precursor_ion, ppm = ppm)
+  # max mz value
+  mz_max <- max(spec$mz)
 
   # Filter the precursor ion in ions detected in MS2
   precursor_table <- dplyr::filter(
@@ -48,7 +50,7 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
     aes(.data$mz, .data$intensity)
   ) +
     ggplot2::geom_col(
-      width = precursor_ion/(precursor_ion+precursor_ion * 0.1)
+      width = precursor_ion/(precursor_ion + precursor_ion * 0.75)
       )
 
   if (nrow(precursor_table) > 0) {
@@ -93,7 +95,9 @@ plot_MS2base <- function(spec, ppm, top_n_ions) {
   ms2_spec <- ms2_spec + ggplot2::theme_light() + # Using a white background theme
     ggplot2::theme(legend.position = "none", # Removing legend
                    panel.grid.major = ggplot2::element_blank(),  # Removing grinds
-                   panel.grid.minor = ggplot2::element_blank())
+                   panel.grid.minor = ggplot2::element_blank()) +
+    ggplot2::lims(x = c(0, precursor_ion)) +
+    ggplot2::scale_x_continuous(breaks=seq(0, mz_max, round(mz_max/7, 0) ))
 
   return(ms2_spec)
 }
